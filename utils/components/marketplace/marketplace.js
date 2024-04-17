@@ -1,6 +1,5 @@
 import Searchicon from "@/utils/components/icons/searchicon";
 import "./marketplace.css";
-
 function Marketplace() {
   return (
     <div className="Groups-container column">
@@ -13,18 +12,13 @@ function Marketplace() {
           <input type="text" name="search" placeholder="Search groups" />
         </div>
       </div>
-      <div className="pick-middle-container">
-        <button>
-          <p>Your feed</p>
-        </button>
-        <button>
-          <p>Discover</p>
-        </button>
-        <button>
-          <p>Your groups</p>
-        </button>
+      
+      <div className="manage-bottom-container">
+        <p>Groups you manage</p>
+        <button className="btn-Groups"></button>
+        <button className="btn-Groups"></button>
+        <button className="btn-Groups"></button>
       </div>
-      <div className="manage-bottom-container"></div>
     </div>
   );
 }
