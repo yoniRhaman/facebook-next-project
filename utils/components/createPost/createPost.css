@@ -1,0 +1,19 @@
+.input-post {
+  background-color: rgb(15, 42, 213);
+}
+
+.modal-container {
+  height: 400px;
+  width: 400px;
+  background-color: darkgray;
+  justify-content: space-between;
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 999;
+  align-items: center;
+}
