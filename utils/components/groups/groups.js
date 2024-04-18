@@ -1,7 +1,7 @@
 import Searchicon from "@/utils/components/icons/searchicon";
 import { FaPlus } from "react-icons/fa6";
 import "./groups.css";
-function Marketplace() {
+function Groups() {
   return (
     <div className="Groups-container column">
       <div className="search-top-container column ">
@@ -39,4 +39,4 @@ function Marketplace() {
   );
 }
 
-export default Marketplace;
+export default Groups;

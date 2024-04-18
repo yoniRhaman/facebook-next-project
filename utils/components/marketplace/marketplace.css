@@ -1,0 +1,16 @@
+.marketplace-container {
+  height: calc(100vh - var(--nav-height));
+  width: 500px;
+  background-color: #18191a;
+  color: #fff;
+}
+hr {
+  margin-top: 25px;
+  border-top: 1px solid #303030;
+}
+.Categories-p p {
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: 23px;
+  margin-bottom: 20px;
+}
