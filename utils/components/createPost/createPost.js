@@ -1,42 +1,5 @@
-// "use client";
-// import { useState } from "react";
-// import "./createPost.css";
-
-// // Modal component
-// function Modal({ onClose }) {
-//   return (
-//     <div className="modal-container" onClick={onClose}>
-//       <textarea className="modal-container">"What's on your mind?"</textarea>
-//     </div>
-//   );
-// }
-
-// // CreatePost component
-// export default function CreatePost() {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   const handleInputClick = () => {
-//     setIsModalOpen(true);
-//   };
-
-//   const closeModal = () => {
-//     setIsModalOpen(false);
-//   };
-
-//   return (
-//     <div>
-//       <input
-//         type="text"
-//         className="input-post"
-//         placeholder="What's on your mind?"
-//         onClick={handleInputClick}
-//       />
-//       {isModalOpen && <Modal onClose={closeModal} />}
-//     </div>
-//   );
-// }
-
 "use client";
+
 import React, { useState } from "react";
 import "./createPost.css";
 import { Button } from "@mui/material";
@@ -45,18 +8,24 @@ import { Button } from "@mui/material";
 function Modal({ onClose }) {
   const [postContent, setPostContent] = useState(""); // State for textarea content
 
+  const handlePostSubmit = () => {
+    // Handle post submission (e.g., send data to server)
+    console.log("Submitted post content:", postContent);
+    onClose(); // Close the modal
+  };
+
   return (
-    <div className="modal-container" onClick={() => onClose()}>
-      <textarea
-        className="input-post" // Use the same class for styling
-        placeholder="What's on your mind?"
-        value={postContent} // Bind value to state
-        onChange={(e) => setPostContent(e.target.value)} // Update state on change
-        maxLength={1000} // Limit to 1000 characters
-      />
-      <div className="row modal-buttons">
-        <Button variant="contained" onClick={() => onClose()}>
-          send
+    <div className="modal-container center">
+      <div className="modal-content">
+        <textarea
+          className="input-post"
+          placeholder="What's on your mind?"
+          value={postContent}
+          onChange={(e) => setPostContent(e.target.value)}
+          maxLength={1000}
+        />
+        <Button variant="contained" onClick={handlePostSubmit}>
+          Next
         </Button>
       </div>
     </div>
@@ -79,7 +48,7 @@ export default function CreatePost() {
     <div>
       <input
         type="text"
-        className="input-post"
+        // className="input-post"
         placeholder="What's on your mind?"
         onClick={handleInputClick}
       />
