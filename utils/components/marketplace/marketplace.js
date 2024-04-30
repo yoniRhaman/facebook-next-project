@@ -14,7 +14,7 @@ function Marketplace() {
   return (
     <div className="marketplace-container column">
       <div className="search-top-container column ">
-        <div className="top-container">
+        <div>
           <h1>Marketplace</h1>
         </div>
         <div className=" search-input1 row   center">
@@ -23,71 +23,73 @@ function Marketplace() {
         </div>
       </div>
       <hr />
-      <div className="Categories-p">
-        <p>Categories</p>
-      </div>
-      <div className="Categories column">
-        <button>
-          <div className="iconCategories">
-            <FaCar />
-          </div>
-          <h3>Vehicles</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <BsFillHouseCheckFill />
-          </div>
-          <h3>Property Rentals</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <IoMdShirt />
-          </div>
-          <h3>Apparel</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <IoPricetags />
-          </div>
-          <h3>Classifieds</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <IoPhonePortrait />
-          </div>
-          <h3>Electronics</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <BiCameraMovie />
-          </div>
-          <h3>Entertainment</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <FaHeart />
-          </div>
-          <h3>Family</h3>
-        </button>
+      <div className="Categories-container">
+        <div className="Categories-p">
+          <p>Categories</p>
+        </div>
+        <div className="Categories column">
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <FaCar className="icon-categories" />
+            </div>
+            <h3>Vehicles</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <BsFillHouseCheckFill className="icon-categories" />
+            </div>
+            <h3>Property Rentals</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <IoMdShirt className="icon-categories" />
+            </div>
+            <h3>Apparel</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <IoPricetags className="icon-categories" />
+            </div>
+            <h3>Classifieds</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <IoPhonePortrait className="icon-categories" />
+            </div>
+            <h3>Electronics</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <BiCameraMovie className="icon-categories" />
+            </div>
+            <h3>Entertainment</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <FaHeart className="icon-categories" />
+            </div>
+            <h3>Family</h3>
+          </button>
 
-        <button>
-          <div className="iconCategories">
-            <TbFreeRights />
-          </div>
-          <h3>Free Stuff</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <GiGardeningShears />
-          </div>
-          <h3>Garden & Outdoor</h3>
-        </button>
-        <button>
-          <div className="iconCategories">
-            <FaBaseballBatBall />
-          </div>
-          <h3>Hobbies</h3>
-        </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <TbFreeRights className="icon-categories" />
+            </div>
+            <h3>Free Stuff</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <GiGardeningShears className="icon-categories" />
+            </div>
+            <h3>Garden & Outdoor</h3>
+          </button>
+          <button className="btn-categories">
+            <div className="iconCategories">
+              <FaBaseballBatBall className="icon-categories" />
+            </div>
+            <h3>Hobbies</h3>
+          </button>
+        </div>
       </div>
     </div>
   );

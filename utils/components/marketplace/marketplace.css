@@ -4,13 +4,52 @@
   background-color: #18191a;
   color: #fff;
 }
+
 hr {
   margin-top: 25px;
   border-top: 1px solid #303030;
 }
-.Categories-p p {
+
+.Categories-container {
+  background-color: #18191a;
+  color: #fff;
+}
+
+.Categories-p {
   margin-top: 30px;
   margin-left: 20px;
   font-size: 23px;
   margin-bottom: 20px;
+}
+
+.btn-categories {
+  width: 100%;
+  height: 50px;
+  background-color: #18191a;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+.btn-categories:hover {
+  cursor: pointer;
+}
+.btn-categories h3 {
+  color: #fff;
+}
+.btn-categories .iconCategories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconCategories {
+  color: #303030;
+  height: 60px;
+  width: 30px;
+}
+.icon-categories {
+  color: #fff;
+  height: 30px;
+  width: 20px;
 }
