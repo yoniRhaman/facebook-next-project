@@ -1,0 +1,44 @@
+.freinds-box {
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    background-color: hsl(180, 41%, 31%);
+    aspect-ratio: 4/6;
+    overflow-y: scroll;
+}
+
+.freinds-box::-webkit-scrollbar {
+    width: 5px; /* Set the width of the scrollbar */
+    background-color: #F5F5F5; /* Set the background color of the scrollbar */
+    position: absolute;
+    right: 0; /* Position the scrollbar on the right of the element*/
+ }
+ .freinds-box::-webkit-scrollbar-thumb {
+    background-color: #4d5752; /* Set the color of the thumb */
+ }
+
+.avatar {
+    border-radius: 50%;
+    height: 50px;
+
+}
+
+.freind-name {
+    padding: 15px;
+    color: aliceblue;
+}
+
+.freind-item {
+    direction: ltr;
+    padding: 20px;
+    padding-left: 30px;
+
+
+
+}
+
+.non-last-freind-item {
+    border-bottom: solid;
+    border-radius: 3%;
+}
