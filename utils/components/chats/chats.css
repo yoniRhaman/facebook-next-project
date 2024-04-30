@@ -1,0 +1,37 @@
+.chats-container {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 500px;
+  background-color: #18191a; /* Dark background color */
+  color: #fff;
+}
+.top-container h1 {
+  padding: 10px;
+  font-family: sans-serif, Helvetica, Arial;
+  font-size: 30px;
+}
+
+.search-input1 {
+  display: flex;
+  justify-content: start;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #303030; /* Darker background color for input */
+  border: none;
+  padding: 8px 16px;
+  color: #fff;
+}
+
+.search-input1 input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  flex-grow: 1;
+}
+
+.btn-chats-Messenger{
+    
+}
