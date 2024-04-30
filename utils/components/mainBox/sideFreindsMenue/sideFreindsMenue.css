@@ -15,7 +15,7 @@
     right: 0; /* Position the scrollbar on the right of the element*/
  }
  .freinds-box::-webkit-scrollbar-thumb {
-    background-color: #4d5752; /* Set the color of the thumb */
+    background-color: #1d9c5c; /* Set the color of the thumb */
  }
 
 .avatar {

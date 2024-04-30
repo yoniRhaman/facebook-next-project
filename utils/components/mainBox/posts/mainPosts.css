@@ -1,6 +1,32 @@
+.posts-box {
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 75%;
+    align-items: flex-start;
+    padding: 30px;
+    row-gap: 30px;
+    overflow: auto;
+    overflow-x: hidden;
+    
+}
+
+.posts-box::-webkit-scrollbar {
+    width: 5px; /* Set the width of the scrollbar */
+    background-color: #F5F5F5; /* Set the background color of the scrollbar */
+    position: absolute;
+    right: 0; /* Position the scrollbar on the right of the element*/
+ }
+ .posts-box::-webkit-scrollbar-thumb {
+    background-color: #4d5752; /* Set the color of the thumb */
+ }
+
+
 .post-box {
     border: solid;
     text-align: center;
-    width: 80%;
+    width: 100%;
+    align-items: center;
     
 }
