@@ -1,13 +1,19 @@
+* {
+ --post-color: rgb(96, 185, 197);
+}
+
 .posts-box {
     direction: rtl;
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 75%;
+    width: 65%;
+    margin-left: 10%;
     align-items: flex-start;
     padding: 30px;
     row-gap: 30px;
     overflow: auto;
+
     overflow-x: hidden;
     
 }
@@ -28,5 +34,54 @@
     text-align: center;
     width: 100%;
     align-items: center;
+    background-color: var(--post-color);
     
 }
+
+.brief-introduction {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 2%;
+    border-bottom: #c7d3cd solid;
+    padding-left: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.out-brief-introduction-box {
+    width: 100%;
+}
+
+
+.post-picture {
+    width: 90%;
+    height: 90%;
+}
+
+.comments {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+
+}
+
+.comments-button {
+ display: flex;
+ flex-direction: row;
+ gap: 3%;
+ background-color: var(--post-color);
+ border: none;
+ cursor: pointer;
+}
+
+.comments-button:hover  {
+    border: #4d5752;
+
+display: flex;
+ flex-direction: row;
+ gap: 3%;
+}
+

@@ -55,12 +55,14 @@ export default function SideFreindsMenue(){
 
 function FreindItem({freind, n}){
     return(
+        <div>
      <div className={`row freind-item`} >
         <img className="avatar" src={freind.src} alt={freind.name}/>
         <p className="freind-name" >{freind.name}</p>
 
      </div>
-
+     <hr/>
+     </div>
      );
 }
 
