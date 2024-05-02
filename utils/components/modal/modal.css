@@ -20,6 +20,23 @@
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container button {
+  width: 10px;
+  height: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-content button {
+  width: 100%;
+}
+
 .input-post {
   width: 100%;
   height: 150px;
@@ -30,6 +47,3 @@
   margin-bottom: 10px;
 }
 
-.modal-content button {
-  width: 100%;
-}

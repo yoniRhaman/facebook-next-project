@@ -1,0 +1,14 @@
+export const img = [
+  {
+    id: 1,
+    url: "https://example.com/https://www.google.com/imgres?q=%D7%9B%D7%9C%D7%91%D7%99%D7%9D&imgurl=https%3A%2F%2Fgirgurimpetshop.co.il%2Fwp-content%2Fuploads%2F2019%2F07%2Fhusky-3380548_1280-875x800.jpg&imgrefurl=https%3A%2F%2Fgirgurimpetshop.co.il%2F%25D7%2590%25D7%https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.petbury.com%2F%25D7%25AA%25D7%2595%25D7%2597%25D7%259C%25D7%25AA-%25D7%2597%25D7%2599%25D7%2599%25D7%259D-%25D7%25A9%25D7%259C-%25D7%259B%25D7%259C%25D7%2591%25D7%2599%25D7%259D%2F&psig=AOvVaw1iUqY86WCvgXhKEzal8PGe&ust=1714644394037000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiPrt6a7IUDFQAAAAAdAAAAABAJ%25D7%2596%25D7%2594-%25D7%259B%25D7%259C%25D7%2591%25D7%2599%25D7%259D-%25D7%2590%25D7%25A1%25D7%2595%25D7%25A8-%25D7%259C%25D7%25A1%25D7%25A4%25D7%25A8%2F&docid=T4nub32bNJLp7M&tbnid=htFfVm5_UujkEM&vet=12ahUKEwj16N-gmuyFAxXVgP0HHSgOC7MQM3oFCIABEAA..i&w=875&h=800&hcb=2&ved=2ahUKEwj16N-gmuyFAxXVgP0HHSgOC7MQM3oFCIABEAA.jpg",
+  },
+  {
+    id: 2,
+    url: "https://example.https://www.google.com/imgres?q=%D7%9B%D7%9C%D7%91%D7%99%D7%9D&imgurl=https%3A%2F%2Fcodonate.org%2Fwp-content%2Fuploads%2F2023%2F02%2F%25D7%259E%25D7%2590%25D7%259E%25D7%25A8%25D7%2599%25D7%259D-2023-02-21T111421.780-1024x576.jpg&imgrefurl=https%3A%2F%2Fcodonate.org%2F15-%25D7%259B%25D7%259C%25D7%2591%25D7%2599%25D7%259D-%25D7%2591%25D7%25A2%25D7%259C%25D7%2599-%25D7%25AA%25D7%2597%25D7%2596%25D7%2595%25D7%25A7%25D7%2594-%25D7%25A0%25D7%259E%25D7%2595%25D7%259B%25D7%2594-%25D7%25A9%25D7%259E%25D7%25AA%25D7%2590%25D7%2599%25D7%259E%25D7%2599%25D7%259D-%25D7%259C%25D7%2590%25D7%25A0%25D7%25A9%2F&docid=6VFNOgJ7F1qwSM&tbnid=6V42lJtLqjjvuM&vet=12ahUKEwj16N-gmuyFAxXVgP0HHSgOC7MQM3oECHEQAA..i&w=1024&h=576&hcb=2&ved=2ahUKEwj16N-gmuyFAxXVgP0HHSgOC7MQM3oECHEQAA/image2.jpg",
+  },
+  {
+    id: 3,
+    url: "https://https://www.google.com/url?sa=i&url=https%3A%2F%2Fgurli.co.il%2F&psig=AOvVaw1iUqY86WCvgXhKEzal8PGe&ust=1714644394037000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiPrt6a7IUDFQAAAAAdAAAAABAE.com/image3.jpg",
+  },
+];

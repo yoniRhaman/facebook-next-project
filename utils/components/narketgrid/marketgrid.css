@@ -1,0 +1,59 @@
+.my-body {
+  position: fixed;
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+}
+
+.toolsbar,
+.selectContainer,
+.textfildContainer {
+  background-color: transparent;
+}
+
+.toolsbar {
+  top: var(--nav-height);
+  position: relative;
+  z-index: 99;
+}
+
+.grid-container {
+  position: relative;
+  top: 10vh;
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3%;
+  padding: 50px;
+}
+
+.grid_item {
+  height: 30vh;
+  background-color: transparent;
+  border-radius: 15px;
+  /* border: solid rgb(255, 255, 255); */
+  color: white;
+  background-color: rgb(63, 62, 62);
+}
+
+.myimg {
+  height: 80%;
+  /* background-color: chartreuse; */
+  border-radius: 15px 15px 0px 0px;
+  overflow: hidden;
+}
+
+.mytext {
+  padding: 5px;
+}
+.price-text {
+  position: relative;
+  left: 5px;
+}
+
+.title-text {
+  font-size: small;
+  position: relative;
+  left: 5px;
+}
