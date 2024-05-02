@@ -36,12 +36,8 @@ const Login = () => {
         <button type="submit">Submit</button>
       </form>
       <div className="login-links">
-        <Link href="/forgot-password">
-          <a>Forgot password?</a>
-        </Link>
-        <Link href="/register">
-          <a>Register</a>
-        </Link>
+        <Link href="/forgot-password">Forgot password?</Link>
+        <Link href="/register">Register</Link>
       </div>
     </div>
   );
