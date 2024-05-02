@@ -37,10 +37,10 @@ const Login = () => {
       </form>
       <div className="login-links">
         <Link href="/forgot-password">
-          <a>Forgot password?</a>
+          Forgot password?
         </Link>
         <Link href="/register">
-          <a>Register</a>
+          Register
         </Link>
       </div>
     </div>
