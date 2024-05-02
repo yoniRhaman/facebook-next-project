@@ -1,8 +1,9 @@
 .modal-container {
   width: 500px;
-  height: 100%;
+  height: 600px;
   margin: auto;
   z-index: 999;
+  position: absolute;
 }
 
 .modal-content {

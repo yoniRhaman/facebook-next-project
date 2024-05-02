@@ -3,6 +3,7 @@ import "./mainPosts.css";
 import Link from 'next/link';
 import { ShareAltOutlined } from "@ant-design/icons";
 import { posts } from "@/utils/data/posts";
+import CreatePost from "../../createPost/createPost";
 
 
 
@@ -20,6 +21,7 @@ export default function MainPosts() {
     return (
 
         <div className="column posts-box">
+            <CreatePost />
             {posts.map((post) => (
                 <PostItem post={post} />
             ))}

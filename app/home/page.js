@@ -7,7 +7,6 @@ export default function Page() {
     <div>
       <Navbar/>
       <MainBox />
-      <CreatePost />
     </div>
   );
 }

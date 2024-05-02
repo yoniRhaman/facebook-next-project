@@ -3,8 +3,8 @@ import SendIcon from '@mui/icons-material/Send';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import CloseIcon from "@mui/icons-material/Close";
 import Searchicon from "../icons/searchicon";
-import Addimg from "../icons/addimg";
-import Sendicon from "../icons/sendicon";
+
+
 function ChatBox() {
   return (
     <div className="chatBox-container">
