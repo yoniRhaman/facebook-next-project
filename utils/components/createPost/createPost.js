@@ -75,7 +75,7 @@ export default function CreatePost() {
 
   return (
     <div className="post-page-container">
-      <input
+      <input className="create-post-input"
         type="text"
         placeholder="What's on your mind?"
         onClick={handleInputClick}
