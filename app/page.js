@@ -5,10 +5,7 @@ import Login from "@/utils/components/login/login";
 export default function Home() {
   return (
     <div>
-      <Groups />
       <Navbar />
-      <Marketplace />
-      <Login />
     </div>
   );
 }
