@@ -15,6 +15,7 @@ import { AiTwotoneMessage } from "react-icons/ai";
 import { TbGridDots } from "react-icons/tb";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [value, setValue] = useState("one");
@@ -61,9 +62,11 @@ export default function Navbar() {
           <AiTwotoneBell />
         </button>
         <button className="profile-button">
-          <img
-            src="/125371365_692859425274779_4351217660566881911_n.jpg"
-            alt="Profile"
+          <Image
+            src="/images/profile-men.jpg"
+            fill
+            alt="Picture of the author"
+            style={{ objectFit: "cover" }}
           />
           <div className="profile-overlay">
             <BsArrowDownCircleFill />
