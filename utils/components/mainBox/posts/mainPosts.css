@@ -1,0 +1,97 @@
+* {
+ --post-color: rgb(10, 40, 44);
+ --border-of-buttom: #c7d3cd solid;
+}
+
+.posts-box {
+    background-color: rgb(75, 63, 63);
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 65%;
+    margin-left: 10%;
+    align-items: flex-start;
+    padding: 30px;
+    row-gap: 30px;
+    overflow: auto;
+    overflow-x: hidden;
+    
+}
+
+.posts-box::-webkit-scrollbar {
+    width: 5px; /* Set the width of the scrollbar */
+    background-color: #F5F5F5; /* Set the background color of the scrollbar */
+    position: absolute;
+    right: 0; /* Position the scrollbar on the right of the element*/
+ }
+ .posts-box::-webkit-scrollbar-thumb {
+    background-color: #4d5752; /* Set the color of the thumb */
+ }
+
+
+.post-box {
+    border: ridge #4d5752;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+    background-color: var(--post-color);
+    border-radius: 1%;
+    
+}
+
+.brief-introduction {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    column-gap: 2%;
+    border-bottom: var(--border-of-buttom);
+    padding-left: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.out-brief-introduction-box {
+    width: 100%;
+}
+
+
+.post-picture {
+    width: 100%;
+height: 100%;
+}
+
+.post-content {
+    border-bottom: var(--border-of-buttom);
+    width: 95%;
+}
+
+.comments {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-between;
+    border-bottom: var(--border-of-buttom);
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.comments-button {
+ display: flex;
+ flex-direction: row;
+ gap: 3%;
+ background-color: var(--post-color);
+ border: none;
+ cursor: pointer;
+ /* margin-right: 4%; */
+}
+
+.comments-button:hover  {
+    border: #4d5752;
+
+display: flex;
+flex-direction: row;
+gap: 3%;
+}
+

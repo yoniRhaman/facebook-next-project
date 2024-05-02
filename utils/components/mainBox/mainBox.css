@@ -1,0 +1,26 @@
+.main-box {
+height: 450px;
+display: flex;
+flex-direction: row;
+align-items: stretch;
+justify-content: space-between;
+
+
+}
+
+.main-box::-webkit-scrollbar {
+    width: 5px; /* Set the width of the scrollbar */
+    background-color: #F5F5F5; /* Set the background color of the scrollbar */
+    position: absolute;
+    right: 0; /* Position the scrollbar on the right of the element*/
+ }
+ .main-box::-webkit-scrollbar-thumb {
+    background-color: #4d5752; /* Set the color of the thumb */
+ }
+
+
+ .avatar {
+    border-radius: 50%;
+    height: 50px;
+
+}
