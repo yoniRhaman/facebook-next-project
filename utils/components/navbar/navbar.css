@@ -6,6 +6,8 @@
   height: var(--nav-height);
   background-color: #18191a; /* Dark background color */
   color: #fff; /* Text color */
+  position: fixed;
+z-index: 999;
 }
 .nav-left {
   justify-content: space-between;
