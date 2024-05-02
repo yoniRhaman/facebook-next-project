@@ -1,60 +1,12 @@
-import { ChatBubbleOutline, ThumbDown, ThumbDownAlt, ThumbDownOffAlt, ThumbUpOffAlt } from "@mui/icons-material";
+import { BubbleChart, ChatBubbleOutline, ShareOutlined, ThumbDown, ThumbDownAlt, ThumbDownOffAlt, ThumbUpOffAlt } from "@mui/icons-material";
 import "./mainPosts.css";
 import Link from 'next/link';
+import { ShareAltOutlined } from "@ant-design/icons";
+import { posts } from "@/utils/data/posts";
 
-const posts = [
-    {
-        title: "n cn n rn ",
-        content: "jln j j",
-        pictures: [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-        ],
-        postingDate: "12-03-2022",
-        postingTime: "15:34",
-        comments: [{
-            name: "",
-            title: "",
-            content: "",
-            picture: "",
-            commentingDate: "",
-            commentingTime: "",
-        }]
-    },
-    {
-        title: "n cn n rn ",
-        content: "jln j j",
-        pictures: [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-        ],
-        postingDate: "12-03-2022",
-        postingTime: "15:34",
-        comments: [{
-            name: "",
-            title: "",
-            content: "",
-            picture: "",
-            commentingDate: "",
-            commentingTime: "",
-        }]
-    },
-    {
-        title: "n cn n rn ",
-        content: "jln j j",
-        pictures: [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-        ],
-        postingDate: "12-03-2022",
-        postingTime: "15:34",
-        comments: [{
-            name: "",
-            title: "",
-            content: "",
-            picture: "",
-            commentingDate: "",
-            commentingTime: "",
-        }]
-    }
-]
+
+
+
 
 const personalInformation = {
     name: "moshe yakovson",
@@ -87,28 +39,30 @@ function PostItem({ post }) {
                     </div>
                 </Link>
             </div>
-            <hr />
             <h1>{post.title}</h1>
             <div className="post-picture" >
                 {post.pictures.map((picture) => (<img className="post-picture" src={picture}></img>))}
             </div>
-            <hr />
+            <div className="post-content"><p>{post.content}</p></div>
             <div className="comments">
                 <button className="comments-button">
-                
-                        <ChatBubbleOutline />
-                        <p>comments</p>
-                    
+                    <p> {`${post.comments.length} comments`}</p>
+
                 </button>
                 <div>
-                    <ThumbUpOffAlt />
-                    <ThumbDownOffAlt />
+                    <button className="comments-button"><p>{`${post.likes.length - 1} + ${post.likes[0].typeOfLike}`}</p></button>
                 </div>
 
 
             </div>
 
-            <p>{post.content}</p>
+            <div className="comments">
+                <button className="row center comments-button"><ThumbUpOffAlt /><p>Like</p></button>
+                <button className="row center comments-button"><ChatBubbleOutline /><p>Comments</p></button>
+                <button className="row center comments-button"><ShareOutlined /><p>Share</p></button>
+            </div>
+
+
 
             <p>posted on {post.postingDate} at {post.postingTime}</p>
 
