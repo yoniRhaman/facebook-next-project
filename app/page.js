@@ -7,6 +7,7 @@ export default function Home() {
     <div>
       <Groups />
       <Navbar />
+      
       <Marketplace />
       <Login />
     </div>
