@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 100%;
   height: var(--nav-height);
-  background-color: #18191a; /* Dark background color */
+  background-color: #18191a;
   color: #fff; /* Text color */
   position: fixed;
 z-index: 999;
