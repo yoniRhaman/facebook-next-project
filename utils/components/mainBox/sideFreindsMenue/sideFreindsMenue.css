@@ -6,6 +6,7 @@
     background-color: hsl(180, 41%, 31%);
     aspect-ratio: 4/6;
     overflow-y: scroll;
+    width: 35%;
 }
 
 .freinds-box::-webkit-scrollbar {

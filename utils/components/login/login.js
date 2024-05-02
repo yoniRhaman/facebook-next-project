@@ -44,6 +44,13 @@ import "./login.css";
         <button type="submit">Submit</button>
       </form>
       <div className="login-links">
+
+        <Link href="/forgot-password">
+          Forgot password?
+        </Link>
+        <Link href="/register">
+          Register
+        </Link>
         <Link href="/forgot-password">Forgot password?</Link>
         <Link href="/register">Register</Link>
       </div>
