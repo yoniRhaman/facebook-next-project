@@ -57,7 +57,7 @@
 //   );
 // }
 // CreatePost.js
-import React, { useState } from "react";
+import { useState } from "react";
 
 import "./createPost.css"; // Assuming you have a CSS file for styling
 import Modal from "../modal/modal";
@@ -74,7 +74,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div>
+    <div className="post-page-container">
       <input
         type="text"
         placeholder="What's on your mind?"
