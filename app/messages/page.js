@@ -1,13 +1,13 @@
 import ChatBox from "@/utils/components/chatBox/chatBox";
 import Chats from "@/utils/components/chats/chats";
 
-function messagesPage() {
+export default function messagesPage() {
   return (
-    <div>
-      <ChatBox />
+    <div className="row">
       <Chats />
+      <ChatBox />
     </div>
   );
 }
 
-export default messagesPage;
+

@@ -2,6 +2,7 @@
 import { Close } from "@mui/icons-material";
 import { Button, TextField } from "@mui/material";
 import "./loginModal.css";
+import Link from "next/link";
 export default function LoginModal({ setOpen }) {
   function handleSumbit(e) {
     e.preventDefault();
@@ -13,11 +14,7 @@ export default function LoginModal({ setOpen }) {
       </button>
       <form className="form-input column gap-20" onSubmit={handleSumbit}>
         <h1>Login form</h1>
-        <TextField
-          name="email"
-          label="email"
-          type="email"
-        />
+        <TextField name="email" label="email" type="email" />
         <TextField name="password" label="password" type="password" />
         <Button
           variant="contained"
@@ -28,14 +25,16 @@ export default function LoginModal({ setOpen }) {
         </Button>
         <Button variant="text">forgot password</Button>
       </form>
-      <Button
-        sx={{
-          background: "green",
-        }}
-        variant="contained"
-      >
-        create new account
-      </Button>
+      <Link href={"/registration"}>
+        <Button
+          sx={{
+            background: "green",
+          }}
+          variant="contained"
+        >
+          create new account
+        </Button>
+      </Link>
     </div>
   );
 }
