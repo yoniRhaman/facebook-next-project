@@ -20,7 +20,7 @@ function Groups() {
       <div className="manage-bottom-container">
         <p>Groups you manage</p>
         <button className="btn-Groups">
-          <img
+          <img 
             src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
             alt="משהו"
           />
