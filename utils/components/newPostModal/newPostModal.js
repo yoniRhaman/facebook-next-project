@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import "./modal.css";
+import "./newPostModal.css";
 import Image from "next/image";
 
 export default function Modal({ onClose }) {
@@ -27,7 +27,8 @@ export default function Modal({ onClose }) {
 
         <div className="column center gap-20">
           <div className="choice center row gap-20">
-            <select className="selection"
+            <select
+              className="selection"
               value={postPrivacy}
               onChange={(e) => setPostPrivacy(e.target.value)}
             >
