@@ -1,6 +1,6 @@
 .chatBox-container {
-  width: 500px;
-  height: 500px;
+  width: 63%;
+  height: calc(100vh - var(--nav-height));
   background-color: #18191a; /* Dark background color */
   color: #fff;
 }
