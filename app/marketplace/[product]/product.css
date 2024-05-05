@@ -1,8 +1,6 @@
 .my-body {
   height: calc(99.4vh - var(--nav-height));
-
   position: relative;
-  top: var(--nav-height);
   background-color: black;
   border: solid rgb(255, 0, 0);
 }
