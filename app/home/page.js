@@ -5,7 +5,7 @@ import Navbar from "@/utils/components/navbar/navbar";
 export default function Page() {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <MainBox />
     </div>
   );
