@@ -7,15 +7,57 @@
 }
 
 .toolsbar,
-.selectContainer,
-.textfildContainer {
+.selectContainer {
   background-color: transparent;
 }
 
 .toolsbar {
-  top: var(--nav-height);
+  width: 93%;
+  height: 10vh;
+  top: calc(var(--nav-height) + 2.5vh);
   position: relative;
   z-index: 99;
+  align-items: center;
+  padding-left: 7.5vh;
+  gap: 2%;
+}
+
+.selectContainer,
+.textfildContainer {
+  height: 70%;
+  border: none;
+  padding: 8px 16px;
+  color: #fff;
+}
+
+.textfildContainer {
+  width: 93%;
+}
+
+.textfildContainer input {
+  width: 20%;
+  transition: all 1s;
+
+}
+
+.textfildContainer input:hover {
+  width: 100%;
+}
+
+.textfildContainer input:focus {
+  width: 90%;
+}
+
+.selectContainer select,
+.textfildContainer input {
+  background-color: #303030 ; /* Darker background color for input */
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 16px;
+
+
 }
 
 .grid-container {
