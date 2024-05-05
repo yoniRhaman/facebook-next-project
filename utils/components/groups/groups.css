@@ -1,9 +1,9 @@
 .Groups-container {
-  margin-top: 70px;
   display: flex;
   justify-content: space-between;
-  width: 500px;
-  height: 500px;
+  height: calc(100vh - var(--nav-height));
+  width: 60vh;
+  
   background-color: #18191a; /* Dark background color */
   color: #fff;
 }
