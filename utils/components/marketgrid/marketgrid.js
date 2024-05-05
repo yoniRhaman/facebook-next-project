@@ -16,7 +16,7 @@ export default function marketgrid() {
   return (
     <div>
       <div className="my-body"></div>
-      <div className="toolsbar">
+      <div className="toolsbar row">
         <div className="selectContainer row">
           <select
             className="select"
@@ -29,10 +29,10 @@ export default function marketgrid() {
             <option value="3">price des</option>
           </select>
         </div>
-        <div className="textfildContainer">
+        <div className="textfildContainer row">
           <input
             type="text"
-            className="textfild"
+            name="textfild"
             placeholder="Serch..."
             onChange={(e) => {
               setSearch(e.target.value);

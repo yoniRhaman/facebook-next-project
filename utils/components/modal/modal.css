@@ -3,7 +3,7 @@
   height: 600px;
   margin: auto;
   z-index: 999;
-  position: absolute;
+  position: fixed;
 }
 
 .modal-content {
@@ -42,4 +42,14 @@
   border-radius: 4px;
   padding: 10px;
   font-size: 16px;
+  direction: ltr;
+}
+
+.choice {
+  margin-left: 20px;
+  align-self: flex-end;
+}
+
+.selection {
+  height: 25px;
 }
