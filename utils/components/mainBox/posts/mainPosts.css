@@ -1,7 +1,8 @@
-* {
- --post-color: rgb(10, 40, 44);
- --border-of-buttom: #c7d3cd solid;
-}
+body {
+    background-color: #18191a; /* Dark background color */
+    color: #fff;
+    overflow-x: hidden; /* Hide horizontal overflow */
+  }
 
 .posts-box {
     background-color: rgb(75, 63, 63);
