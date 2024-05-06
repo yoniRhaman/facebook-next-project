@@ -13,7 +13,7 @@ export default function Chats() {
         </div>
       </div>
       {new Array(20).fill(0).map((e) => (
-        <button className="btn-chats-Messenger">
+        <button className="btn-chats-Messenger row center gap-20">
           <button className="btn-chats-img">
             <img
               src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
