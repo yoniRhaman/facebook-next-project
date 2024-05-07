@@ -2,34 +2,41 @@
   height: calc(99.4vh - var(--nav-height));
   position: relative;
   background-color: black;
-  border: solid rgb(255, 0, 0);
 }
 
 .imges {
   width: 66.6666666%;
   height: 100%;
-  background-color: aqua;
+
+}
+
+.back-img {
+  position: fixed;
+  z-index: 1;
+    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-img {
+  position: relative;
+  z-index: 50;
   width: 85%;
   height: 85%;
-  background-color: rgb(255, 0, 230);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.more-imges {
-  background-color: chocolate;
-  width: 60%;
-  height: 15%;
-  position: fixed;
-  bottom: 10%;
-}
+
 
 .details {
   width: 33.3333333%;
   height: 100%;
   align-items: center;
-  background-color: rgb(0, 255, 42);
+  background-color:#18191a;
   justify-content: space-around;
 }
 
@@ -49,35 +56,39 @@
 .my-text {
   width: 90%;
   height: 45%;
-  background-color: coral;
+
 }
 
 .title {
   font-size: larger;
   margin: 10% 10% 0% 10%;
+  color: white;
 }
 
 .price {
   font-size: x-large;
   margin: 0% 1cqi 0% auto;
+  color: white;
 }
 .location {
   margin: 0% 0% 0% 10%;
+  color: white;
 }
 
 .description {
   font-size: smaller;
   margin: 10%;
+  color: white;
 }
 
 .chat {
   width: 90%;
   height: 5%;
-  background-color: rgb(63, 62, 62);
+  background-color: #0866ff;
   color: white;
   border-radius: 5px;
   border: none;
 }
 .chat:hover {
-  background-color: rgb(18, 18, 18);
+  background-color: #0655d5;
 }
