@@ -53,3 +53,12 @@
 .selection {
   height: 25px;
 }
+
+.picture {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+.picture img {
+  border-radius: 50px;
+}
