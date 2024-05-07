@@ -9,13 +9,7 @@ import CreatePost from "../../createPost/createPost";
 
 
 
-const personalInformation = {
-    name: "moshe yakovson",
-    linkToPersonalFeed: "",
-    picture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-    dateOfacountCreation: "",
-    timeOfCreation: "",
-}
+
 
 export default function MainPosts() {
     return (
@@ -34,10 +28,10 @@ function PostItem({ post }) {
     return (
         <div className="column post-box">
             <div className="out-brief-introduction-box">
-                <Link href={personalInformation.linkToPersonalFeed}>
+                <Link href={post.personalInformation.linkToPersonalFeed}>
                     <div className="brief-introduction">
-                        <p>{personalInformation.name}</p>
-                        <img className="avatar" src={personalInformation.picture}></img>
+                        <p>{post.personalInformation.name}</p>
+                        <img className="avatar" src={post.personalInformation.picture}></img>
                     </div>
                 </Link>
             </div>

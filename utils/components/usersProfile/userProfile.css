@@ -1,0 +1,169 @@
+
+
+
+
+.profile-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - var(--nav-height));
+  width: 100%;
+  background-color: var(--background-color);
+  overflow-y: scroll;
+  
+}
+
+.profile-box::-webkit-scrollbar {
+  width: 1vh; /* Set the width of the scrollbar */
+  background-color: #F5F5F5; /* Set the background color of the scrollbar */
+  position: absolute;
+  right: 0; /* Position the scrollbar on the right of the element*/
+}
+.profile-box::-webkit-scrollbar-thumb {
+  background-color: #1c2822; /* Set the color of the thumb */
+}
+
+.inner-profile-box {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.background-picture {
+  height: 65%;
+  width: 100%;
+}
+
+.information-box {
+  display: flex;
+  flex-direction: row;
+  height: 25%;
+  width: 95%;
+  margin-top: 1%;
+  /* border: solid; */
+  align-items: center;
+  row-gap: 10%;
+  gap: 5%;
+  justify-content: space-between;
+  border-bottom: slategrey solid;
+  padding-bottom: 2%;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  
+}
+
+.personal-information {
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    /* border: solid; */
+    justify-content: space-between;
+    color: #F5F5F5;
+    
+}
+
+.mutual-freinds-pictures {
+    /* position: absolute; */
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    /* border: solid; */
+    align-items: flex-end;
+
+}
+
+.mutual-freind-picture {
+    /* position: relative; */
+    /* position: absolute; */
+    height: 90%;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    z-index: 1;
+    /* border: solid; */
+
+    
+}
+
+.mutual-freind-picture:hover {
+  /* position: absolute; */
+  height: 150%;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    z-index: 10;
+    /* border: solid; */
+}
+
+.out-buttons-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1%;
+  height: 100%;
+  width: 40%;
+  align-items: flex-end;
+  justify-content: center;
+  /* border: solid; */
+  /* right: 0px; */
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /* border: solid; */
+  
+  /* right: 0px; */
+}
+
+.invite-button {
+  width: 50%;
+  height: 33%;
+  font-size: 75%;
+  color: #F5F5F5;
+  background-color: rgba(101, 96, 96, 0.377);
+  border: none;
+}
+
+.expnd-more-button {
+  background-color: rgba(101, 96, 96, 0.377);
+  width: 1%;
+}
+
+.profile-nav {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  /* border: solid; */
+  color: #F5F5F5;
+  justify-content: space-between;
+}
+
+.rhight-nav button {
+  color: #F5F5F5;
+}
+
+.expand-more-button-three-points {
+background-color: rgba(101, 96, 96, 0.377);
+color: #F5F5F5;
+}
+
+

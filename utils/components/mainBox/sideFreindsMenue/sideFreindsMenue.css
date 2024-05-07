@@ -10,7 +10,7 @@
 }
 
 .freinds-box::-webkit-scrollbar {
-    width: 5px; /* Set the width of the scrollbar */
+    width: 1vh; /* Set the width of the scrollbar */
     background-color: #F5F5F5; /* Set the background color of the scrollbar */
     position: absolute;
     right: 0; /* Position the scrollbar on the right of the element*/

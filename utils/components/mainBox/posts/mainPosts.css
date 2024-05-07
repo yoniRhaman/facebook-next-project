@@ -4,7 +4,7 @@
 }
 
 .posts-box {
-    background-color: rgb(75, 63, 63);
+    background-color: var(--background-color);
     direction: rtl;
     display: flex;
     flex-direction: column;
@@ -19,13 +19,13 @@
 }
 
 .posts-box::-webkit-scrollbar {
-    width: 5px; /* Set the width of the scrollbar */
+    width: 1vh; /* Set the width of the scrollbar */
     background-color: #F5F5F5; /* Set the background color of the scrollbar */
     position: absolute;
     right: 0; /* Position the scrollbar on the right of the element*/
  }
  .posts-box::-webkit-scrollbar-thumb {
-    background-color: #4d5752; /* Set the color of the thumb */
+    background-color: #23c976; /* Set the color of the thumb */
  }
 
 
@@ -48,7 +48,7 @@
     border-bottom: var(--border-of-buttom);
     padding-left: 3%;
     padding-top: 2%;
-    padding-bottom: 2%;
+    padding-bottom: 2%; 
 }
 
 .out-brief-introduction-box {
