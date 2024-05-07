@@ -15,7 +15,7 @@ export default function marketgrid() {
     .map((product) => <GridItem id={nanoid()} product={product} />);
   return (
     <div>
-      <div className="my-body"></div>
+      <div className="my-body">
       <div className="toolsbar row">
         <div className="selectContainer row">
           <select
@@ -39,8 +39,9 @@ export default function marketgrid() {
             }}
           />
         </div>
-      </div>
+      </div>
       <div className="grid-container">{finale_products}</div>
+    </div>
     </div>
   );
 }
@@ -51,13 +52,9 @@ export function GridItem({ product }) {
       <div className="myimg">
         <Image
           src={product.img}
-          alt="img"
-          width={205}
-          height={137}
-          style={{
-            objectFit: "cover",
-            objectPosition: "center",
-          }}
+          width={350}
+          height={350}
+          objectFit="cover"
         />
       </div>
 

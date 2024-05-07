@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -5,7 +6,7 @@ import { useState } from "react";
 import "./createPost.css"; // Assuming you have a CSS file for styling
 import Modal from "../newPostModal/newPostModal";
 
-export default function CreatePost() {
+export default function CreateGroup() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputClick = () => {
@@ -28,3 +29,4 @@ export default function CreatePost() {
     </div>
   );
 }
+

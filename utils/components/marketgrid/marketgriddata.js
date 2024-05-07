@@ -66,7 +66,7 @@ export const product_list = [
     img: "https://www.shutterstock.com/shutterstock/photos/2438948135/display_1500/stock-photo-advertising-testimonial-photo-of-houston-skyline-2438948135.jpg",
   },
   {
-    title: "Navy Recliner",
+    title: "NavyRecliner",
     price: 700,
     location: "Karmiel",
     img: "https://www.shutterstock.com/shutterstock/photos/2341522131/display_1500/stock-photo-wet-plate-photo-of-three-men-stand-on-top-of-the-giant-stack-of-books-on-the-ocean-a-small-beer-2341522131.jpg",
@@ -80,7 +80,7 @@ export const product_list = [
   {
     title: "Sage Chaise Lounge",
     price: 1100,
-    location: "Nazareth",
+    location: "Nazareth", 
     img: "https://www.shutterstock.com/shutterstock/photos/2400550787/display_1500/stock-photo-close-up-photo-of-graphic-design-vector-bright-and-colorful-very-detailed-high-quality-a-funny-2400550787.jpg",
   },
   {
@@ -102,7 +102,7 @@ export const product_list = [
     img: "https://www.shutterstock.com/shutterstock/photos/2369301055/display_1500/stock-photo-rural-country-setting-photo-quality-s-picture-of-small-modest-farmhouse-with-small-porch-in-2369301055.jpg",
   },
   {
-    title: "Cherry Accent Chair",
+    title: "Cherry Accent Chair", 
     price: 450,
     location: "Bat Yam",
     img: "https://www.shutterstock.com/shutterstock/photos/2418655625/display_1500/stock-photo-advertising-podium-photo-of-three-fan-on-podium-cool-blue-wind-plants-and-spotlight-2418655625.jpg",

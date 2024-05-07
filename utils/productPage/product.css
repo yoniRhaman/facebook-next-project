@@ -1,0 +1,95 @@
+.my-body {
+  height: calc(99.4vh - var(--nav-height));
+  position: relative;
+  background-color: black;
+  top:var(--nav-height) ;
+}
+
+.imges {
+  width: 66.6666666%;
+  height: 100%;
+
+}
+
+.back-img {
+  position: fixed;
+  z-index: 1;
+    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-img {
+  position: relative;
+  z-index: 50;
+  width: 85%;
+  height: 85%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.details {
+  width: 33.3333333%;
+  height: 100%;
+  align-items: center;
+  background-color:#18191a;
+  justify-content: space-around;
+}
+
+.all-imges {
+  height: 30%;
+  width: 90%;
+  background-color: darkblue;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3%;
+}
+
+.img1 {
+  background-color: rgb(215, 0, 0);
+}
+
+.my-text {
+  width: 90%;
+  height: 45%;
+
+}
+
+.title {
+  font-size: larger;
+  margin: 10% 10% 0% 10%;
+  color: white;
+}
+
+.price {
+  font-size: x-large;
+  margin: 0% 1cqi 0% auto;
+  color: white;
+}
+.location {
+  margin: 0% 0% 0% 10%;
+  color: white;
+}
+
+.description {
+  font-size: smaller;
+  margin: 10%;
+  color: white;
+}
+
+.chat {
+  width: 90%;
+  height: 5%;
+  background-color: #0866ff;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.chat:hover {
+  background-color: #0655d5;
+}

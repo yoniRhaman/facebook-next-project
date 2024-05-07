@@ -1,5 +1,5 @@
 .my-body {
-  position: fixed;
+  position: relative;
   background-color: black;
   height: 100vh;
   width: 100%;
@@ -37,7 +37,8 @@
 .textfildContainer input {
   width: 20%;
   transition: all 1s;
-
+  position: relative;
+  z-index: 999;
 }
 
 .textfildContainer input:hover {
@@ -50,14 +51,12 @@
 
 .selectContainer select,
 .textfildContainer input {
-  background-color: #303030 ; /* Darker background color for input */
+  background-color: #303030; /* Darker background color for input */
   border: none;
   outline: none;
   color: white;
   border-radius: 20px;
   padding: 8px 16px;
-
-
 }
 
 .grid-container {
@@ -65,7 +64,7 @@
   top: 10vh;
   background-color: transparent;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 3%;
   padding: 50px;
 }
@@ -84,6 +83,9 @@
   /* background-color: chartreuse; */
   border-radius: 15px 15px 0px 0px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mytext {
