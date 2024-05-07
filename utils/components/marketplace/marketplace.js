@@ -19,7 +19,7 @@ function Marketplace() {
         </div>
         <div className=" search-input1 row   center">
           <Searchicon />
-          <input type="text" name="search" placeholder="Search groups" />
+          <input type="text" name="search" placeholder="Search product..." />
         </div>
       </div>
       <hr />
