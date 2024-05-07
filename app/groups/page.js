@@ -1,9 +1,9 @@
-import Groups from "@/utils/components/groups/groups";
+import GroupsList from "@/utils/components/groupsList/groupsList";
 
 export default function GroupsPage() {
   return (
     <div className="row">
-      <Groups />
+      <GroupsList />
     </div>
   );
 }
