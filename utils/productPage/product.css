@@ -2,6 +2,7 @@
   height: calc(99.4vh - var(--nav-height));
   position: relative;
   background-color: black;
+  top:var(--nav-height) ;
 }
 
 .imges {

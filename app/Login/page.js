@@ -6,7 +6,7 @@ export default function LoginPage() {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <button onClick={() => setOpen(true)}>Click me</button>
+      <button onClick={() => setOpen(true)} style={{position: "relative", top: "10vh"}}>Click me</button>
 
       {open && <LoginModal setOpen={setOpen} />}
     </div>
