@@ -2,22 +2,24 @@
   height: calc(99.4vh - var(--nav-height));
   position: relative;
   background-color: black;
-  top:var(--nav-height) ;
+  top: var(--nav-height);
 }
 
 .imges {
   width: 66.6666666%;
   height: 100%;
-
 }
 
 .back-img {
   position: fixed;
   z-index: 1;
-    overflow: hidden;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 66%;
+  height: 85%;
 }
 
 .main-img {
@@ -37,7 +39,7 @@
   width: 33.3333333%;
   height: 100%;
   align-items: center;
-  background-color:#18191a;
+  background-color: #18191a;
   justify-content: space-around;
 }
 
@@ -57,7 +59,6 @@
 .my-text {
   width: 90%;
   height: 45%;
-
 }
 
 .title {

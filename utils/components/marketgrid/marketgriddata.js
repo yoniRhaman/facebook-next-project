@@ -5,7 +5,7 @@ export const product_list = [
     price: 500,
     location: "Haifa",
     mainImage:
-      "https://negativespace.co/wp-content/uploads/2024/04/negative-space-girl-in-skirt-on-golf-course-768x1152.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYl-kHyi6NiDSmSrVTGbLVtsZIfI91mTArKC4JRvmOhWIHboDQnCXY9Glf_02N6Ltyurg&usqp=CAU",
     description:
       "puzzle ivory tuna alaska jersey bermuda bahamas highway plumber sketch harbor elephant bracelet necklace",
     images: [

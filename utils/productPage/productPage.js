@@ -37,15 +37,17 @@ function ProductPageComponent() {
             src={myProduct.mainImage}
             alt="Sunset Beach"
             width={1000}
-            height={733}
+            height={1000}
             objectFit="contain"
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
           />
         </div>
       </div>
       <div className="details column">
-        <div className="all-imges">
-{myImagges}
-        </div>
+        <div className="all-imges">{myImagges}</div>
         <div className="my-text column">
           <div className="title">{myProduct.name}</div>
           <div className="price">{myProduct.price}</div>
