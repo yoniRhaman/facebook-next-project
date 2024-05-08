@@ -17,7 +17,7 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="post-page-container">
+    <div className="post-page-container ">
       <input
         className="create-post-input"
         type="text"
