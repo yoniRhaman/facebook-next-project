@@ -81,3 +81,18 @@ hr {
   height: 30px;
   width: 20px;
 }
+
+
+.add {
+  margin: 2%;
+  width: 90%;
+  height: 5vh;
+  background-color: #0866ff;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  gap: 2%;
+}
+.add:hover {
+  background-color: #0655d5;
+}

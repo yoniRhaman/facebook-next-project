@@ -1,3 +1,4 @@
+"use client";
 import "./marketplace.css";
 import Searchicon from "@/utils/components/icons/searchicon";
 import { FaCar } from "react-icons/fa6";
@@ -10,8 +11,19 @@ import { FaHeart } from "react-icons/fa";
 import { TbFreeRights } from "react-icons/tb";
 import { GiGardeningShears } from "react-icons/gi";
 import { FaBaseballBatBall } from "react-icons/fa6";
-import FloatingAction from "../floatingActionButton/floatingAction";
+import AddIcon from "@mui/icons-material/Add";
+import { useState } from "react";
+import Modal from "../newPostModal/newPostModal";
+import AddProductForm from "../addProductModal/addProductModal";
+
 function Marketplace() {
+  const [showModal, setShowModal] = useState(false);
+  const handleModalOpen = () => {
+    setShowModal(true);
+  };
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
   return (
     <div className="marketplace-container column">
       <div className="search-top-container column ">
@@ -25,7 +37,9 @@ function Marketplace() {
       </div>
       <hr />
       <div className="Categories-container">
-     { <FloatingAction/> }
+        <button className="add row center">
+          add product <AddIcon onClick={handleModalOpen} />
+        </button>
         <div className="Categories-p">
           <p>Categories</p>
         </div>
@@ -93,6 +107,9 @@ function Marketplace() {
           </button>
         </div>
       </div>
+      {showModal && (
+        <AddProductForm onClose={handleModalClose} />
+      )}
     </div>
   );
 }

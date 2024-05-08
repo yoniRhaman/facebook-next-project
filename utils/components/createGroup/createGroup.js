@@ -1,8 +1,9 @@
-
 "use client";
-import { Close, Image } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import "./createGroup.css";
+import Image from "next/image";
+
 export default function CreateGroup({ onClose }) {
   const handlePostSubmit = () => {
     onClose();
@@ -10,13 +11,15 @@ export default function CreateGroup({ onClose }) {
 
   return (
     <div className="modal-container center column">
-      <div className="modal-content space-between column">
-        <button className="title-container-button column " onClick={onClose}>
+      <div className="row gap-20 space-between ">
+        <button className="title-container-button  " onClick={onClose}>
           <Close />
         </button>
-        <div className="title-container column  row gap-20">
+        <div className="title-container ">
           <h1>Create Group</h1>
         </div>
+      </div>
+      <form onSubmit={handlePostSubmit}>
         <div className="column center gap-20">
           <div className="picture">
             <Image
@@ -26,11 +29,12 @@ export default function CreateGroup({ onClose }) {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <input type="text" placeholder="Group Name"></input>
-          <input type="text" placeholder="Choose Friends"></input>
+          <input type="text" placeholder="Group Name" />
+          <input type="text" placeholder="Choose Friends" />
         </div>
         <div>
           <Button
+            type="submit"
             sx={{ width: "100%", marginTop: "20px" }}
             variant="contained"
             onClick={handlePostSubmit}
@@ -38,8 +42,7 @@ export default function CreateGroup({ onClose }) {
             Create Group
           </Button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
-
