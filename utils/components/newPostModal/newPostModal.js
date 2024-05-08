@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import { Button } from "@mui/material";
 import { Close } from "@mui/icons-material";
