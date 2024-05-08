@@ -212,7 +212,7 @@
   display: flex;
   flex-direction: column;
   width: calc(100% - var(--nine-pictures-and-freinds-height));
-  height: 90%;
+  height: 100%;
   /* left: 0%; */
   /* border: cadetblue solid; */
   /* background-color: azure; */

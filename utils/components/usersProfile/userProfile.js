@@ -9,16 +9,13 @@ import Link from "next/link";
 
 
 export default function UserProfile() {
-
-
-
-    return (
+     return (
         <div className="profile-box">
             <div className="inner-profile-box">
                 <img
                     className="background-picture"
-                    src={displayedUserInformation.backgroungPicture}
-                />
+                    src={displayedUserInformation.mainPicture}
+                ></img>
                 <div className="information-box">
                     <img
                         className="profile-picture"
@@ -56,46 +53,52 @@ export default function UserProfile() {
                     </div>
                 </div>
 
-                <div className="user-posts">
 
-                    <div className="nine-pictures-and-freinds">
-                        <div className="nine-pictures">
-                            {pictures.slice(0, 9).map((picture, index) => (
-                                <DisplayNinePictures picture={picture} />
-                            ))}
-                        </div>
 
-                        <div className="nine-pictures">
-                            {nineFreindsPictures.map((picture, index) => (
-                                <DisplayNinePictures picture={picture.ProfilePicture} />
-                            ))}
-                        </div>
-                    </div>
-                    <div className="user-posts-box">
 
-                        {userPosts.map((post) => (
-                            <PostItem post={post} />
-                        ))}
-                    </div>
+
+                <div className="profile-nav">
+                    <nav className="rhight-nav">
+                        <Button>Posts</Button>
+                        <Button>About</Button>
+                        <Button>Freinds</Button>
+                        <Button>Photos</Button>
+                        <Button>Videos</Button>
+                        <Button>Check-ins</Button>
+                        <Button>
+                            More <ArrowDropDownSharp />
+                        </Button>
+                    </nav>
+                    <Button className="expand-more-button-three-points" size="small">
+                        . . .
+                    </Button>
                 </div>
+
             </div>
 
 
-            <div className="profile-nav">
-                <nav className="rhight-nav">
-                    <Button>Posts</Button>
-                    <Button>About</Button>
-                    <Button>Freinds</Button>
-                    <Button>Photos</Button>
-                    <Button>Videos</Button>
-                    <Button>Check-ins</Button>
-                    <Button>
-                        More <ArrowDropDownSharp />
-                    </Button>
-                </nav>
-                <Button className="expand-more-button-three-points" size="small">
-                    . . .
-                </Button>
+
+            <div className="user-posts">
+
+                <div className="nine-pictures-and-freinds">
+                    <div className="nine-pictures">
+                        {pictures.slice(0, 9).map((picture, index) => (
+                            <DisplayNinePictures picture={picture} />
+                        ))}
+                    </div>
+
+                    <div className="nine-pictures">
+                        {nineFreindsPictures.map((picture, index) => (
+                            <DisplayNinePictures picture={picture.ProfilePicture} />
+                        ))}
+                    </div>
+                </div>
+                <div className="user-posts-box">
+
+                    {userPosts.map((post) => (
+                        <PostItem post={post} />
+                    ))}
+                </div>
             </div>
         </div>
     );
