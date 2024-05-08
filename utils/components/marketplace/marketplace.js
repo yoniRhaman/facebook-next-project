@@ -10,6 +10,7 @@ import { FaHeart } from "react-icons/fa";
 import { TbFreeRights } from "react-icons/tb";
 import { GiGardeningShears } from "react-icons/gi";
 import { FaBaseballBatBall } from "react-icons/fa6";
+import FloatingAction from "../floatingActionButton/floatingAction";
 function Marketplace() {
   return (
     <div className="marketplace-container column">
@@ -24,6 +25,7 @@ function Marketplace() {
       </div>
       <hr />
       <div className="Categories-container">
+     { <FloatingAction/> }
         <div className="Categories-p">
           <p>Categories</p>
         </div>

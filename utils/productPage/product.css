@@ -44,15 +44,15 @@
 .all-imges {
   height: 30%;
   width: 90%;
-  background-color: darkblue;
+  /* background-color: darkblue; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3%;
 }
 
-.img1 {
+/* .img1 {
   background-color: rgb(215, 0, 0);
-}
+} */
 
 .my-text {
   width: 90%;

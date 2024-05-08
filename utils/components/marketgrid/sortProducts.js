@@ -1,19 +1,19 @@
 export function SortProducts(a, b, sortBY) {
   switch (sortBY) {
     case 0: {
-      if (a.title < b.title) {
+      if (a.name < b.name) {
         return -1;
       }
-      if (a.title > b.title) {
+      if (a.name > b.name) {
         return 1;
       }
       return 0;
     }
     case 1: {
-      if (a.title < b.title) {
+      if (a.name < b.name) {
         return 1;
       }
-      if (a.title > b.title) {
+      if (a.name > b.name) {
         return -1;
       }
       return 0;
