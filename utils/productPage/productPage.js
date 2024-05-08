@@ -37,11 +37,11 @@ function ProductPageComponent() {
             src={myProduct.mainImage}
             alt="Sunset Beach"
             width={1000}
-            height={733}
+            height={1000}
             objectFit="contain"
             style={{
-              maxWidth: '100%',
-              height: 'auto'
+              maxWidth: "100%",
+              height: "auto",
             }}
           />
         </div>
