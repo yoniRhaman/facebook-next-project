@@ -47,11 +47,11 @@ export default function marketgrid() {
 export function GridItem({ product }) {
   return (
     <a
-      src={`http://localhost:3000/marketplace/product${product.id}`}
+    href={`http://localhost:3000/marketplace/product${product.id}`}
       className="grid_item column"
     >
       <div className="myimg">
-        <Image src={product.img} width={290} height={350} objectFit="cover" />
+        <Image src={product.mainImage} width={290} height={350} objectFit="cover" />
       </div>
 
       <div className="mytext column">

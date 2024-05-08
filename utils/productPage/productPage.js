@@ -20,7 +20,7 @@ function ProductPageComponent() {
       <div className="imges center">
         <Image
           className="back-img"
-          src={myProduct.img}
+          src={myProduct.mainImage}
           alt="Sunset Beach"
           width={830}
           height={520}
@@ -29,10 +29,10 @@ function ProductPageComponent() {
         />
         <div className="main-img">
           <Image
-            src={myProduct.img}
+            src={myProduct.mainImage}
             alt="Sunset Beach"
-            width={800}
-            height={533}
+            width={1000}
+            height={733}
             objectFit="contain"
           />
         </div>
