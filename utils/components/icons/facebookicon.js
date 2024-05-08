@@ -2,8 +2,8 @@
 function FacebookIcon() {
   return (
     <svg
-      width="70px"
-      height="70px"
+      width="60px"
+      height="60px"
       viewBox="0 0 45 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

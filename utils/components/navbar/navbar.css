@@ -10,8 +10,8 @@
   /* position: fixed; */
 z-index: 999;
 
-  position: fixed;
-  z-index: 999;
+  /* position: fixed; */
+  /* z-index: 999; */
 
 }
 .nav-left {
@@ -20,7 +20,7 @@ z-index: 999;
 }
 
 .search-input {
-  margin-top: 17px;
+  margin-top: 10px;
   width: 200px;
   height: 30px;
   border-radius: 20px;
@@ -44,7 +44,7 @@ z-index: 999;
   .middel-nav {
     display: none; /* Hide middel-nav */
   }
-}
+} 
 
 .container-right {
   display: flex;

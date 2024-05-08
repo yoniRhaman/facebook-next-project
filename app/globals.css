@@ -35,3 +35,8 @@ body {
   gap: 20px;
 }
 
+.avatar {
+  border-radius: 50%;
+  height: 50px;
+}
+
