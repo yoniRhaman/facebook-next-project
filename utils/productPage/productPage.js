@@ -11,6 +11,11 @@ function ProductPageComponent() {
 
   const myProduct = product_list.find((p) => p.id === lastPathPart);
 
+  const myImagges = myProduct.images.map((i) => (
+    <div className="img1">
+      <Image src={i} alt="image" width={120} height={120} objectFit="fill" />
+    </div>
+  ));
   // console.log("product_list:", product_list);
   // console.log("lastPathPart:", lastPathPart);
   // console.log(" myProduct title:", myProduct?.title);
@@ -20,7 +25,7 @@ function ProductPageComponent() {
       <div className="imges center">
         <Image
           className="back-img"
-          src={myProduct.img}
+          src={myProduct.mainImage}
           alt="Sunset Beach"
           width={830}
           height={520}
@@ -29,30 +34,27 @@ function ProductPageComponent() {
         />
         <div className="main-img">
           <Image
-            src={myProduct.img}
+            src={myProduct.mainImage}
             alt="Sunset Beach"
-            width={800}
-            height={533}
+            width={1000}
+            height={1000}
             objectFit="contain"
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
           />
         </div>
       </div>
       <div className="details column">
-        <div className="all-imges">
-          <div className="img1"></div>
-          <div className="img1"></div>
-          <div className="img1"></div>
-          <div className="img1"></div>
-          <div className="img1"></div>
-          <div className="img1"></div>
-        </div>
+        <div className="all-imges">{myImagges}</div>
         <div className="my-text column">
           <div className="title">{myProduct.name}</div>
           <div className="price">{myProduct.price}</div>
           <div className="location">{myProduct.location}</div>
           <div className="description">{myProduct.description}</div>
         </div>
-        <button className="chat">sss</button>
+        <button className="chat">chat</button>
       </div>
     </div>
   );

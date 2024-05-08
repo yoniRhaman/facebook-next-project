@@ -1,89 +1,111 @@
 import { displayedUserInformation, nineFreindsPictures, pictures, userPosts } from "@/utils/data/displayedUserInformation";
 import "./userProfile.css";
+
 import { ArrowDropDownSharp, ChatBubbleOutline, ExpandMore, Message, PersonAddAlt, ShareOutlined, ThumbUpOffAlt } from "@mui/icons-material";
+
+
 import { Button } from "@mui/material";
 import Link from "next/link";
 
-let print = console.log();
-
 
 export default function UserProfile() {
-    return <div className="profile-box">
-        <div className="inner-profile-box">
-            <img className="background-picture" src={displayedUserInformation.mainPicture} />
-            <div className="information-box">
-                <img className="profile-picture" src={displayedUserInformation.profilePicture}></img>
-                <div className="personal-information">
-                    <h1>{`${displayedUserInformation.firstName}  ${displayedUserInformation.lastName}`}</h1>
-                    <p>{`${displayedUserInformation.numberOfMutualFreinds} mutual freinds`}</p>
-                    <div className="mutual-freinds-pictures">
 
-                        {displayedUserInformation.mutualFreinds.map((freind) => (
-                            <ListOfFreindsPictures freind={freind} />
-                        ))}
 
+
+    return (
+        <div className="profile-box">
+            <div className="inner-profile-box">
+                <img
+                    className="background-picture"
+                    src={displayedUserInformation.backgroungPicture}
+                />
+                <div className="information-box">
+                    <img
+                        className="profile-picture"
+                        src={displayedUserInformation.profilePicture}
+                    ></img>
+                    <div className="personal-information">
+                        <h1>{`${displayedUserInformation.firstName}  ${displayedUserInformation.lastName}`}</h1>
+                        <p>{`${displayedUserInformation.numberOfMutualFreinds} mutual freinds`}</p>
+                        <div className="mutual-freinds-pictures">
+                            {displayedUserInformation.mutualFreinds.map((freind) => (
+                                <ListOfFreindsPictures freind={freind} />
+                            ))}
+
+                        </div>
                     </div>
+                    <div className="out-buttons-box">
+                        <div className="buttons">
+                            <Button className="invite-button" variant="outlined" size="small">
+                                <PersonAddAlt />
+                                freinds
+                            </Button>
 
-
-
+                            <Button
+                                className="invite-button"
+                                variant="contained"
+                                size="small"
+                            >
+                                <Message />
+                                messaage
+                            </Button>
+                        </div>
+                        <Button className="expnd-more-button" size="small">
+                            <ExpandMore />
+                        </Button>
+                    </div>
                 </div>
-                <div className="out-buttons-box">
-                    <div className="buttons">
-                        <Button className="invite-button" variant="outlined" size="small"><PersonAddAlt />freinds</Button>
 
-                        <Button className="invite-button" variant="contained" size="small" ><Message />messaage</Button>
+                <div className="user-posts">
+
+                    <div className="nine-pictures-and-freinds">
+                        <div className="nine-pictures">
+                            {pictures.slice(0, 9).map((picture, index) => (
+                                <DisplayNinePictures picture={picture} />
+                            ))}
+                        </div>
+
+                        <div className="nine-pictures">
+                            {nineFreindsPictures.map((picture, index) => (
+                                <DisplayNinePictures picture={picture.ProfilePicture} />
+                            ))}
+                        </div>
                     </div>
-                    <Button className="expnd-more-button" size="small" ><ExpandMore /></Button>
+                    <div className="user-posts-box">
+
+                        {userPosts.map((post) => (
+                            <PostItem post={post} />
+                        ))}
+                    </div>
                 </div>
             </div>
+
+
             <div className="profile-nav">
                 <nav className="rhight-nav">
-                    <Button >Posts</Button>
-                    <Button >About</Button>
-                    <Button >Freinds</Button>
-                    <Button >Photos</Button>
-                    <Button >Videos</Button>
-                    <Button >Check-ins</Button>
-                    <Button >More <ArrowDropDownSharp /></Button>
+                    <Button>Posts</Button>
+                    <Button>About</Button>
+                    <Button>Freinds</Button>
+                    <Button>Photos</Button>
+                    <Button>Videos</Button>
+                    <Button>Check-ins</Button>
+                    <Button>
+                        More <ArrowDropDownSharp />
+                    </Button>
                 </nav>
-                <Button className="expand-more-button-three-points" size="small">. . .</Button>
-            </div>
-
-        </div>
-        <div className="user-posts">
-
-            <div className="nine-pictures-and-freinds">
-                <div className="nine-pictures">
-                    {pictures.slice(0, 9).map((picture, index) => (
-                        <DisplayNinePictures picture={picture} />
-                    ))}
-                </div>
-
-                <div className="nine-pictures">
-                    {nineFreindsPictures.map((picture, index) => (
-                        <DisplayNinePictures picture={picture.ProfilePicture} />
-                    ))}
-                </div>
-            </div>
-            <div className="user-posts-box">
-
-                {userPosts.map((post) => (
-                    <PostItem post={post} />
-                ))}
+                <Button className="expand-more-button-three-points" size="small">
+                    . . .
+                </Button>
             </div>
         </div>
-    </div>
+    );
 
 }
-
 
 function ListOfFreindsPictures({ freind }) {
-    return (
-
-        <img className="mutual-freind-picture" src={freind.ProfilePicture} />
-    )
-
+    return <img className="mutual-freind-picture" src={freind.ProfilePicture} />;
 }
+
 
 function DisplayNinePictures({ picture }) {
     return (
@@ -144,5 +166,6 @@ function PostItem({ post }) {
         </div>
     );
 }
+
 
 
