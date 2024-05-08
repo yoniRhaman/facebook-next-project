@@ -52,7 +52,7 @@ function ProductPageComponent() {
           <div className="location">{myProduct.location}</div>
           <div className="description">{myProduct.description}</div>
         </div>
-        <button className="chat">sss</button>
+        <button className="chat">chat</button>
       </div>
     </div>
   );

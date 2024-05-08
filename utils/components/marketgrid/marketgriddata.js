@@ -7,6 +7,7 @@ export const product_list = [
     location: "Haifa",
     img: "https://negativespace.co/wp-content/uploads/2024/04/negative-space-girl-in-skirt-on-golf-course-768x1152.jpg",
     description: "puzzle ivory tuna alaska jersey bermuda bahamas highway plumber sketch harbor elephant bracelet necklace"
+
   },
   {
     id: "BlueChair",
