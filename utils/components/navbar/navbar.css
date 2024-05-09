@@ -6,12 +6,8 @@
   height: var(--nav-height);
   background-color: var(--background-color); /* Dark background color */
   color: #fff; /* Text color */
-
-  /* position: fixed; */
-z-index: 999;
-
-  /* position: fixed; */
-  /* z-index: 999; */
+  position: fixed;
+  z-index: 999;
 
 }
 .nav-left {

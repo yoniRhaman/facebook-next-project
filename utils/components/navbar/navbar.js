@@ -16,6 +16,7 @@ import { TbGridDots } from "react-icons/tb";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [value, setValue] = useState("one");
@@ -41,13 +42,14 @@ export default function Navbar() {
           aria-label="secondary tabs example"
         >
           <Tab
+            href="/"
             indicatorColor="white"
             icon={<Home style={{ color: "white" }} />}
           />
-          <Tab icon={<OndemandVideo style={{ color: "white" }} />} />
-          <Tab icon={<Storefront style={{ color: "white" }} />} />
-          <Tab icon={<People style={{ color: "white" }} />} />
-          <Tab icon={<SmartButton style={{ color: "white" }} />} />
+          <Tab href="/" icon={<OndemandVideo style={{ color: "white" }} />} />
+          <Tab href="/marketplace" icon={<Storefront style={{ color: "white" }} />} />
+          <Tab href="/" icon={<People style={{ color: "white" }} />} />
+          <Tab href="/" icon={<SmartButton style={{ color: "white" }} />} />
         </Tabs>
       </div>
 

@@ -5,12 +5,13 @@ import { product_list } from "./marketgriddata";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { SortProducts } from "./sortProducts";
+import Link from "next/link";
 
 export default function marketgrid() {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState(0);
   const finale_products = product_list
-    .filter((p) => p.id.includes(search))
+    .filter((p) => p.id.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => SortProducts(a, b, sortBy))
     .map((product) => <GridItem id={nanoid()} product={product} />);
   return (
@@ -46,9 +47,13 @@ export default function marketgrid() {
 
 export function GridItem({ product }) {
   return (
-    <a
+    <Link
       href={`http://localhost:3000/marketplace/product${product.id}`}
       className="grid_item column"
+      style={{
+        height: "30vh",
+        width: "100%",
+      }}
     >
       <div className="myimg">
         <div className="imges center">
@@ -68,8 +73,8 @@ export function GridItem({ product }) {
                 width={500}
                 height={500}
                 style={{
-                  maxWidth: 'auto',
-                  height: '100%'
+                  maxWidth: "auto",
+                  height: "100%",
                 }}
                 objectFit="cover"
               />
@@ -83,6 +88,6 @@ export function GridItem({ product }) {
         <h3 className="title-text">{product.id}</h3>
         <h3 className="title-text">{product.location}</h3>
       </div>
-    </a>
+    </Link>
   );
 }
