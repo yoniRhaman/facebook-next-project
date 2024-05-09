@@ -27,16 +27,16 @@ function Marketplace() {
   return (
     <div className="marketplace-container column">
       <div className="search-top-container column ">
-        <div>
+        <div className="p">
           <h1>Marketplace</h1>
         </div>
-        <div className=" search-input1 row   center">
+        <div className=" search-input1 row center">
           <Searchicon />
           <input type="text" name="search" placeholder="Search product..." />
         </div>
       </div>
       <hr />
-      <div className="Categories-container">
+      <div className="Categories-container column center">
         <button className="add row center">
           add product <AddIcon onClick={handleModalOpen} />
         </button>

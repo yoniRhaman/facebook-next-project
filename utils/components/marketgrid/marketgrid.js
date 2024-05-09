@@ -51,7 +51,7 @@ export function GridItem({ product }) {
       href={`http://localhost:3000/marketplace/product${product.id}`}
       className="grid_item column"
       style={{
-        height: "30vh",
+        // height: "30vh",
         width: "100%",
       }}
     >

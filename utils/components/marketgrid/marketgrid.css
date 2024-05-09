@@ -5,7 +5,7 @@
 
 .toolsbar,
 .selectContainer {
-  background-color: transparent;
+  background-color: black;
 }
 
 .toolsbar {
@@ -61,6 +61,9 @@
   background-color: transparent;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   gap: 3%;
   padding: 50px;
 }
@@ -70,10 +73,13 @@
   color: white;
   background-color: rgb(63, 62, 62);
   text-decoration: none;
+  height: 30vh;
+  @media only screen and (max-width: 600px) {
+    height: 17vh;
+  }
 }
 
 .myimg {
-
   height: 80%;
   width: 100%;
   /* background-color: chartreuse; */
@@ -105,7 +111,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .mytext {
   padding: 5px;
