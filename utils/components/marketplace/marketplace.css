@@ -24,6 +24,8 @@ hr {
 
 .search-top-container .p h1 {
   font-size: 3vw;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .search-input1 {

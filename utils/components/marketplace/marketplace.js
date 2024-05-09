@@ -27,7 +27,7 @@ function Marketplace() {
   return (
     <div className="marketplace-container column">
       <div className="search-top-container column ">
-        <div className="p">
+        <div className="p center">
           <h1>Marketplace</h1>
         </div>
         <div className=" search-input1 row center">
