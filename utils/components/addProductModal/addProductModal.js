@@ -6,9 +6,10 @@ export default function AddProductForm() {
   }
 
   return (
-    <div className="column  navbar-modal">
+    <div className="column center navbar-modal">
       <h1>Add new product</h1>
-      <form className="column form" onSubmit={handleSumbit}>
+      
+      <form className="column center form gap-20" onSubmit={handleSumbit}>
         <TextField label="title" name="title" />
         <TextField label="price" name="price" />
         <TextField type="file" label="img" name="img" />
