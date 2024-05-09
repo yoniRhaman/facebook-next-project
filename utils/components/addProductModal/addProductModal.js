@@ -19,7 +19,7 @@ export default function AddProductForm() {
           variant="contained"
           onClick={() => setOpen(false)}
         >
-          Add Product Amen
+          Add Product 
         </Button>
       </form>
     </div>
