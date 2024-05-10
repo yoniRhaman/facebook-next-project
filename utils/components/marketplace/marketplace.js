@@ -36,8 +36,8 @@ function Marketplace() {
       </div>
       <hr />
       <div className="Categories-container column center">
-        <button className="add row center">
-          add product <AddIcon onClick={() => setOpen(true)} />
+        <button className="add row center" onClick={() => setOpen(true)}>
+          add product <AddIcon />
         </button>
         <div className="Categories-p">
           <p>Categories</p>
@@ -106,9 +106,7 @@ function Marketplace() {
           </button>
         </div>
       </div>
-      {open && (
-        <AddProductForm setOpen={setOpen} />
-      )}
+      {open && <AddProductForm setOpen={setOpen} />}
     </div>
   );
 }
