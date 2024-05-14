@@ -13,11 +13,10 @@ import { GiGardeningShears } from "react-icons/gi";
 import { FaBaseballBatBall } from "react-icons/fa6";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
-import Modal from "../newPostModal/newPostModal";
 import AddProductForm from "../addProductModal/addProductModal";
 
 function Marketplace() {
-  const [showModal, setShowModal] = useState(false);
+  const [open, setOpen] = useState(false);
   const handleModalOpen = () => {
     setShowModal(true);
   };
@@ -27,18 +26,18 @@ function Marketplace() {
   return (
     <div className="marketplace-container column">
       <div className="search-top-container column ">
-        <div>
+        <div className="p center">
           <h1>Marketplace</h1>
         </div>
-        <div className=" search-input1 row   center">
+        <div className=" search-input1 row center">
           <Searchicon />
           <input type="text" name="search" placeholder="Search product..." />
         </div>
       </div>
       <hr />
-      <div className="Categories-container">
-        <button className="add row center">
-          add product <AddIcon onClick={handleModalOpen} />
+      <div className="Categories-container column center">
+        <button className="add row center" onClick={() => setOpen(true)}>
+          add product <AddIcon />
         </button>
         <div className="Categories-p">
           <p>Categories</p>
@@ -107,9 +106,7 @@ function Marketplace() {
           </button>
         </div>
       </div>
-      {showModal && (
-        <AddProductForm onClose={handleModalClose} />
-      )}
+      {open && <AddProductForm setOpen={setOpen} />}
     </div>
   );
 }
