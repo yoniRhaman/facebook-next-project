@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   height: calc(100vh - var(--nav-height));
-  width: 100%;
+  width: 100vw;
   background-color: var(--background-color);
   overflow-y: scroll;
 }
@@ -34,7 +34,7 @@
 }
 
 .background-picture {
-  height: 65%;
+  height: 60%;
   width: 100%;
 }
 
@@ -55,7 +55,7 @@
 
 .profile-picture {
   border-radius: 50%;
-  height: 100%;
+  width: 20%;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
@@ -65,24 +65,32 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 70%;
+  width: 40%;
+  font-size: 100%;
   /* border: solid; */
   justify-content: space-between;
   color: #f5f5f5;
 }
 
+.name-and-freinds {
+  width: 100%;
+}
+
 .mutual-freinds-pictures {
-  /* position: absolute; */
+  position: relative;
   display: flex;
   flex-direction: row;
-  height: 50%;
+  height: 30%;
+  width: 90%;
+  /* overflow: hidden; */
   /* border: solid; */
   align-items: flex-end;
 }
 
 .mutual-freind-picture {
   /* position: relative; */
-  /* position: absolute; */
+  position: absolute;
+
   height: 90%;
   border-radius: 50%;
   aspect-ratio: 1/1;
@@ -124,32 +132,70 @@
   align-items: center;
   justify-content: flex-end;
   align-items: flex-end;
+  
   /* border: solid; */
 
   /* right: 0px; */
 }
 
 .invite-button {
+  display: flex;
+  flex-direction: row;
   width: 50%;
   height: 33%;
   font-size: 75%;
   color: #f5f5f5;
+  border-radius: 10%;
   background-color: rgba(101, 96, 96, 0.377);
   border: none;
+  font-size: 1.5vw;
+  cursor: pointer;
+  justify-content: center;
+  z-index: 1;
+  align-items: center;
 }
+
+
+.invite-button:hover {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  height: 33%;
+  font-size: 75%;
+  color: #f5f5f5;
+  border-radius: 10%;
+  background-color: rgba(82, 138, 181, 0.377);
+  border: none;
+  cursor: pointer;
+  justify-content: center;
+  z-index: 2;
+  align-items: center;
+}
+
+.add-freind-request {
+font-size: 3vw;
+}
+
+.message-button {
+  font-size:3vw;
+}
+
 
 .expnd-more-button {
   background-color: rgba(101, 96, 96, 0.377);
-  width: 1%;
+  width: 20%;
+  cursor: pointer;
 }
 
 .profile-nav {
   display: flex;
   flex-direction: row;
   width: 95%;
+  height: 10%;
   /* border: solid; */
   color: #f5f5f5;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .rhight-nav button {
@@ -188,6 +234,7 @@
   width: 100%;
   border: solid;
   cursor: pointer;
+  padding: 5%;
   z-index: 1;
   background-color: black;
   transition: width 0.3s ease; /* Add transition for smooth hover effect */

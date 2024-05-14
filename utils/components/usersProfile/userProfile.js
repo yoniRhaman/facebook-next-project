@@ -22,8 +22,8 @@ export default function UserProfile() {
                         src={displayedUserInformation.profilePicture}
                     ></img>
                     <div className="personal-information">
-                        <h1>{`${displayedUserInformation.firstName}  ${displayedUserInformation.lastName}`}</h1>
-                        <p>{`${displayedUserInformation.numberOfMutualFreinds} mutual freinds`}</p>
+                        <h1 className="name-and-freinds">{`${displayedUserInformation.firstName}  ${displayedUserInformation.lastName}`}</h1>
+                        <p className="name-and-freinds" >{`${displayedUserInformation.numberOfMutualFreinds} mutual freinds`}</p>
                         <div className="mutual-freinds-pictures">
                             {displayedUserInformation.mutualFreinds.map((freind) => (
                                 <ListOfFreindsPictures freind={freind} />
@@ -33,23 +33,23 @@ export default function UserProfile() {
                     </div>
                     <div className="out-buttons-box">
                         <div className="buttons">
-                            <Button className="invite-button" variant="outlined" size="small">
-                                <PersonAddAlt />
+                            <button className="invite-button" variant="outlined" size="small">
+                                <PersonAddAlt className="add-freind-request"/>
                                 freinds
-                            </Button>
+                            </button>
 
-                            <Button
+                            <button
                                 className="invite-button"
                                 variant="contained"
                                 size="small"
                             >
-                                <Message />
+                                <Message className="message-button" />
                                 messaage
-                            </Button>
+                            </button>
                         </div>
-                        <Button className="expnd-more-button" size="small">
+                        <button className="expnd-more-button" size="small">
                             <ExpandMore />
-                        </Button>
+                        </button>
                     </div>
                 </div>
 
@@ -83,7 +83,7 @@ export default function UserProfile() {
                 <div className="nine-pictures-and-freinds">
                     <div className="nine-pictures">
                         {pictures.slice(0, 9).map((picture, index) => (
-                            <DisplayNinePictures picture={picture} />
+                            <DisplayNinePictures picture={picture}/>
                         ))}
                     </div>
 
