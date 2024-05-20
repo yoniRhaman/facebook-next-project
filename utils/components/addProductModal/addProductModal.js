@@ -2,11 +2,12 @@
 import { Button, TextField } from "@mui/material";
 import "./addProductModal.css";
 import { Close } from "@mui/icons-material";
+import { createProduct } from "@/utils/api/marketplaceApi";
 export default function AddProductForm({ setOpen }) {
-  function handleSumbit(e) {
+  async function handleSumbit(e) {
     e.preventDefault();
-    // const formData = new FormData(e.target.value);
-
+    const formData = new FormData(e.target.value);
+    const product = await createProduct(Object.fromEntries(formData));
   }
 
   return (

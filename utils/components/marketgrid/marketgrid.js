@@ -7,11 +7,11 @@ import { useState } from "react";
 import { SortProducts } from "./sortProducts";
 import Link from "next/link";
 
-export default function marketgrid() {
+export default function marketgrid({ products }) {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState(0);
-  const finale_products = product_list
-    .filter((p) => p.id.toLowerCase().includes(search.toLowerCase()))
+  const finale_products = products
+    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => SortProducts(a, b, sortBy))
     .map((product) => <GridItem id={nanoid()} product={product} />);
   return (
@@ -48,7 +48,7 @@ export default function marketgrid() {
 export function GridItem({ product }) {
   return (
     <Link
-      href={`http://localhost:3000/marketplace/product${product.id}`}
+      href={`http://localhost:3000/marketplace/product${product._id}`}
       className="grid_item column"
       style={{
         // height: "30vh",
@@ -85,7 +85,7 @@ export function GridItem({ product }) {
 
       <div className="mytext column">
         <h3 className="price-text">{product.price + "$"}</h3>
-        <h3 className="title-text">{product.id}</h3>
+        <h3 className="title-text">{product.name}</h3>
         <h3 className="title-text">{product.location}</h3>
       </div>
     </Link>
