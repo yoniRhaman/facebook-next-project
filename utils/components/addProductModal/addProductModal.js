@@ -5,6 +5,8 @@ import { Close } from "@mui/icons-material";
 export default function AddProductForm({ setOpen }) {
   function handleSumbit(e) {
     e.preventDefault();
+    // const formData = new FormData(e.target.value);
+
   }
 
   return (
