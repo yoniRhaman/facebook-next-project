@@ -8,6 +8,8 @@ import { SortProducts } from "./sortProducts";
 import Link from "next/link";
 
 export default function marketgrid({ products }) {
+
+export default function marketgrid() {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState(0);
   const finale_products = products
