@@ -2,7 +2,7 @@ import axios from "axios";
 
 const SERVER_URL = "http://localhost:3005";
 
-async function getAllProducts() {
+export async function getAllProducts() {
   try {
     const products = await axios.get(`${SERVER_URL}/products`);
     return products.data;
@@ -12,7 +12,7 @@ async function getAllProducts() {
   }
 }
 
-async function createProduct(data) {
+export async function createProduct(data) {
   try {
     const product = await axios.post(`${SERVER_URL}/products`, data);
     return product.data;

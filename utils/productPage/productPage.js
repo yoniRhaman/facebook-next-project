@@ -1,15 +1,14 @@
 "use client";
 import Image from "next/image";
 import "./product.css";
-import { product_list } from "@/utils/components/marketgrid/marketgriddata.js";
 import { usePathname } from "next/navigation";
 
-function ProductPageComponent() {
+function ProductPageComponent({products}) {
   const pathname = usePathname();
   const pathnameParts = pathname.split("/product");
   const lastPathPart = pathnameParts[pathnameParts.length - 1];
 
-  const myProduct = product_list.find((p) => p.id === lastPathPart);
+  const myProduct = products.find((p) => p._id === lastPathPart);
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
