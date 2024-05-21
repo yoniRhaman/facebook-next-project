@@ -8,8 +8,8 @@ import {
   Storefront,
 } from "@mui/icons-material";
 import { Tab, Tabs, colors } from "@mui/material";
-import FacebookIcon from "../icons/facebookicon";
-import Searchicon from "../icons/searchicon";
+import FacebookIcon from "../../icons/facebookicon";
+import Searchicon from "../../icons/searchicon";
 import { AiTwotoneBell } from "react-icons/ai";
 import { AiTwotoneMessage } from "react-icons/ai";
 import { TbGridDots } from "react-icons/tb";
@@ -47,7 +47,10 @@ export default function Navbar() {
             icon={<Home style={{ color: "white" }} />}
           />
           <Tab href="/" icon={<OndemandVideo style={{ color: "white" }} />} />
-          <Tab href="/marketplace" icon={<Storefront style={{ color: "white" }} />} />
+          <Tab
+            href="/marketplace"
+            icon={<Storefront style={{ color: "white" }} />}
+          />
           <Tab href="/" icon={<People style={{ color: "white" }} />} />
           <Tab href="/" icon={<SmartButton style={{ color: "white" }} />} />
         </Tabs>

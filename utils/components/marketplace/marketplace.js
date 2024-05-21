@@ -1,6 +1,6 @@
 "use client";
 import "./marketplace.css";
-import Searchicon from "@/utils/components/icons/searchicon";
+import Searchicon from "@/utils/icons/searchicon";
 import { FaCar } from "react-icons/fa6";
 import { BsFillHouseCheckFill } from "react-icons/bs";
 import { IoMdShirt } from "react-icons/io";

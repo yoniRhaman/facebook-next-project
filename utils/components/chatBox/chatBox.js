@@ -5,7 +5,7 @@ import "./chatBox.css";
 import SendIcon from "@mui/icons-material/Send";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CloseIcon from "@mui/icons-material/Close";
-import Searchicon from "../icons/searchicon";
+import Searchicon from "../../icons/searchicon";
 
 export default function ChatBox() {
   const [selectedFile, setSelectedFile] = useState(null);
