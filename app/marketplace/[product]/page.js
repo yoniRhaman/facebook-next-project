@@ -1,5 +1,5 @@
 import { getAllProducts } from "@/utils/api/marketplaceApi";
-import ProductPageComponent from "@/utils/productPage/productPage";
+import ProductPageComponent from "@/utils/components/productPage/productPage";
 
 async function ProductPage() {
   const products = await getAllProducts();

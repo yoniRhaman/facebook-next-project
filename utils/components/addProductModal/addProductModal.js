@@ -4,6 +4,7 @@ import "./addProductModal.css";
 import { Close } from "@mui/icons-material";
 import { createProduct } from "@/utils/api/marketplaceApi";
 import { useProductContext } from "@/utils/contexts/productContext";
+
 export default function AddProductForm({ setOpen }) {
   const { products, setProducts } = useProductContext();
   async function handleSumbit(e) {
@@ -11,7 +12,7 @@ export default function AddProductForm({ setOpen }) {
     const formData = new FormData(e.target);
     const product = await createProduct([Object.fromEntries(formData)]);
     setProducts((prev) => [...prev, ...product]);
-    console.log(products[products.length - 1]);
+    setOpen(false)
   }
 
   return (
