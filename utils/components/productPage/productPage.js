@@ -12,7 +12,7 @@ function ProductPageComponent({products}) {
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
-      <Image src={i} alt="image" width={120} height={120} objectFit="fill" />
+      <Image src={i} alt="Image" width={120} height={120} objectFit="fill" />
     </div>
   ));
   // console.log("product_list:", product_list);
