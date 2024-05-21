@@ -4,15 +4,17 @@ import { Button } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import "./newPostModal.css";
 import Image from "next/image";
+import { createNewPosts } from "@/utils/api/postsApi";
 
 export default function Modal({ onClose }) {
-  const [postContent, setPostContent] = useState("");
-  const [postPrivacy, setPostPrivacy] = useState("public");
+  const handlePostSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    // console.log(Object.fromEntries(formData));
 
-  const handlePostSubmit = () => {
+    await createNewPosts(Object.fromEntries(formData));
     onClose();
   };
-
   return (
     <div className="modal-container center column">
       <div className="modal-content space-between column">
@@ -26,13 +28,9 @@ export default function Modal({ onClose }) {
           <h1>Create Post</h1>
         </div>
 
-        <div className="column center gap-20">
+        <form onSubmit={handlePostSubmit} className="column center gap-20">
           <div className="choice center row gap-20">
-            <select
-              className="selection"
-              value={postPrivacy}
-              onChange={(e) => setPostPrivacy(e.target.value)}
-            >
+            <select className="selection" name="privacy">
               <option value="public">Public</option>
               <option value="private">Private</option>
             </select>
@@ -48,21 +46,19 @@ export default function Modal({ onClose }) {
           <textarea
             className="input-post"
             placeholder="What's on your mind?"
-            value={postContent}
-            onChange={(e) => setPostContent(e.target.value)}
+            name="content"
             maxLength={1000}
           />
           <input type="file" multiple />
-        </div>
-        <div>
+
           <Button
             sx={{ width: "100%", marginTop: "20px" }}
             variant="contained"
-            onClick={handlePostSubmit}
+            type="submit"
           >
             Create Post
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   );
