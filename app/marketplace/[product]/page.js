@@ -1,6 +1,8 @@
+import { getAllProducts } from "@/utils/api/marketplaceApi";
 import ProductPageComponent from "@/utils/productPage/productPage";
 
-function ProductPage() {
-  return <ProductPageComponent />;
+async function ProductPage() {
+  const products = await getAllProducts();
+  return <ProductPageComponent products={products} />;
 }
 export default ProductPage;

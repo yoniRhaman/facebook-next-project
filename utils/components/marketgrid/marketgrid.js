@@ -1,21 +1,27 @@
 "use client";
 import Image from "next/image";
 import "./marketgrid.css";
-import { product_list } from "./marketgriddata";
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SortProducts } from "./sortProducts";
 import Link from "next/link";
+import { useProductContext } from "@/utils/contexts/productContext";
 
-export default function marketgrid() {
+
+export default function marketgrid({ productsFromServer }) {
+
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState(0);
-  const finale_products = product_list
-    .filter((p) => p.id.toLowerCase().includes(search.toLowerCase()))
+  const { products, setProducts } = useProductContext();
+  useEffect(() => {
+    setProducts(productsFromServer);
+  }, [setProducts]);
+  const finale_products = products
+    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => SortProducts(a, b, sortBy))
     .map((product) => <GridItem id={nanoid()} product={product} />);
   return (
-    <div className="my-body">
+    <div className="my-body column">
       <div className="toolsbar row">
         <div className="selectContainer row">
           <select
@@ -48,7 +54,7 @@ export default function marketgrid() {
 export function GridItem({ product }) {
   return (
     <Link
-      href={`http://localhost:3000/marketplace/product${product.id}`}
+      href={`http://localhost:3000/marketplace/product${product._id}`}
       className="grid_item column"
       style={{
         // height: "30vh",
@@ -57,35 +63,27 @@ export function GridItem({ product }) {
     >
       <div className="myimg">
         <div className="imges center">
-          <div className="imges center">
+          <Image
+            className="back-img"
+            src={product.mainImage}
+            alt="Sunset Beach"
+            fill
+            style={{ objectFit: "cover", filter: "blur(5px)" }}
+          />
+          <div className="main-img">
             <Image
-              className="back-img"
               src={product.mainImage}
               alt="Sunset Beach"
-              layout="fill"
-              objectFit="cover"
-              style={{ filter: "blur(5px)" }}
+              fill
+              style={{ objectFit: "cover" }}
             />
-            <div className="main-img">
-              <Image
-                src={product.mainImage}
-                alt="Sunset Beach"
-                width={500}
-                height={500}
-                style={{
-                  maxWidth: "auto",
-                  height: "100%",
-                }}
-                objectFit="cover"
-              />
-            </div>
           </div>
         </div>
       </div>
 
       <div className="mytext column">
         <h3 className="price-text">{product.price + "$"}</h3>
-        <h3 className="title-text">{product.id}</h3>
+        <h3 className="title-text">{product.name}</h3>
         <h3 className="title-text">{product.location}</h3>
       </div>
     </Link>
