@@ -2,30 +2,39 @@
 import CloseIcon from "@mui/icons-material/Close";
 import "./Register.css";
 import { useState } from "react";
+import { sendUserData } from "@/utils/api/profileApi";
 
 function RegisterForm() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
+  // const [formData, setFormData] = useState({
+  //   firstName: '',
+  //   lastName: '',
+  //   phoneNumber: '',
+  //   email: '',
+  //   password: '',
+  //   confirmPassword: ''
+  // });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData(prevState => ({
+  //     ...prevState,
+  //     [name]: value
+  //   }));
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
-  };
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+
+      // Convert the FormData object to a plain object (optional)
+      const formObject = {};
+      formData.forEach((value, key) => {
+          formObject[key] = value;
+      });
+      // sending the data to server that will send it to mongo
+      sendUserData(formObject);
+      // console.log(formObject);
+    };
 
   return (
     <div className="container-Register">
@@ -46,8 +55,8 @@ function RegisterForm() {
                 type="text"
                 id="firstName"
                 name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
+                // value={formData.firstName}
+                // onChange={handleChange}
                 required
               />
             </div>
@@ -57,8 +66,8 @@ function RegisterForm() {
                 type="text"
                 id="lastName"
                 name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
+                // value={formData.lastName}
+                // onChange={handleChange}
                 required
               />
             </div>
@@ -68,8 +77,8 @@ function RegisterForm() {
                 type="tel"
                 id="phoneNumber"
                 name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleChange}
+                // value={formData.phoneNumber}
+                // onChange={handleChange}
                 required
               />
             </div>
@@ -79,8 +88,8 @@ function RegisterForm() {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
+                // value={formData.email}
+                // onChange={handleChange}
                 required
               />
             </div>
@@ -90,8 +99,8 @@ function RegisterForm() {
                 type="password"
                 id="password"
                 name="password"
-                value={formData.password}
-                onChange={handleChange}
+                // value={formData.password}
+                // onChange={handleChange}
                 required
               />
             </div>
@@ -101,8 +110,8 @@ function RegisterForm() {
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
+                // value={formData.confirmPassword}
+                // onChange={handleChange}
                 required
               />
             </div>
@@ -112,8 +121,8 @@ function RegisterForm() {
     type="date"
     id="birthDate"
     name="birthDate"
-    value={formData.birthDate}
-    onChange={handleChange}
+    // value={formData.birthDate}
+    // onChange={handleChange}
     required
   />
 </div>
@@ -124,8 +133,8 @@ function RegisterForm() {
       id="male"
       name="gender"
       value="male"
-      checked={formData.gender === 'male'}
-      onChange={handleChange}
+      // checked={formData.gender === 'male'}
+      // onChange={handleChange}
       required
     />
     Male
@@ -136,8 +145,8 @@ function RegisterForm() {
       id="female"
       name="gender"
       value="female"
-      checked={formData.gender === 'female'}
-      onChange={handleChange}
+      // checked={formData.gender === 'female'}
+      // onChange={handleChange}
       required
     />
     Female
@@ -148,8 +157,8 @@ function RegisterForm() {
       id="other"
       name="gender"
       value="other"
-      checked={formData.gender === 'other'}
-      onChange={handleChange}
+      // checked={formData.gender === 'other'}
+      // onChange={handleChange}
       required
     />
     Other

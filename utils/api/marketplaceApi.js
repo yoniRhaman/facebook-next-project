@@ -31,3 +31,5 @@ async function deleteProduct(id) {
     throw new Error(error);
   }
 }
+
+

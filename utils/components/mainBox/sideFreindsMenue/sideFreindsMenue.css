@@ -30,8 +30,10 @@
     direction: ltr;
     padding: 20px;
     padding-left: 30px;
-
-
+    width: 100%;
+    background-color: rgb(130, 172, 133);
+border: none;
+cursor: pointer;
 
 }
 

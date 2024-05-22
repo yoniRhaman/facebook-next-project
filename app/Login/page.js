@@ -9,6 +9,6 @@ export default function LoginPage() {
       <button onClick={() => setOpen(true)} style={{position: "relative", top: "10vh"}}>Click me</button>
 
       {open && <LoginModal setOpen={setOpen} />}
-    </div>
-  );
+    </div>
+  );
 }

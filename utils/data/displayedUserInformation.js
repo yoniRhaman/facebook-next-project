@@ -100,6 +100,7 @@ export const displayedUserInformation = {
     about: aboutDisplayedUser,
     dateOfAccountCreation: "",
     TimeOfAccountCreation: "",
+    freinds
 
 
 }

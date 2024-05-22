@@ -12,6 +12,7 @@
   width: 100vw;
   background-color: var(--background-color);
   overflow-y: scroll;
+  top: var(--nav-height);
 }
 
 .profile-box::-webkit-scrollbar {
