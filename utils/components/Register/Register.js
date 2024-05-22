@@ -22,19 +22,19 @@ function RegisterForm() {
   //   }));
   // };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
 
-      // Convert the FormData object to a plain object (optional)
-      const formObject = {};
-      formData.forEach((value, key) => {
-          formObject[key] = value;
-      });
-      // sending the data to server that will send it to mongo
-      sendUserData(formObject);
-      // console.log(formObject);
-    };
+    // Convert the FormData object to a plain object (optional)
+    const formObject = {};
+    formData.forEach((value, key) => {
+      formObject[key] = value;
+    });
+    // sending the data to server that will send it to mongo
+    sendUserData(formObject);
+    // console.log(formObject);
+  };
 
   return (
     <div className="container-Register">
@@ -116,54 +116,64 @@ function RegisterForm() {
               />
             </div>
             <div>
-  <label htmlFor="birthDate">Date of Birth:</label>
-  <input
-    type="date"
-    id="birthDate"
-    name="birthDate"
-    // value={formData.birthDate}
-    // onChange={handleChange}
-    required
-  />
-</div>
-<div className="gender-container">
-  <label>
-    <input
-      type="radio"
-      id="male"
-      name="gender"
-      value="male"
-      // checked={formData.gender === 'male'}
-      // onChange={handleChange}
-      required
-    />
-    Male
-  </label>
-  <label>
-    <input
-      type="radio"
-      id="female"
-      name="gender"
-      value="female"
-      // checked={formData.gender === 'female'}
-      // onChange={handleChange}
-      required
-    />
-    Female
-  </label>
-  <label>
-    <input
-      type="radio"
-      id="other"
-      name="gender"
-      value="other"
-      // checked={formData.gender === 'other'}
-      // onChange={handleChange}
-      required
-    />
-    Other
-  </label>
-</div>
+              <label htmlFor="birthDate">Date of Birth:</label>
+              <input
+                type="date"
+                id="birthDate"
+                name="birthDate"
+                // value={formData.birthDate}
+                // onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="column">
+              <div className="gender-container">
+                <label>
+                  <input
+                    type="radio"
+                    id="male"
+                    name="gender"
+                    value="male"
+                    // checked={formData.gender === 'male'}
+                    // onChange={handleChange}
+                    required
+                  />
+                  Male
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    id="female"
+                    name="gender"
+                    value="female"
+                    // checked={formData.gender === 'female'}
+                    // onChange={handleChange}
+                    required
+                  />
+                  Female
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    id="other"
+                    name="gender"
+                    value="other"
+                    // checked={formData.gender === 'other'}
+                    // onChange={handleChange}
+                    required
+                  />
+                  Other
+                </label>
+              </div>
+              <input
+                type="file"
+                label="profile-img"
+                name="mainImage"
+                required
+              />
+
+              <input type="file" label="baver-img" name="mainImage" required />
+            </div>
             <button type="submit">Submit</button>
           </form>
         </div>

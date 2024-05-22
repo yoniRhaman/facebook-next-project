@@ -6,7 +6,7 @@
   align-items: center;
   background-color: #f0f2f5;
   position: relative;
-  top: var(--nav-height);
+  top:calc(var(--nav-height) *4);
 }
 
 .signup-container {
