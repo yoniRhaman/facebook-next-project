@@ -66,3 +66,9 @@
 .picture img {
   border-radius: 50px;
 }
+
+.img-input {
+  height: 6%;
+  width: 20%;
+  border: 3px solid black;
+}

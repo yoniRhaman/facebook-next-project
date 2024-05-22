@@ -1,7 +1,7 @@
 "use client";
 import { FaPlus } from "react-icons/fa";
 import "./groupsList.css";
-import Searchicon from "../icons/searchicon";
+import Searchicon from "../../icons/searchicon";
 import { useState } from "react"; // Import useState
 import CreateGroup from "../createGroup/createGroup";
 
@@ -52,4 +52,3 @@ export default function GroupsList() {
     </div>
   );
 }
-

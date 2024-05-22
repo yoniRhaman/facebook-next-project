@@ -1,4 +1,4 @@
-import Searchicon from "../icons/searchicon";
+import Searchicon from "../../icons/searchicon";
 import "./chats.css";
 export default function Chats() {
   return (
@@ -26,5 +26,3 @@ export default function Chats() {
     </div>
   );
 }
-
-

@@ -1,13 +1,44 @@
 "use client";
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField, colors } from "@mui/material";
 import "./addProductModal.css";
-import { Close } from "@mui/icons-material";
-export default function AddProductForm({ setOpen }) {
-  function handleSumbit(e) {
-    e.preventDefault();
-    // const formData = new FormData(e.target.value);
+import { Close, Height } from "@mui/icons-material";
+import { createProduct } from "@/utils/api/marketplaceApi";
+import { useProductContext } from "@/utils/contexts/productContext";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { storage } from "@/utils/services/firebaseConfig";
+import { useState } from "react";
 
+export default function AddProductForm({ setOpen }) {
+  const { products, setProducts } = useProductContext();
+  const [loading, setLoading] = useState(false);
+
+  async function handleSumbit(e) {
+    e.preventDefault();
+    setLoading(true);
+    const formData = new FormData(e.target);
+    const json = Object.fromEntries(formData);
+    console.log(json);
+    json["mainImage"] = await handleUpload(formData.get("mainImage"));
+    json["images"] = await Promise.all(
+      formData.getAll("images").map(async (img) => await handleUpload(img))
+    );
+
+    const product = await createProduct([json]);
+    setProducts((prev) => [...prev, ...product]);
+    setLoading(false);
+    setOpen(false);
   }
+
+  const handleUpload = async (image) => {
+    const storageRef = ref(storage, `images/${image.name}`);
+    const result = await uploadBytes(storageRef, image);
+    return await getDownloadURL(result.ref);
+  };
 
   return (
     <div className="column center navbar-modal">
@@ -17,17 +48,30 @@ export default function AddProductForm({ setOpen }) {
       <h1>Add new product</h1>
 
       <form className="column center form gap-20" onSubmit={handleSumbit}>
-        <TextField label="title" name="title" />
+        <TextField label="name" name="name" />
         <TextField label="price" name="price" />
-        <TextField type="file" label="img" name="img" />
-        <textarea placeholder="Description..." maxLength={200} name="desc" />
-
-        <Button
-          type="submit"
-          variant="contained"
-          onClick={() => setOpen(false)}
-        >
-          Add Product
+        <input type="file" label="img" name="mainImage" required />
+        <input
+          type="file"
+          label="more images"
+          name="images"
+          multiple
+          required
+        />
+      
+        <textarea placeholder="location..." maxLength={200} name="location" />
+        <textarea
+          placeholder="Description..."
+          maxLength={200}
+          name="description"
+          
+        />
+        <Button type="submit" variant="contained">
+          {loading ? (
+            <CircularProgress sx={{ color: "white" }} />
+          ) : (
+            "Add Product"
+          )}
         </Button>
       </form>
     </div>

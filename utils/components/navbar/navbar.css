@@ -6,9 +6,8 @@
   height: var(--nav-height);
   background-color: var(--background-color); /* Dark background color */
   color: #fff; /* Text color */
-  z-index: 999;
   position: fixed;
-
+  z-index: 999;
 }
 .nav-left {
   justify-content: space-between;
@@ -40,7 +39,7 @@
   .middel-nav {
     display: none; /* Hide middel-nav */
   }
-} 
+}
 
 .container-right {
   display: flex;
