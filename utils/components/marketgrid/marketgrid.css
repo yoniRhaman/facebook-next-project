@@ -33,8 +33,6 @@
 .textfildContainer input {
   width: 20%;
   transition: all 1s;
-  position: relative;
-  z-index: 999;
 }
 
 .textfildContainer input:hover {

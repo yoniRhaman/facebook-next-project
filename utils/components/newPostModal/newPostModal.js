@@ -68,12 +68,12 @@ export default function Modal({ onClose }) {
             name="content"
             maxLength={1000}
           />
-  
+
           <input
             className="img-input"
             type="file"
             name="images"
-            style={{width:"200px", }}
+            style={{ width: "200px" }}
             multiple
           />
           <Button

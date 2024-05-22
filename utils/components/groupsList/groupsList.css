@@ -1,4 +1,11 @@
 
+.background{
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  z-index: -10;
+}
 .Groups-container {
   display: flex;
   justify-content: space-between;
