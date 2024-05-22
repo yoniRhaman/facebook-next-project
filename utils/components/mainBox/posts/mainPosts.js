@@ -1,42 +1,26 @@
 import {
-  BubbleChart,
   ChatBubbleOutline,
   ShareOutlined,
-  ThumbDown,
-  ThumbDownAlt,
-  ThumbDownOffAlt,
   ThumbUpOffAlt,
 } from "@mui/icons-material";
-import "./mainPosts.css";
 import Link from "next/link";
-import { ShareAltOutlined } from "@ant-design/icons";
 import { posts } from "@/utils/data/posts";
 import CreatePost from "../../createPost/createPost";
-import { userPosts } from "@/utils/data/displayedUserInformation";
-
-
-
-
-
-
-
+import "./mainPosts.css";
 
 const personalInformation = {
   name: "moshe yakovson",
   linkToPersonalFeed: "",
   picture:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-  dateOfacountCreation: "",
-  timeOfCreation: "",
 };
-
 
 export default function MainPosts() {
   return (
-    <div className="column posts-box">
+    <div className="posts-box">
       <CreatePost />
-      {posts.map((post) => (
-        <PostItem post={post} />
+      {posts.map((post, index) => (
+        <PostItem key={index} post={post} />
       ))}
     </div>
   );
@@ -44,55 +28,56 @@ export default function MainPosts() {
 
 function PostItem({ post }) {
   return (
-    <div className="column post-box">
+    <div className="post-box ">
       <div className="out-brief-introduction-box">
         <Link href={personalInformation.linkToPersonalFeed}>
           <div className="brief-introduction">
-            <p>{personalInformation.name}</p>
-            <img className="avatar" src={personalInformation.picture}></img>
+            <img
+              className="avatar"
+              src={personalInformation.picture}
+              alt="Profile"
+            />
+            <div className="user-info">
+              <p className="user-name">{personalInformation.name}</p>
+              <p className="post-time">
+                {post.postingDate} at {post.postingTime}
+              </p>
+            </div>
           </div>
         </Link>
       </div>
-      <h1>{post.title}</h1>
-      <div className="post-picture">
-
-        {post.pictures.map((picture) => (
-          <img className="post-picture" src={picture}></img>
-        ))}
-      </div>
       <div className="post-content">
-        <p>{post.content}</p>
-      </div>
-      <div className="comments">
-        <button className="comments-button">
-          <p> {`${post.comments.length} comments`}</p>
-        </button>
-        <div>
-          <button className="comments-button">
-            <p>{`${post.likes.length - 1} + ${post.likes[0].typeOfLike}`}</p>
-          </button>
-
+        <h1 className="post-title">{post.title}</h1>
+        <div className="post-picture">
+          {post.pictures.map((picture, index) => (
+            <img
+              key={index}
+              className="post-picture"
+              src={picture}
+              alt="Post"
+            />
+          ))}
         </div>
+        <p className="post-text">{post.content}</p>
       </div>
-
-      <div className="comments">
-        <button className="row center comments-button">
+      <div className="post-actions">
+        <button className="action-button">
           <ThumbUpOffAlt />
           <p>Like</p>
         </button>
-        <button className="row center comments-button">
+        <button className="action-button">
           <ChatBubbleOutline />
-          <p>Comments</p>
+          <p>Comment</p>
         </button>
-        <button className="row center comments-button">
+        <button className="action-button">
           <ShareOutlined />
           <p>Share</p>
         </button>
       </div>
-
-      <p>
-        posted on {post.postingDate} at {post.postingTime}
-      </p>
+      <div className="post-stats">
+        <p>{`${post.likes.length} Likes`}</p>
+        <p>{`${post.comments.length} Comments`}</p>
+      </div>
     </div>
   );
 }

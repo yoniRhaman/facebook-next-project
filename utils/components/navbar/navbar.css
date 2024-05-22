@@ -36,7 +36,7 @@
   font-size: 24px; /* Icon size */
 }
 @media (max-width: 1000px) {
-  .middel-nav {
+  .nav-left {
     display: none; /* Hide middel-nav */
   }
 }

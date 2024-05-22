@@ -51,7 +51,7 @@ export default function Navbar() {
             href="/marketplace"
             icon={<Storefront style={{ color: "white" }} />}
           />
-          <Tab href="/" icon={<People style={{ color: "white" }} />} />
+          <Tab href="/groups" icon={<People style={{ color: "white" }} />} />
           <Tab href="/" icon={<SmartButton style={{ color: "white" }} />} />
         </Tabs>
       </div>
@@ -60,23 +60,27 @@ export default function Navbar() {
         <button className="icon-button">
           <TbGridDots /> {/* No need to specify size here */}
         </button>
-        <button className="icon-button">
-          <AiTwotoneMessage />
-        </button>
+        <Link href="/messages" passHref>
+          <button className="icon-button">
+            <AiTwotoneMessage />
+          </button>
+        </Link>
         <button className="icon-button">
           <AiTwotoneBell />
         </button>
-        <button className="profile-button">
-          <Image
-            src="/images/profile-men.jpg"
-            fill
-            alt="Picture of the author"
-            style={{ objectFit: "cover" }}
-          />
-          <div className="profile-overlay">
-            <BsArrowDownCircleFill />
-          </div>
-        </button>
+        <Link href="/profile" passHref>
+          <button className="profile-button">
+            <Image
+              src="/images/profile-men.jpg"
+              fill
+              alt="Picture of the author"
+              style={{ objectFit: "cover" }}
+            />
+            <div className="profile-overlay">
+              <BsArrowDownCircleFill />
+            </div>
+          </button>
+        </Link>
       </div>
     </nav>
   );
