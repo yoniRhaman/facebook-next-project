@@ -1,4 +1,4 @@
-.post-page-container {
+/* .post-page-container {
   width: 100%;
   height: 100vh;
   background-color: aqua;
@@ -9,4 +9,32 @@
 .create-post-input {
   width: 100%;
   direction: ltr;
+} */
+.post-page-container {
+  width: 60%;
+  height: 100vh;
+  background-color: #18191a; /* Dark background color */
+  position: relative;
+  padding: 20px; /* Add padding for better aesthetics */
+}
+
+.create-post-input {
+  width: calc(100% - 40px); /* Adjust for padding */
+  padding: 10px; /* Add padding */
+  border: none;
+  border-radius: 999px; /* To make it round */
+  background-color: #292a2b; /* Darker background color */
+  color: #fff; /* White text color */
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.12),
+    0 1px 2px rgba(255, 255, 255, 0.24); /* Box shadow for depth */
+  outline: none; /* Remove outline */
+  font-size: 16px; /* Font size */
+}
+
+.create-post-input::placeholder {
+  color: #999; /* Placeholder color */
+}
+
+.create-post-input:focus {
+  box-shadow: 0 0 0 2px #3b5998; /* Blue border on focus */
 }
