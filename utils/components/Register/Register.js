@@ -3,6 +3,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import "./Register.css";
 import { useState } from "react";
 import { sendUserData } from "@/utils/api/profileApi";
+import { Button, CircularProgress } from "@mui/material";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "@/utils/services/firebaseConfig";
 
 function RegisterForm() {
   // const [formData, setFormData] = useState({
@@ -21,19 +24,33 @@ function RegisterForm() {
   //     [name]: value
   //   }));
   // };
-
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData(e.target);
 
     // Convert the FormData object to a plain object (optional)
-    const formObject = {};
-    formData.forEach((value, key) => {
-      formObject[key] = value;
-    });
+    // const formObject = {};
+    // formData.forEach((value, key) => {
+    //   formObject[key] = value;
+    // });
+
+    const json = Object.fromEntries(formData);
+    console.log(json);
+    json["profileImg"] = await handleUpload(formData.get("profileImg"));
+    json["baverImg"] = await handleUpload(formData.get("baverImg"));
+
     // sending the data to server that will send it to mongo
-    sendUserData(formObject);
+    sendUserData(json);
+    setLoading(false);
     // console.log(formObject);
+  }
+
+  const handleUpload = async (image) => {
+    const storageRef = ref(storage, `images/${image.name}`);
+    const result = await uploadBytes(storageRef, image);
+    return await getDownloadURL(result.ref);
   };
 
   return (
@@ -167,14 +184,19 @@ function RegisterForm() {
               </div>
               <input
                 type="file"
-                label="profile-img"
-                name="mainImage"
+                label="profileImg"
+                name="profileImg"
                 required
               />
-
-              <input type="file" label="baver-img" name="mainImage" required />
+              <input type="file" label="baverImg" name="baverImg" />
             </div>
-            <button type="submit">Submit</button>
+            <Button type="submit" variant="contained">
+              {loading ? (
+                <CircularProgress sx={{ color: "white" }} />
+              ) : (
+                "Submit"
+              )}
+            </Button>
           </form>
         </div>
       </div>
