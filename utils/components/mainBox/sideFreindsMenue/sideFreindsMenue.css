@@ -1,41 +1,50 @@
-.freinds-box {
-    direction: rtl;
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-    background-color: hsl(180, 41%, 31%);
-    aspect-ratio: 4/6;
-    overflow-y: scroll;
-    width: 35%;
+.friends-box {
+  /* direction: rtl; */
+  display: flex;
+  flex-direction: column;
+  background-color: #18191a; /* Dark background color similar to Facebook's dark mode */
+  overflow-y: auto;
+  width: 95%; /* Fixed width */
+  height: 100vh;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
 }
 
-.freinds-box::-webkit-scrollbar {
-    width: 1vh; /* Set the width of the scrollbar */
-    background-color: #F5F5F5; /* Set the background color of the scrollbar */
-    position: absolute;
-    right: 0; /* Position the scrollbar on the right of the element*/
- }
- .freinds-box::-webkit-scrollbar-thumb {
-    background-color: #1d9c5c; /* Set the color of the thumb */
- }
-
-
-
-.freind-name {
-    padding: 15px;
-    color: aliceblue;
+.friends-box::-webkit-scrollbar {
+  width: 1vh; /* Set the width of the scrollbar */
+  background-color: #242526; /* Set the background color of the scrollbar */
 }
 
-.freind-item {
-    direction: ltr;
-    padding: 20px;
-    padding-left: 30px;
-
-
-
+.friends-box::-webkit-scrollbar-thumb {
+  background-color: #3a3b3c; /* Set the color of the thumb */
 }
 
-.non-last-freind-item {
-    border-bottom: solid;
-    border-radius: 3%;
+.friend-item {
+  direction: ltr;
+  padding: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px; /* Space between items */
+  background-color: #242526; /* Background color for each friend item */
+  border-radius: 5px; /* Rounded corners */
+  color: #e4e6eb; /* Light text color for readability */
+  display: flex;
+  align-items: center; /* Center align items */
+}
+
+.friend-item:last-child {
+  margin-bottom: 0; /* Remove margin from the last item */
+}
+
+.friend-name {
+  padding: 0 15px; /* Padding inside friend name */
+  color: #e4e6eb; /* Light text color for the friend name */
+  flex-grow: 1; /* Take up remaining space */
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  background-color: #3a3b3c; /* Placeholder background color */
 }
