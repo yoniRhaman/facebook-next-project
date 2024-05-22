@@ -42,26 +42,19 @@ const freinds = [
 
 export default function SideFreindsMenue(){
     return (
-        <div className="freinds-box">
-           {freinds.map((freind, n) =>(
-            <div>
-            <FreindItem freind={freind} n={n} />
-            </div>
+        <div className="friends-box">
+        {freinds.map((friend, n) => (
+         <FriendItem friend={friend} key={n} />
         ))}
-    
-        </div>
-    );
+     </div>
+ );
 }
 
-function FreindItem({freind, n}){
-    return(
-        <div>
-     <div className={`row freind-item`} >
-        <img className="avatar" src={freind.src} alt={freind.name}/>
-        <p className="freind-name" >{freind.name}</p>
-
-     </div>
-     <hr/>
+function FriendItem({ friend }) {
+ return (
+     <div className="friend-item">
+         <img className="avatar" src={friend.src} alt={friend.name} />
+         <p className="friend-name">{friend.name}</p>
      </div>
      );
 }

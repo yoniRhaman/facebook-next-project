@@ -1,97 +1,122 @@
+/* mainPosts.css */
+
 body {
-    background-color: #18191a; /* Dark background color */
-    color: #fff;
-    overflow-x: hidden; /* Hide horizontal overflow */
-  }
+  background-color: #18191a; /* Dark background color */
+  color: #e4e6eb; /* Light text color for readability */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
 
 .posts-box {
-    background-color: var(--background-color);
-    direction: rtl;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 65%;
-    align-items: flex-start;
-    padding: 30px;
-    row-gap: 30px;
-    overflow: auto;
-    overflow-x: hidden;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 70%;
+  padding: 30px;
+  row-gap: 30px;
+  overflow: auto;
 }
 
 .posts-box::-webkit-scrollbar {
-    width: 1vh; /* Set the width of the scrollbar */
-    background-color: #F5F5F5; /* Set the background color of the scrollbar */
-    position: absolute;
-    right: 0; /* Position the scrollbar on the right of the element*/
- }
- .posts-box::-webkit-scrollbar-thumb {
-    background-color: #23c976; /* Set the color of the thumb */
- }
+  width: 1vh; /* Set the width of the scrollbar */
+  background-color: #242526; /* Dark scrollbar background */
+}
 
+.posts-box::-webkit-scrollbar-thumb {
+  background-color: #3a3b3c; /* Dark scrollbar thumb */
+}
+p {
+  margin-top: 10px;
+  font-family: Arial, sans-serif; /* Specify font family */
+  font-size: 16px; /* Specify font size */
+  color: #e4e6eb; /* Text color */
+}
 
 .post-box {
-    border: ridge #4d5752;
-    text-align: center;
-    width: 100%;
-    align-items: center;
-    background-color: var(--post-color);
-    border-radius: 1%;
-    
+  background-color: #242526; /* Dark post background */
+  border: 1px solid #3a3b3c; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Shadow for depth */
 }
 
 .brief-introduction {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    column-gap: 2%;
-    border-bottom: var(--border-of-buttom);
-    padding-left: 3%;
-    padding-top: 2%;
-    padding-bottom: 2%; 
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.out-brief-introduction-box {
-    width: 100%;
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #3a3b3c; /* Placeholder background color */
 }
 
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
 
-.post-picture {
-    width: 100%;
-height: 100%;
+.user-name {
+  font-weight: bold;
+  color: #e4e6eb;
+}
+
+.post-time {
+  font-size: 12px;
+  color: #b0b3b8;
 }
 
 .post-content {
-    border-bottom: #F5F5F5 solid;
-    width: 95%;
+  margin-bottom: 15px;
 }
 
-.comments {
-    display: flex;
-    flex-direction: row;
-    width: 95%;
-    justify-content: space-between;
-    border-bottom: #F5F5F5 solid;
-    padding-top: 1%;
-    padding-bottom: 1%;
+.post-title {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #e4e6eb;
 }
 
-.comments-button {
- display: flex;
- flex-direction: row;
- gap: 3%;
- background-color: var(--post-color);
- border: none;
- cursor: pointer;
- /* margin-right: 4%; */
+.post-picture {
+  width: 100%;
+  border-radius: 8px;
+  margin: 10px 0;
 }
 
-.comments-button:hover  {
-border: #4d5752;
-
-display: flex;
-flex-direction: row;
-gap: 3%;
+.post-text {
+  margin-top: 10px;
+  color: #e4e6eb;
 }
 
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+  border-top: 1px solid #3a3b3c;
+  padding-top: 10px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #b0b3b8;
+  font-size: 14px;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.action-button:hover {
+  color: #e4e6eb;
+}
+
+.post-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #b0b3b8;
+}
