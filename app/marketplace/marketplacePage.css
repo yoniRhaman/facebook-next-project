@@ -6,9 +6,11 @@
 .left {
   height: 100%;
   width: 20%;
+  /* overflow: auto;  */
 }
 
 .right {
   height: 100%;
   width: 80%;
+  /* overflow: auto;  */
 }

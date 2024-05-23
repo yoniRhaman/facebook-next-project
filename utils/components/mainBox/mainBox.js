@@ -3,15 +3,6 @@ import MainPosts from "./posts/mainPosts";
 import SideFreindsMenue from "./sideFreindsMenue/sideFreindsMenue";
 
 export default function MainBox() {
-// <<<<<<< HEAD
-//     return (
-//             <div className="main-box">
-//                 <MainPosts />
-//                 <SideFreindsMenue />
-//             </div>
-//     );
-// }
-// =======
   return (
     <div>
       <div className="main-box">
@@ -25,4 +16,3 @@ export default function MainBox() {
     </div>
   );
 }
-
