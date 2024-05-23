@@ -29,8 +29,8 @@ export default function CreateGroup({ onClose }) {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <input type="text" placeholder="Group Name" />
-          <input type="text" placeholder="Choose Friends" />
+          <input type="text" placeholder="Group Name" className="inp-group"/>
+          <input type="text" placeholder="Choose Friends"  className="inp-group" />
         </div>
         <div>
           <Button

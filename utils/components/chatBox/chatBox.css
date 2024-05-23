@@ -1,9 +1,11 @@
 .chatBox-container {
-  width: 65%;
+  width: 100%;
   height: calc(100vh - var(--nav-height));
   background-color: #18191a; /* Dark background color */
   color: #fff;
   overflow-y: scroll; /* Enable vertical scroll */
+  position: relative;
+  top: var(--nav-height);
 
 }
 
