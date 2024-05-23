@@ -1,4 +1,6 @@
 .chats-container {
+  position: relative;
+  top: var(--nav-height);
   width: 35%;
   height: calc(100vh - var(--nav-height));
   background-color: #18191a; /* Dark background color */
