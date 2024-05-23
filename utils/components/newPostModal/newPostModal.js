@@ -35,15 +35,15 @@ export default function Modal({ onClose }) {
   };
 
   return (
-    <div className="modal-container center column">
-      <div className="modal-content space-between column">
+    <div className="modal-container center">
+      <div className="modal-content">
         <button
           className="title-container-button column center "
           onClick={onClose}
         >
           <Close />
         </button>
-        <div className="title-container center row ">
+        <div className="title-container center ">
           <h1>Create Post</h1>
         </div>
 

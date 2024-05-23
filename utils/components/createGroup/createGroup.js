@@ -11,7 +11,7 @@ export default function CreateGroup({ onClose }) {
 
   return (
     <div className="modal-container center column">
-      <div className="row gap-20 space-between ">
+      <div className="">
         <button className="title-container-button  " onClick={onClose}>
           <Close />
         </button>
