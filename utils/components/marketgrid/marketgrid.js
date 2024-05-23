@@ -54,7 +54,7 @@ export default function marketgrid({ productsFromServer }) {
 export function GridItem({ product }) {
   return (
     <Link
-      href={`https://facebook-express-project.onrender.com/marketplace/product${product._id}`}
+      href={`https://facebook-next-project.vercel.app/marketplace/product${product._id}`}
       className="grid_item column"
       style={{
         // height: "30vh",
