@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = "http://localhost:3005";
+const SERVER_URL = "https://facebook-express-project.onrender.com";
 
 export async function getUserData(id) {
     try {
