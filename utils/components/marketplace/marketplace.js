@@ -1,5 +1,6 @@
 "use client";
 import "./marketplace.css";
+import { nanoid } from "nanoid";
 import Searchicon from "@/utils/icons/searchicon";
 import { FaCar } from "react-icons/fa6";
 import { BsFillHouseCheckFill } from "react-icons/bs";
@@ -17,19 +18,44 @@ import AddProductForm from "../addProductModal/addProductModal";
 
 function Marketplace() {
   const [open, setOpen] = useState(false);
-  const handleModalOpen = () => {
-    setShowModal(true);
+  // const handleModalOpen = () => {
+  //   setShowModal(true);
+  // };
+  // const handleModalClose = () => {
+  //   setShowModal(false);
+  // };
+
+  const renderCategories = () => {
+    const categories = [
+      { icon: FaCar, label: "Vehicles" },
+      { icon: BsFillHouseCheckFill, label: "Property Rentals" },
+      { icon: IoMdShirt, label: "Apparel" },
+      { icon: IoPricetags, label: "Classifieds" },
+      { icon: IoPhonePortrait, label: "Electronics" },
+      { icon: BiCameraMovie, label: "Entertainment" },
+      { icon: FaHeart, label: "Family" },
+      { icon: TbFreeRights, label: "Free Stuff" },
+      { icon: GiGardeningShears, label: "Garden & Outdoor" },
+      { icon: FaBaseballBatBall, label: "Hobbies" },
+    ];
+
+    return categories.map((category) => (
+      <button key={nanoid()} className="btn-categories">
+        <div className="iconCategories">
+          <category.icon className="icon-categories" />
+        </div>
+        <h3>{category.label}</h3>
+      </button>
+    ));
   };
-  const handleModalClose = () => {
-    setShowModal(false);
-  };
+
   return (
     <div className="marketplace-container column">
-      <div className="search-top-container column ">
+      <div className="search-top-container column">
         <div className="p center">
           <h1>Marketplace</h1>
         </div>
-        <div className=" search-input1 row center">
+        <div className="search-input1 row center">
           <Searchicon />
           <input type="text" name="search" placeholder="Search product..." />
         </div>
@@ -42,73 +68,10 @@ function Marketplace() {
         <div className="Categories-p">
           <p>Categories</p>
         </div>
-        <div className="Categories column">
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <FaCar className="icon-categories" />
-            </div>
-            <h3>Vehicles</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <BsFillHouseCheckFill className="icon-categories" />
-            </div>
-            <h3>Property Rentals</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <IoMdShirt className="icon-categories" />
-            </div>
-            <h3>Apparel</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <IoPricetags className="icon-categories" />
-            </div>
-            <h3>Classifieds</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <IoPhonePortrait className="icon-categories" />
-            </div>
-            <h3>Electronics</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <BiCameraMovie className="icon-categories" />
-            </div>
-            <h3>Entertainment</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <FaHeart className="icon-categories" />
-            </div>
-            <h3>Family</h3>
-          </button>
-
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <TbFreeRights className="icon-categories" />
-            </div>
-            <h3>Free Stuff</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <GiGardeningShears className="icon-categories" />
-            </div>
-            <h3>Garden & Outdoor</h3>
-          </button>
-          <button className="btn-categories">
-            <div className="iconCategories">
-              <FaBaseballBatBall className="icon-categories" />
-            </div>
-            <h3>Hobbies</h3>
-          </button>
-        </div>
+        <div className="Categories column">{renderCategories()}</div>
       </div>
       {open && <AddProductForm setOpen={setOpen} />}
     </div>
   );
 }
-
 export default Marketplace;
