@@ -23,6 +23,7 @@ export default function Modal({ onClose }) {
     );
 
     // console.log({json});
+
     await createNewPosts(json);
     setLoading(false);
     onClose();

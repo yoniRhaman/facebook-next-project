@@ -1,5 +1,6 @@
 "use client";
 import "./marketplace.css";
+import { nanoid } from "nanoid";
 import Searchicon from "@/utils/icons/searchicon";
 import { FaCar } from "react-icons/fa6";
 import { BsFillHouseCheckFill } from "react-icons/bs";
@@ -38,8 +39,8 @@ function Marketplace() {
       { icon: FaBaseballBatBall, label: "Hobbies" },
     ];
 
-    return categories.map((category, index) => (
-      <button key={index} className="btn-categories">
+    return categories.map((category) => (
+      <button key={nanoid()} className="btn-categories">
         <div className="iconCategories">
           <category.icon className="icon-categories" />
         </div>

@@ -1,7 +1,10 @@
 import axios from "axios";
 
-const SERVER_URL = "https://facebook-express-project.onrender.com";
-
+// const SERVER_URL = "https://facebook-express-project.onrender.com";
+const SERVER_URL =
+  process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+    ? "http://localhost:3005"
+    : "https://facebook-express-project.onrender.com";
 export async function getAllProducts() {
   try {
     const products = await axios.get(`${SERVER_URL}/products`);
@@ -31,5 +34,3 @@ async function deleteProduct(id) {
     throw new Error(error);
   }
 }
-
-

@@ -48,6 +48,18 @@ export default function AddProductForm({ setOpen }) {
       <h1>Add new product</h1>
 
       <form className="column center form gap-20" onSubmit={handleSumbit}>
+        <select>
+          <option value="vehicles">Vehicles</option>
+          <option value="property-rentals">Property Rentals</option>
+          <option value="apparel">Apparel</option>
+          <option value="classifieds">Classifieds</option>
+          <option value="electronics">Electronics</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="family">Family</option>
+          <option value="free-stuff">Free Stuff</option>
+          <option value="garden-outdoor">Garden & Outdoor</option>
+          <option value="hobbies">Hobbies</option>
+        </select>
         <TextField label="name" name="name" />
         <TextField label="price" name="price" />
         <input type="file" label="img" name="mainImage" required />
@@ -58,13 +70,12 @@ export default function AddProductForm({ setOpen }) {
           multiple
           required
         />
-      
+
         <textarea placeholder="location..." maxLength={200} name="location" />
         <textarea
           placeholder="Description..."
           maxLength={200}
           name="description"
-          
         />
         <Button type="submit" variant="contained">
           {loading ? (
