@@ -2,7 +2,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import "./Register.css";
 import { useState } from "react";
-import { sendUserData } from "@/utils/api/profileApi";
+import { sendUserData } from "@/utils/api/signinApi";
 import { Button, CircularProgress } from "@mui/material";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
@@ -41,8 +41,9 @@ function RegisterForm() {
     json["profileImg"] = await handleUpload(formData.get("profileImg"));
     json["baverImg"] = await handleUpload(formData.get("baverImg"));
 
+    json["freinds"] = [];
     // sending the data to server that will send it to mongo
-    sendUserData(json);
+    // sendUserData(json);
     setLoading(false);
     // console.log(formObject);
   }
@@ -186,7 +187,6 @@ function RegisterForm() {
                 type="file"
                 label="profileImg"
                 name="profileImg"
-                required
               />
               <input type="file" label="baverImg" name="baverImg" />
             </div>
