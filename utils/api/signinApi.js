@@ -5,6 +5,7 @@ const SERVER_URL =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
     ? "http://localhost:3005"
     : "https://facebook-express-project.onrender.com";
+    
 export async function getUserData(id) {
   try {
     const profileData = await axios.get(`${SERVER_URL}/profile/${id}`);
