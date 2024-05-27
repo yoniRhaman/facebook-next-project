@@ -13,7 +13,7 @@ import { TbFreeRights } from "react-icons/tb";
 import { GiGardeningShears } from "react-icons/gi";
 import { FaBaseballBatBall } from "react-icons/fa6";
 import AddIcon from "@mui/icons-material/Add";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AddProductForm from "../addProductModal/addProductModal";
 
 function Marketplace() {
@@ -26,6 +26,13 @@ function Marketplace() {
   // };
 
   const renderCategories = () => {
+    const { updateSharedCategory } = useContext(CategoryContext);
+
+    const handleClick = (name) => {
+      updateSharedCategory(name);
+      console.log(name);
+    };
+
     const categories = [
       { icon: FaCar, label: "Vehicles" },
       { icon: BsFillHouseCheckFill, label: "Property Rentals" },
@@ -42,7 +49,10 @@ function Marketplace() {
     return categories.map((category) => (
       <button key={nanoid()} className="btn-categories">
         <div className="iconCategories">
-          <category.icon className="icon-categories" />
+          <category.icon
+            className="icon-categories"
+            onClick={handleClick(category.label)}
+          />
         </div>
         <h3>{category.label}</h3>
       </button>
