@@ -5,9 +5,20 @@ const SERVER_URL =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
     ? "http://localhost:3005"
     : "https://facebook-express-project.onrender.com";
-export async function getUserData(id) {
+
+export async function login(body) {
   try {
-    const profileData = await axios.get(`${SERVER_URL}/profile/${id}`);
+    const response = await axios.post(`${SERVER_URL}/users/login`, body);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export async function register(data) {
+  try {
+    const profileData = await axios.post(`${SERVER_URL}/users/register`, data);
     console.log(profileData.data);
     return profileData.data;
   } catch (error) {

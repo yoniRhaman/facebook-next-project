@@ -11,7 +11,8 @@ export async function getAllProducts() {
     return products.data;
   } catch (error) {
     console.error(error);
-    throw Error(error);
+    throw new Error(error);
+    console.log(products);
   }
 }
 

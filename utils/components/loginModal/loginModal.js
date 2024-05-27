@@ -3,9 +3,22 @@ import { Close } from "@mui/icons-material";
 import { Button, TextField } from "@mui/material";
 import "./loginModal.css";
 import Link from "next/link";
+import { setCookie } from "cookies-next";
+import { login } from "@/utils/api/loginApi";
 export default function LoginModal({ setOpen }) {
-  function handleSumbit(e) {
-    e.preventDefault();
+  async function handleSumbit(e) {
+    try {
+      e.preventDefault();
+      // setLoading(true);
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      const token = await login(data);
+      setCookie("token", token);
+      console.log(token);
+    } catch (error) {
+      console.error(error);
+    } finally {
+    }
   }
   return (
     <div className="column center navbar-modal ">
@@ -19,7 +32,6 @@ export default function LoginModal({ setOpen }) {
         <Button
           variant="contained"
           type="submit"
-          onClick={() => setOpen(false)}
         >
           Log in
         </Button>
