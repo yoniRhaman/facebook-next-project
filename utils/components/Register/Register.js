@@ -43,7 +43,7 @@ function RegisterForm() {
 
     json["freinds"] = [];
     // sending the data to server that will send it to mongo
-    // sendUserData(json);
+    sendUserData(json);
     setLoading(false);
     // console.log(formObject);
   }
