@@ -5,7 +5,7 @@ import { getAllProducts } from "@/utils/api/marketplaceApi";
 import { useProductContext } from "@/utils/contexts/productContext";
 
 async function MarketplacePage() {
-  const productsFromServer = await getAllProducts();
+  // const productsFromServer = await getAllProducts();
 
   return (
     <div className="MarketplacePage-container row">
@@ -13,7 +13,7 @@ async function MarketplacePage() {
         <Marketplace />
       </div>
       <div className="right">
-        <Marketgrid productsFromServer={productsFromServer} />
+        {/* <Marketgrid productsFromServer={productsFromServer} /> */}
       </div>
     </div>
   );
