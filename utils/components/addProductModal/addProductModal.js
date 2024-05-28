@@ -50,10 +50,10 @@ export default function AddProductForm({ setOpen }) {
       <h1>Add new product</h1>
 
       <form className="column center form gap-20" onSubmit={handleSumbit}>
-        <select>
-          <option value="vehicles">Vehicles</option>
-          <option value="property-rentals">Property Rentals</option>
+        <select name="category">
+          <option  value="vehicles">Vehicles</option>
           <option value="apparel">Apparel</option>
+          <option value="property-rentals">Property Rentals</option>
           <option value="classifieds">Classifieds</option>
           <option value="electronics">Electronics</option>
           <option value="entertainment">Entertainment</option>
