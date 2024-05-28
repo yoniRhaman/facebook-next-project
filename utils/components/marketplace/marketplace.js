@@ -28,10 +28,12 @@ function Marketplace() {
 
   const renderCategories = () => {
     const { updateSharedCategory } = useContext(CategoryContext);
+    const { sharedCategory } = useContext(CategoryContext);
 
     const handleClick = (name) => {
       updateSharedCategory(name);
       console.log(name);
+      console.log(sharedCategory);
     };
 
     const categories = [
@@ -48,12 +50,13 @@ function Marketplace() {
     ];
 
     return categories.map((category) => (
-      <button key={nanoid()} className="btn-categories">
+      <button
+        key={nanoid()}
+        className="btn-categories"
+        onClick={() => handleClick(category.label)}
+      >
         <div className="iconCategories">
-          <category.icon
-            className="icon-categories"
-            onClick={handleClick(category.label)}
-          />
+          <category.icon className="icon-categories" />
         </div>
         <h3>{category.label}</h3>
       </button>
