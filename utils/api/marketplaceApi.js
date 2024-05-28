@@ -7,9 +7,21 @@ const SERVER_URL =
     : "https://facebook-express-project.onrender.com";
 export async function getAllProducts(token) {
   try {
-    const products = await axios.get(`${SERVER_URL}/products`,{
-    headers: { Authorization: `Bearer ${token}` },
-  });
+    const products = await axios.get(`${SERVER_URL}/products`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return products.data;
+  } catch (error) {
+    console.error(error);
+    throw Error(error);
+  }
+}
+
+export async function getProductById(token, _id) {
+  try {
+    const products = await axios.get(`${SERVER_URL}/products/${_id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     return products.data;
   } catch (error) {
     console.error(error);

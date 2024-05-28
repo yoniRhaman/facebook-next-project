@@ -1,13 +1,31 @@
 "use client";
 import { Close } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import "./createGroup.css";
 import Image from "next/image";
+import { createNewGroups } from "@/utils/api/groupsApi";
+import { getCookie, setCookie } from "cookies-next";
+import { useState } from "react";
 
 export default function CreateGroup({ onClose }) {
-  const handlePostSubmit = () => {
-    onClose();
-  };
+  const [loading, setLoading] = useState(false);
+
+  async function handlegroupSubmit(e) {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      const formData = new FormData(e.target);
+      const json = Object.fromEntries(formData);
+      json["owner"] = getCookie("uid");
+
+      await createNewGroups(json, getCookie("token"));
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="modal-container center column">
@@ -19,7 +37,7 @@ export default function CreateGroup({ onClose }) {
           <h1>Create Group</h1>
         </div>
       </div>
-      <form onSubmit={handlePostSubmit}>
+      <form onSubmit={handlegroupSubmit}>
         <div className="column center gap-20">
           <div className="picture">
             <Image
@@ -29,17 +47,24 @@ export default function CreateGroup({ onClose }) {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <input type="text" placeholder="Group Name" className="inp-group"/>
-          <input type="text" placeholder="Choose Friends"  className="inp-group" />
+          <input type="text" placeholder="Group Name" className="inp-group" />
+          <input
+            type="text"
+            placeholder="Choose Friends"
+            className="inp-group"
+          />
         </div>
         <div>
           <Button
             type="submit"
             sx={{ width: "100%", marginTop: "20px" }}
             variant="contained"
-            onClick={handlePostSubmit}
           >
-            Create Group
+            {loading ? (
+              <CircularProgress sx={{ color: "white" }} />
+            ) : (
+              "Create Group"
+            )}
           </Button>
         </div>
       </form>

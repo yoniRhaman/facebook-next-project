@@ -3,12 +3,12 @@ import Image from "next/image";
 import "./product.css";
 import { usePathname } from "next/navigation";
 
-function ProductPageComponent({products}) {
+function ProductPageComponent({ myProduct }) {
   const pathname = usePathname();
   const pathnameParts = pathname.split("/product");
   const lastPathPart = pathnameParts[pathnameParts.length - 1];
 
-  const myProduct = products.find((p) => p._id === lastPathPart);
+  // const myProduct = products.find((p) => p._id === lastPathPart);
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
