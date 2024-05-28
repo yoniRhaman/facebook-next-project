@@ -15,6 +15,7 @@ import { FaBaseballBatBall } from "react-icons/fa6";
 import AddIcon from "@mui/icons-material/Add";
 import { useContext, useState } from "react";
 import AddProductForm from "../addProductModal/addProductModal";
+import { CategoryContext } from "@/utils/contexts/categoryContext";
 
 function Marketplace() {
   const [open, setOpen] = useState(false);

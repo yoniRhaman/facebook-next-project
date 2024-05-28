@@ -12,6 +12,7 @@ import {
 } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 import { useState } from "react";
+import { getCookie } from "cookies-next";
 
 export default function AddProductForm({ setOpen }) {
   const { products, setProducts } = useProductContext();
@@ -27,9 +28,10 @@ export default function AddProductForm({ setOpen }) {
     json["images"] = await Promise.all(
       formData.getAll("images").map(async (img) => await handleUpload(img))
     );
+    json["owner"] = getCookie("uid");
 
-    const product = await createProduct([json]);
-    setProducts((prev) => [...prev, ...product]);
+    const product = await createProduct(json, getCookie("token"));
+    setProducts((prev) => [...prev, product]);
     setLoading(false);
     setOpen(false);
   }
