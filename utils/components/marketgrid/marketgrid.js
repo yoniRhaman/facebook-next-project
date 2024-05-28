@@ -7,9 +7,7 @@ import { SortProducts } from "./sortProducts";
 import Link from "next/link";
 import { useProductContext } from "@/utils/contexts/productContext";
 
-
 export default function marketgrid({ productsFromServer }) {
-
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState(0);
   const { products, setProducts } = useProductContext();
@@ -54,7 +52,7 @@ export default function marketgrid({ productsFromServer }) {
 export function GridItem({ product }) {
   return (
     <Link
-      href={`https://facebook-next-project.vercel.app/marketplace/product${product._id}`}
+      href={`marketplace/${product._id}`}
       className="grid_item column"
       style={{
         // height: "30vh",

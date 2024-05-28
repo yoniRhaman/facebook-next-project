@@ -14,7 +14,7 @@ import { storage } from "@/utils/services/firebaseConfig";
 import { useState } from "react";
 import { getCookie } from "cookies-next";
 
-export default function AddProductForm({ setOpen }) {
+export default function  AddProductForm({ setOpen }) {
   const { products, setProducts } = useProductContext();
   const [loading, setLoading] = useState(false);
 

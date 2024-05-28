@@ -6,11 +6,18 @@
 .left {
   height: 100%;
   width: 20%;
-  /* overflow: auto;  */
+  overflow-y: scroll;
 }
 
 .right {
   height: 100%;
   width: 80%;
-  /* overflow: auto;  */
+  overflow-y: scroll;
+}
+
+.left::-webkit-scrollbar {
+  display: none;
+}
+.right::-webkit-scrollbar {
+  display: none;
 }
