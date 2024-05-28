@@ -1,4 +1,4 @@
-import { getAllProducts, getProductById } from "@/utils/api/marketplaceApi";
+import { getProductById } from "@/utils/api/marketplaceApi";
 import ProductPageComponent from "@/utils/components/productPage/productPage";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";

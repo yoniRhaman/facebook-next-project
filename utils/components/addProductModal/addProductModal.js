@@ -23,7 +23,7 @@ export default function  AddProductForm({ setOpen }) {
     setLoading(true);
     const formData = new FormData(e.target);
     const json = Object.fromEntries(formData);
-    console.log(json);
+    // console.log(json);
     json["mainImage"] = await handleUpload(formData.get("mainImage"));
     json["images"] = await Promise.all(
       formData.getAll("images").map(async (img) => await handleUpload(img))
