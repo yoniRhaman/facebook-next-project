@@ -5,8 +5,7 @@ import { getAllProducts } from "@/utils/api/marketplaceApi";
 import { useProductContext } from "@/utils/contexts/productContext";
 
 async function MarketplacePage() {
-  // const productsFromServer = await getAllProducts();ש
-
+  // const productsFromServer = await getAllProducts();
   return (
     <div className="MarketplacePage-container row">
       <div className="left">

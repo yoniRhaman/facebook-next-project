@@ -8,6 +8,7 @@ import Image from "next/image";
 import { createNewPosts } from "@/utils/api/postsApi";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
+import { getCookie } from "cookies-next";
 
 export default function Modal({ onClose }) {
   const [loading, setLoading] = useState(false);
@@ -21,10 +22,11 @@ export default function Modal({ onClose }) {
     json["images"] = await Promise.all(
       formData.getAll("images").map(async (img) => await handleUpload(img))
     );
+    json["owner"] = getCookie("uid");
 
     // console.log({json});
 
-    await createNewPosts(json);
+    await createNewPosts(json, getCookie("token"));
     setLoading(false);
     onClose();
   };
