@@ -12,6 +12,7 @@ import {
 } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 import { useState } from "react";
+import { getCookie } from "cookies-next";
 
 export default function AddProductForm({ setOpen }) {
   const { products, setProducts } = useProductContext();
@@ -27,9 +28,10 @@ export default function AddProductForm({ setOpen }) {
     json["images"] = await Promise.all(
       formData.getAll("images").map(async (img) => await handleUpload(img))
     );
+    json["owner"] = getCookie("uid");
 
-    const product = await createProduct([json]);
-    setProducts((prev) => [...prev, ...product]);
+    const product = await createProduct(json, getCookie("token"));
+    setProducts((prev) => [...prev, product]);
     setLoading(false);
     setOpen(false);
   }
@@ -48,10 +50,10 @@ export default function AddProductForm({ setOpen }) {
       <h1>Add new product</h1>
 
       <form className="column center form gap-20" onSubmit={handleSumbit}>
-        <select>
-          <option value="vehicles">Vehicles</option>
-          <option value="property-rentals">Property Rentals</option>
+        <select name="category">
+          <option  value="vehicles">Vehicles</option>
           <option value="apparel">Apparel</option>
+          <option value="property-rentals">Property Rentals</option>
           <option value="classifieds">Classifieds</option>
           <option value="electronics">Electronics</option>
           <option value="entertainment">Entertainment</option>

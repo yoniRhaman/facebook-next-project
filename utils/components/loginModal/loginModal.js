@@ -5,16 +5,16 @@ import "./loginModal.css";
 import Link from "next/link";
 import { setCookie } from "cookies-next";
 import { login } from "@/utils/api/loginApi";
-export default function LoginModal({ setOpen }) {
+export default function LoginModal() {
   async function handleSumbit(e) {
     try {
       e.preventDefault();
       // setLoading(true);
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
-      const token = await login(data);
+      const { token, user_id } = await login(data);
       setCookie("token", token);
-      console.log(token);
+      setCookie("uid", user_id);
     } catch (error) {
       console.error(error);
     } finally {
@@ -22,9 +22,9 @@ export default function LoginModal({ setOpen }) {
   }
   return (
     <div className="column center navbar-modal ">
-      <button className="close-button" onClick={() => setOpen(false)}>
+      {/* <button className="close-button" onClick={() => setOpen(false)}>
         <Close />
-      </button>
+      </button> */}
       <form className="form-input column gap-20" onSubmit={handleSumbit}>
         <h1>Login form</h1>
         <TextField name="email" label="email" type="email" />

@@ -15,13 +15,16 @@ export async function getAllPosts() {
   }
 }
 
-export async function createNewPosts(data) {
+export async function createNewPosts(body, token) {
+  console.log(body);
+  console.log(token);
   try {
-    const post = await axios.post(`${SERVER_URL}/posts`, data);
-    return post.data;
+    const response = await axios.post(`${SERVER_URL}/posts`, body, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
   } catch (error) {
-    console.error(error);
-    throw new Error(error);
+    throw new Error(error.message);
   }
 }
 

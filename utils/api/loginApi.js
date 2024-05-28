@@ -9,7 +9,6 @@ const SERVER_URL =
 export async function login(body) {
   try {
     const response = await axios.post(`${SERVER_URL}/users/login`, body);
-    console.log(response);
     return response.data;
   } catch (error) {
     throw new Error(error);

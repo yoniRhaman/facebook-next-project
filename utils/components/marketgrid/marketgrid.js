@@ -2,10 +2,11 @@
 import Image from "next/image";
 import "./marketgrid.css";
 import { nanoid } from "nanoid";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SortProducts } from "./sortProducts";
 import Link from "next/link";
 import { useProductContext } from "@/utils/contexts/productContext";
+import { CategoryContext } from "@/utils/contexts/categoryContext";
 
 
 export default function marketgrid({ productsFromServer }) {
@@ -13,11 +14,13 @@ export default function marketgrid({ productsFromServer }) {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState(0);
   const { products, setProducts } = useProductContext();
+  const { sharedCategory } = useContext(CategoryContext);
   useEffect(() => {
     setProducts(productsFromServer);
   }, [setProducts]);
   const finale_products = products
     .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    //.filter((p) => p.category === sharedCategory)
     .sort((a, b) => SortProducts(a, b, sortBy))
     .map((product) => <GridItem id={nanoid()} product={product} />);
   return (

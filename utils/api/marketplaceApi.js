@@ -5,9 +5,11 @@ const SERVER_URL =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
     ? "http://localhost:3005"
     : "https://facebook-express-project.onrender.com";
-export async function getAllProducts() {
+export async function getAllProducts(token) {
   try {
-    const products = await axios.get(`${SERVER_URL}/products`);
+    const products = await axios.get(`${SERVER_URL}/products`,{
+    headers: { Authorization: `Bearer ${token}` },
+  });
     return products.data;
   } catch (error) {
     console.error(error);
@@ -15,9 +17,13 @@ export async function getAllProducts() {
   }
 }
 
-export async function createProduct(data) {
+export async function createProduct(body, token) {
+  console.log(body);
+  console.log(token);
   try {
-    const product = await axios.post(`${SERVER_URL}/products`, data);
+    const product = await axios.post(`${SERVER_URL}/products`, body, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     return product.data;
   } catch (error) {
     console.error(error);
