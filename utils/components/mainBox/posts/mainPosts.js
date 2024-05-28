@@ -1,3 +1,4 @@
+
 import {
   ChatBubbleOutline,
   ShareOutlined,
@@ -47,13 +48,14 @@ function PostItem({ post }) {
         </Link>
       </div>
       <div className="post-content">
-        <h1 className="post-title">{post.title}</h1>
-        <div className="post-picture">
-          {post.pictures.map((picture, index) => (
+        <div className="post-pictures">
+          {post.pictures.map((image, index) => (
             <img
               key={index}
               className="post-picture"
-              src={picture}
+              src={post.pictures[index]}
+              width={`${100 / (1 + (post.pictures.length > 1))  - 3 }%`}
+              // height={`${100 / (1 + (post.pictures.length > 1))  - 3 }%`}
               alt="Post"
             />
           ))}

@@ -19,7 +19,7 @@ export async function login(body) {
 export async function register(data) {
   try {
     const profileData = await axios.post(`${SERVER_URL}/users/register`, data);
-    console.log(profileData.data);
+    // console.log(profileData.data);
     return profileData.data;
   } catch (error) {
     console.error(error);

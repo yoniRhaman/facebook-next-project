@@ -7,7 +7,10 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 import Link from "next/link";
 import { register } from "@/utils/api/loginApi";
+import { useRouter } from "next/router";
 function RegisterForm() {
+
+
   const [loading, setLoading] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const passElement = useRef(null);
@@ -17,38 +20,23 @@ function RegisterForm() {
       setLoading(true);
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
-      console.log(json);
+      // console.log(json);
       const [profile, baver] = await Promise.all([
         await handleUpload(formData.get("profileImg")),
         await handleUpload(formData.get("baverImg")),
       ]);
-      console.log(profile, baver);
+      // console.log(profile, baver);
       json["profileImg"] = profile;
       json["baverImg"] = baver;
-      console.log(await register(json));
+      const response =  await  register(json);
+      console.log(response);
+             
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
     }
   }
-  // Convert the FormData object to a plain object (optional)
-  // const formObject = {};
-  // formData.forEach((value, key) => {
-  //   formObject[key] = value;
-  // });
-
-  // const json = Object.fromEntries(formData);
-  // console.log(json);
-  // json["profileImg"] = await handleUpload(formData.get("profileImg"));
-  // json["baverImg"] = await handleUpload(formData.get("baverImg"));
-
-  //   json["freinds"] = [];
-  //   // sending the data to server that will send it to mongo
-  //   // sendUserData(json);
-  //   setLoading(false);
-  //   // console.log(formObject);
-  // }
 
   const handleUpload = async (image) => {
     const storageRef = ref(storage, `images/${image.name}`);
@@ -183,7 +171,7 @@ function RegisterForm() {
                   required
                 />
               </div>
-              <input type="file" label="profileImg" name="profileImg" />
+              <input type="file" label="profileImg" name="profileImg"/>
               <input type="file" label="baverImg" name="baverImg" />
             </div>
             <Button type="submit" variant="contained">
