@@ -14,7 +14,7 @@ import { storage } from "@/utils/services/firebaseConfig";
 import { useState } from "react";
 import { getCookie } from "cookies-next";
 
-export default function  AddProductForm({ setOpen }) {
+export default function AddProductForm({ setOpen }) {
   const { products, setProducts } = useProductContext();
   const [loading, setLoading] = useState(false);
 
@@ -51,16 +51,16 @@ export default function  AddProductForm({ setOpen }) {
 
       <form className="column center form gap-20" onSubmit={handleSumbit}>
         <select name="category">
-          <option  value="vehicles">Vehicles</option>
-          <option value="apparel">Apparel</option>
-          <option value="property-rentals">Property Rentals</option>
-          <option value="classifieds">Classifieds</option>
-          <option value="electronics">Electronics</option>
-          <option value="entertainment">Entertainment</option>
-          <option value="family">Family</option>
-          <option value="free-stuff">Free Stuff</option>
-          <option value="garden-outdoor">Garden & Outdoor</option>
-          <option value="hobbies">Hobbies</option>
+          <option value="Vehicles">Vehicles</option>
+          <option value="Apparel">Apparel</option>
+          <option value="Property Rentals">Property Rentals</option>
+          <option value="Classifieds">Classifieds</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Family">Family</option>
+          <option value="Free Stuff">Free Stuff</option>
+          <option value="Garden & Outdoor">Garden & Outdoor</option>
+          <option value="Hobbies">Hobbies</option>
         </select>
         <TextField label="name" name="name" />
         <TextField label="price" name="price" />

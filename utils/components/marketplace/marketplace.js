@@ -32,8 +32,8 @@ function Marketplace() {
 
     const handleClick = (name) => {
       updateSharedCategory(name);
-      console.log(name);
-      console.log(sharedCategory);
+      // console.log(name);
+      // console.log(sharedCategory);
     };
 
     const categories = [
