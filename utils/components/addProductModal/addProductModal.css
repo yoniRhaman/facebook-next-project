@@ -1,8 +1,12 @@
 .navbar-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
   height: 80%;
   width: 400px;
-  background-color: antiquewhite;
+  background-color: #242526; /* Dark background color */
+  color: #E4E6EB; /* Light text color */
   border-radius: 25px;
   position: fixed;
   margin: auto;
@@ -11,32 +15,122 @@
   top: 0;
   bottom: 0;
   z-index: 1000;
-
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  padding: 20px; /* Padding inside the modal */
 }
+
+.navbar-modal h1 {
+  font-size: 24px; /* Adjust the heading size */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
 .close-button {
   position: absolute;
-  right: 5%;
-  top: 5%;
+  top: 10px;
+  right: 10px;
+  background: none;
   border: none;
+  color: #E4E6EB;
+  font-size: 24px;
   cursor: pointer;
-  font-size: 36px;
-  background-color: transparent;
+  transition: color 0.3s;
 }
-
-.navbar-modal h1{
-  margin-top: 10%;
-  color: black;
-}
-
 .form {
-  margin: 3%;
-  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+  background-color: #242526; /* Dark mode form background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  width: 100%;
+  max-width: 400px;
 }
 
-.form > * {
+select {
+  background-color: #3A3B3C; /* Dark mode select background */
+  color: #E4E6EB; /* Light text color */
+  border: 1px solid #3A3B3C;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
   width: 100%;
-  /* margin-bottom: 10px; */
-} 
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+select:hover {
+  background-color: #4A4B4C; /* Slightly lighter on hover */
+  border-color: #4A4B4C;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 139, 202, 0.5); /* Outline for focus */
+}
+.inp-product {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0; /* Space between inputs */
+  border-radius: 4px;
+  border: 1px solid #3a3b3c; /* Border color */
+  background-color: #3a3b3c; /* Input background color */
+  color: #e4e6eb; /* Input text color */
+}
+
+.inp-product::placeholder {
+  color: #b0b3b8; /* Placeholder text color */
+}
+
+.inp-product:focus {
+  border-color: #e4e6eb; /* Border color on focus */
+  outline: none;
+}
+input[type="file"] {
+  width: 45%;
+  padding: 10px;
+  margin: 10px 0; /* Space between inputs */
+  border-radius: 4px;
+  border: 1px solid #3a3b3c; /* Border color */
+  background-color: #3a3b3c; /* Input background color */
+  color: #e4e6eb; /* Input text color */
+}
+
+input[type="file"]::file-selector-button {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #3a3b3c; /* Button border color */
+  background-color: #4a4a4a; /* Button background color */
+  color: #e4e6eb; /* Button text color */
+  cursor: pointer;
+}
+
+input[type="file"]:focus {
+  border-color: #e4e6eb; /* Border color on focus */
+  outline: none;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #3a3b3c; /* Button background color on hover */
+}
+textarea {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 0; /* Space between textareas */
+  border-radius: 4px;
+  border: 1px solid #3a3b3c; /* Border color */
+  background-color: #3a3b3c; /* Textarea background color */
+  color: #e4e6eb; /* Text color */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+textarea::placeholder {
+  color: #b0b3b8; /* Placeholder text color */
+}
+
+textarea:focus {
+  border-color: #e4e6eb; /* Border color on focus */
+  outline: none;
+}
