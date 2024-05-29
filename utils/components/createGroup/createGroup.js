@@ -18,7 +18,6 @@ export default function CreateGroup({ onClose }) {
       json["owner"] = getCookie("uid");
 
       await createNewGroups(json, getCookie("token"));
-
     } catch (error) {
       console.error(error);
     } finally {
@@ -52,6 +51,18 @@ export default function CreateGroup({ onClose }) {
             placeholder="Choose Friends"
             className="inp-group"
           />
+          <div class="inp-img-container">
+            <label for="mainImage" class="inp-img-label">
+              Choose File
+            </label>
+            <input
+              type="file"
+              id="mainImage"
+              name="mainImage"
+              class="inp-img"
+              required
+            />
+          </div>
         </div>
         <div>
           <Button

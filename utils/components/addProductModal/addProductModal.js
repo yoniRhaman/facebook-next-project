@@ -62,9 +62,19 @@ export default function AddProductForm({ setOpen }) {
           <option value="Garden & Outdoor">Garden & Outdoor</option>
           <option value="Hobbies">Hobbies</option>
         </select>
-        <TextField label="name" name="name" />
-        <TextField label="price" name="price" />
-        <input type="file" label="img" name="mainImage" required />
+        <input
+          label="name"
+          name="name"
+          className="inp-product"
+          placeholder="name"
+        />
+        <input
+          label="price"
+          name="price"
+          className="inp-product"
+          placeholder="price"
+        />
+        <input type="file" label="img" name="mainImage"  required />
         <input
           type="file"
           label="more images"
@@ -73,12 +83,16 @@ export default function AddProductForm({ setOpen }) {
           required
         />
 
-        <textarea placeholder="location..." maxLength={200} name="location" />
+        <textarea
+          placeholder="location..."
+          maxLength="200"
+          name="location"
+        ></textarea>
         <textarea
           placeholder="Description..."
-          maxLength={200}
+          maxLength="200"
           name="description"
-        />
+        ></textarea>
         <Button type="submit" variant="contained">
           {loading ? (
             <CircularProgress sx={{ color: "white" }} />
