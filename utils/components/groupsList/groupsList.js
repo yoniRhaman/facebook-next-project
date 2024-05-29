@@ -2,11 +2,17 @@
 import { FaPlus } from "react-icons/fa";
 import "./groupsList.css";
 import Searchicon from "../../icons/searchicon";
-import { useState } from "react"; // Import useState
+import { useEffect, useState } from "react"; // Import useState
 import CreateGroup from "../createGroup/createGroup";
+import { useGroupContext } from "@/utils/contexts/groupContext";
 
-export default function GroupsList() {
+export default function GroupsList({ groupFromServer }) {
   const [isModalOpen, setIsModalOpen] = useState(false); // Initialize the state
+  const { groups, setGroups } = useGroupContext();
+
+  useEffect(() => {
+    setGroups(groupFromServer);
+  }, [setGroups]);
 
   const handleCreateGroupClick = () => {
     setIsModalOpen(true); // Open the modal
@@ -39,18 +45,19 @@ export default function GroupsList() {
         <div className="Groups-p center">
           <p>Groups you manage</p>
         </div>
-        {new Array(20).fill(0).map((e) => (
-          <div className="manage-bottom-container">
-            <button className="btn-Groups">
+        <div className="manage-bottom-container">
+          {groups.map((group) => (
+            <button className="btn-Groups" key={group._id}>
               <img
                 src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
                 alt="Group"
               />
-              <p>My Group</p>
+              <p>{group.name}</p>
             </button>
-          </div>
-        ))}
-        {isModalOpen && <CreateGroup onClose={closeModal} />}{" "}
+          ))}
+        </div>
+
+        {isModalOpen && <CreateGroup onClose={closeModal} />}
       </div>
     </div>
   );

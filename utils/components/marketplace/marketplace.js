@@ -28,7 +28,7 @@ function Marketplace() {
 
   const renderCategories = () => {
     const { updateSharedCategory } = useContext(CategoryContext);
-    const { sharedCategory } = useContext(CategoryContext);
+    // const { sharedCategory } = useContext(CategoryContext);
 
     const handleClick = (name) => {
       updateSharedCategory(name);

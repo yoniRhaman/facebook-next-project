@@ -1,4 +1,3 @@
-"use client";
 import { Close } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
 import "./createGroup.css";
@@ -47,7 +46,7 @@ export default function CreateGroup({ onClose }) {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <input type="text" placeholder="Group Name" className="inp-group" />
+          <input type="text" name="name" placeholder="Group Name" className="inp-group" />
           <input
             type="text"
             placeholder="Choose Friends"

@@ -25,3 +25,17 @@ export async function register(data) {
     throw new Error(error);
   }
 }
+
+
+export async function getUserData(token,_id) {
+  try {
+    const profileData = await axios.get(`${SERVER_URL}/users/${id}`,{
+    headers: { Authorization: `Bearer ${token}` },
+  });
+    console.log(profileData.data);
+    return profileData.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+}
