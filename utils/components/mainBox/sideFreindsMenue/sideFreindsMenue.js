@@ -1,131 +1,32 @@
 'use client';
-import { getUserData } from "@/utils/api/signinApi";
+// import { getUserData } from "@/utils/api/signinApi";
 import "./sideFreindsMenue.css";
-import { getTwentyFreinds } from "@/utils/api/freinds";
-import { getCookies } from "cookies-next";
-
-// const freinds = [
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-//     {
-//         id: "1234",
-//         src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfb_-bZ0G28ppp5P7bmwuCUDJC8i6IIe44XLjlj-_fHsLSVoZb3kB2758kmA&s",
-//         name: "Melech Constablier"
-//     },
-
-// ]
-
-const freinds =  getTwentyFreinds(getCookies("uid"));
+import { getTwentyFreinds } from "@/utils/api/freindsApi";
+import { getCookie } from "cookies-next";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 
+// const freinds1 = async () => await getTwentyFreinds(getCookies("uid"), getCookies("token"));
 
-export default function SideFreindsMenue() {
+
+export default function SideFriendsMenu(token, id) {
+
+    const [friends, setFriends] = useState([]);
+
+    useEffect(() => {
+        const fetchFriends = async () => {
+            const friendsData = await getTwentyFreinds(getCookie("token"), getCookie("uid"));
+            setFriends(friendsData);
+        };
+
+        fetchFriends();
+    }, []);
+
     return (
+    
         <div className="friends-box">
-            {freinds.map((friend, n) => (
+            {friends.map((friend, n) => (
                 <FriendItem friend={friend} key={n} />
             ))}
         </div>
@@ -134,13 +35,11 @@ export default function SideFreindsMenue() {
 
 function FriendItem({ friend }) {
     return (
-        <div className="friend-item">
-            <img className="avatar" src={"/"} alt={friend.name} />
-            <p className="friend-name">{friend.name}</p>
-        </div>
+        <Link className="friend-item" href={`/profile/${friend._id}`}>
+            <img className="avatar" src={friend.baverImg} alt={`${friend.firstName} ${friend.lastName}`}/>
+            <p className="friend-name">{friend.firstName} {friend.lastName}</p>
+        </Link>
     );
 }
-
-
 
 

@@ -28,6 +28,7 @@ function RegisterForm() {
       // console.log(profile, baver);
       json["profileImg"] = profile;
       json["baverImg"] = baver;
+      json["freinds"] = [];
       const response =  await  register(json);
       console.log(response);
              
