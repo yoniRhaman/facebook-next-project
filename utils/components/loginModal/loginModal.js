@@ -13,6 +13,7 @@ export default function LoginModal() {
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
       const { token, user_id } = await login(data);
+      console.log(`token ${token}. user id: ${user_id}`);
       setCookie("token", token);
       setCookie("uid", user_id);
     } catch (error) {

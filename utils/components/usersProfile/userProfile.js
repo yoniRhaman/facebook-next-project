@@ -1,3 +1,4 @@
+"use client"
 import {
   displayedUserInformation,
   nineFreindsPictures,
@@ -15,28 +16,31 @@ import {
   ShareOutlined,
   ThumbUpOffAlt,
 } from "@mui/icons-material";
-
 import { Button } from "@mui/material";
 import Link from "next/link";
 
-export default function UserProfile() {
+
+
+export default function UserProfile({ userData }) {
+  // const userData = data.userData;
+  console.log(userData);
   return (
     <div className="profile-box">
       <div className="inner-profile-box">
         <img
           className="background-picture"
-          src={displayedUserInformation.mainPicture}
+          src={userData.baverImg}
         ></img>
         <div className="information-box">
           <img
             className="profile-picture"
-            src={displayedUserInformation.profilePicture}
+            src={userData.frofileImg}
           ></img>
           <div className="personal-information">
-            <h1 className="name-and-freinds">{`${displayedUserInformation.firstName}  ${displayedUserInformation.lastName}`}</h1>
-            <p className="name-and-freinds">{`${displayedUserInformation.numberOfMutualFreinds} mutual freinds`}</p>
+            <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
+            <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
             <div className="mutual-freinds-pictures">
-              {displayedUserInformation.mutualFreinds.map((freind) => (
+              {userData.freinds.map((freind) => (
                 <ListOfFreindsPictures freind={freind} />
               ))}
             </div>
@@ -106,7 +110,7 @@ export default function UserProfile() {
 }
 
 function ListOfFreindsPictures({ freind }) {
-  return <img className="mutual-freind-picture" src={freind.ProfilePicture} />;
+  return <img className="mutual-freind-picture" src={freind.ProfileImg} />;
 }
 
 function DisplayNinePictures({ picture }) {
