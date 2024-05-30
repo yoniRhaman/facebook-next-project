@@ -4,11 +4,23 @@ import "./createGroup.css";
 import Image from "next/image";
 import { createNewGroups } from "@/utils/api/groupsApi";
 import { getCookie, setCookie } from "cookies-next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CreateGroup({ onClose }) {
   const [loading, setLoading] = useState(false);
+  const [friends, setFriends] = useState([]);
 
+  useEffect(()=>{
+    const getFriends = async() => {
+      try {
+        //find the friends
+        //setFriends(result)
+      } catch (error) {
+        
+      }
+    };
+    getFriends()
+  },[])
   async function handlegroupSubmit(e) {
     try {
       e.preventDefault();
@@ -45,12 +57,17 @@ export default function CreateGroup({ onClose }) {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <input type="text" name="name" placeholder="Group Name" className="inp-group" />
           <input
             type="text"
-            placeholder="Choose Friends"
+            name="name"
+            placeholder="Group Name"
             className="inp-group"
           />
+          <select placeholder="Choose Friends" className="inp-group">
+            {friends.map((friend) => (
+              <option>{friend.name}</option>
+            ))}
+          </select>
           <div class="inp-img-container">
             <label for="mainImage" class="inp-img-label">
               Choose File
