@@ -2,7 +2,6 @@ import Marketplace from "@/utils/components/marketplace/marketplace";
 import Marketgrid from "@/utils/components/marketgrid/marketgrid";
 import "./marketplacePage.css";
 import { getAllProducts } from "@/utils/api/marketplaceApi";
-import { useProductContext } from "@/utils/contexts/productContext";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 

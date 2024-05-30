@@ -18,8 +18,6 @@ export async function getAllGroups(token) {
 }
 
 export async function createNewGroups(body, token) {
-  console.log(body);
-  console.log(token);
   try {
     const groups = await axios.post(`${SERVER_URL}/groups`, body, {
       headers: { Authorization: `Bearer ${token}` },

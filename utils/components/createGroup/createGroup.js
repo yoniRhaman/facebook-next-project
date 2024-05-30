@@ -1,4 +1,3 @@
-"use client";
 import { Close } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
 import "./createGroup.css";
@@ -19,7 +18,6 @@ export default function CreateGroup({ onClose }) {
       json["owner"] = getCookie("uid");
 
       await createNewGroups(json, getCookie("token"));
-
     } catch (error) {
       console.error(error);
     } finally {
@@ -47,12 +45,24 @@ export default function CreateGroup({ onClose }) {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <input type="text" placeholder="Group Name" className="inp-group" />
+          <input type="text" name="name" placeholder="Group Name" className="inp-group" />
           <input
             type="text"
             placeholder="Choose Friends"
             className="inp-group"
           />
+          <div class="inp-img-container">
+            <label for="mainImage" class="inp-img-label">
+              Choose File
+            </label>
+            <input
+              type="file"
+              id="mainImage"
+              name="mainImage"
+              class="inp-img"
+              required
+            />
+          </div>
         </div>
         <div>
           <Button

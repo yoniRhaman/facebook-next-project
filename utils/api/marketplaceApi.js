@@ -52,3 +52,17 @@ async function deleteProduct(id) {
     throw new Error(error);
   }
 }
+
+export async function deleteProductById(_id,  token) {
+  try {
+    const response = await axios.delete(
+      `${SERVER_URL}/products/${_id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}

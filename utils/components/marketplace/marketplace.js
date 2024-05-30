@@ -28,12 +28,12 @@ function Marketplace() {
 
   const renderCategories = () => {
     const { updateSharedCategory } = useContext(CategoryContext);
-    const { sharedCategory } = useContext(CategoryContext);
+    // const { sharedCategory } = useContext(CategoryContext);
 
     const handleClick = (name) => {
       updateSharedCategory(name);
-      console.log(name);
-      console.log(sharedCategory);
+      // console.log(name);
+      // console.log(sharedCategory);
     };
 
     const categories = [

@@ -5,6 +5,7 @@ import ProductProvider from "@/utils/contexts/productContext";
 import { cookies } from "next/headers";
 import { getCookie } from "cookies-next";
 import { CategoryProvider } from "@/utils/contexts/categoryContext";
+import GroupProvider from "@/utils/contexts/groupContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -20,9 +21,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {token && <Navbar />}
         <ProductProvider>
-        <CategoryProvider>
-{children}
-        </CategoryProvider>
+          <GroupProvider>
+            <CategoryProvider>{children}</CategoryProvider>
+          </GroupProvider>
         </ProductProvider>
       </body>
     </html>
