@@ -12,9 +12,10 @@ export default function LoginModal() {
       // setLoading(true);
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
-      const { token, user_id } = await login(data);
+      const { token, user_id, profileImg } = await login(data);
       setCookie("token", token);
       setCookie("uid", user_id);
+      setCookie("profileImg", profileImg);
     } catch (error) {
       console.error(error);
     } finally {

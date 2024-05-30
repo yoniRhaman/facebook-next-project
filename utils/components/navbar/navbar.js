@@ -14,11 +14,20 @@ import { AiTwotoneBell } from "react-icons/ai";
 import { AiTwotoneMessage } from "react-icons/ai";
 import { TbGridDots } from "react-icons/tb";
 import { BsArrowDownCircleFill } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getCookie } from "cookies-next";
+import Cookies from "js-cookie";
 
 export default function Navbar() {
+  const [profileImg, setProfileImg] = useState("");
+
+  useEffect(() => {
+    const url = Cookies.get("profileImg");
+    if (url) setProfileImg(url);
+    // setProfileImg(getCookie("profileImg"));
+  }, []);
   const [value, setValue] = useState("one");
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -68,12 +77,12 @@ export default function Navbar() {
         <button className="icon-button">
           <AiTwotoneBell />
         </button>
-        <Link href="/profile" passHref>
+        <Link href="/profile" legacyBehavior>
           <button className="profile-button">
             <Image
-              src="/images/profile-men.jpg"
-              fill
+              src={profileImg}
               alt="Picture of the author"
+              fill
               style={{ objectFit: "cover" }}
             />
             <div className="profile-overlay">
