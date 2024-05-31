@@ -5,10 +5,18 @@ import Image from "next/image";
 import { createNewGroups } from "@/utils/api/groupsApi";
 import { getCookie, setCookie } from "cookies-next";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function CreateGroup({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [friends, setFriends] = useState([]);
+  const [profileImg, setProfileImg] = useState("");
+
+  useEffect(() => {
+    const url = Cookies.get("profileImg");
+    if (url) setProfileImg(url);
+    // setProfileImg(getCookie("profileImg"));
+  }, []);
 
   useEffect(()=>{
     const getFriends = async() => {
@@ -51,7 +59,7 @@ export default function CreateGroup({ onClose }) {
         <div className="column center gap-20">
           <div className="picture">
             <Image
-              src="/images/profile-men.jpg"
+              src={profileImg}
               fill
               alt="Picture of the author"
               style={{ objectFit: "cover" }}
