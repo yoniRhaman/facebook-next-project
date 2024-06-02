@@ -1,12 +1,26 @@
-import { getUserDataForProfile } from "@/utils/api/usersApi";
+import { getUserDataForProfile, getUsersPictures } from "@/utils/api/usersApi";
 import UserProfile from "@/utils/components/usersProfile/userProfile";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
 async function ProfilePage({ params: { id } }) {
-    const userData = await getUserDataForProfile(getCookie("token", { cookies }), id);
-    console.log(userData);
-    return <div ><UserProfile userData={userData} /></div>;
+    const token = getCookie("token", { cookies });
+    const userData = await getUserDataForProfile(token, id);
+    const uid = getCookie("uid", { cookies });
+    const freindsProfilePictures = await getUsersPictures(token, { freinds: userData.freinds });
+
+    //it's checking if the displayed profile is a friend of dhe user and adding the result to the userData
+    const isFreind = userData.freinds.includes(uid);
+    userData["isFreind"] = isFreind;
+
+    //adding the friends pictures to the userData
+    userData["freindsPictures"] = freindsProfilePictures;
+
+    userData["token"] = token;
+    userData["uid"] = uid;
+    userData["fid"] = id;
+    console.log("user data :::::::::", userData);
+    return <div ><UserProfile userData={userData} token={token} /></div>;
 }
 
 export default ProfilePage;

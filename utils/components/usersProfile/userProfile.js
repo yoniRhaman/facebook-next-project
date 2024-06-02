@@ -18,12 +18,21 @@ import {
 } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import { useState } from "react";
+import { addFreind } from "@/utils/api/freindsApi";
 
 
 
 export default function UserProfile({ userData }) {
-  // const userData = data.userData;
-  console.log(userData);
+  const [isFreind, setIsFreind] = useState(userData.isFreind);
+
+
+  function addFreindLocaly(){
+    setIsFreind(addFreind(userData.token, { uid: userData.uid, fid: userData.fid }));
+  }
+
+
+
   return (
     <div className="profile-box">
       <div className="inner-profile-box">
@@ -40,16 +49,17 @@ export default function UserProfile({ userData }) {
             <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
             <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
             <div className="mutual-freinds-pictures">
-              {userData.freinds.map((freind) => (
-                <ListOfFreindsPictures freind={freind} />
-              ))}
+              {
+                userData.freindsPictures.map((freind) => (
+
+                  <ListOfFreindsPictures freind={freind} />
+                ))}
             </div>
           </div>
           <div className="out-buttons-box">
             <div className="buttons">
-              <button className="invite-button" variant="outlined" size="small">
-                <PersonAddAlt className="add-freind-request" />
-                freinds
+              <button className="invite-button" variant="outlined" size="small" onClick={() => addFreindLocaly}>
+                {!isFreind ? <PersonAddAlt className="add-freind-request" /> : <p>you are a friend</p>}
               </button>
 
               <button
@@ -110,7 +120,12 @@ export default function UserProfile({ userData }) {
 }
 
 function ListOfFreindsPictures({ freind }) {
-  return <img className="mutual-freind-picture" src={freind.ProfileImg} />;
+
+  return (
+    <Link href={`/profile/${freind._id}`}>
+      <img className="mutual-freind-picture" src={freind.baverImg} />
+    </Link>
+  );
 }
 
 function DisplayNinePictures({ picture }) {
