@@ -40,12 +40,15 @@ export default function CreateGroup({ onClose }) {
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
+      const participants = formData.getAll("participants");
+      json["participants"] = participants;
       const group = await createNewGroups(json, getCookie("token"));
       setSharedGroup((prev) => [...prev, group]);
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
+      onClose();
     }
   }
 
@@ -82,9 +85,8 @@ export default function CreateGroup({ onClose }) {
             name="participants"
           >
             {friends.map((friend) => {
-              console.log(friend);
               return (
-                <option value={friend._id}>
+                <option key={friend._id} value={friend._id}>
                   {friend.firstName} {friend.lastName}
                 </option>
               );
