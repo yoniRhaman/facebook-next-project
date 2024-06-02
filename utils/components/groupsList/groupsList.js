@@ -8,11 +8,12 @@ import { useGroupContext } from "@/utils/contexts/groupContext";
 
 export default function GroupsList({ groupFromServer }) {
   const [isModalOpen, setIsModalOpen] = useState(false); // Initialize the state
-  const { groups, setGroups } = useGroupContext();
+  const { sharedGroup, setSharedGroup } = useGroupContext();
 
   useEffect(() => {
-    setGroups(groupFromServer);
-  }, [setGroups]);
+    setSharedGroup(groupFromServer);
+    console.log(groupFromServer);
+  }, []);
 
   const handleCreateGroupClick = () => {
     setIsModalOpen(true); // Open the modal
@@ -46,7 +47,7 @@ export default function GroupsList({ groupFromServer }) {
           <p>Groups you manage</p>
         </div>
         <div className="manage-bottom-container">
-          {groups.map((group) => (
+          {sharedGroup.map((group) => (
             <button className="btn-Groups" key={group._id}>
               <img
                 src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"

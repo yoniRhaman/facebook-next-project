@@ -1,15 +1,19 @@
 "use client";
+
 import { createContext, useContext, useState } from "react";
 
 const GroupContext = createContext();
 
-export const useGroupContext = () => useContext(GroupContext);
+export function useGroupContext() {
+  return useContext(GroupContext);
+}
 
-export default function GroupProvider({ children }) {
-  const [groups, setGroups] = useState([]);
+export const GroupProvider = ({ children }) => {
+  const [sharedGroup, setSharedGroup] = useState([]);
+
   return (
-    <GroupContext.Provider value={{ groups, setGroups }}>
+    <GroupContext.Provider value={{ sharedGroup, setSharedGroup }}>
       {children}
     </GroupContext.Provider>
   );
-}
+};

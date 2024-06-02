@@ -1,13 +1,18 @@
 "use client";
 import { Close } from "@mui/icons-material";
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import "./loginModal.css";
 import Link from "next/link";
 import { setCookie } from "cookies-next";
 import { login } from "@/utils/api/loginApi";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 export default function LoginModal() {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   async function handleSumbit(e) {
     try {
+      setLoading(true);
       e.preventDefault();
       // setLoading(true);
       const formData = new FormData(e.target);
@@ -16,6 +21,8 @@ export default function LoginModal() {
       setCookie("token", token);
       setCookie("uid", user_id);
       setCookie("profileImg", profileImg);
+      router.push("/");
+      setLoading(false);
     } catch (error) {
       console.error(error);
     } finally {
@@ -31,7 +38,12 @@ export default function LoginModal() {
         <TextField name="email" label="email" type="email" />
         <TextField name="password" label="password" type="password" />
         <Button variant="contained" type="submit">
-          Log in
+        {loading ? (
+            <CircularProgress sx={{ color: "white" }} />
+          ) : (
+            "Log in"
+          )}
+
         </Button>
         <Button variant="text">forgot password</Button>
       </form>
@@ -42,6 +54,7 @@ export default function LoginModal() {
           }}
           variant="contained"
         >
+
           create new account
         </Button>
       </Link>

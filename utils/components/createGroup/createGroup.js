@@ -1,13 +1,37 @@
+"use client";
 import { Close } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
 import "./createGroup.css";
 import Image from "next/image";
 import { createNewGroups } from "@/utils/api/groupsApi";
 import { getCookie, setCookie } from "cookies-next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { getUserFreinds } from "@/utils/api/freindsApi";
+import { useGroupContext } from "@/utils/contexts/groupContext";
 
 export default function CreateGroup({ onClose }) {
   const [loading, setLoading] = useState(false);
+  const [friends, setFriends] = useState([]);
+  const [profileImg, setProfileImg] = useState("");
+  const { sharedGroup, setSharedGroup } = useGroupContext();
+
+  useEffect(() => {
+    const url = Cookies.get("profileImg");
+    if (url) setProfileImg(url);
+    const getFriends = async () => {
+      try {
+        const token = getCookie("token");
+        const id = getCookie("uid");
+        const friends = await getUserFreinds(token, id);
+        setFriends(friends);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getFriends();
+    // setProfileImg(getCookie("profileImg"));
+  }, []);
 
   async function handlegroupSubmit(e) {
     try {
@@ -16,8 +40,8 @@ export default function CreateGroup({ onClose }) {
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
-
-      await createNewGroups(json, getCookie("token"));
+      const group = await createNewGroups(json, getCookie("token"));
+      setSharedGroup((prev) => [...prev, group]);
     } catch (error) {
       console.error(error);
     } finally {
@@ -39,18 +63,33 @@ export default function CreateGroup({ onClose }) {
         <div className="column center gap-20">
           <div className="picture">
             <Image
-              src="/images/profile-men.jpg"
+              src={profileImg}
               fill
               alt="Picture of the author"
               style={{ objectFit: "cover" }}
             />
           </div>
-          <input type="text" name="name" placeholder="Group Name" className="inp-group" />
           <input
             type="text"
-            placeholder="Choose Friends"
+            name="name"
+            placeholder="Group Name"
             className="inp-group"
           />
+          <select
+            placeholder="Choose Friends"
+            className="inp-group"
+            multiple
+            name="participants"
+          >
+            {friends.map((friend) => {
+              console.log(friend);
+              return (
+                <option value={friend._id}>
+                  {friend.firstName} {friend.lastName}
+                </option>
+              );
+            })}
+          </select>
           <div class="inp-img-container">
             <label for="mainImage" class="inp-img-label">
               Choose File
