@@ -9,7 +9,7 @@ const SERVER_URL =
 
 
 export async function getTwentyFreinds(token, id) {
-
+ 
     try {
         const freindData = await axios.get(`${SERVER_URL}/freinds/${id}`, {
             headers: {
@@ -28,3 +28,26 @@ export async function getTwentyFreinds(token, id) {
         throw new Error("not found freind data");
     }
 }
+
+
+export async function addFreind(token, idis) {
+ 
+    try {
+        const freindData = await axios.post(`${SERVER_URL}/freinds/addFreind`,
+        idis,
+         {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+        return freindData.data;
+    } catch (error) {
+        return false;
+    }
+}
+
+
+
+
+

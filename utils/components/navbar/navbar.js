@@ -21,6 +21,8 @@ import { getCookie } from "cookies-next";
 import Cookies from "js-cookie";
 
 export default function Navbar() {
+
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [profileImg, setProfileImg] = useState("");
 
   useEffect(() => {
@@ -34,6 +36,7 @@ export default function Navbar() {
   };
 
   return (
+    <div >
     <nav className="nav-container">
       <div className="nav-left row">
         <FacebookIcon />
@@ -74,7 +77,7 @@ export default function Navbar() {
             <AiTwotoneMessage />
           </button>
         </Link>
-        <button className="icon-button">
+        <button className="icon-button" onClick={() => {isNotificationOpen === false ?  setIsNotificationOpen(true) : setIsNotificationOpen(false)}}>
           <AiTwotoneBell />
         </button>
         <Link href="/profile" legacyBehavior>
@@ -92,5 +95,10 @@ export default function Navbar() {
         </Link>
       </div>
     </nav>
+      {isNotificationOpen && <div className="notifications"></div>}
+      </div>
   );
 }
+
+
+
