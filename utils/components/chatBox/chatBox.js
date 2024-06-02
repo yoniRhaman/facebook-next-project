@@ -1,27 +1,54 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
 import "./chatBox.css";
 import SendIcon from "@mui/icons-material/Send";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CloseIcon from "@mui/icons-material/Close";
 import Searchicon from "../../icons/searchicon";
+import { useChatContext } from "@/utils/contexts/ChatContext";
+
+let socket;
 
 export default function ChatBox() {
+  const { messages, addMessage } = useChatContext();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    socket = io("http://localhost:3005");
+
+    socket.on("chat message", (msg) => {
+      addMessage(msg);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [addMessage]);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
+  const sendMessage = () => {
+    if (message.trim()) {
+      const msg = { message };
+      socket.emit("chat message", msg);
+      addMessage(msg);
+      setMessage("");
+    }
+  };
+
   return (
     <div className="chatBox-container">
-      <div className="chatBox-top row center ">
-        <div className="chatBox-left center ">
+      <div className="chatBox-top row center">
+        <div className="chatBox-left center">
           <button className="btn-chatBox-img center">
             <img
               src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
-              alt="משהו"
+              alt="Profile"
             />
           </button>
           <p>name of profile</p>
@@ -30,7 +57,13 @@ export default function ChatBox() {
           <CloseIcon className="close-icon" />
         </div>
       </div>
-      <div className="chatBox-middel"></div>
+      <div className="chatBox-middle">
+        {messages.map((msg, index) => (
+          <div key={index} className="message">
+            {msg.message} {/* Ensure you're accessing the message property */}
+          </div>
+        ))}
+      </div>
       <div className="chatBox-button row">
         <label htmlFor="file-input">
           <AddPhotoAlternateIcon className="addPhoto-icon" />
@@ -42,15 +75,22 @@ export default function ChatBox() {
           accept="image/*"
           onChange={handleFileChange}
         />
-        <div className=" search-input2 row center">
+        <div className="search-input2 row center">
           <Searchicon />
           <input
             type="text"
             name="search"
             placeholder="what would you like to write"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                sendMessage();
+              }
+            }}
           />
         </div>
-        <button>
+        <button onClick={sendMessage}>
           <SendIcon className="sendIcon" />
         </button>
       </div>

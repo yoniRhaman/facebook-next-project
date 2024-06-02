@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 import { getCookie } from "cookies-next";
 import { CategoryProvider } from "@/utils/contexts/categoryContext";
 import GroupProvider from "@/utils/contexts/groupContext";
-import { LoadingProvider } from "@/utils/contexts/loadingContext";
+import ChatProvider from "@/utils/contexts/ChatContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,11 +21,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {token && <Navbar />}
-          <ProductProvider>
-            <GroupProvider>
+        <ProductProvider>
+          <GroupProvider>
+            <ChatProvider>
               <CategoryProvider>{children}</CategoryProvider>
-            </GroupProvider>
-          </ProductProvider>
+            </ChatProvider>
+          </GroupProvider>
+        </ProductProvider>
       </body>
     </html>
   );
