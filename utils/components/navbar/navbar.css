@@ -85,3 +85,9 @@
   height: 15px; /* Adjust the height */
   border-radius: 50%; /* Ensure it's a circle */
 }
+
+.notifications {
+  width: 40vw;
+  height: 80vh;
+  background-color: #fff;
+}

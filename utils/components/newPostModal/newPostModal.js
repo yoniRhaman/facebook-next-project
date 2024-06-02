@@ -9,9 +9,11 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 import { getCookie } from "cookies-next";
 import Cookies from "js-cookie";
+import { usePostContext } from "@/utils/contexts/postContext";
 
 export default function Modal({ onClose }) {
   const [profileImg, setProfileImg] = useState("");
+  const { setSharedPosts } = usePostContext([]);
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
@@ -23,7 +25,6 @@ export default function Modal({ onClose }) {
     e.preventDefault();
     setLoading(true);
     const formData = new FormData(e.target);
-    // console.log(Object.fromEntries(formData));
     const json = Object.fromEntries(formData);
 
     json["images"] = await Promise.all(
@@ -31,9 +32,8 @@ export default function Modal({ onClose }) {
     );
     json["owner"] = getCookie("uid");
 
-    // console.log({json});
-
-    await createNewPosts(json, getCookie("token"));
+    const post = await createNewPosts(json, getCookie("token"));
+    setSharedPosts((prev) => [...prev, post]);
     setLoading(false);
     onClose();
   };

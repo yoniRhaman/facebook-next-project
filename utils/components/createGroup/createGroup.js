@@ -1,3 +1,4 @@
+"use client";
 import { Close } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
 import "./createGroup.css";
@@ -6,29 +7,32 @@ import { createNewGroups } from "@/utils/api/groupsApi";
 import { getCookie, setCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { getUserFreinds } from "@/utils/api/freindsApi";
+import { useGroupContext } from "@/utils/contexts/groupContext";
 
 export default function CreateGroup({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [friends, setFriends] = useState([]);
   const [profileImg, setProfileImg] = useState("");
+  const { sharedGroup, setSharedGroup } = useGroupContext();
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
     if (url) setProfileImg(url);
+    const getFriends = async () => {
+      try {
+        const token = getCookie("token");
+        const id = getCookie("uid");
+        const friends = await getUserFreinds(token, id);
+        setFriends(friends);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getFriends();
     // setProfileImg(getCookie("profileImg"));
   }, []);
 
-  useEffect(()=>{
-    const getFriends = async() => {
-      try {
-        //find the friends
-        //setFriends(result)
-      } catch (error) {
-        
-      }
-    };
-    getFriends()
-  },[])
   async function handlegroupSubmit(e) {
     try {
       e.preventDefault();
@@ -36,12 +40,15 @@ export default function CreateGroup({ onClose }) {
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
-
-      await createNewGroups(json, getCookie("token"));
+      const participants = formData.getAll("participants");
+      json["participants"] = participants;
+      const group = await createNewGroups(json, getCookie("token"));
+      setSharedGroup((prev) => [...prev, group]);
     } catch (error) {
       console.error(error);
     } finally {
       setLoading(false);
+      onClose();
     }
   }
 
@@ -71,10 +78,19 @@ export default function CreateGroup({ onClose }) {
             placeholder="Group Name"
             className="inp-group"
           />
-          <select placeholder="Choose Friends" className="inp-group">
-            {friends.map((friend) => (
-              <option>{friend.name}</option>
-            ))}
+          <select
+            placeholder="Choose Friends"
+            className="inp-group"
+            multiple
+            name="participants"
+          >
+            {friends.map((friend) => {
+              return (
+                <option key={friend._id} value={friend._id}>
+                  {friend.firstName} {friend.lastName}
+                </option>
+              );
+            })}
           </select>
           <div class="inp-img-container">
             <label for="mainImage" class="inp-img-label">
