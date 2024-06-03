@@ -10,7 +10,12 @@ import { posts } from "@/utils/data/posts";
 import CreatePost from "../../createPost/createPost";
 import "./mainPosts.css";
 import { usePostContext } from "@/utils/contexts/postContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
+import { getUserData } from "@/utils/api/loginApi";
+import { getCookie } from "cookies-next";
+import { CircularProgress } from "@mui/material";
+import Image from "next/image";
 
 // const personalInformation = {
 //   name: "moshe yakovson",
@@ -103,19 +108,45 @@ export default function MainPosts({ postsFromServer }) {
 }
 
 function PostItem({ post }) {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const token = getCookie("token");
+        const u = await getUserData(token, post.owner);
+        setUser(u);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUser();
+  }, []);
   return (
     <div className="post-box ">
       <div className="out-brief-introduction-box">
-        <p>{post.content}</p>
+        {!user ? (
+          <CircularProgress />
+        ) : (
+          <>
+          <p>{`${user.firstName} ${user.lastName}`}</p>
+          <Image src={user.profileImg} alt="Profile Image" width={50} height={50} />
+          <p>Privacy: {post.privacy}</p>
+          <p>{post.content}</p>
+          </>
+        )}
+        <p>{post.createdAt}</p>
         {post.images && post.images.length > 0 && (
-          <div className="post-images">
+          <div className="post-images row gap-20 ">
             {post.images.map((image, idx) => (
-              <img key={idx} src={image} alt={`Post image ${idx}`} />
+              <img
+                className="post-img"
+                key={nanoid()}
+                src={image}
+                alt={`Post image ${idx}`}
+              />
             ))}
           </div>
         )}
-        <p>Privacy: {post.privacy}</p>
-        <p>Owner: {post.owner}</p>
       </div>
     </div>
   );

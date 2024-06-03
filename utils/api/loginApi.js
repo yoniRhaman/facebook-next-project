@@ -26,12 +26,11 @@ export async function register(data) {
   }
 }
 
-
-export async function getUserData(token,_id) {
+export async function getUserData(token, _id) {
   try {
-    const profileData = await axios.get(`${SERVER_URL}/users/${id}`,{
-    headers: { Authorization: `Bearer ${token}` },
-  });
+    const profileData = await axios.get(`${SERVER_URL}/users/${_id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     console.log(profileData.data);
     return profileData.data;
   } catch (error) {
