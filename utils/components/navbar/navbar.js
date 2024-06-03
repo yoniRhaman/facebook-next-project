@@ -24,12 +24,21 @@ export default function Navbar() {
 
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [profileImg, setProfileImg] = useState("");
+  const [usrId, setUsrId] = useState("");
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
     if (url) setProfileImg(url);
     // setProfileImg(getCookie("profileImg"));
   }, []);
+
+  useEffect(() => {
+    const uid = Cookies.get("uid");
+    setUsrId(uid);
+    // setProfileImg(getCookie("profileImg"));
+  }, []);
+
+
   const [value, setValue] = useState("one");
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -80,7 +89,7 @@ export default function Navbar() {
           <button className="icon-button" onClick={() => { isNotificationOpen === false ? setIsNotificationOpen(true) : setIsNotificationOpen(false) }}>
             <AiTwotoneBell />
           </button>
-          <Link href="/profile" legacyBehavior>
+          <Link href={`/profile/${usrId}`} legacyBehavior>
             <button className="profile-button">
               <Image
                 src={profileImg}
