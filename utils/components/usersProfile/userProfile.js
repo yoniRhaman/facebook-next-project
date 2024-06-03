@@ -23,14 +23,21 @@ import { addFreind } from "@/utils/api/freindsApi";
 
 
 
+
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
 
 
-  function addFreindLocaly(){
-    setIsFreind(addFreind(userData.token, { uid: userData.uid, fid: userData.fid }));
-  }
 
+
+  async function addFreindLocaly() {
+    try {
+      await addFreind(userData.token, { uid: userData.uid, fid: userData.fid });
+      setIsFreind(true);
+    } catch (error) {
+      console.error("Error adding friend:", error);
+    }
+  }
 
 
   return (
@@ -43,7 +50,7 @@ export default function UserProfile({ userData }) {
         <div className="information-box">
           <img
             className="profile-picture"
-            src={userData.frofileImg}
+            src={userData.profileImg}
           ></img>
           <div className="personal-information">
             <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
@@ -58,7 +65,7 @@ export default function UserProfile({ userData }) {
           </div>
           <div className="out-buttons-box">
             <div className="buttons">
-              <button className="invite-button" variant="outlined" size="small" onClick={() => addFreindLocaly}>
+              <button className="invite-button" variant="outlined" size="small" onClick={addFreindLocaly}>
                 {!isFreind ? <PersonAddAlt className="add-freind-request" /> : <p>you are a friend</p>}
               </button>
 
@@ -78,7 +85,7 @@ export default function UserProfile({ userData }) {
         </div>
 
         <div className="profile-nav">
-          <nav className="rhight-nav">
+          <div className="rhight-nav">
             <Button>Posts</Button>
             <Button>About</Button>
             <Button>Freinds</Button>
@@ -88,7 +95,7 @@ export default function UserProfile({ userData }) {
             <Button>
               More <ArrowDropDownSharp />
             </Button>
-          </nav>
+          </div>
           <Button className="expand-more-button-three-points" size="small">
             . . .
           </Button>
@@ -110,9 +117,10 @@ export default function UserProfile({ userData }) {
           </div>
         </div>
         <div className="user-posts-box">
-          {userPosts.map((post) => (
-            <PostItem post={post} />
-          ))}
+          {userData.userPosts.map((post) => (
+            <PostItem post={post} firstName={userData.firstName} lastName={userData.lastName} profileImg={userData.profileImg} />
+          ))
+          } 
         </div>
       </div>
     </div>
@@ -137,24 +145,24 @@ function DisplayNinePictures({ picture }) {
   );
 }
 
-function PostItem({ post }) {
+function PostItem({ post, firstName, lastName, profileImg  }) {
   return (
     <div className="user-post-box">
       <div className="user-top-post-box">
-        <Link href={displayedUserInformation.linkToPersonalFeed}>
+        <Link href={`/profile/${post.owner}`}>
           <div className="user-brief-introduction">
             <img
               className="avatar"
-              src={displayedUserInformation.profilePicture}
+              src={profileImg}
             ></img>
-            <p>{displayedUserInformation.firstName}</p>
+            <p>{firstName}  {lastName}</p>
           </div>
         </Link>
       </div>
-      <h1>{post.title}</h1>
+      <h1>title</h1>
       <div className="user-post-picture">
-        {post.pictures.map((picture) => (
-          <img className="user-post-picture" src={picture}></img>
+        {post.images.map((img) => (
+          <img className="user-post-picture" src={img}></img>
         ))}
       </div>
       <div className="user-post-content">
@@ -162,11 +170,11 @@ function PostItem({ post }) {
       </div>
       <div className="user-comments">
         <button className="user-comments-button">
-          <p> {`${post.comments.length} comments`}</p>
+          {/* <p> {`${post.comments.length} comments`}</p> */}
         </button>
         <div>
           <button className="user-comments-button">
-            <p>{`${post.likes.length - 1} + ${post.likes[0].typeOfLike}`}</p>
+            {/* <p>{`${post.likes.length - 1} + ${post.likes[0].typeOfLike}`}</p> */}
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { userPosts } from "../data/displayedUserInformation";
 
 // const SERVER_URL = "https://facebook-express-project.onrender.com";
 const SERVER_URL =
@@ -37,3 +38,16 @@ async function deletePosts(id) {
     throw new Error(error);
   }
 }
+
+export async function getUserPosts(id, token) {
+  try {
+    const userPosts = await axios.get(`${SERVER_URL}/posts/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return userPosts.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+}
+
