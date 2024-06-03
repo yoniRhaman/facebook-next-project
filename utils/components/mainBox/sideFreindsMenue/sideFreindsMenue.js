@@ -1,7 +1,7 @@
 'use client';
 // import { getUserData } from "@/utils/api/signinApi";
 import "./sideFreindsMenue.css";
-import { getTwentyFreinds } from "@/utils/api/freindsApi";
+import { getTwentyFreinds, getUserFreinds } from "@/utils/api/freindsApi";
 import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ export default function SideFriendsMenu(token, id) {
 
     useEffect(() => {
         const fetchFriends = async () => {
-            const friendsData = await getTwentyFreinds(getCookie("token"), getCookie("uid"));
+            const friendsData = await getUserFreinds(getCookie("token"), getCookie("uid"));
             setFriends(friendsData);
         };
 
