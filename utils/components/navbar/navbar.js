@@ -37,66 +37,66 @@ export default function Navbar() {
 
   return (
     <div >
-    <nav className="nav-container">
-      <div className="nav-left row">
-        <FacebookIcon />
-        <div className="containe-search search-input row center">
-          <Searchicon />
-          <input type="text" name="search" placeholder="Search Facebook" />
+      <nav className="nav-container">
+        <div className="nav-left row">
+          <FacebookIcon />
+          <div className="containe-search search-input row center">
+            <Searchicon />
+            <input type="text" name="search" placeholder="Search Facebook" />
+          </div>
         </div>
-      </div>
-      <div className="middel-nav center">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          textColor="primary"
-          indicatorColor="primary"
-          aria-label="secondary tabs example"
-        >
-          <Tab
-            href="/"
-            indicatorColor="white"
-            icon={<Home style={{ color: "white" }} />}
-          />
-          <Tab href="/" icon={<OndemandVideo style={{ color: "white" }} />} />
-          <Tab
-            href="/marketplace"
-            icon={<Storefront style={{ color: "white" }} />}
-          />
-          <Tab href="/groups" icon={<People style={{ color: "white" }} />} />
-          <Tab href="/" icon={<SmartButton style={{ color: "white" }} />} />
-        </Tabs>
-      </div>
-
-      <div className="container-right">
-        <button className="icon-button">
-          <TbGridDots /> {/* No need to specify size here */}
-        </button>
-        <Link href="/messages" passHref>
-          <button className="icon-button">
-            <AiTwotoneMessage />
-          </button>
-        </Link>
-        <button className="icon-button" onClick={() => {isNotificationOpen === false ?  setIsNotificationOpen(true) : setIsNotificationOpen(false)}}>
-          <AiTwotoneBell />
-        </button>
-        <Link href="/profile" legacyBehavior>
-          <button className="profile-button">
-            <Image
-              src={profileImg}
-              alt="Picture of the author"
-              fill
-              style={{ objectFit: "cover" }}
+        <div className="middel-nav center">
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            textColor="primary"
+            indicatorColor="primary"
+            aria-label="secondary tabs example"
+          >
+            <Tab
+              href="/"
+              indicatorColor="white"
+              icon={<Home style={{ color: "white" }} />}
             />
-            <div className="profile-overlay">
-              <BsArrowDownCircleFill />
-            </div>
+            <Tab href="/" icon={<OndemandVideo style={{ color: "white" }} />} />
+            <Tab
+              href="/marketplace"
+              icon={<Storefront style={{ color: "white" }} />}
+            />
+            <Tab href="/groups" icon={<People style={{ color: "white" }} />} />
+            <Tab href="/" icon={<SmartButton style={{ color: "white" }} />} />
+          </Tabs>
+        </div>
+
+        <div className="container-right">
+          <button className="icon-button">
+            <TbGridDots /> {/* No need to specify size here */}
           </button>
-        </Link>
-      </div>
-    </nav>
+          <Link href="/messages" passHref>
+            <button className="icon-button">
+              <AiTwotoneMessage />
+            </button>
+          </Link>
+          <button className="icon-button" onClick={() => { isNotificationOpen === false ? setIsNotificationOpen(true) : setIsNotificationOpen(false) }}>
+            <AiTwotoneBell />
+          </button>
+          <Link href="/profile" legacyBehavior>
+            <button className="profile-button">
+              <Image
+                src={profileImg}
+                alt="Picture of the author"
+                fill
+                style={{ objectFit: "cover" }}
+              />
+              <div className="profile-overlay">
+                <BsArrowDownCircleFill />
+              </div>
+            </button>
+          </Link>
+        </div>
+      </nav>
       {isNotificationOpen && <div className="notifications"></div>}
-      </div>
+    </div>
   );
 }
 

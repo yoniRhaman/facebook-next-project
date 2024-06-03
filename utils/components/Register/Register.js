@@ -29,6 +29,7 @@ function RegisterForm() {
       json["profileImg"] = profile;
       json["baverImg"] = baver;
       json["freinds"] = [];
+      json["posts"] = [];
       const response =  await  register(json);
       console.log(response);
              
