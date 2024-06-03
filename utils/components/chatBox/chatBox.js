@@ -12,40 +12,27 @@ import { createNewChat } from "@/utils/api/chatApi";
 import { getCookie } from "cookies-next";
 import { CircularProgress } from "@mui/material";
 
-export default function ChatBox({ currentChat }) {
+export default function ChatBox({ chat }) {
   let socket;
   const sender = getCookie("uid");
-  const [chat, setChat] = useState(currentChat);
-  const { chatMessages, addMessage } = useChatContext();
+  const [currentChat, setChat] = useState(chat);
+  const { chats, addChat } = useChatContext();
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState(chat.messages);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const handleNoChat = async () => {
-      if (chat["_id"] === undefined) {
-        try {
-          setLoading(true);
-          const c = await createNewChat(chat.participants, getCookie("token"));
-          setChat(c);
-          setLoading(false);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    };
-    handleNoChat();
-
     socket = io("http://localhost:3005");
 
     socket.on("chat message", (msg) => {
-      addMessage(msg);
+      setMessages((prev) => [...prev, msg]);
     });
 
     return () => {
       socket.disconnect();
     };
-  }, [addMessage]);
+  }, [addChat]);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -61,7 +48,7 @@ export default function ChatBox({ currentChat }) {
         participants: chat.participants,
       };
       socket.emit("chat message", msg);
-      addMessage(msg);
+      addChat(msg);
       setMessage("");
     }
   };
@@ -83,8 +70,8 @@ export default function ChatBox({ currentChat }) {
         </div>
       </div>
       <div className="chatBox-middle">
-        {chatMessages.map((msg, index) => (
-          <div key={index} className="message">
+        {messages.map((msg) => (
+          <div key={msg._id} className="message">
             {msg.type === "text" ? (
               <p>{msg.content}</p>
             ) : (

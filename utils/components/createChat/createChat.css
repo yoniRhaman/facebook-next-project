@@ -6,9 +6,11 @@
   right: 0;
   bottom: 0;
   top: 0;
-  /* margin: auto; */
+  margin: auto;
   z-index: 999;
   position: fixed;
+  width: 40%;
+  height: 70%;
 }
 
 .modal-content {

@@ -1,17 +1,20 @@
 "use client";
 import { Close } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
-import "./createGroup.css";
+import "./createChat.css";
 import Image from "next/image";
 import { getCookie, setCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { getUserFreinds } from "@/utils/api/freindsApi";
+import { createNewChat } from "@/utils/api/chatApi";
+import { useChatContext } from "@/utils/contexts/ChatContext";
 
-export default function createChat({ onClose }) {
+export default function CreateChat({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [friends, setFriends] = useState([]);
   const [profileImg, setProfileImg] = useState("");
+  const { addChat } = useChatContext();
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
@@ -30,16 +33,17 @@ export default function createChat({ onClose }) {
     // setProfileImg(getCookie("profileImg"));
   }, []);
 
-  async function handlegroupSubmit(e) {
+  async function handleChatSubmit(e) {
     try {
       e.preventDefault();
       setLoading(true);
+      const token = getCookie("token");
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
-      const participants = formData.getAll("participants");
-      json["participants"] = participants;
-// כאן לכתוב await!!!
+      json["participants"] = formData.getAll("participants");
+      const chat = await createNewChat(json, token);
+      addChat(chat);
     } catch (error) {
       console.error(error);
     } finally {
@@ -58,7 +62,7 @@ export default function createChat({ onClose }) {
           <h1>Create Chat</h1>
         </div>
       </div>
-      <form onSubmit={handlegroupSubmit}>
+      <form onSubmit={handleChatSubmit}>
         <div className="column center gap-20">
           <div className="picture">
             <Image
@@ -92,7 +96,7 @@ export default function createChat({ onClose }) {
             {loading ? (
               <CircularProgress sx={{ color: "white" }} />
             ) : (
-              "Create Group"
+              "Create chat"
             )}
           </Button>
         </div>
