@@ -4,7 +4,7 @@ import Searchicon from "../../icons/searchicon";
 import "./chats.css";
 
 export default function Chats() {
-  const { messages } = useChatContext();
+  const { chatMessages } = useChatContext();
 
   return (
     <div className="chats-container column">
@@ -17,15 +17,15 @@ export default function Chats() {
           <input type="text" name="search" placeholder="Search Messenger" />
         </div>
       </div>
-      {messages.map((message, index) => (
+      {chatMessages.map((message, index) => (
         <button key={index} className="btn-chats-Messenger row center gap-20">
           <button className="btn-chats-img">
             <img
               src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
-              alt="משהו"
+              alt="Profile"
             />
           </button>
-          <p>{message.message}</p> {/* Ensure you're accessing the message property */}
+          <p>{message.message}</p> {/* Correctly render the message property */}
         </button>
       ))}
     </div>

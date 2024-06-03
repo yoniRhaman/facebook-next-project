@@ -11,8 +11,9 @@ import { useChatContext } from "@/utils/contexts/ChatContext";
 
 let socket;
 
-export default function ChatBox() {
-  const { messages, addMessage } = useChatContext();
+export default function ChatBox({ chat_id }) {
+  const [chatId, setChatId] = useState(chat_id);
+  const { chatMessages, addMessage } = useChatContext();
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState("");
 
@@ -34,7 +35,7 @@ export default function ChatBox() {
 
   const sendMessage = () => {
     if (message.trim()) {
-      const msg = { message };
+      const msg = { message, timestamp: new Date(), senderId: "user1", receiverId: "user2" }; // Example structure
       socket.emit("chat message", msg);
       addMessage(msg);
       setMessage("");
@@ -58,9 +59,9 @@ export default function ChatBox() {
         </div>
       </div>
       <div className="chatBox-middle">
-        {messages.map((msg, index) => (
+        {chatMessages.map((msg, index) => (
           <div key={index} className="message">
-            {msg.message} {/* Ensure you're accessing the message property */}
+            {msg.message}
           </div>
         ))}
       </div>
