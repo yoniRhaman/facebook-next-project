@@ -1,20 +1,22 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
-export const ChatContext = createContext();
+const ChatContext = createContext();
 
 export const useChatContext = () => useContext(ChatContext);
 
-export default function ChatProvider({ children }) {
-  const [messages, setMessages] = useState([]);
+const ChatProvider = ({ children }) => {
+  const [chatMessages, setChatMessages] = useState([]);
 
-  const addMessage = (messages) => {
-    setMessages((prevMessages) => [...prevMessages, messages]);
+  const addMessage = (message) => {
+    setChatMessages((prevMessages) => [...prevMessages, message]);
   };
 
   return (
-    <ChatContext.Provider value={{ messages, addMessage }}>
+    <ChatContext.Provider value={{ chatMessages, addMessage }}>
       {children}
     </ChatContext.Provider>
   );
-}
+};
+
+export default ChatProvider;
