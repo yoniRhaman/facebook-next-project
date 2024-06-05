@@ -44,7 +44,7 @@ export default function Chats({ chatsFromServer }) {
       {chats?.map((chat) => (
         <button
           key={chat._id}
-          className="btn-chats-Messenger row center gap-20"
+          className="btnss-chats-Messenger row center gap-20"
         >
           <button className="btn-chats-img">
             <img
