@@ -50,4 +50,3 @@ export async function getUserPosts(id, token) {
     throw new Error(error);
   }
 }
-

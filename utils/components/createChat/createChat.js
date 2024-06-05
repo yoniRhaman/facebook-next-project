@@ -41,7 +41,10 @@ export default function CreateChat({ onClose }) {
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
-      json["participants"] = formData.getAll("participants");
+      json["participants"] = [
+        ...formData.getAll("participants"),
+        json["owner"],
+      ];
       const chat = await createNewChat(json, token);
       addChat(chat);
     } catch (error) {
