@@ -6,7 +6,6 @@
   overflow-y: scroll; /* Enable vertical scroll */
   position: relative;
   top: var(--nav-height);
-
 }
 
 .chatBox-top {
@@ -35,9 +34,7 @@
   margin-right: 10px;
 }
 
-
 .search-input2 {
-
   /* display: flex;
   justify-content: start; */
   height: 30px;
@@ -68,12 +65,10 @@
   height: 67vh;
 }
 
-
 .chatBox-button button {
   background-color: #18191a;
   border: none;
 }
-
 
 .addPhoto-icon {
   margin-right: 10px;
@@ -82,7 +77,6 @@
   height: 40px;
   width: 40px;
 }
-
 
 .chatBox-button-input {
   display: none;
@@ -93,4 +87,12 @@
   color: #fff;
   height: 40px;
   width: 40px;
+}
+
+.message {
+  width: 100%;
+}
+
+.right {
+  justify-content: flex-end;
 }

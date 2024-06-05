@@ -79,7 +79,10 @@ export default function ChatBox() {
       </div>
       <div className="chatBox-middle">
         {messages?.map((msg) => (
-          <div key={msg._id} className="message">
+          <div
+            key={msg._id}
+            className={`row message ${msg.sender === sender && "right"}`}
+          >
             {msg.type === "text" ? (
               <p>{msg.content}</p>
             ) : (
