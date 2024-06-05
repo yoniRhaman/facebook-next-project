@@ -8,36 +8,47 @@ import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CloseIcon from "@mui/icons-material/Close";
 import Searchicon from "../../icons/searchicon";
 import { useChatContext } from "@/utils/contexts/ChatContext";
+import { createNewChat } from "@/utils/api/chatApi";
+import { getCookie } from "cookies-next";
+import { CircularProgress } from "@mui/material";
 
-let socket;
-
-export default function ChatBox({ chat_id }) {
-  const [chatId, setChatId] = useState(chat_id);
-  const { chatMessages, addMessage } = useChatContext();
+export default function ChatBox({ chat }) {
+  let socket;
+  const sender = getCookie("uid");
+  const [currentChat, setChat] = useState(chat);
+  const { chats, addChat } = useChatContext();
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState(chat.messages);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     socket = io("http://localhost:3005");
 
     socket.on("chat message", (msg) => {
-      addMessage(msg);
+      setMessages((prev) => [...prev, msg]);
     });
 
     return () => {
       socket.disconnect();
     };
-  }, [addMessage]);
+  }, [addChat]);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (message.trim()) {
-      const msg = { message, timestamp: new Date(), senderId: "user1", receiverId: "user2" }; // Example structure
+      const msg = {
+        sender,
+        chat_id: chat._id,
+        content: message,
+        type: "text",
+        participants: chat.participants,
+      };
       socket.emit("chat message", msg);
-      addMessage(msg);
+      addChat(msg);
       setMessage("");
     }
   };
@@ -59,9 +70,13 @@ export default function ChatBox({ chat_id }) {
         </div>
       </div>
       <div className="chatBox-middle">
-        {chatMessages.map((msg, index) => (
-          <div key={index} className="message">
-            {msg.message}
+        {messages.map((msg) => (
+          <div key={msg._id} className="message">
+            {msg.type === "text" ? (
+              <p>{msg.content}</p>
+            ) : (
+              <img src={msg.content} />
+            )}
           </div>
         ))}
       </div>
@@ -84,16 +99,20 @@ export default function ChatBox({ chat_id }) {
             placeholder="what would you like to write"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={(e) => {
+            onKeyUp={(e) => {
               if (e.key === "Enter") {
                 sendMessage();
               }
             }}
           />
         </div>
-        <button onClick={sendMessage}>
-          <SendIcon className="sendIcon" />
-        </button>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <button onClick={sendMessage}>
+            <SendIcon className="sendIcon" />
+          </button>
+        )}
       </div>
     </div>
   );

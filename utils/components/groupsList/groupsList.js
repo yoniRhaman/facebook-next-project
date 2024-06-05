@@ -12,7 +12,6 @@ export default function GroupsList({ groupFromServer }) {
 
   useEffect(() => {
     setSharedGroup(groupFromServer);
-    console.log(groupFromServer);
   }, []);
 
   const handleCreateGroupClick = () => {
