@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 .my-body {
   position: relative;
   background-color: black;
@@ -127,7 +127,6 @@
 .garbage{
   margin: 4%;
 }
-=======
 .grid-container {
   background-color: black;
   display: grid;
@@ -164,4 +163,3 @@
     position: relative;
     left: 5px;
 }
->>>>>>> Stashed changes

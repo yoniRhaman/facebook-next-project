@@ -1,6 +1,6 @@
 export const product_list = [
   {
-<<<<<<< Updated upstream
+
     id: "GreenTable",
     name: "Green Table",
     price: 500,
@@ -251,7 +251,7 @@ export const product_list = [
       "https://picsum.photos/id/83/5000/3269",
       "https://picsum.photos/id/84/5000/3269",
     ],
-=======
+
     title: "Green Table",
     price: 500,
     location: "Haifa",
@@ -358,6 +358,5 @@ export const product_list = [
     price: 450,
     location: "Bat Yam",
     img: "https://www.shutterstock.com/shutterstock/photos/2418655625/display_1500/stock-photo-advertising-podium-photo-of-three-fan-on-podium-cool-blue-wind-plants-and-spotlight-2418655625.jpg",
->>>>>>> Stashed changes
   },
 ];
