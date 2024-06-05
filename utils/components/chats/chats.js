@@ -47,23 +47,7 @@ export default function Chats({ chatsFromServer }) {
         {/* <input type="text" name="search" placeholder="Search Messenger" /> */}
       </div>
       {chats?.map((chat) => (
-<<<<<<< HEAD
-        <button
-          key={chat._id}
-          className="btnss-chats-Messenger row center gap-20"
-        >
-          <button className="btn-chats-img">
-            <img
-              src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
-              alt="Profile"
-            />
-          </button>
-          {/* <p>{message.message}</p> */}
-          {/* Correctly render the message property */}
-        </button>
-=======
         <ChatItem chat={chat} />
->>>>>>> 819405a540b118a9535bb353b19b897bea128bb3
       ))}
       {isModalOpen && <CreateChat onClose={closeModal} />}
     </div>
