@@ -1,10 +1,10 @@
 import axios from "axios";
 
-// const SERVER_URL = "https://facebook-express-project.onrender.com";
 const SERVER_URL =
-  process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
-    ? "http://localhost:3005"
-    : "https://facebook-express-project.onrender.com";
+  // process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+  //   ? "http://localhost:3005"
+  //   :
+     "https://new-facebook-express-render.onrender.com";
 
 export async function createNewChat(body, token) {
   try {
