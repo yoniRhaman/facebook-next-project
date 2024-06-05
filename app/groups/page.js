@@ -11,7 +11,9 @@ async function GroupsPage() {
   return (
     <div className="row">
       <GroupsList groupFromServer={groupFromServer} />
-      <PostGroups/>
+
+      <PostGroups />
+
       {/* <ChatBox /> */}
     </div>
   );

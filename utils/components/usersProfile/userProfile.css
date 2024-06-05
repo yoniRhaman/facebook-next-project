@@ -34,6 +34,8 @@
   /* border: solid; */
 }
 
+
+
 .background-picture {
   height: 50%;
   width: 100%;
@@ -45,7 +47,7 @@
   
   display: flex;
   flex-direction: row;
-  height: 25%;
+  height: 50%;
   width: 100%;
   margin-top: 5%;
   /* border: solid; */
@@ -62,7 +64,7 @@
   width: 17%;                  /* Sets the width to 20% of its container */
   aspect-ratio: 1 / 1;         /* Ensures the aspect ratio remains 1:1 */
   object-fit: cover;           /* Ensures the image covers the entire element without distortion */
-  border: 2px solid #242526;   /* Adds a subtle border matching Facebook's dark mode theme */
+  border: 1% solid #242526;   /* Adds a subtle border matching Facebook's dark mode theme */
   background-color: #3a3b3c;   /* Fallback background color for when image fails to load */
 }
 
@@ -104,7 +106,7 @@
 .out-buttons-box {
   
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-end;
   width: 40%;
   height: 100%;
@@ -116,6 +118,9 @@
 }
 
 .invite-button, .message-button, .expnd-more-button {
+  width: 80%;
+  height: 40%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,12 +130,23 @@
   cursor: pointer;
   background-color: #3a3b3c; /* Dark button background */
   color: #e4e6eb; /* Light text color */
-  font-size: 1rem; /* Button text size */
+  font-size: 1.3vw; /* Button text size */
   transition: background-color 0.3s ease; /* Smooth hover transition */
+
 }
+
+
 
 .invite-button:hover, .message-button:hover, .expnd-more-button:hover {
   background-color: #4e4f50; /* Lighter shade on hover */
+}
+
+
+.invite-button p, .message-button p, .expnd-more-button p {
+width: 100%;
+height: 100%;
+overflow-wrap: break-word; /* לוודא שהמילים יישברו גם כן */
+white-space: normal; /* לאפשר לטקסט לשבור שורות */  
 }
 
 .add-friend-request, .message-button, .expand-more-button {
@@ -180,7 +196,7 @@ font-size: 3vw;
 .user-posts {
   display: flex;
   flex-direction: row-reverse;
-  border: 1px solid #3a3b3c; /* Dark mode border color */
+  border: 0.5% solid #3a3b3c; /* Dark mode border color */
   width: 66.5%;
   height: 100%;
   margin-top: 3%;
@@ -201,7 +217,7 @@ font-size: 3vw;
   grid-template-columns: auto auto auto;
   width: 100%;
   aspect-ratio: 1/1;
-  border: 1px solid #3a3b3c; /* Dark mode border color */
+  border: 0.5% solid #3a3b3c; /* Dark mode border color */
 }
 
 /* Styling for each picture button */
@@ -227,6 +243,10 @@ font-size: 3vw;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
+
+
+
+
 .user-posts-box {
   display: flex;
   flex-direction: column;
@@ -252,6 +272,19 @@ font-size: 3vw;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); /* Add a subtle shadow for depth */
 }
 
+.out-user-top-post-box{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 100%; /* Adjust width as needed */
+  border-bottom: 1px solid #3a3b3c; /* Dark mode border color */
+  margin-bottom: 4%;
+}
+
+.out-user-top-post-box p{
+  color: #ffffff82; /* Set text color */
+  /* font-weight: bold; */
+}
 
 .user-top-post-box {
   display: flex;
@@ -259,7 +292,7 @@ font-size: 3vw;
   align-items: center;
   width: 100%; /* Adjust width as needed */
   padding-bottom: 10px; /* Add padding bottom for separation */
-  border-bottom: 1px solid #3a3b3c; /* Dark mode border color */
+  /* border-bottom: 1px solid #3a3b3c; */
 }
 
 
@@ -282,7 +315,7 @@ font-size: 3vw;
 }
 
 .user-brief-introduction {
-  display: flex;
+  display: flex;  
   flex-direction: row;
   align-items: center;
   justify-content: flex-start; /* Adjust justification as needed */
@@ -328,5 +361,9 @@ font-size: 3vw;
 
 .user-comments-button:hover {
   background-color: #3a3b3c; /* Dark mode background color on hover */
+}
+
+a {
+  text-decoration: none;
 }
 

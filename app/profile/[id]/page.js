@@ -4,6 +4,7 @@ import UserProfile from "@/utils/components/usersProfile/userProfile";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
+
 async function ProfilePage({ params: { id } }) {
     const token = getCookie("token", { cookies });
     const userData = await getUserDataForProfile(token, id);
@@ -12,7 +13,6 @@ async function ProfilePage({ params: { id } }) {
     const userPosts = await getUserPosts(id, token);
     userData["userPosts"] = userPosts;
     // console.log("userPosts:::::::::::::::::::::::::::::", userPosts);
-
     //it's checking if the displayed profile is a friend of dhe user and adding the result to the userData
     const isFreind = userData.freinds.includes(uid);
     userData["isFreind"] = isFreind;

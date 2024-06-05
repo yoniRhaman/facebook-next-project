@@ -6,6 +6,7 @@ import {
   userPosts,
 } from "@/utils/data/displayedUserInformation";
 import "./userProfile.css";
+import { format } from 'date-fns';
 
 import {
   ArrowDropDownSharp,
@@ -65,7 +66,7 @@ export default function UserProfile({ userData }) {
           </div>
           <div className="out-buttons-box">
             <div className="buttons">
-              <button className="invite-button" variant="outlined" size="small" onClick={addFreindLocaly}>
+              <button className="invite-button" variant="outlined" onClick={addFreindLocaly}>
                 {!isFreind ? <PersonAddAlt className="add-freind-request" /> : <p>you are a friend</p>}
               </button>
 
@@ -75,7 +76,6 @@ export default function UserProfile({ userData }) {
                 size="small"
               >
                 <Message className="message-button" />
-                messaage
               </button>
             </div>
             <button className="expnd-more-button" size="small">
@@ -120,7 +120,7 @@ export default function UserProfile({ userData }) {
           {userData.userPosts.map((post) => (
             <PostItem post={post} firstName={userData.firstName} lastName={userData.lastName} profileImg={userData.profileImg} />
           ))
-          } 
+          }
         </div>
       </div>
     </div>
@@ -145,21 +145,24 @@ function DisplayNinePictures({ picture }) {
   );
 }
 
-function PostItem({ post, firstName, lastName, profileImg  }) {
+function PostItem({ post, firstName, lastName, profileImg }) {
+  const formattedDateTime = format(new Date(post.createdAt), 'HH:mm MM/dd/yyyy');
   return (
     <div className="user-post-box">
-      <div className="user-top-post-box">
-        <Link href={`/profile/${post.owner}`}>
-          <div className="user-brief-introduction">
-            <img
-              className="avatar"
-              src={profileImg}
-            ></img>
-            <p>{firstName}  {lastName}</p>
-          </div>
-        </Link>
+      <div className="out-user-top-post-box">
+        <div className="user-top-post-box">
+          <Link href={`/profile/${post.owner}`}>
+            <div className="user-brief-introduction">
+              <img
+                className="avatar"
+                src={profileImg}
+              ></img>
+              <p>{firstName}  {lastName}</p>
+            </div >
+          </Link>
+        </div>
+          <p>{formattedDateTime}</p>
       </div>
-      <h1>title</h1>
       <div className="user-post-picture">
         {post.images.map((img) => (
           <img className="user-post-picture" src={img}></img>
