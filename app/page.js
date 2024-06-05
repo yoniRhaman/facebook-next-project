@@ -4,7 +4,13 @@ import { cookies } from "next/headers";
 export default function Home() {
   return (
     <div>
+<<<<<<< Updated upstream
       <MainBox  />
+=======
+      <Navbar />
+      <Marketplace />
+      
+>>>>>>> Stashed changes
     </div>
   );
 }
