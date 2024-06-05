@@ -17,3 +17,28 @@ export async function createNewChat(body, token) {
     throw Error(error);
   }
 }
+
+export async function getUserChat(token, _id) {
+  try {
+    const chat = await axios.get(`${SERVER_URL}/chats/${_id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log(chat.data);
+    return chat.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+}
+
+export async function getChatMessages(token, _id) {
+  try {
+    const messages = await axios.get(`${SERVER_URL}/chats/${_id}/messages`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return messages.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+}

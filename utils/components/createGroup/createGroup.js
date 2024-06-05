@@ -40,8 +40,8 @@ export default function CreateGroup({ onClose }) {
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
-      const participants = formData.getAll("participants");
-      json["participants"] = participants;
+      json["participants"] = formData.getAll("participants");
+
       const group = await createNewGroups(json, getCookie("token"));
       setSharedGroup((prev) => [...prev, group]);
     } catch (error) {

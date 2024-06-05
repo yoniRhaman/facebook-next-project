@@ -5,13 +5,18 @@ import "./chats.css";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import CreateChat from "../createChat/createChat";
+import { getUserData } from "@/utils/api/loginApi";
+import { getCookie } from "cookies-next";
+import { CircularProgress } from "@mui/material";
 
 export default function Chats({ chatsFromServer }) {
   const [isModalOpen, setIsModalOpen] = useState(false); // Initialize the state
   const { chats, setChats } = useChatContext();
 
   useEffect(() => {
-    setChats(chatsFromServer);
+    if (Array.isArray(chatsFromServer)) {
+      setChats(chatsFromServer);
+    }
   }, [setChats]);
 
   const handleCreateChatClick = () => {
@@ -42,6 +47,7 @@ export default function Chats({ chatsFromServer }) {
         {/* <input type="text" name="search" placeholder="Search Messenger" /> */}
       </div>
       {chats?.map((chat) => (
+<<<<<<< HEAD
         <button
           key={chat._id}
           className="btnss-chats-Messenger row center gap-20"
@@ -55,8 +61,58 @@ export default function Chats({ chatsFromServer }) {
           {/* <p>{message.message}</p> */}
           {/* Correctly render the message property */}
         </button>
+=======
+        <ChatItem chat={chat} />
+>>>>>>> 819405a540b118a9535bb353b19b897bea128bb3
       ))}
       {isModalOpen && <CreateChat onClose={closeModal} />}
     </div>
+  );
+}
+
+function ChatItem({ chat }) {
+  const uid = getCookie("uid");
+  const token = getCookie("token");
+  const [user, setUser] = useState(null);
+  const { setCurrentChat } = useChatContext();
+
+  useEffect(() => {
+    async function getUser() {
+      try {
+        if (chat.participants.length > 2) {
+        } else {
+          const u = await getUserData(
+            token,
+            chat.participants.filter((p) => p !== uid)[0]
+          );
+          setUser(u);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getUser();
+  }, []);
+
+  return user ? (
+    <button
+      key={chat._id}
+      className="btn-chats-Messenger row center gap-20"
+      onClick={() => setCurrentChat(chat)}
+    >
+      <button className="btn-chats-img">
+        <img
+          src={
+            user.profileImg ??
+            "https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
+          }
+          alt="Profile"
+        />
+      </button>
+      <p>{`${user.firstName} ${user.lastName}`}</p>
+      {/* Correctly render the message property */}
+    </button>
+  ) : (
+    <CircularProgress key={chat._id} />
   );
 }
