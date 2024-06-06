@@ -1,7 +1,6 @@
 import { getUserChat } from "@/utils/api/chatApi";
 import ChatBox from "@/utils/components/chatBox/chatBox";
 import Chats from "@/utils/components/chats/chats";
-import { useChatContext } from "@/utils/contexts/ChatContext";
 import { Chat } from "@mui/icons-material";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";

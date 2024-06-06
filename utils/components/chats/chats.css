@@ -16,7 +16,7 @@
 
 .search-input1 {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   height: 30px;
   border-radius: 20px;
   background-color: #303030; /* Darker background color for input */
@@ -38,7 +38,7 @@
   padding: 10px;
   background-color: #18191a;
   display: flex;
-  justify-content:start;
+  justify-content:flex-start;
 }
 
 .btn-chats-Messenger:hover {
@@ -67,7 +67,7 @@
 }
 .search-input1 {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   height: 30px;
   border-radius: 20px;
   background-color: #303030; /* Darker background color for input */
