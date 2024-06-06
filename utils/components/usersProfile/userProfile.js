@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   displayedUserInformation,
   nineFreindsPictures,
@@ -6,7 +6,7 @@ import {
   userPosts,
 } from "@/utils/data/displayedUserInformation";
 import "./userProfile.css";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 import {
   ArrowDropDownSharp,
@@ -22,14 +22,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { addFreind } from "@/utils/api/freindsApi";
 
-
-
-
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
-
-
-
 
   async function addFreindLocaly() {
     try {
@@ -40,34 +34,33 @@ export default function UserProfile({ userData }) {
     }
   }
 
-
   return (
     <div className="profile-box">
       <div className="inner-profile-box">
-        <img
-          className="background-picture"
-          src={userData.baverImg}
-        ></img>
+        <img className="background-picture" src={userData.baverImg}></img>
         <div className="information-box">
-          <img
-            className="profile-picture"
-            src={userData.profileImg}
-          ></img>
+          <img className="profile-picture" src={userData.profileImg}></img>
           <div className="personal-information">
             <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
             <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
             <div className="mutual-freinds-pictures">
-              {
-                userData.freindsPictures.map((freind) => (
-
-                  <ListOfFreindsPictures freind={freind} />
-                ))}
+              {userData.freindsPictures.map((freind) => (
+                <ListOfFreindsPictures freind={freind} />
+              ))}
             </div>
           </div>
           <div className="out-buttons-box">
             <div className="buttons">
-              <button className="invite-button" variant="outlined" onClick={addFreindLocaly}>
-                {!isFreind ? <PersonAddAlt className="add-freind-request" /> : <p>you are a friend</p>}
+              <button
+                className="invite-button"
+                variant="outlined"
+                onClick={addFreindLocaly}
+              >
+                {!isFreind ? (
+                  <PersonAddAlt className="add-freind-request" />
+                ) : (
+                  <p>you are a friend</p>
+                )}
               </button>
 
               <button
@@ -118,9 +111,13 @@ export default function UserProfile({ userData }) {
         </div>
         <div className="user-posts-box">
           {userData.userPosts.map((post) => (
-            <PostItem post={post} firstName={userData.firstName} lastName={userData.lastName} profileImg={userData.profileImg} />
-          ))
-          }
+            <PostItem
+              post={post}
+              firstName={userData.firstName}
+              lastName={userData.lastName}
+              profileImg={userData.profileImg}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -128,7 +125,6 @@ export default function UserProfile({ userData }) {
 }
 
 function ListOfFreindsPictures({ freind }) {
-
   return (
     <Link href={`/profile/${freind._id}`}>
       <img className="mutual-freind-picture" src={freind.baverImg} />
@@ -146,22 +142,22 @@ function DisplayNinePictures({ picture }) {
 }
 
 function PostItem({ post, firstName, lastName, profileImg }) {
-  const formattedDateTime = format(new Date(post.createdAt), 'HH:mm MM/dd/yyyy');
+  const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
+  const formattedDateTime = format(createdAt, "HH:mm MM/dd/yyyy");
   return (
     <div className="user-post-box">
       <div className="out-user-top-post-box">
         <div className="user-top-post-box">
           <Link href={`/profile/${post.owner}`}>
             <div className="user-brief-introduction">
-              <img
-                className="avatar"
-                src={profileImg}
-              ></img>
-              <p>{firstName}  {lastName}</p>
-            </div >
+              <img className="avatar" src={profileImg}></img>
+              <p>
+                {firstName} {lastName}
+              </p>
+            </div>
           </Link>
         </div>
-          <p>{formattedDateTime}</p>
+        <p>{formattedDateTime}</p>
       </div>
       <div className="user-post-picture">
         {post.images.map((img) => (

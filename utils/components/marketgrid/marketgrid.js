@@ -1,4 +1,3 @@
-
 "use client";
 import Image from "next/image";
 import "./marketgrid.css";
@@ -9,6 +8,8 @@ import Link from "next/link";
 import { useProductContext } from "@/utils/contexts/productContext";
 import { CategoryContext } from "@/utils/contexts/categoryContext";
 import { FaTrashCan } from "react-icons/fa6";
+import { deleteProductById } from "@/utils/api/marketplaceApi";
+import { getCookie } from "cookies-next";
 
 export default function marketgrid({ productsFromServer }) {
   const [search, setSearch] = useState("");
@@ -23,7 +24,7 @@ export default function marketgrid({ productsFromServer }) {
     .filter((p) => p.category.includes(sharedCategory))
     .sort((a, b) => SortProducts(a, b, sortBy))
     .map((product) => <GridItem id={nanoid()} product={product} />);
-  console.log(sharedCategory);
+  // console.log(sharedCategory);
   return (
     <div className="my-body column">
       <div className="toolsbar row">
@@ -53,21 +54,20 @@ export default function marketgrid({ productsFromServer }) {
       <div className="grid-container">{finale_products}</div>
     </div>
   );
-// import Image from "next/image";
-// import "./marketgrid.css";
-// import { product_list } from "./marketgriddata";
-// import { nanoid } from "nanoid";
+  // import Image from "next/image";
+  // import "./marketgrid.css";
+  // import { product_list } from "./marketgriddata";
+  // import { nanoid } from "nanoid";
 
-// export default function marketgrid() {
-//   const finale_products = product_list.map((product) => (
-//     <GridItem id={nanoid()} product={product} />
-//   ));
-//   return <div className="grid-container">{finale_products}</div> 
+  // export default function marketgrid() {
+  //   const finale_products = product_list.map((product) => (
+  //     <GridItem id={nanoid()} product={product} />
+  //   ));
+  //   return <div className="grid-container">{finale_products}</div>
 }
 
 export function GridItem({ product }) {
   return (
-
     <Link
       href={`marketplace/${product._id}`}
       className="grid_item column"
@@ -104,37 +104,12 @@ export function GridItem({ product }) {
         <div
           className="garbage"
           onClick={async () => {
-            await deleteProductById(
-              
-              getCookie("_id"),
-              getCookie("token")
-            );
+            await deleteProductById(getCookie("_id"), getCookie("token"));
           }}
         >
           <FaTrashCan />
         </div>
       </div>
     </Link>
-    // <div className="grid_item column">
-    //                         <div className="myimg">
-    //                                     <Image
-    //                                     src={product.img}
-    //                                     alt="img"
-    //                                     width={156}
-    //                                     height={137}
-    //                                     style={{
-    //                                         objectFit: "cover",
-    //                                         objectPosition: "center",
-    //                                     }}
-    //                                     />
-    //                         </div>
-                            
-    //                         <div className="mytext column">
-
-    //                             <h3 className="price-text">{product.price + "$"}</h3>
-    //                             <h3 className="title-text">{product.title}</h3>
-    //                             <h3 className="title-text">{product.location}</h3>
-    //                         </div>
-    // </div>
   );
 }

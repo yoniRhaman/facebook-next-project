@@ -1,9 +1,9 @@
 .chatBox-container {
   width: 100%;
   height: calc(100vh - var(--nav-height));
-  background-color: #18191a; /* Dark background color */
+  background-color: #18191a; 
   color: #fff;
-  overflow-y: scroll; /* Enable vertical scroll */
+  overflow-y: scroll; 
   position: relative;
   top: var(--nav-height);
 }
@@ -14,11 +14,6 @@
   justify-content: space-between;
   height: 80px;
 }
-
-/* .chatBox-left {
-  display: flex;
-  align-items: center;
-} */
 
 .btn-chatBox-img {
   background: none;
@@ -35,12 +30,10 @@
 }
 
 .search-input2 {
-  /* display: flex;
-  justify-content: start; */
   height: 30px;
   width: 100%;
   border-radius: 20px;
-  background-color: #303030; /* Darker background color for input */
+  background-color: #303030; 
   border: none;
   padding: 8px 16px;
   color: #fff;
@@ -90,9 +83,26 @@
 }
 
 .message {
-  width: 100%;
+  max-width: 70%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  background-color: #303030; 
+  word-wrap: break-word;
 }
 
-.right {
+/* .right {
   justify-content: flex-end;
+} */
+
+.message-left {
+  align-self: flex-start;
+  background-color: #4a4a4a; /* Background color for received messages */
+  text-align: left;
+}
+
+.message-right {
+  align-self: flex-end;
+  background-color: #303030; /* Background color for sent messages */
+  text-align: right;
 }

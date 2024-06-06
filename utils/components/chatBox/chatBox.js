@@ -81,7 +81,10 @@ export default function ChatBox() {
         {messages?.map((msg) => (
           <div
             key={msg._id}
-            className={`row message ${msg.sender === sender && "right"}`}
+            // className={`row message ${msg.sender === sender && "right"}`}
+            className={`message ${
+              msg.sender === sender ? "message-right" : "message-left"
+            }`}
           >
             {msg.type === "text" ? (
               <p>{msg.content}</p>

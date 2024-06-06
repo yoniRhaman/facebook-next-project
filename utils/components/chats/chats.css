@@ -38,7 +38,7 @@
   padding: 10px;
   background-color: #18191a;
   display: flex;
-  justify-content:start;
+  justify-content: start;
 }
 
 .btn-chats-Messenger:hover {
@@ -64,25 +64,6 @@
 
 .btn-chats-Messenger p {
   color: #fff;
-}
-.search-input1 {
-  display: flex;
-  justify-content: start;
-  height: 30px;
-  border-radius: 20px;
-  background-color: #303030; /* Darker background color for input */
-  border: none;
-  padding: 8px 16px;
-  color: #fff;
-  margin-bottom: 30px;
-}
-
-.search-input1 input {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  color: white;
-  flex-grow: 1;
 }
 
 .button-create {
