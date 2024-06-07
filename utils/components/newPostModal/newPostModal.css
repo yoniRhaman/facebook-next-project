@@ -5,8 +5,8 @@
   right: 0;
   bottom: 0;
   top: 0;
-  /* margin: auto; */
-  /* z-index: 999; */
+  margin: auto;
+  z-index: 999;
   position: fixed;
 }
 
@@ -15,7 +15,8 @@
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  width: 27%;
+  height: 60%;
   max-width: 90%;
   position: relative;
 }
@@ -31,17 +32,16 @@
 
 .title-container-button {
   background: none;
-    border: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-  /* justify-content: flex-end; */
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  justify-content: flex-end;
 }
 .title-container-button:hover {
   opacity: 0.7;
 }
-
 
 .input-post {
   width: 100%;
@@ -52,11 +52,7 @@
   font-size: 16px;
   line-height: 1.4;
   direction: ltr;
-}
-
-.choice {
- 
-  align-self: flex-start;
+  height: 150px;
 }
 
 .selection {
@@ -69,7 +65,7 @@
   width: 200px;
   outline: none; /* Remove default outline */
   appearance: none; /* Remove default arrow */
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE2IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMWwxIDExIDEgMSA2LTYgNi02TDEwIDAgMyA0eiIgZmlsbD0iIzFDQUQxRCIvPjwvc3ZnPg==');
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE2IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMWwxIDExIDEgMSA2LTYgNi02TDEwIDAgMyA0eiIgZmlsbD0iIzFDQUQxRCIvPjwvc3ZnPg==");
   background-repeat: no-repeat;
   background-position: right 10px center;
   cursor: pointer;
@@ -96,16 +92,16 @@
 /* File Input Styles */
 .img-input {
   position: relative;
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* overflow: hidden; */
   /* display: inline-block; */
   cursor: pointer;
 }
 
 .img-input::before {
-  content: 'Choose Files';
+  content: "Choose Files";
   display: inline-block;
   background-color: #1877f2; /* Facebook blue */
   color: #fff;
@@ -116,7 +112,6 @@
   line-height: 1;
   text-align: center;
   cursor: pointer;
-
 }
 
 .img-input::-webkit-file-upload-button {
