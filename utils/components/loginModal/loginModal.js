@@ -5,11 +5,10 @@ import "./loginModal.css";
 import Link from "next/link";
 import { setCookie } from "cookies-next";
 import { login } from "@/utils/api/loginApi";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 export default function LoginModal() {
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   async function handleSumbit(e) {
     try {
       setLoading(true);
@@ -21,8 +20,8 @@ export default function LoginModal() {
       setCookie("token", token);
       setCookie("uid", user_id);
       setCookie("profileImg", profileImg);
-      router.push("/");
       setLoading(false);
+      redirect("/", push)
     } catch (error) {
       console.error(error);
     } finally {
