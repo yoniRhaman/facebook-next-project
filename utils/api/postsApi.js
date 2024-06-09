@@ -4,9 +4,10 @@ import { userPosts } from "../data/displayedUserInformation";
 
 // const SERVER_URL = "https://facebook-express-project.onrender.com";
 const SERVER_URL =
-  process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
-    ? "http://localhost:3005"
-    : "https://facebook-express-project.onrender.com";
+  // process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+  //   ? "http://localhost:3005"
+  //   : 
+    "https://facebook-express-project.onrender.com";
 export async function getAllPosts(token) {
   try {
     const posts = await axios.get(`${SERVER_URL}/posts`, {

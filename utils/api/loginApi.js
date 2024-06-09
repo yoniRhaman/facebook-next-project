@@ -2,13 +2,15 @@ import axios from "axios";
 
 // const SERVER_URL = "https://facebook-express-project.onrender.com";
 const SERVER_URL =
-  process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
-    ? "http://localhost:3005"
-    : "https://facebook-express-project.onrender.com";
+  // process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+  //   ? "http://localhost:3005"
+  //   :
+     "https://facebook-express-project.onrender.com";
 
 export async function login(body) {
   try {
     const response = await axios.post(`${SERVER_URL}/users/login`, body);
+    console.log(SERVER_URL);
     return response.data;
   } catch (error) {
     throw new Error(error);
