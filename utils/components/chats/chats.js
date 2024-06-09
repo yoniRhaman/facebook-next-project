@@ -37,15 +37,17 @@ export default function Chats({ chatsFromServer }) {
           <Searchicon />
           <input type="text" name="search" placeholder="Search chats" />
         </div>
-        <button
-          className="button-create"
-          role="button"
-          onClick={handleCreateChatClick}
-        >
-          <FaPlus /> Create New chat
-        </button>
-        {/* <input type="text" name="search" placeholder="Search Messenger" /> */}
       </div>
+      <div>
+      <button
+        className="button-create"
+        role="button"
+        onClick={handleCreateChatClick}
+      >
+        <FaPlus /> Create New chat
+      </button>
+      </div>
+      {/* <input type="text" name="search" placeholder="Search Messenger" /> */}
       {chats?.map((chat) => (
         <ChatItem chat={chat} />
       ))}
