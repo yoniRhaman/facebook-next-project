@@ -7,9 +7,9 @@ export default function LoginPage() {
   return (
     <div>
       {/* <button onClick={() => setOpen(true)} style={{position: "relative", top: "10vh"}}>Click me</button> */}
-
       {/* {open && <LoginModal setOpen={setOpen} />}  */}
-      <LoginModal setOpen={setOpen}/>
-    </div>
-  );
+      <LoginModal setOpen={setOpen} />
+         
+    </div>
+  );
 }

@@ -6,7 +6,7 @@ import {
   userPosts,
 } from "@/utils/data/displayedUserInformation";
 import "./userProfile.css";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 import {
   ArrowDropDownSharp,

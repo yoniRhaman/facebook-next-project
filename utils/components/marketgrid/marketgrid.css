@@ -145,7 +145,7 @@
 
 .myimg {
     height: 80%;
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
   border-radius: 15px 15px 0px 0px;
   overflow: hidden;
 }

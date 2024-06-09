@@ -9,22 +9,26 @@ import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 export default function LoginModal() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  
   async function handleSumbit(e) {
+    e.preventDefault();
+    setLoading(true);
+
     try {
-      setLoading(true);
-      e.preventDefault();
-      // setLoading(true);
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData);
       const { token, user_id, profileImg } = await login(data);
+
       setCookie("token", token);
       setCookie("uid", user_id);
       setCookie("profileImg", profileImg);
-      setLoading(false);
-      redirect("/", push)
+
+      router.push("/");
     } catch (error) {
       console.error(error);
     } finally {
+      setLoading(false);
     }
   }
   return (
@@ -37,12 +41,7 @@ export default function LoginModal() {
         <TextField name="email" label="email" type="email" />
         <TextField name="password" label="password" type="password" />
         <Button variant="contained" type="submit">
-        {loading ? (
-            <CircularProgress sx={{ color: "white" }} />
-          ) : (
-            "Log in"
-          )}
-
+          {loading ? <CircularProgress sx={{ color: "white" }} /> : "Log in"}
         </Button>
         <Button variant="text">forgot password</Button>
       </form>
@@ -53,7 +52,6 @@ export default function LoginModal() {
           }}
           variant="contained"
         >
-
           create new account
         </Button>
       </Link>
