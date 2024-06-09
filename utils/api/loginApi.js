@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// const SERVER_URL = "https://facebook-express-project.onrender.com";
 const SERVER_URL =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
     ? "http://localhost:3005"
