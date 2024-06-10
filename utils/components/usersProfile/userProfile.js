@@ -6,7 +6,7 @@ import {
   userPosts,
 } from "@/utils/data/displayedUserInformation";
 import "./userProfile.css";
-// import { format } from "date-fns";
+import { format } from "date-fns";
 
 import {
   ArrowDropDownSharp,
@@ -86,7 +86,7 @@ export default function UserProfile({ userData }) {
             <Button>Videos</Button>
             <Button>Check-ins</Button>
             <Button>
-              More <ArrowDropDownSharp />
+              More 
             </Button>
           </div>
           <Button className="expand-more-button-three-points" size="small">
