@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import "./product.css";
+import "./productPage.css";
 import { usePathname } from "next/navigation";
 
 function ProductPageComponent({ myProduct }) {
