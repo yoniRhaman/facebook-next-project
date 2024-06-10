@@ -36,7 +36,7 @@ export default function SideFriendsMenu(token, id) {
 function FriendItem({ friend }) {
     return (
         <Link className="friend-item" href={`/profile/${friend._id}`}>
-            <img className="avatar" src={friend.baverImg} alt={`${friend.firstName} ${friend.lastName}`}/>
+            <img className="avatar" src={friend.profileImg} alt={`${friend.firstName} ${friend.lastName}`}/>
             <p className="friend-name">{friend.firstName} {friend.lastName}</p>
         </Link>
     );

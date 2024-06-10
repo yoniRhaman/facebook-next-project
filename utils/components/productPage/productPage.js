@@ -8,6 +8,7 @@ import { FaTrashCan } from "react-icons/fa6";
 import { deleteProductById } from "@/utils/api/marketplaceApi";
 
 function ProductPageComponent({ myProduct }) {
+
   const id = getCookie("uid");
   const token = getCookie("token");
   const handleDelete = async () => {
@@ -18,6 +19,7 @@ function ProductPageComponent({ myProduct }) {
       console.error("Failed to delete the product:", error);
     }
   };
+
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
@@ -68,6 +70,8 @@ function ProductPageComponent({ myProduct }) {
             <FaTrashCan />
           </button>
         )}
+        <button className="chat" >chat</button>
+
       </div>
     </div>
   );
