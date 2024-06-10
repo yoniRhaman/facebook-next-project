@@ -23,7 +23,7 @@ async function ProfilePage({ params: { id } }) {
     userData["token"] = token;
     userData["uid"] = uid;
     userData["fid"] = id;
-    console.log("user data :::::::::", userData);
+    // console.log("user data :::::::::", userData);
     return <div ><UserProfile userData={userData} token={token} /></div>;
 }
 

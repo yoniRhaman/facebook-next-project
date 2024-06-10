@@ -27,7 +27,7 @@ export async function getUsersPictures(token, idis) {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(userData.data);
+    // console.log(userData.data);
 
     return userData.data;
   } catch (error) {
