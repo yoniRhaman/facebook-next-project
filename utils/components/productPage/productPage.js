@@ -64,7 +64,6 @@ function ProductPageComponent({ myProduct }) {
           <div className="location">{myProduct.location}</div>
           <div className="description">{myProduct.description}</div>
         </div>
-        <button className="chat">chat</button>
         {myProduct.owner === id && (
           <button className="garbage" onClick={handleDelete}>
             <FaTrashCan />
