@@ -142,3 +142,30 @@ p {
   border-radius: 8px; /* Rounded corners for images */
 
 }
+
+.profile-details{
+width: 35%;
+justify-content: space-between;
+align-items: center;
+}
+
+.profile-details img{
+border-radius: 100%;
+}
+
+
+
+.post-details{
+align-items: center;
+justify-content: space-between;
+
+}
+
+.privacy-text,
+.date p{
+  font-size: small;
+}
+
+.post-contenddt{
+padding:5% 0% ;
+}

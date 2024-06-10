@@ -3,7 +3,7 @@ body {
   color: #fff;
 }
 .marketplace-container {
-  height: calc(100vh - var(--nav-height));
+  height:100%;
   width: 100%;
   background-color: #18191a;
   color: #fff;
