@@ -21,7 +21,6 @@ import { Button } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 import { addFreind } from "@/utils/api/freindsApi";
-import { format } from "date-fns";
 
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
