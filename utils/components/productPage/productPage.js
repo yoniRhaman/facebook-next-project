@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 function ProductPageComponent({ myProduct }) {
 
-funct
 
   const pathname = usePathname();
   const pathnameParts = pathname.split("/product");
@@ -56,7 +55,7 @@ funct
           <div className="location">{myProduct.location}</div>
           <div className="description">{myProduct.description}</div>
         </div>
-        <button className="chat" onClick={hendleChat}>chat</button>
+        <button className="chat" >chat</button>
       </div>
     </div>
   );
