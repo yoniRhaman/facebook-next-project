@@ -2,10 +2,9 @@ import axios from "axios";
 
 // const SERVER_URL = "https://facebook-express-project.onrender.com";
 const SERVER_URL =
-  // process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
-  //   ? "http://localhost:3005"
-  //   : 
-    "https://facebook-express-project.onrender.com";
+  process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
+    ? "http://localhost:3005"
+    : "https://facebook-express-project.onrender.com";
 export async function getAllProducts(token) {
   try {
     const products = await axios.get(`${SERVER_URL}/products`, {
@@ -31,8 +30,7 @@ export async function getProductById(token, _id) {
 }
 
 export async function createProduct(body, token) {
-  console.log(body);
-  console.log(token);
+
   try {
     const product = await axios.post(`${SERVER_URL}/products`, body, {
       headers: { Authorization: `Bearer ${token}` },
@@ -54,9 +52,9 @@ async function deleteProduct(id) {
   }
 }
 
-export async function deleteProductById(_id, token) {
+export async function deleteProductById(_id, user_id,token) {
   try {
-    const response = await axios.delete(`${SERVER_URL}/products/${_id}`, {
+    const response = await axios.delete(`${SERVER_URL}/products/${_id}/${user_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;

@@ -30,7 +30,7 @@ export async function getUserData(token, _id) {
     const profileData = await axios.get(`${SERVER_URL}/users/${_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(profileData.data);
+    // console.log(profileData.data);
     return profileData.data;
   } catch (error) {
     console.error(error);

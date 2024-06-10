@@ -2,13 +2,22 @@
 import Image from "next/image";
 import "./productPage.css";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { getCookie } from "cookies-next";
+import { FaTrashCan } from "react-icons/fa6";
+import { deleteProductById } from "@/utils/api/marketplaceApi";
 
 function ProductPageComponent({ myProduct }) {
-  const pathname = usePathname();
-  const pathnameParts = pathname.split("/product");
-  const lastPathPart = pathnameParts[pathnameParts.length - 1];
-
-  // const myProduct = products.find((p) => p._id === lastPathPart);
+  const id = getCookie("uid");
+  const token = getCookie("token");
+  const handleDelete = async () => {
+    try {
+      await deleteProductById(myProduct._id, id, token);
+      // Optionally, you can update the local state to remove the deleted product
+    } catch (error) {
+      console.error("Failed to delete the product:", error);
+    }
+  };
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
@@ -54,6 +63,11 @@ function ProductPageComponent({ myProduct }) {
           <div className="description">{myProduct.description}</div>
         </div>
         <button className="chat">chat</button>
+        {myProduct.owner === id && (
+          <button className="garbage" onClick={handleDelete}>
+            <FaTrashCan />
+          </button>
+        )}
       </div>
     </div>
   );
