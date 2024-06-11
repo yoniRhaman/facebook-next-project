@@ -1,34 +1,26 @@
 "use client";
 import Image from "next/image";
 import "./productPage.css";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { getCookie } from "cookies-next";
 import { FaTrashCan } from "react-icons/fa6";
 import { deleteProductById } from "@/utils/api/marketplaceApi";
+import { useProductContext } from "@/utils/contexts/productContext";
 
 function ProductPageComponent({ myProduct }) {
-
-  const id = getCookie("uid");
+  const user_id = getCookie("uid");
   const token = getCookie("token");
-  const handleDelete = async () => {
-    try {
-      await deleteProductById(myProduct._id, id, token);
-      // Optionally, you can update the local state to remove the deleted product
-    } catch (error) {
-      console.error("Failed to delete the product:", error);
-    }
-  };
+  const { setProducts } = useProductContext();
 
+  const handleDelete = async () => {
+    await deleteProductById(myProduct._id, user_id, token);
+    setProducts((prev) => prev.filter((p) => p._id !== myProduct._id));
+  };
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
       <Image src={i} alt="Image" width={120} height={120} objectFit="fill" />
     </div>
   ));
-  // console.log("product_list:", product_list);
-  // console.log("lastPathPart:", lastPathPart);
-  // console.log(" myProduct title:", myProduct?.title);
 
   return (
     <div className="my-body row">
@@ -64,13 +56,12 @@ function ProductPageComponent({ myProduct }) {
           <div className="location">{myProduct.location}</div>
           <div className="description">{myProduct.description}</div>
         </div>
-        {myProduct.owner === id && (
+        {myProduct.owner === user_id && (
           <button className="garbage" onClick={handleDelete}>
             <FaTrashCan />
           </button>
         )}
-        <button className="chat" >chat</button>
-
+        <button className="chat">chat</button>
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
 async function MarketplacePage() {
-  // const productsFromServer = await getAllProducts();
 
   const productsFromServer = await getAllProducts(
     getCookie("token", { cookies })

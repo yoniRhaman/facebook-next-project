@@ -47,8 +47,8 @@ function PostItem({ post }) {
     getUser();
   }, []);
   return (
-    <div className="post-box ">
-      <div className="out-brief-introduction-box">
+    <div className="post-box  ">
+      <div>
         {!user ? (
           <CircularProgress />
         ) : (
@@ -68,7 +68,7 @@ function PostItem({ post }) {
                 <p>{post.createdAt}</p>
               </div>
             </div>
-            <p className="post-contenddt">{post.content}</p>
+            <p className="post-content">{post.content}</p>
           </>
         )}
 
