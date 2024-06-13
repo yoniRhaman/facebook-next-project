@@ -5,15 +5,18 @@ import { getCookie } from "cookies-next";
 import { FaTrashCan } from "react-icons/fa6";
 import { deleteProductById } from "@/utils/api/marketplaceApi";
 import { useProductContext } from "@/utils/contexts/productContext";
+import { useRouter } from "next/navigation"; // ייבוא useRouter מ-next/navigation
 
 function ProductPageComponent({ myProduct }) {
   const user_id = getCookie("uid");
   const token = getCookie("token");
   const { setProducts } = useProductContext();
+  const router = useRouter();
 
   const handleDelete = async () => {
     await deleteProductById(myProduct._id, user_id, token);
     setProducts((prev) => prev.filter((p) => p._id !== myProduct._id));
+    router.push("/marketplace");
   };
 
   const myImagges = myProduct.images.map((i) => (
