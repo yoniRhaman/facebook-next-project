@@ -46,6 +46,7 @@ export default function CreateChat({ onClose }) {
         json["owner"],
       ];
       const chat = await createNewChat(json, token);
+      if (chat!=="existing")
       addChat(chat);
     } catch (error) {
       console.error(error);
