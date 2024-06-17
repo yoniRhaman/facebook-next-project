@@ -35,3 +35,15 @@ export async function getUsersPictures(token, idis) {
     throw new Error(error);
   }
 }
+
+export async function getAllusers(token) {
+  try {
+    const users = await axios.get(`${SERVER_URL}/users`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return users.data;
+  } catch (error) {
+    console.error(error);
+    throw Error(error);
+  }
+}

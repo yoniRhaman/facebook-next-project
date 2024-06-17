@@ -30,7 +30,6 @@ export async function getProductById(token, _id) {
 }
 
 export async function createProduct(body, token) {
-
   try {
     const product = await axios.post(`${SERVER_URL}/products`, body, {
       headers: { Authorization: `Bearer ${token}` },
@@ -42,21 +41,14 @@ export async function createProduct(body, token) {
   }
 }
 
-async function deleteProduct(id) {
+export async function deleteProductById(_id, user_id, token) {
   try {
-    await axios.delete(`${SERVER_URL}/products/${id}`);
-    return "Deleted";
-  } catch (error) {
-    console.error(error);
-    throw new Error(error);
-  }
-}
-
-export async function deleteProductById(_id, user_id,token) {
-  try {
-    const response = await axios.delete(`${SERVER_URL}/products/${_id}/${user_id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.delete(
+      `${SERVER_URL}/products/${_id}/${user_id}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     return response.data;
   } catch (error) {
     throw new Error(error.message);
