@@ -52,22 +52,20 @@ export default function CreateChat({ onClose }) {
         json["owner"],
       ];
       const chat = await createNewChat(json, token);
-      if (chat.status==="notExisting"){
-      addChat(chat.myChat);
-      const u = await getUserData(
-        token,
-        chat.myChat.participants.filter((p) => p !== uid)[0]
-      );
-      setCurrentChat({ ...chat.myChat, user: u })
+      if (chat.status === "notExisting") {
+        addChat(chat.myChat);
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      } else if (chat.status === "existing") {
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
       }
-    else{
-
-      const u = await getUserData(
-        token,
-        chat.myChat.participants.filter((p) => p !== uid)[0]
-      );
-      setCurrentChat({ ...chat.myChat, user: u })
-    }
     } catch (error) {
       console.error(error);
     } finally {
