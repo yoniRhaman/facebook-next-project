@@ -65,7 +65,12 @@ function ChatItem({ chat }) {
   useEffect(() => {
     async function getUser() {
       try {
-        if (chat.participants.length > 2) {
+        if (chat.participants.length === 2) {
+          const u = await getUserData(
+            token,
+            chat.participants.filter((p) => p !== uid)
+          );
+          setLocalUser(u);
         } else {
           const u = await getUserData(
             token,

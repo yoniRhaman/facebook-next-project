@@ -9,12 +9,17 @@ import Cookies from "js-cookie";
 import { getUserFreinds } from "@/utils/api/freindsApi";
 import { createNewChat } from "@/utils/api/chatApi";
 import { useChatContext } from "@/utils/contexts/ChatContext";
+import { Jost } from "next/font/google";
+import { getUserData } from "@/utils/api/loginApi";
 
 export default function CreateChat({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [friends, setFriends] = useState([]);
   const [profileImg, setProfileImg] = useState("");
   const { addChat } = useChatContext();
+    const { currentChat, setCurrentChat } = useChatContext();
+
+
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
@@ -38,6 +43,7 @@ export default function CreateChat({ onClose }) {
       e.preventDefault();
       setLoading(true);
       const token = getCookie("token");
+      const uid = getCookie("uid");
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
@@ -46,8 +52,22 @@ export default function CreateChat({ onClose }) {
         json["owner"],
       ];
       const chat = await createNewChat(json, token);
-      if (chat!=="existing")
-      addChat(chat);
+      if (chat.status==="notExisting"){
+      addChat(chat.myChat);
+      const u = await getUserData(
+        token,
+        chat.myChat.participants.filter((p) => p !== uid)[0]
+      );
+      setCurrentChat({ ...chat.myChat, user: u })
+      }
+    else{
+
+      const u = await getUserData(
+        token,
+        chat.myChat.participants.filter((p) => p !== uid)[0]
+      );
+      setCurrentChat({ ...chat.myChat, user: u })
+    }
     } catch (error) {
       console.error(error);
     } finally {
