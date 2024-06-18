@@ -8,10 +8,10 @@ import { useGroupContext } from "@/utils/contexts/groupContext";
 
 export default function GroupsList({ groupFromServer }) {
   const [isModalOpen, setIsModalOpen] = useState(false); // Initialize the state
-  const { sharedGroup, setSharedGroup } = useGroupContext();
+  const { listGroup, setlistGroup } = useGroupContext();
 
   useEffect(() => {
-    setSharedGroup(groupFromServer);
+    setlistGroup(groupFromServer);
   }, []);
 
   const handleCreateGroupClick = () => {
@@ -46,11 +46,14 @@ export default function GroupsList({ groupFromServer }) {
           <p>Groups you manage</p>
         </div>
         <div className="manage-bottom-container">
-          {sharedGroup.map((group) => (
+          {listGroup.map((group) => (
             <button className="btn-Groups" key={group._id}>
               <img
-                src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
-                alt="Group"
+                src={
+                  group.images ??
+                  "https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
+                }
+                alt="Picture "
               />
               <p>{group.name}</p>
             </button>

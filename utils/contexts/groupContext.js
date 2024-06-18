@@ -9,10 +9,10 @@ export function useGroupContext() {
 }
 
 export const GroupProvider = ({ children }) => {
-  const [sharedGroup, setSharedGroup] = useState([]);
+  const [listGroup, setlistGroup] = useState([]);
 
   return (
-    <GroupContext.Provider value={{ sharedGroup, setSharedGroup }}>
+    <GroupContext.Provider value={{ listGroup, setlistGroup }}>
       {children}
     </GroupContext.Provider>
   );
