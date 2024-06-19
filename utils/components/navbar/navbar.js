@@ -47,7 +47,7 @@ export default function Navbar() {
   return (
     <div >
       <nav className="nav-container">
-        <div className="nav-left row">
+        <div className="center nav-left row">
           <FacebookIcon />
           <div className="containe-search search-input row center">
             <Searchicon />
@@ -86,7 +86,7 @@ export default function Navbar() {
               <AiTwotoneMessage />
             </button>
           </Link>
-          <button className="icon-button" onClick={() => { isNotificationOpen === false ? setIsNotificationOpen(true) : setIsNotificationOpen(false) }}>
+          <button className="icon-button">
             <AiTwotoneBell />
           </button>
           <Link href={`/profile/${usrId}`} legacyBehavior>
