@@ -22,7 +22,6 @@ export async function getUserChat(token, _id) {
     const chat = await axios.get(`${SERVER_URL}/chats/${_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(chat.data);
     return chat.data;
   } catch (error) {
     console.error(error);

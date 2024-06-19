@@ -20,18 +20,15 @@ function RegisterForm() {
       setLoading(true);
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
-      // console.log(json);
       const [profile, baver] = await Promise.all([
         await handleUpload(formData.get("profileImg")),
         await handleUpload(formData.get("baverImg")),
       ]);
-      // console.log(profile, baver);
       json["profileImg"] = profile;
       json["baverImg"] = baver;
       json["freinds"] = [];
       json["posts"] = [];
       const response =  await  register(json);
-      console.log(response);
              
     } catch (error) {
       console.error(error);

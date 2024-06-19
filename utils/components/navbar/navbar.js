@@ -101,12 +101,11 @@ export default function Navbar() {
             value={value}
             onChange={handleChange}
             textColor="primary"
-            indicatorColor="primary"
             aria-label="secondary tabs example"
           >
             <Tab
               href="/"
-              indicatorColor="white"
+              indicatorcolor="white"
               icon={<Home style={{ color: "white" }} />}
             />
             <Tab href="/" icon={<OndemandVideo style={{ color: "white" }} />} />
@@ -132,7 +131,7 @@ export default function Navbar() {
           <button className="icon-button">
             <AiTwotoneBell />
           </button>
-          <Link href={`/profile/${usrId}`} legacyBehavior>
+          <Link href={`/profile/${usrId}`}>
             <button className="profile-button">
               <Image
                 src={profileImg}

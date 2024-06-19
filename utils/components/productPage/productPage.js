@@ -37,7 +37,6 @@ function ProductPageComponent({ myProduct }) {
         myProduct["owner"],
         json["owner"],
       ];
-      console.log(json);
       const chat = await createNewChat(json, token);
       if (chat.status === "notExisting") {
         addChat(chat.myChat);

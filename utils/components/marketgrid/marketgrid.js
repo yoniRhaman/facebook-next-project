@@ -21,7 +21,6 @@ export default function marketgrid({ productsFromServer }) {
     .filter((p) => p.category.includes(sharedCategory))
     .sort((a, b) => SortProducts(a, b, sortBy))
     .map((product) => <GridItem id={nanoid()} product={product} />);
-  // console.log(sharedCategory);
   return (
     <div className="my-body column">
       <div className="toolsbar row">

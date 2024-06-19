@@ -123,8 +123,6 @@ export default function UserProfile({ userData }) {
 }
 
 function ListOfFreindsPictures({ freind }) {
-  console.log(freind.profileImg);
-  console.log(freind.baverImg);
   return (
     <Link href={`/profile/${freind._id}`}>
       <img className="mutual-freind-picture" src={freind.profileImg} />

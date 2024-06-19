@@ -9,7 +9,6 @@ const SERVER_URL =
 export async function sendUserData(data) {
   try {
     const profileData = await axios.post(`${SERVER_URL}/users`, data);
-    console.log(profileData.data);
     return profileData.data;
   } catch (error) {
     console.error(error);
