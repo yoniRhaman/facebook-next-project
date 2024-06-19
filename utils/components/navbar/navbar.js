@@ -19,12 +19,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { getCookie } from "cookies-next";
 import Cookies from "js-cookie";
+import { getAllusers } from "@/utils/api/usersApi";
+import { nanoid } from "nanoid";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
-
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [profileImg, setProfileImg] = useState("");
   const [usrId, setUsrId] = useState("");
+  const [search, setSearch] = useState("");
+  const [users, setUsers] = useState([]);
+  const router = useRouter();
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleChangeSearch = (event) => {
+    const value = event.target.value;
+    setSelectedValue(value);
+    if (value) {
+      router.push(value);
+    }
+  };
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
@@ -38,6 +52,24 @@ export default function Navbar() {
     // setProfileImg(getCookie("profileImg"));
   }, []);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const token = getCookie("token");
+        const usersData = await getAllusers(token);
+        setUsers(usersData);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchUsers();
+  }, [setUsers]);
+
+  const finale_users = users
+    // .filter((u) => `${u.firstName} ${u.lastName}`.toLowerCase().includes(search.toLowerCase()))
+    .filter((u) => u.firstName.toLowerCase().includes(search.toLowerCase()))
+    .map((user) => <UserItem id={nanoid()} user={user} />);
 
   const [value, setValue] = useState("one");
   const handleChange = (event, newValue) => {
@@ -45,14 +77,24 @@ export default function Navbar() {
   };
 
   return (
-    <div >
+    <div>
       <nav className="nav-container">
-        <div className="nav-left row">
+        <div className="center nav-left row">
           <FacebookIcon />
           <div className="containe-search search-input row center">
             <Searchicon />
-            <input type="text" name="search" placeholder="Search Facebook" />
+            <input
+              type="text"
+              name="search"
+              placeholder="Search Facebook"
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
           </div>
+          <select value={selectedValue} onChange={handleChangeSearch}>
+            {finale_users}
+          </select>
         </div>
         <div className="middel-nav center">
           <Tabs
@@ -86,7 +128,7 @@ export default function Navbar() {
               <AiTwotoneMessage />
             </button>
           </Link>
-          <button className="icon-button" onClick={() => { isNotificationOpen === false ? setIsNotificationOpen(true) : setIsNotificationOpen(false) }}>
+          <button className="icon-button">
             <AiTwotoneBell />
           </button>
           <Link href={`/profile/${usrId}`} legacyBehavior>
@@ -108,6 +150,19 @@ export default function Navbar() {
     </div>
   );
 }
-
-
-
+export function UserItem({ user }) {
+  return (
+    <option key={user._id} value={`/profile/${user._id}`}>
+      {/* <Link
+        href={`/profile/${user._id}`}
+        className=""
+        style={{
+          // height: "30vh",
+          width: "100%",
+        }}
+      > */}
+      {user.firstName} {user.lastName}
+      {/* </Link> */}
+    </option>
+  );
+}
