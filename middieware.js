@@ -6,7 +6,7 @@ export default async function middleware(req) {
   if (!excludedPaths.includes(pathname)) {
     const token = req.cookies.get("token"); // Adjust for how your token is stored
     if (!token) {
-      return NextResponse.redirect(new URL("/Login", req.url));
+      return NextResponse.redirect(new URL("/login", req.url));
     }
   }
   return NextResponse.next();
