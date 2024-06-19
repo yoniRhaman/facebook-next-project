@@ -128,6 +128,7 @@ export default function Navbar() {
               <AiTwotoneMessage />
             </button>
           </Link>
+
           <button className="icon-button">
             <AiTwotoneBell />
           </button>

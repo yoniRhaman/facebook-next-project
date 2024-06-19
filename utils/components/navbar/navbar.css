@@ -12,6 +12,7 @@
 .nav-left {
   justify-content: space-between;
   gap: 5px;
+  margin-left: 1%;
 }
 
 .search-input {
@@ -46,6 +47,7 @@
   justify-content: flex-end;
   gap: 10px;
   align-items: center;
+  margin-right: 1%;
 }
 
 .icon-button {
