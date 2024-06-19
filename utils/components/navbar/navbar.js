@@ -86,7 +86,7 @@ export default function Navbar() {
               <AiTwotoneMessage />
             </button>
           </Link>
-          <button className="icon-button">
+          <button className="icon-button"> 
             <AiTwotoneBell />
           </button>
           <Link href={`/profile/${usrId}`} legacyBehavior>
