@@ -36,11 +36,11 @@ export default function UserProfile({ userData }) {
 
   return (
     <div className="profile-box">
-      <div className="inner-profile-box">
+
         <img className="background-picture" src={userData.baverImg}></img>
-        <div className="information-box">
+        <div className="information-box row center">
           <img className="profile-picture" src={userData.profileImg}></img>
-          <div className="personal-information">
+          <div className="personal-information column">
             <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
             <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
             <div className="mutual-freinds-pictures">
@@ -49,35 +49,39 @@ export default function UserProfile({ userData }) {
               ))}
             </div>
           </div>
-          <div className="out-buttons-box">
-            <div className="buttons">
+
+
+          <div className="out-buttons-box row">
+
               <button
-                className="invite-button"
+                className="invite-button center"
                 variant="outlined"
                 onClick={addFreindLocaly}
               >
                 {!isFreind ? (
                   <PersonAddAlt className="add-freind-request" />
                 ) : (
-                  <p>you are a friend</p>
+                  <p className="center">you are a friend</p>
                 )}
               </button>
 
               <button
-                className="invite-button"
+                className="invite-button center"
                 variant="contained"
                 size="small"
               >
                 <Message className="message-button" />
               </button>
-            </div>
-            <button className="expnd-more-button" size="small">
+
+
+            <button className="expnd-more-button center" size="small">
               <ExpandMore />
             </button>
           </div>
-        </div>
+          </div>
 
-        <div className="profile-nav">
+
+
           <div className="rhight-nav">
             <Button>Posts</Button>
             <Button>About</Button>
@@ -86,12 +90,12 @@ export default function UserProfile({ userData }) {
             <Button>Videos</Button>
             <Button>Check-ins</Button>
             <Button>More</Button>
-          </div>
-          <Button className="expand-more-button-three-points" size="small">
+            <Button className="expand-more-button-three-points" size="small">
             . . .
           </Button>
-        </div>
-      </div>
+          </div>
+
+
 
       <div className="user-posts">
         <div className="nine-pictures-and-freinds">
