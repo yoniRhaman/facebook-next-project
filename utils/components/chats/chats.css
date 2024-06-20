@@ -39,7 +39,7 @@
   background-color: #18191a;
   display: flex;
 
-  justify-content:flex-start;
+  justify-content: flex-start;
 }
 
 .btn-chats-Messenger:hover {
@@ -95,7 +95,6 @@
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
-  direction: ltr;
   display: block;
   font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue",
     Helvetica, Arial, sans-serif;
@@ -108,11 +107,6 @@
   padding: 4px 15px;
   text-align: center;
   margin: auto;
-  /* vertical-align: baseline; */
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
   margin-bottom: 20px;
 }
 
