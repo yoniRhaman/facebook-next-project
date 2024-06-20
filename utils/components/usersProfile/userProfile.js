@@ -17,13 +17,23 @@ import {
   ShareOutlined,
   ThumbUpOffAlt,
 } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 import { addFreind } from "@/utils/api/freindsApi";
+import { useRouter } from "next/navigation";
+import { useChatContext } from "@/utils/contexts/ChatContext";
+import { getCookie } from "cookies-next";
+import { createNewChat } from "@/utils/api/chatApi";
+import { getUserData } from "@/utils/api/loginApi";
 
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
+  const [loading, setLoading] = useState(false);
+  const { currentChat, setCurrentChat } = useChatContext();
+  const { addChat } = useChatContext();
+  const router = useRouter()
+
 
   async function addFreindLocaly() {
     try {
@@ -33,6 +43,40 @@ export default function UserProfile({ userData }) {
       console.error("Error adding friend:", error);
     }
   }
+
+  const handleChat = async () => {
+    try {
+      setLoading(true);
+      const token = getCookie("token");
+      const uid = getCookie("uid");
+      const json = {}
+      json["owner"] = getCookie("uid");
+      json["participants"] = [
+        userData._id,
+        json["owner"],
+      ];
+      const chat = await createNewChat(json, token);
+      if (chat.status === "notExisting") {
+        addChat(chat.myChat);
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      } else if (chat.status === "existing") {
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      }
+      router.push("/messages");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="profile-box">
@@ -64,15 +108,18 @@ export default function UserProfile({ userData }) {
                   <p className="center">you are a friend</p>
                 )}
               </button>
-
+              {loading ? (
+  <CircularProgress sx={{ color: "white" }} />
+) : ( 
               <button
                 className="invite-button center"
                 variant="contained"
                 size="small"
+                onClick={handleChat}
               >
                 <Message className="message-button" />
               </button>
-
+)}
 
             <button className="expnd-more-button center" size="small">
               <ExpandMore />

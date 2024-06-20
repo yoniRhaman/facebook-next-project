@@ -165,7 +165,8 @@ export default function Navbar() {
 
 export function UserItem({ user, onClick }) {
   return (
-    <div onClick={() => onClick(user._id)} className="user-item">
+    <div onClick={() => onClick(user._id)} className="user-item row">
+      <img src={user.profileImg} className="list-profile-img"></img>
       {user.firstName} {user.lastName}
     </div>
   );

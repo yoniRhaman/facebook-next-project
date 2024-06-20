@@ -17,7 +17,7 @@
 
 .search-input {
   margin-top: 10px;
-  width: 200px;
+  width:88%;
   height: 30px;
   border-radius: 20px;
   background-color: #303030; /* Darker background color for input */
@@ -27,6 +27,7 @@
 }
 
 .search-input input {
+  width: 100%;
   background-color: transparent;
   border: none;
   outline: none;
@@ -97,14 +98,14 @@
 .user-list {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 4.5%;
   background-color: rgb(48, 47, 47);
   border: 1px solid #000000;
   border-radius: 0px  0px  15px  15px ;
   max-height: 200px;
   overflow-y: auto;
   z-index: 1000;
-  width: 24.5%; /* להבטיח שהרשימה תהיה ברוחב מלא של שדה החיפוש */
+  width: 12%; 
 }
 
 .user-list div {
@@ -115,4 +116,20 @@
 
 .user-list div:hover {
   background-color: #000000; /* צבע רקע בעת מעבר עכבר */
+}
+
+.list-profile-img{
+  height: 1.5vw; 
+  width: 1.5vw; 
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease; 
+
+}
+
+.user-item{
+  text-align: center;
+  align-items: center;
+gap: 5%;
+font-size: 0.8vw;
 }

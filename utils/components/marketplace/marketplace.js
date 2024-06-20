@@ -12,10 +12,10 @@ import { FaHeart } from "react-icons/fa";
 import { TbFreeRights } from "react-icons/tb";
 import { GiGardeningShears } from "react-icons/gi";
 import { FaBaseballBatBall } from "react-icons/fa6";
-import AddIcon from "@mui/icons-material/Add";
 import { useContext, useState } from "react";
 import AddProductForm from "../addProductModal/addProductModal";
 import { CategoryContext } from "@/utils/contexts/categoryContext";
+import { GrAdd } from "react-icons/gr";
 
 function Marketplace() {
   const [open, setOpen] = useState(false);
@@ -67,15 +67,15 @@ function Marketplace() {
         <div className="p center">
           <h1>Marketplace</h1>
         </div>
-        <div className="search-input1 row center">
+        {/* <div className="search-input1 row center">
           <Searchicon />
           <input type="text" name="search" placeholder="Search product..." />
-        </div>
+        </div> */}
       </div>
       <hr />
       <div className="Categories-container column center">
         <button className="add row center" onClick={() => setOpen(true)}>
-          add product <AddIcon />
+          add product <GrAdd />
         </button>
         <div className="Categories-p">
           <p>Categories</p>
