@@ -1,6 +1,6 @@
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
-import LoginPage from "./Login/page";
+import LoginPage from "./login/page";
 
 import MainBox from "@/utils/components/mainBox/mainBox";
 // import LoginPage from "@/app/login/page.js";

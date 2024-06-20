@@ -210,7 +210,8 @@ function PostItem({ post, firstName, lastName, profileImg }) {
       </div>
       <div className="user-post-picture">
         {post.images.map((img) => (
-          <img className="user-post-picture" src={img}></img>
+          <img className="user-post-picture" 
+          src={img}></img>
         ))}
       </div>
       <div className="user-post-content">
