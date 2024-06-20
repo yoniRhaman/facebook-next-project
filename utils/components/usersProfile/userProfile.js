@@ -85,9 +85,7 @@ export default function UserProfile({ userData }) {
             <Button>Photos</Button>
             <Button>Videos</Button>
             <Button>Check-ins</Button>
-            <Button>
-              More 
-            </Button>
+            <Button>More</Button>
           </div>
           <Button className="expand-more-button-three-points" size="small">
             . . .
@@ -127,7 +125,7 @@ export default function UserProfile({ userData }) {
 function ListOfFreindsPictures({ freind }) {
   return (
     <Link href={`/profile/${freind._id}`}>
-      <img className="mutual-freind-picture" src={freind.baverImg} />
+      <img className="mutual-freind-picture" src={freind.profileImg} />
     </Link>
   );
 }

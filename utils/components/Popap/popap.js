@@ -11,16 +11,7 @@ function Popap() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    // You can access form data using e.target.elements
-    // For example:
-    // const formData = new FormData(e.target);
-    // const title = formData.get('product-title');
-    // const price = formData.get('product-price');
-    // const category = formData.get('product-category');
-    // const image = formData.get('product-image');
-    // Then, you can send this data to your backend or perform any necessary actions
-    console.log("Form submitted!");
+
   };
 
   return (

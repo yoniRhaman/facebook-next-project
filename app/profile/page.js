@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 
 async function ProfilePage() {
   const userData = await getUserDataForProfile(getCookie("token", { cookies }), getCookie("uid", { cookies }));
-  console.log(userData); 
   return <div ><UserProfile userData={userData} /></div>;
 }
 

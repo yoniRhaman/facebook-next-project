@@ -7,9 +7,6 @@ import { SortProducts } from "./sortProducts";
 import Link from "next/link";
 import { useProductContext } from "@/utils/contexts/productContext";
 import { CategoryContext } from "@/utils/contexts/categoryContext";
-import { FaTrashCan } from "react-icons/fa6";
-import { deleteProductById } from "@/utils/api/marketplaceApi";
-import { getCookie } from "cookies-next";
 
 export default function marketgrid({ productsFromServer }) {
   const [search, setSearch] = useState("");
@@ -24,7 +21,6 @@ export default function marketgrid({ productsFromServer }) {
     .filter((p) => p.category.includes(sharedCategory))
     .sort((a, b) => SortProducts(a, b, sortBy))
     .map((product) => <GridItem id={nanoid()} product={product} />);
-  // console.log(sharedCategory);
   return (
     <div className="my-body column">
       <div className="toolsbar row">
@@ -54,16 +50,6 @@ export default function marketgrid({ productsFromServer }) {
       <div className="grid-container">{finale_products}</div>
     </div>
   );
-  // import Image from "next/image";
-  // import "./marketgrid.css";
-  // import { product_list } from "./marketgriddata";
-  // import { nanoid } from "nanoid";
-
-  // export default function marketgrid() {
-  //   const finale_products = product_list.map((product) => (
-  //     <GridItem id={nanoid()} product={product} />
-  //   ));
-  //   return <div className="grid-container">{finale_products}</div>
 }
 
 export function GridItem({ product }) {
@@ -100,14 +86,6 @@ export function GridItem({ product }) {
           <h3 className="price-text">{product.price + "$"}</h3>
           <h3 className="title-text">{product.name}</h3>
           <h3 className="title-text">{product.location}</h3>
-        </div>
-        <div
-          className="garbage"
-          onClick={async () => {
-            await deleteProductById(getCookie("_id"), getCookie("token"));
-          }}
-        >
-          <FaTrashCan />
         </div>
       </div>
     </Link>

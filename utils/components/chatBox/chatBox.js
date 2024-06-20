@@ -60,18 +60,20 @@ export default function ChatBox() {
       setMessage("");
     }
   };
-
   return currentChat ? (
     <div className="chatBox-container">
       <div className="chatBox-top row center">
         <div className="chatBox-left center">
           <button className="btn-chatBox-img center">
             <img
-              src="https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
+              src={
+                currentChat.user?.profileImg ??
+                "https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
+              }
               alt="Profile"
             />
           </button>
-          <p>name of profile</p>
+          <p>{`${currentChat.user?.firstName} ${currentChat.user?.lastName}`}</p>
         </div>
         <div className="chatBox-right">
           <CloseIcon className="close-icon" />

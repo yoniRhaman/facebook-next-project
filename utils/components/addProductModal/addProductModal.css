@@ -6,7 +6,7 @@
   height: 80%;
   width: 400px;
   background-color: #242526; /* Dark background color */
-  color: #E4E6EB; /* Light text color */
+  color: #e4e6eb; /* Light text color */
   border-radius: 25px;
   position: fixed;
   margin: auto;
@@ -30,7 +30,7 @@
   right: 10px;
   background: none;
   border: none;
-  color: #E4E6EB;
+  color: #e4e6eb;
   font-size: 24px;
   cursor: pointer;
   transition: color 0.3s;
@@ -39,19 +39,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 5%;
   background-color: #242526; /* Dark mode form background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
   width: 100%;
-  max-width: 400px;
 }
 
 select {
-  background-color: #3A3B3C; /* Dark mode select background */
-  color: #E4E6EB; /* Light text color */
-  border: 1px solid #3A3B3C;
+  background-color: #3a3b3c; /* Dark mode select background */
+  color: #e4e6eb; /* Light text color */
+  border: 1px solid #3a3b3c;
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
@@ -61,8 +60,8 @@ select {
 }
 
 select:hover {
-  background-color: #4A4B4C; /* Slightly lighter on hover */
-  border-color: #4A4B4C;
+  background-color: #4a4b4c; /* Slightly lighter on hover */
+  border-color: #4a4b4c;
 }
 
 select:focus {
@@ -70,7 +69,7 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(66, 139, 202, 0.5); /* Outline for focus */
 }
 .inp-product {
-  width: 90%;
+  width: 95%;
   padding: 10px;
   margin: 10px 0; /* Space between inputs */
   border-radius: 4px;
@@ -88,7 +87,7 @@ select:focus {
   outline: none;
 }
 input[type="file"] {
-  width: 45%;
+  width: 95%;
   padding: 10px;
   margin: 10px 0; /* Space between inputs */
   border-radius: 4px;
@@ -116,7 +115,7 @@ input[type="file"]::file-selector-button:hover {
   background-color: #3a3b3c; /* Button background color on hover */
 }
 textarea {
-  width: 70%;
+  width: 95%;
   padding: 10px;
   margin: 10px 0; /* Space between textareas */
   border-radius: 4px;

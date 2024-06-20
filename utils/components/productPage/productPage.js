@@ -1,23 +1,70 @@
 "use client";
 import Image from "next/image";
-import "./product.css";
-import { usePathname } from "next/navigation";
+import "./productPage.css";
+import { getCookie } from "cookies-next";
+import { FaTrashCan } from "react-icons/fa6";
+import { deleteProductById } from "@/utils/api/marketplaceApi";
+import { useProductContext } from "@/utils/contexts/productContext";
+import { useRouter } from "next/navigation"; // ייבוא useRouter מ-next/navigation
+import { CircularProgress } from "@mui/material";
+import { useState } from "react";
+import { createNewChat } from "@/utils/api/chatApi";
+import { getUserData } from "@/utils/api/loginApi";
+import { useChatContext } from "@/utils/contexts/ChatContext";
 
 function ProductPageComponent({ myProduct }) {
-  const pathname = usePathname();
-  const pathnameParts = pathname.split("/product");
-  const lastPathPart = pathnameParts[pathnameParts.length - 1];
+  const user_id = getCookie("uid");
+  const token = getCookie("token");
+  const { setProducts } = useProductContext();
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const { addChat } = useChatContext();
+  const { currentChat, setCurrentChat } = useChatContext();
 
-  // const myProduct = products.find((p) => p._id === lastPathPart);
+  const handleDelete = async () => {
+    await deleteProductById(myProduct._id, user_id, token);
+    setProducts((prev) => prev.filter((p) => p._id !== myProduct._id));
+    router.push("/marketplace");
+  };
+  const handleChat = async () => {
+    try {
+      setLoading(true);
+      const token = getCookie("token");
+      const uid = getCookie("uid");
+      const json = {}
+      json["owner"] = getCookie("uid");
+      json["participants"] = [
+        myProduct["owner"],
+        json["owner"],
+      ];
+      const chat = await createNewChat(json, token);
+      if (chat.status === "notExisting") {
+        addChat(chat.myChat);
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      } else if (chat.status === "existing") {
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      }
+      router.push("/messages");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
       <Image src={i} alt="Image" width={120} height={120} objectFit="fill" />
     </div>
   ));
-  // console.log("product_list:", product_list);
-  // console.log("lastPathPart:", lastPathPart);
-  // console.log(" myProduct title:", myProduct?.title);
 
   return (
     <div className="my-body row">
@@ -53,10 +100,27 @@ function ProductPageComponent({ myProduct }) {
           <div className="location">{myProduct.location}</div>
           <div className="description">{myProduct.description}</div>
         </div>
-        <button className="chat">chat</button>
+        {loading ? (
+  <CircularProgress sx={{ color: "white" }} />
+) : ( 
+        myProduct.owner === user_id 
+        ? 
+        (
+          <button className="chat garbage" onClick={handleDelete}>
+            <FaTrashCan />
+          </button>
+        )
+        :
+        (
+        <button className="chat" onClick={handleChat}>
+              chat
+          </button>
+        )
+      )}
       </div>
     </div>
   );
 }
 
 export default ProductPageComponent;
+

@@ -12,7 +12,6 @@ async function ProfilePage({ params: { id } }) {
     const freindsProfilePictures = await getUsersPictures(token, { freinds: userData.freinds });
     const userPosts = await getUserPosts(id, token);
     userData["userPosts"] = userPosts;
-    // console.log("userPosts:::::::::::::::::::::::::::::", userPosts);
     //it's checking if the displayed profile is a friend of dhe user and adding the result to the userData
     const isFreind = userData.freinds.includes(uid);
     userData["isFreind"] = isFreind;
@@ -23,7 +22,6 @@ async function ProfilePage({ params: { id } }) {
     userData["token"] = token;
     userData["uid"] = uid;
     userData["fid"] = id;
-    // console.log("user data :::::::::", userData);
     return <div ><UserProfile userData={userData} token={token} /></div>;
 }
 

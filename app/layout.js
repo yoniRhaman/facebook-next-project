@@ -27,9 +27,7 @@ export default function RootLayout({ children }) {
           <GroupProvider>
             <ChatProvider>
               <CategoryProvider>
-                <PostProvider>
-                  {children}
-                </PostProvider>
+                <PostProvider>{children}</PostProvider>
               </CategoryProvider>
             </ChatProvider>
           </GroupProvider>

@@ -39,13 +39,13 @@ export default function Chats({ chatsFromServer }) {
         </div>
       </div>
       <div>
-      <button
-        className="button-create"
-        role="button"
-        onClick={handleCreateChatClick}
-      >
-        <FaPlus /> Create New chat
-      </button>
+        <button
+          className="button-create"
+          role="button"
+          onClick={handleCreateChatClick}
+        >
+          <FaPlus /> Create New chat
+        </button>
       </div>
       {/* <input type="text" name="search" placeholder="Search Messenger" /> */}
       {chats?.map((chat) => (
@@ -59,19 +59,24 @@ export default function Chats({ chatsFromServer }) {
 function ChatItem({ chat }) {
   const uid = getCookie("uid");
   const token = getCookie("token");
-  const [user, setUser] = useState(null);
+  const [localUser, setLocalUser] = useState(null);
   const { setCurrentChat } = useChatContext();
 
   useEffect(() => {
     async function getUser() {
       try {
-        if (chat.participants.length > 2) {
+        if (chat.participants.length === 2) {
+          const u = await getUserData(
+            token,
+            chat.participants.filter((p) => p !== uid)
+          );
+          setLocalUser(u);
         } else {
           const u = await getUserData(
             token,
             chat.participants.filter((p) => p !== uid)[0]
           );
-          setUser(u);
+          setLocalUser(u);
         }
       } catch (error) {
         console.error(error);
@@ -80,23 +85,22 @@ function ChatItem({ chat }) {
     getUser();
   }, []);
 
-  return user ? (
+  return localUser ? (
     <button
       key={chat._id}
       className="btn-chats-Messenger row center gap-20"
-      onClick={() => setCurrentChat(chat)}
+      onClick={() => setCurrentChat({ ...chat, user: localUser })}
     >
       <button className="btn-chats-img">
         <img
           src={
-            user.profileImg ??
+            localUser.profileImg ??
             "https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
           }
           alt="Profile"
         />
       </button>
-      <p>{`${user.firstName} ${user.lastName}`}</p>
-      {/* Correctly render the message property */}
+      <p>{`${localUser.firstName} ${localUser.lastName}`}</p>
     </button>
   ) : (
     <CircularProgress key={chat._id} />

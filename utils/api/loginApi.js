@@ -8,7 +8,6 @@ const SERVER_URL =
 export async function login(body) {
   try {
     const response = await axios.post(`${SERVER_URL}/users/login`, body);
-    console.log(SERVER_URL);
     return response.data;
   } catch (error) {
     throw new Error(error);
@@ -18,7 +17,6 @@ export async function login(body) {
 export async function register(data) {
   try {
     const profileData = await axios.post(`${SERVER_URL}/users/register`, data);
-    // console.log(profileData.data);
     return profileData.data;
   } catch (error) {
     console.error(error);
@@ -31,7 +29,6 @@ export async function getUserData(token, _id) {
     const profileData = await axios.get(`${SERVER_URL}/users/${_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(profileData.data);
     return profileData.data;
   } catch (error) {
     console.error(error);

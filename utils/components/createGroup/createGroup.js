@@ -9,12 +9,14 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { getUserFreinds } from "@/utils/api/freindsApi";
 import { useGroupContext } from "@/utils/contexts/groupContext";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "@/utils/services/firebaseConfig";
 
 export default function CreateGroup({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [friends, setFriends] = useState([]);
   const [profileImg, setProfileImg] = useState("");
-  const { sharedGroup, setSharedGroup } = useGroupContext();
+  const { setlistGroup } = useGroupContext();
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
@@ -42,8 +44,12 @@ export default function CreateGroup({ onClose }) {
       json["owner"] = getCookie("uid");
       json["participants"] = formData.getAll("participants");
 
+      json["images"] = await Promise.all(
+        formData.getAll("images").map(async (img) => await handleUpload(img))
+      );
+
       const group = await createNewGroups(json, getCookie("token"));
-      setSharedGroup((prev) => [...prev, group]);
+      setlistGroup((prev) => [...prev, group]);
     } catch (error) {
       console.error(error);
     } finally {
@@ -51,6 +57,12 @@ export default function CreateGroup({ onClose }) {
       onClose();
     }
   }
+
+  const handleUpload = async (image) => {
+    const storageRef = ref(storage, `images/${image.name}`);
+    const result = await uploadBytes(storageRef, image);
+    return await getDownloadURL(result.ref);
+  };
 
   return (
     <div className="modal-container center column">
@@ -92,16 +104,16 @@ export default function CreateGroup({ onClose }) {
               );
             })}
           </select>
-          <div class="inp-img-container">
-            <label for="mainImage" class="inp-img-label">
-              Choose File
+          <div className="inp-img-container">
+            <label htmlFor="images" className="inp-img-label">
+              Choose Files
             </label>
             <input
               type="file"
-              id="mainImage"
-              name="mainImage"
-              class="inp-img"
-              required
+              id="images"
+              name="images"
+              className="inp-img"
+              multiple
             />
           </div>
         </div>

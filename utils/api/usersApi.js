@@ -27,11 +27,22 @@ export async function getUsersPictures(token, idis) {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log(userData.data);
 
     return userData.data;
   } catch (error) {
     console.error(error);
     throw new Error(error);
+  }
+}
+
+export async function getAllusers(token) {
+  try {
+    const users = await axios.get(`${SERVER_URL}/users`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return users.data;
+  } catch (error) {
+    console.error(error);
+    throw Error(error);
   }
 }
