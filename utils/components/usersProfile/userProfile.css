@@ -285,8 +285,8 @@ font-size: 0.9vw;
 }
 
 .user-post-picture {
-  width: 100%; /* Adjust width as needed */
-  max-height: 300px; /* Set maximum height for the post picture */
+  width: 100%; /*Adjust width as needed*/
+  /* max-height: 300px; Set maximum height for the post picture */
   object-fit: cover; /* Ensure the picture covers the container */
 }
 
