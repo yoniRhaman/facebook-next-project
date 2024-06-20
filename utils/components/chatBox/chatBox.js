@@ -11,6 +11,8 @@ import { useChatContext } from "@/utils/contexts/ChatContext";
 import { getChatMessages } from "@/utils/api/chatApi";
 import { getCookie } from "cookies-next";
 import { CircularProgress } from "@mui/material";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "@/utils/services/firebaseConfig";
 
 export default function ChatBox() {
   const sender = getCookie("uid");
@@ -47,17 +49,47 @@ export default function ChatBox() {
     setSelectedFile(event.target.files[0]);
   };
 
+  const handleUpload = async (image) => {
+    const storageRef = ref(storage, `chatImages/${image.name}`);
+    const result = await uploadBytes(storageRef, image);
+    return await getDownloadURL(result.ref);
+  };
+
+  // const sendMessage = async () => {
+  //   if (message.trim()) {
+  //     const msg = {
+  //       sender,
+  //       chat_id: currentChat._id,
+  //       content: message,
+  //       type: "text",
+  //       participants: currentChat.participants,
+  //     };
+  //     socketRef.current.emit("chat message", msg);
+  //     setMessage("");
+  //   }
+  // };
+
   const sendMessage = async () => {
-    if (message.trim()) {
+    if (message.trim() || selectedFile) {
+      setLoading(true);
+      const msgContent = selectedFile
+        ? await handleUpload(selectedFile)
+        : message;
+      const msgType = selectedFile ? "image" : "text";
+
       const msg = {
         sender,
         chat_id: currentChat._id,
-        content: message,
-        type: "text",
+        content: msgContent,
+        type: msgType,
         participants: currentChat.participants,
       };
+
       socketRef.current.emit("chat message", msg);
       setMessage("");
+      setSelectedFile(null);
+
+      setLoading(false);
     }
   };
   return currentChat ? (
@@ -91,7 +123,7 @@ export default function ChatBox() {
             {msg.type === "text" ? (
               <p>{msg.content}</p>
             ) : (
-              <img src={msg.content} />
+              <img src={msg.content} alt="sent" className="chat-image" />
             )}
           </div>
         ))}
@@ -105,6 +137,7 @@ export default function ChatBox() {
           id="file-input"
           type="file"
           accept="image/*"
+          multiple
           onChange={handleFileChange}
         />
         <div className="search-input2 row center">

@@ -1,9 +1,9 @@
 .chatBox-container {
   width: 100%;
   height: calc(100vh - var(--nav-height));
-  background-color: #18191a; 
+  background-color: #18191a;
   color: #fff;
-  overflow-y: scroll; 
+  overflow-y: scroll;
   position: relative;
   top: var(--nav-height);
 }
@@ -30,11 +30,10 @@
 }
 
 .search-input2 {
-
   height: 30px;
   width: 100%;
   border-radius: 20px;
-  background-color: #303030; 
+  background-color: #303030;
   border: none;
   padding: 8px 16px;
   color: #fff;
@@ -88,7 +87,7 @@
   padding: 10px 15px;
   margin-bottom: 15px;
   border-radius: 20px;
-  background-color: #303030; 
+  background-color: #303030;
   word-wrap: break-word;
 }
 
@@ -100,10 +99,29 @@
   align-self: flex-start;
   background-color: #4a4a4a; /* Background color for received messages */
   text-align: left;
+  margin-right: auto; 
+  margin: 2%;
 }
 
 .message-right {
   align-self: flex-end;
   background-color: #303030; /* Background color for sent messages */
   text-align: right;
+  margin-left: auto;
+  margin-right: 2%;
+}
+
+.message-left .chat-image,
+.message-right .chat-image {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 3%;
+}
+
+.message-left,
+.message-right {
+  max-width: max-content;
+  padding: 1.5%;
+  border-radius: 20px;
 }
