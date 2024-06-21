@@ -17,13 +17,23 @@ import {
   ShareOutlined,
   ThumbUpOffAlt,
 } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 import { addFreind } from "@/utils/api/freindsApi";
+import { useRouter } from "next/navigation";
+import { useChatContext } from "@/utils/contexts/ChatContext";
+import { getCookie } from "cookies-next";
+import { createNewChat } from "@/utils/api/chatApi";
+import { getUserData } from "@/utils/api/loginApi";
 
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
+  const [loading, setLoading] = useState(false);
+  const { currentChat, setCurrentChat } = useChatContext();
+  const { addChat } = useChatContext();
+  const router = useRouter()
+
 
   async function addFreindLocaly() {
     try {
@@ -34,13 +44,47 @@ export default function UserProfile({ userData }) {
     }
   }
 
+  const handleChat = async () => {
+    try {
+      setLoading(true);
+      const token = getCookie("token");
+      const uid = getCookie("uid");
+      const json = {}
+      json["owner"] = getCookie("uid");
+      json["participants"] = [
+        userData._id,
+        json["owner"],
+      ];
+      const chat = await createNewChat(json, token);
+      if (chat.status === "notExisting") {
+        addChat(chat.myChat);
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      } else if (chat.status === "existing") {
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0]
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      }
+      router.push("/messages");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="profile-box">
-      <div className="inner-profile-box">
+
         <img className="background-picture" src={userData.baverImg}></img>
-        <div className="information-box">
+        <div className="information-box row center">
           <img className="profile-picture" src={userData.profileImg}></img>
-          <div className="personal-information">
+          <div className="personal-information column">
             <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
             <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
             <div className="mutual-freinds-pictures">
@@ -49,35 +93,42 @@ export default function UserProfile({ userData }) {
               ))}
             </div>
           </div>
-          <div className="out-buttons-box">
-            <div className="buttons">
+
+
+          <div className="out-buttons-box row">
+
               <button
-                className="invite-button"
+                className="invite-button center"
                 variant="outlined"
                 onClick={addFreindLocaly}
               >
                 {!isFreind ? (
                   <PersonAddAlt className="add-freind-request" />
                 ) : (
-                  <p>you are a friend</p>
+                  <p className="center">you are a friend</p>
                 )}
               </button>
-
+              {loading ? (
+  <CircularProgress sx={{ color: "white" }} />
+) : ( 
               <button
-                className="invite-button"
+                className="invite-button center"
                 variant="contained"
                 size="small"
+                onClick={handleChat}
               >
                 <Message className="message-button" />
               </button>
-            </div>
-            <button className="expnd-more-button" size="small">
+)}
+
+            <button className="expnd-more-button center" size="small">
               <ExpandMore />
             </button>
           </div>
-        </div>
+          </div>
 
-        <div className="profile-nav">
+
+
           <div className="rhight-nav">
             <Button>Posts</Button>
             <Button>About</Button>
@@ -86,12 +137,12 @@ export default function UserProfile({ userData }) {
             <Button>Videos</Button>
             <Button>Check-ins</Button>
             <Button>More</Button>
-          </div>
-          <Button className="expand-more-button-three-points" size="small">
+            <Button className="expand-more-button-three-points" size="small">
             . . .
           </Button>
-        </div>
-      </div>
+          </div>
+
+
 
       <div className="user-posts">
         <div className="nine-pictures-and-freinds">
@@ -159,7 +210,8 @@ function PostItem({ post, firstName, lastName, profileImg }) {
       </div>
       <div className="user-post-picture">
         {post.images.map((img) => (
-          <img className="user-post-picture" src={img}></img>
+          <img className="user-post-picture" 
+          src={img}></img>
         ))}
       </div>
       <div className="user-post-content">

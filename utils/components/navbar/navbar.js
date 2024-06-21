@@ -32,6 +32,10 @@ export default function Navbar() {
   const router = useRouter();
   const [selectedValue, setSelectedValue] = useState("");
 
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+
+
   const handleChangeSearch = (event) => {
     const value = event.target.value;
     setSelectedValue(value);
@@ -67,10 +71,14 @@ export default function Navbar() {
   }, [setUsers]);
 
   const finale_users = users
-    // .filter((u) => `${u.firstName} ${u.lastName}`.toLowerCase().includes(search.toLowerCase()))
-    .filter((u) => u.firstName.toLowerCase().includes(search.toLowerCase()))
-    .map((user) => <UserItem id={nanoid()} user={user} />);
-
+  .filter((u) => u.firstName.toLowerCase().includes(search.toLowerCase()) || u.lastName.toLowerCase().includes(search.toLowerCase()))
+  .map((user) => (
+    <UserItem 
+      key={user._id} 
+      user={user} 
+      onClick={(userId) => router.push(`/profile/${userId}`)}
+    />
+  ));
   const [value, setValue] = useState("one");
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -81,20 +89,24 @@ export default function Navbar() {
       <nav className="nav-container">
         <div className="center nav-left row">
           <FacebookIcon />
-          <div className="containe-search search-input row center">
-            <Searchicon />
-            <input
-              type="text"
-              name="search"
-              placeholder="Search Facebook"
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-            />
-          </div>
-          <select value={selectedValue} onChange={handleChangeSearch}>
-            {finale_users}
-          </select>
+          <div className="search-container">
+  <div className="containe-search search-input row center">
+    <Searchicon />
+    <input
+      type="text"
+      name="search"
+      placeholder="Search Facebook"
+      onChange={(e) => setSearch(e.target.value)}
+      onFocus={() => setIsSearchFocused(true)}
+      onBlur={() => setTimeout(() => setIsSearchFocused(false), 200)}
+    />
+  </div>
+  {isSearchFocused && search && (
+    <div className="user-list">
+      {finale_users}
+    </div>
+  )}
+</div>
         </div>
         <div className="middel-nav center">
           <Tabs
@@ -150,19 +162,12 @@ export default function Navbar() {
     </div>
   );
 }
-export function UserItem({ user }) {
+
+export function UserItem({ user, onClick }) {
   return (
-    <option key={user._id} value={`/profile/${user._id}`}>
-      {/* <Link
-        href={`/profile/${user._id}`}
-        className=""
-        style={{
-          // height: "30vh",
-          width: "100%",
-        }}
-      > */}
+    <div onClick={() => onClick(user._id)} className="user-item row">
+      <img src={user.profileImg} className="list-profile-img"></img>
       {user.firstName} {user.lastName}
-      {/* </Link> */}
-    </option>
+    </div>
   );
 }
