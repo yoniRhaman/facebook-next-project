@@ -25,7 +25,7 @@ export default function AddProductForm({ setOpen }) {
     const json = Object.fromEntries(formData);
     json["mainImage"] = await handleUpload(formData.get("mainImage"));
     json["images"] = await Promise.all(
-      formData.getAll("images").map(async (img) => await handleUpload(img))
+      formData.getAll("images").map(async (img) => await handleUpload(img)),
     );
     json["owner"] = getCookie("uid");
 
@@ -73,7 +73,7 @@ export default function AddProductForm({ setOpen }) {
           className="inp-product"
           placeholder="price"
         />
-        <input type="file" label="img" name="mainImage"  required />
+        <input type="file" label="img" name="mainImage" required />
         <input
           type="file"
           label="more images"

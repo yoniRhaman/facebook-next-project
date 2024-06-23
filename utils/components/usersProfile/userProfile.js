@@ -10,14 +10,22 @@ import {
   ShareOutlined,
   ThumbUpOffAlt,
 } from "@mui/icons-material";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 import { addFreind } from "@/utils/api/freindsApi";
+import { useRouter } from "next/navigation";
+import { useChatContext } from "@/utils/contexts/ChatContext";
+import { getCookie } from "cookies-next";
+import { createNewChat } from "@/utils/api/chatApi";
+import { getUserData } from "@/utils/api/loginApi";
 
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
-  const isUserIsTheDisplyedUser = userData.uid === userData.fid;
+  const [loading, setLoading] = useState(false);
+  const { currentChat, setCurrentChat } = useChatContext();
+  const { addChat } = useChatContext();
+  const router = useRouter();
 
   async function addFreindLocaly() {
     try {
@@ -28,64 +36,82 @@ export default function UserProfile({ userData }) {
     }
   }
 
-  let postsImages = userData.userPosts.reduce((images, post) => {
-    return images.concat(post.images);
-  }, []);
-
+  const handleChat = async () => {
+    try {
+      setLoading(true);
+      const token = getCookie("token");
+      const uid = getCookie("uid");
+      const json = {};
+      json["owner"] = getCookie("uid");
+      json["participants"] = [userData._id, json["owner"]];
+      const chat = await createNewChat(json, token);
+      if (chat.status === "notExisting") {
+        addChat(chat.myChat);
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0],
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      } else if (chat.status === "existing") {
+        const u = await getUserData(
+          token,
+          chat.myChat.participants.filter((p) => p !== uid)[0],
+        );
+        setCurrentChat({ ...chat.myChat, user: u });
+      }
+      router.push("/messages");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="profile-box">
-
       <img className="background-picture" src={userData.baverImg}></img>
-      <div className="information-box row ">
+      <div className="information-box row center">
         <img className="profile-picture" src={userData.profileImg}></img>
         <div className="personal-information column">
-          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsTheDisplyedUser ? '(you)' : ''}`}</h1>
-          {!isUserIsTheDisplyedUser && (
-            <div>
-              <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
-              <div className="mutual-freinds-pictures">
-                {userData.freindsPictures.map((freind) => (
-                  <ListOfFreindsPictures freind={freind} />
-                ))}
-              </div>
-
-            </div>
-          )}
-        </div>   {
-            !isUserIsTheDisplyedUser && (
+          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
+          <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
+          <div className="mutual-freinds-pictures">
+            {userData.freindsPictures.map((freind) => (
+              <ListOfFreindsPictures freind={freind} />
+            ))}
+          </div>
+        </div>
 
         <div className="out-buttons-box row">
-       
-              <button
-                className="invite-button center"
-                variant="outlined"
-                onClick={addFreindLocaly}
-              >
-                {!isFreind ? (
-                  <PersonAddAlt className="add-freind-request" />
-                ) : (
-                  <p className="center">you are a friend</p>
-                )}
-              </button>
           <button
             className="invite-button center"
-            variant="contained"
-            size="small"
+            variant="outlined"
+            onClick={addFreindLocaly}
           >
-            <Message className="message-button" />
+            {!isFreind ? (
+              <PersonAddAlt className="add-freind-request" />
+            ) : (
+              <p className="center">you are a friend</p>
+            )}
           </button>
-
+          {loading ? (
+            <CircularProgress sx={{ color: "white" }} />
+          ) : (
+            <button
+              className="invite-button center"
+              variant="contained"
+              size="small"
+              onClick={handleChat}
+            >
+              <Message className="message-button" />
+            </button>
+          )}
 
           <button className="expnd-more-button center" size="small">
             <ExpandMore />
           </button>
         </div>
-        )
-          }
       </div>
-
-
 
       <div className="rhight-nav">
         <Button>Posts</Button>
@@ -99,8 +125,6 @@ export default function UserProfile({ userData }) {
           . . .
         </Button>
       </div>
-
-
 
       <div className="user-posts">
         <div className="nine-pictures-and-freinds">
@@ -171,8 +195,7 @@ function PostItem({ post, firstName, lastName, profileImg }) {
       </div>
       <div className="user-post-picture">
         {post.images.map((img) => (
-          <img className="user-post-picture"
-            src={img}></img>
+          <img className="user-post-picture" src={img}></img>
         ))}
       </div>
       <div className="user-post-content">

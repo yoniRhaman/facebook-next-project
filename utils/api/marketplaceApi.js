@@ -47,7 +47,7 @@ export async function deleteProductById(_id, user_id, token) {
       `${SERVER_URL}/products/${_id}/${user_id}`,
       {
         headers: { Authorization: `Bearer ${token}` },
-      }
+      },
     );
     return response.data;
   } catch (error) {

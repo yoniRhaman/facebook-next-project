@@ -28,7 +28,7 @@ export default function Modal({ onClose }) {
     const json = Object.fromEntries(formData);
 
     json["images"] = await Promise.all(
-      formData.getAll("images").map(async (img) => await handleUpload(img))
+      formData.getAll("images").map(async (img) => await handleUpload(img)),
     );
     json["owner"] = getCookie("uid");
 

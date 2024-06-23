@@ -18,13 +18,12 @@
   background-color: #4d5752; /* Set the color of the thumb */
 }
 
-.main-box-left{
-width: 70%;
-display: flex;
-flex-direction: column;
-align-items: center;
+.main-box-left {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.main-box-right{
+.main-box-right {
   width: 30%;
 }
-

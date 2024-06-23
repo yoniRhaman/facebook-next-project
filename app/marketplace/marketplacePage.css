@@ -21,3 +21,12 @@
 .right::-webkit-scrollbar {
   display: none;
 }
+@media (max-width: 600px) {
+  .left {
+    width: 30%;
+  }
+  
+  .right {
+    width: 70%;
+  }
+}

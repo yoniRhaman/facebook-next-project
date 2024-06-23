@@ -1,20 +1,20 @@
 .my-body {
-  position: relative;
-  background-color: black;
+  background-color: #18191a;
+  width: 100%;
 }
 
 .toolsbar,
 .selectContainer {
-  background-color: black;
+  background-color: #18191a;
 }
 
 .toolsbar {
-  width: 93%;
+  width: 100%;
   height: 10vh;
   top: calc(var(--nav-height) + 2.5vh);
   position: relative;
   align-items: center;
-  padding-left: 7.5vh;
+  padding-left: 0;
   gap: 2%;
 }
 
@@ -24,6 +24,9 @@
   border: none;
   padding: 8px 16px;
   color: #fff;
+}
+.select option {
+  font-size: 1vw;
 }
 
 .textfildContainer {
@@ -36,7 +39,7 @@
 }
 
 .textfildContainer input:hover {
-  width: 100%;
+  width: 90%;
 }
 
 .textfildContainer input:focus {
@@ -45,7 +48,7 @@
 
 .selectContainer select,
 .textfildContainer input {
-  background-color: #303030; /* Darker background color for input */
+  background-color: #303030;
   border: none;
   outline: none;
   color: white;
@@ -55,33 +58,26 @@
 
 .grid-container {
   position: relative;
-  top: 10vh;
+  top: calc(var(--nav-height) + 3vh);
   background-color: transparent;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 3%;
-  padding: 50px;
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  padding: 4%;
 }
 
 .grid_item {
-  background-color: transparent;
   border-radius: 15px;
   color: white;
-  background-color: rgb(63, 62, 62);
+  background-color: #303030;
   text-decoration: none;
   height: 30vh;
-  @media only screen and (max-width: 600px) {
-    height: 17vh;
-  }
+  border: 2px solid rgb(14, 13, 13);
 }
 
 .myimg {
   height: 80%;
   width: 100%;
-  /* background-color: chartreuse; */
   border-radius: 15px 15px 0px 0px;
   position: relative;
   overflow: hidden;
@@ -128,17 +124,8 @@
   margin: 4%;
 }
 
-.grid_item {
-  height: 30vh;
-  background-color: transparent;
-  border-radius: 15px;
-  border: solid rgb(255, 255, 255);
-  color: white;
-}
-
 .myimg {
   height: 80%;
-  /* background-color: chartreuse; */
   border-radius: 15px 15px 0px 0px;
   overflow: hidden;
 }
@@ -155,4 +142,41 @@
   font-size: small;
   position: relative;
   left: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .toolsbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 0;
+    height: 20vh;
+  }
+
+
+
+
+  .selectContainer,
+  .textfildContainer {
+  width: 80%;
+}
+
+  .textfildContainer input,
+  .textfildContainer input:hover,
+  .textfildContainer input:focus {
+    width: 100%;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    top: calc(--nav-height);
+    padding: 5%;
+  }
+
+  .grid_item {
+    height: 20vh;
+  }
+  .select option {
+    font-size: 4vw;
+  }
 }

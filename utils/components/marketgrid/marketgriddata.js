@@ -1,6 +1,5 @@
 export const product_list = [
   {
-
     id: "GreenTable",
     name: "Green Table",
     price: 500,

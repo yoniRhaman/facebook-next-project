@@ -31,24 +31,21 @@ function ProductPageComponent({ myProduct }) {
       setLoading(true);
       const token = getCookie("token");
       const uid = getCookie("uid");
-      const json = {}
+      const json = {};
       json["owner"] = getCookie("uid");
-      json["participants"] = [
-        myProduct["owner"],
-        json["owner"],
-      ];
+      json["participants"] = [myProduct["owner"], json["owner"]];
       const chat = await createNewChat(json, token);
       if (chat.status === "notExisting") {
         addChat(chat.myChat);
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0]
+          chat.myChat.participants.filter((p) => p !== uid)[0],
         );
         setCurrentChat({ ...chat.myChat, user: u });
       } else if (chat.status === "existing") {
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0]
+          chat.myChat.participants.filter((p) => p !== uid)[0],
         );
         setCurrentChat({ ...chat.myChat, user: u });
       }
@@ -101,26 +98,19 @@ function ProductPageComponent({ myProduct }) {
           <div className="description">{myProduct.description}</div>
         </div>
         {loading ? (
-  <CircularProgress sx={{ color: "white" }} />
-) : ( 
-        myProduct.owner === user_id 
-        ? 
-        (
+          <CircularProgress sx={{ color: "white" }} />
+        ) : myProduct.owner === user_id ? (
           <button className="chat garbage" onClick={handleDelete}>
             <FaTrashCan />
           </button>
-        )
-        :
-        (
-        <button className="chat" onClick={handleChat}>
-              chat
+        ) : (
+          <button className="chat" onClick={handleChat}>
+            chat
           </button>
-        )
-      )}
+        )}
       </div>
     </div>
   );
 }
 
 export default ProductPageComponent;
-

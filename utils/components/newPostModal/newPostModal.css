@@ -11,11 +11,11 @@
 }
 
 .modal-content {
-  background: #ffffff; /* White background */
+  background: #817878; /* White background */
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 400px;;
+  width: 400px;
   /* height: 60%; */
   max-width: 90%;
   position: relative;
@@ -44,9 +44,10 @@
 } */
 
 .input-post {
+  background-color: #4c5156;
   width: 100%;
   padding: 15px;
-  border: 1px solid #ccd0d5;
+  border: 1px solid #353b42;
   border-radius: 10px;
   resize: none;
   font-size: 16px;
@@ -59,8 +60,8 @@
   padding: 10px 15px;
   border: 1px solid #ccd0d5;
   border-radius: 8px; /* Rounded corners */
-  background-color: #fff; /* White background */
-  color: #1c1e21; /* Dark text color */
+  background-color: #655959; /* White background */
+  color: #9ba3af; /* Dark text color */
   font-size: 16px;
   width: 200px;
   outline: none; /* Remove default outline */

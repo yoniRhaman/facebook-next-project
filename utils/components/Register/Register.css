@@ -1,12 +1,12 @@
 .container-Register {
   height: 100vh;
   width: 100%;
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f0f2f5;
   position: relative;
-  top:calc(var(--nav-height) *2);
+  top: calc(var(--nav-height) * 2);
 }
 
 .signup-container {
@@ -102,4 +102,3 @@ hr {
 .bottom-Register-container a:hover {
   text-decoration: underline;
 }
-
