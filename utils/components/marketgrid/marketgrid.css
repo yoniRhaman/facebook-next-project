@@ -150,11 +150,16 @@
     flex-direction: column;
     width: 100%;
     padding-left: 0;
+    height: 20vh;
   }
 
+
+
+
+  .selectContainer,
   .textfildContainer {
-    width: 50%;
-  }
+  width: 80%;
+}
 
   .textfildContainer input,
   .textfildContainer input:hover,
@@ -164,11 +169,14 @@
 
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
-    top: var(--nav-height);
+    top: calc(--nav-height);
     padding: 5%;
   }
 
   .grid_item {
     height: 20vh;
+  }
+  .select option {
+    font-size: 4vw;
   }
 }
