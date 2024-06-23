@@ -200,6 +200,8 @@ function DisplayNinePictures({ picture, link }) {
 function PostItem({ post, firstName, lastName, profileImg }) {
   const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
   const formattedDateTime = format(createdAt, "HH:mm MM/dd/yyyy");
+  const pictureClassName = post.images.length > 1 ? "picture" : "picture-own"
+
   return (
     <div className="user-post-box">
 
@@ -224,7 +226,7 @@ function PostItem({ post, firstName, lastName, profileImg }) {
 
       <div className="post-pictures">
         {post.images.map((img) => (
-          <img className="picture" src={img}></img>
+          <img className={pictureClassName} src={img}></img>
         ))}
       </div>
       <div className="user-post-content">

@@ -35,6 +35,7 @@ export default function MainPosts({ postsFromServer }) {
 
 function PostItem({ post }) {
   const [user, setUser] = useState(null);
+  const postImgClassName = post.images.length > 1 ? "post-img" : "post-img-own"
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -77,7 +78,7 @@ function PostItem({ post }) {
           <div className="post-images ">
             {post.images.map((image, idx) => (
               <img
-                className="post-img"
+                className={postImgClassName}
                 key={nanoid()}
                 src={image}
                 alt={`Post image ${idx}`}

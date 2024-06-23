@@ -42,15 +42,22 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; 
+  column-gap: 3%;
 }
 
 .post-img {
   object-fit: cover;
   height: auto;
-  width: 31%; 
+  width: auto; 
   max-width: 31%;
-  border-radius: 8px; /* Rounded corners for images */
+  border-radius: 8px; 
+}
+
+.post-img-own{
+  object-fit: cover;
+  height: auto;
+  width: 100%; 
+  border-radius: 8px; 
 }
 
 .profile-details {
@@ -97,7 +104,7 @@ p {
   }
 
   .post-img {
-    width: 48%; 
+    width: auto; 
     max-width: 48%;
   }
   
