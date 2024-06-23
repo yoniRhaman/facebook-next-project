@@ -63,7 +63,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 3%;
-  padding: 50px;
+  padding: 4%;
 }
 
 .grid_item {
@@ -164,9 +164,11 @@
 
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
+    top: var(--nav-height);
+    padding: 5%;
   }
 
   .grid_item {
-    height: 17vh;
+    height: 20vh;
   }
 }
