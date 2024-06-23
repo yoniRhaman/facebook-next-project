@@ -8,6 +8,7 @@ import {
   Message,
   PersonAddAlt,
   ShareOutlined,
+  SystemSecurityUpdateWarningSharp,
   ThumbUpOffAlt,
 } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
@@ -26,6 +27,7 @@ export default function UserProfile({ userData }) {
   const { currentChat, setCurrentChat } = useChatContext();
   const { addChat } = useChatContext();
   const router = useRouter();
+  const isUserIsDisplayed = userData.uid === userData.fid;
 
   async function addFreindLocaly() {
     try {
@@ -67,50 +69,59 @@ export default function UserProfile({ userData }) {
     }
   };
 
+  let postsImages = userData.userPosts.reduce((images, post) => {
+    return images.concat(post.images);
+  }, []);
+
   return (
     <div className="profile-box">
       <img className="background-picture" src={userData.baverImg}></img>
-      <div className="information-box row center">
+      <div className="information-box row">
         <img className="profile-picture" src={userData.profileImg}></img>
         <div className="personal-information column">
-          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
-          <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
-          <div className="mutual-freinds-pictures">
-            {userData.freindsPictures.map((freind) => (
-              <ListOfFreindsPictures freind={freind} />
-            ))}
-          </div>
+          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsDisplayed ? '(you)' : ''}`}</h1>
+          {!isUserIsDisplayed && (
+            <div>
+            <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
+            <div className="mutual-freinds-pictures">
+              {userData.freindsPictures.map((freind) => (
+                <ListOfFreindsPictures freind={freind} />
+              ))}
+            </div>
+          </div>)}
         </div>
 
-        <div className="out-buttons-box row">
-          <button
-            className="invite-button center"
-            variant="outlined"
-            onClick={addFreindLocaly}
-          >
-            {!isFreind ? (
-              <PersonAddAlt className="add-freind-request" />
-            ) : (
-              <p className="center">you are a friend</p>
-            )}
-          </button>
-          {loading ? (
-            <CircularProgress sx={{ color: "white" }} />
-          ) : (
+        {!isUserIsDisplayed && (
+          <div className="out-buttons-box row">
             <button
               className="invite-button center"
-              variant="contained"
-              size="small"
-              onClick={handleChat}
+              variant="outlined"
+              onClick={addFreindLocaly}
             >
-              <Message className="message-button" />
+              {!isFreind ? (
+                <PersonAddAlt className="add-freind-request" />
+              ) : (
+                <p className="center">you are a friend</p>
+              )}
             </button>
-          )}
+            {loading ? (
+              <CircularProgress sx={{ color: "white" }} />
+            ) : (
+              <button
+                className="invite-button center"
+                variant="contained"
+                size="small"
+                onClick={handleChat}
+              >
+                <Message className="message-button" />
+              </button>
+            )}
 
-          <button className="expnd-more-button center" size="small">
-            <ExpandMore />
-          </button>
-        </div>
+            <button className="expnd-more-button center" size="small">
+              <ExpandMore />
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="rhight-nav">
