@@ -5,7 +5,6 @@ import SideFreindsMenue from "./sideFreindsMenue/sideFreindsMenue";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
-
 async function MainBox() {
   const postsFromServer = await getAllPosts(getCookie("token", { cookies }));
 

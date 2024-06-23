@@ -9,8 +9,6 @@ import Link from "next/link";
 import { register } from "@/utils/api/loginApi";
 import { useRouter } from "next/router";
 function RegisterForm() {
-
-
   const [loading, setLoading] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const passElement = useRef(null);
@@ -28,8 +26,7 @@ function RegisterForm() {
       json["baverImg"] = baver;
       json["freinds"] = [];
       json["posts"] = [];
-      const response =  await  register(json);
-             
+      const response = await register(json);
     } catch (error) {
       console.error(error);
     } finally {
@@ -170,7 +167,7 @@ function RegisterForm() {
                   required
                 />
               </div>
-              <input type="file" label="profileImg" name="profileImg"/>
+              <input type="file" label="profileImg" name="profileImg" />
               <input type="file" label="baverImg" name="baverImg" />
             </div>
             <Button type="submit" variant="contained">

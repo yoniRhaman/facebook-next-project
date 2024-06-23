@@ -33,7 +33,7 @@ export async function addFreind(token, idis) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     return freindData.data;
   } catch (error) {

@@ -45,7 +45,7 @@ export default function CreateGroup({ onClose }) {
       json["participants"] = formData.getAll("participants");
 
       json["images"] = await Promise.all(
-        formData.getAll("images").map(async (img) => await handleUpload(img))
+        formData.getAll("images").map(async (img) => await handleUpload(img)),
       );
 
       const group = await createNewGroups(json, getCookie("token"));

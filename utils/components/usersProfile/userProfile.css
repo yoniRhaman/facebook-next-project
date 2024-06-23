@@ -1,4 +1,3 @@
-
 .profile-box {
   position: absolute;
   display: flex;
@@ -9,45 +8,42 @@
   background-color: var(--background-color);
   overflow-y: scroll;
   top: var(--nav-height);
-
 }
 
 .profile-box::-webkit-scrollbar {
-   
-  width: 1vh; 
-  background-color: #f5f5f5; 
+  width: 1vh;
+  background-color: #f5f5f5;
   position: absolute;
-  right: 0; 
+  right: 0;
 }
 .profile-box::-webkit-scrollbar-thumb {
-  background-color: #1c2822; 
+  background-color: #1c2822;
 }
-
-
 
 .background-picture {
   height: 15vw;
   width: 70%;
-object-fit: cover;}
+  object-fit: cover;
+}
 
 .information-box {
   height: 15vw;
   width: 70%;
-margin-top: 3%;
+  margin-top: 3%;
   gap: 5%;
   border-bottom: slategrey solid;
   padding-bottom: 3%;
 }
 
 .profile-picture {
-  height: 12vw; 
-  width: 12vw; 
-  border-radius: 50%;       
-            
-  aspect-ratio: 1 / 1;        
-  object-fit: cover;          
-  border: 1% solid #242526; 
-  background-color: #3a3b3c;  
+  height: 12vw;
+  width: 12vw;
+  border-radius: 50%;
+
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1% solid #242526;
+  background-color: #3a3b3c;
 }
 
 .personal-information {
@@ -55,7 +51,7 @@ margin-top: 3%;
   width: 40%;
   height: 100%;
   font-size: 1.3vw;
-  color: #e4e6eb; 
+  color: #e4e6eb;
   justify-content: center;
   gap: 8%;
 }
@@ -66,18 +62,17 @@ margin-top: 3%;
 }
 
 .mutual-freind-picture {
-  height: 3vw; 
-  width: 3vw; 
+  height: 3vw;
+  width: 3vw;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
 }
 
 .mutual-freind-picture:hover {
   transform: scale(1.5); /* Enlarge picture on hover */
   z-index: 1;
 }
-
 
 .out-buttons-box {
   align-items: center;
@@ -87,52 +82,53 @@ margin-top: 3%;
   gap: 5%;
 }
 
-.invite-button, .message-button, .expnd-more-button {
-
+.invite-button,
+.message-button,
+.expnd-more-button {
   height: 30%;
 
   padding: 1% 3%;
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;
-  background-color: #3a3b3c; 
-  color: #e4e6eb; 
-  font-size: 1.3vw; 
+  background-color: #3a3b3c;
+  color: #e4e6eb;
+  font-size: 1.3vw;
   transition: background-color 0.3s ease;
-
 }
 
-
-
-.invite-button:hover, .message-button:hover, .expnd-more-button:hover {
-  background-color: #4e4f50; 
+.invite-button:hover,
+.message-button:hover,
+.expnd-more-button:hover {
+  background-color: #4e4f50;
 }
 
-
-.invite-button p, .message-button p, .expnd-more-button p {
-width: 100%;
-height: 100%;
-
+.invite-button p,
+.message-button p,
+.expnd-more-button p {
+  width: 100%;
+  height: 100%;
 }
 
-.add-friend-request, .message-button, .expand-more-button {
-  font-size: 1.5rem; 
+.add-friend-request,
+.message-button,
+.expand-more-button {
+  font-size: 1.5rem;
 }
 
-
-.invite-button .add-friend-request, .message-button .message-button, .expnd-more-button .expand-more-button {
-  margin-right: 0.5rem; 
+.invite-button .add-friend-request,
+.message-button .message-button,
+.expnd-more-button .expand-more-button {
+  margin-right: 0.5rem;
 }
-
 
 .add-freind-request {
-font-size: 3vw;
+  font-size: 3vw;
 }
 
 .message-button {
-  font-size:3vw;
+  font-size: 3vw;
 }
-
 
 .expnd-more-button {
   background-color: rgba(101, 96, 96, 0.377);
@@ -140,15 +136,13 @@ font-size: 3vw;
   cursor: pointer;
 }
 
-
-
 .rhight-nav {
   margin-bottom: 1%;
   width: 70%;
 }
 .rhight-nav button {
   color: #f5f5f5;
-font-size: 0.9vw;
+  font-size: 0.9vw;
 }
 
 .expand-more-button-three-points {
@@ -206,9 +200,6 @@ font-size: 0.9vw;
   object-fit: cover;
 }
 
-
-
-
 .user-posts-box {
   display: flex;
   flex-direction: column;
@@ -231,10 +222,10 @@ font-size: 0.9vw;
   margin-bottom: 20px;
   background-color: #18191a; /* Adjust to match Facebook's dark mode */
   border-radius: 8px;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); /* Add a subtle shadow for depth */
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75); /* Add a subtle shadow for depth */
 }
 
-.out-user-top-post-box{
+.out-user-top-post-box {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -243,7 +234,7 @@ font-size: 0.9vw;
   margin-bottom: 4%;
 }
 
-.out-user-top-post-box p{
+.out-user-top-post-box p {
   color: #ffffff82; /* Set text color */
   /* font-weight: bold; */
 }
@@ -256,7 +247,6 @@ font-size: 0.9vw;
   padding-bottom: 10px; /* Add padding bottom for separation */
   /* border-bottom: 1px solid #3a3b3c; */
 }
-
 
 .user-brief-introduction {
   display: flex;
@@ -277,7 +267,7 @@ font-size: 0.9vw;
 }
 
 .user-brief-introduction {
-  display: flex;  
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start; /* Adjust justification as needed */
@@ -328,4 +318,3 @@ font-size: 0.9vw;
 a {
   text-decoration: none;
 }
-
