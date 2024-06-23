@@ -1,15 +1,8 @@
 "use client";
-import {
-  displayedUserInformation,
-  nineFreindsPictures,
-  pictures,
-  userPosts,
-} from "@/utils/data/displayedUserInformation";
 import "./userProfile.css";
 import { format } from "date-fns";
 
 import {
-  ArrowDropDownSharp,
   ChatBubbleOutline,
   ExpandMore,
   Message,
@@ -24,6 +17,7 @@ import { addFreind } from "@/utils/api/freindsApi";
 
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
+  const isUserIsTheDisplyedUser = userData.uid === userData.fid;
 
   async function addFreindLocaly() {
     try {
@@ -34,25 +28,35 @@ export default function UserProfile({ userData }) {
     }
   }
 
+  let postsImages = userData.userPosts.reduce((images, post) => {
+    return images.concat(post.images);
+  }, []);
+
+
   return (
     <div className="profile-box">
 
-        <img className="background-picture" src={userData.baverImg}></img>
-        <div className="information-box row center">
-          <img className="profile-picture" src={userData.profileImg}></img>
-          <div className="personal-information column">
-            <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName}`}</h1>
-            <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
-            <div className="mutual-freinds-pictures">
-              {userData.freindsPictures.map((freind) => (
-                <ListOfFreindsPictures freind={freind} />
-              ))}
+      <img className="background-picture" src={userData.baverImg}></img>
+      <div className="information-box row ">
+        <img className="profile-picture" src={userData.profileImg}></img>
+        <div className="personal-information column">
+          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsTheDisplyedUser ? '(you)' : ''}`}</h1>
+          {!isUserIsTheDisplyedUser && (
+            <div>
+              <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
+              <div className="mutual-freinds-pictures">
+                {userData.freindsPictures.map((freind) => (
+                  <ListOfFreindsPictures freind={freind} />
+                ))}
+              </div>
+
             </div>
-          </div>
+          )}
+        </div>   {
+            !isUserIsTheDisplyedUser && (
 
-
-          <div className="out-buttons-box row">
-
+        <div className="out-buttons-box row">
+       
               <button
                 className="invite-button center"
                 variant="outlined"
@@ -64,50 +68,52 @@ export default function UserProfile({ userData }) {
                   <p className="center">you are a friend</p>
                 )}
               </button>
-
-              <button
-                className="invite-button center"
-                variant="contained"
-                size="small"
-              >
-                <Message className="message-button" />
-              </button>
-
-
-            <button className="expnd-more-button center" size="small">
-              <ExpandMore />
-            </button>
-          </div>
-          </div>
+          <button
+            className="invite-button center"
+            variant="contained"
+            size="small"
+          >
+            <Message className="message-button" />
+          </button>
 
 
+          <button className="expnd-more-button center" size="small">
+            <ExpandMore />
+          </button>
+        </div>
+        )
+          }
+      </div>
 
-          <div className="rhight-nav">
-            <Button>Posts</Button>
-            <Button>About</Button>
-            <Button>Freinds</Button>
-            <Button>Photos</Button>
-            <Button>Videos</Button>
-            <Button>Check-ins</Button>
-            <Button>More</Button>
-            <Button className="expand-more-button-three-points" size="small">
-            . . .
-          </Button>
-          </div>
+
+
+      <div className="rhight-nav">
+        <Button>Posts</Button>
+        <Button>About</Button>
+        <Button>Freinds</Button>
+        <Button>Photos</Button>
+        <Button>Videos</Button>
+        <Button>Check-ins</Button>
+        <Button>More</Button>
+        <Button className="expand-more-button-three-points" size="small">
+          . . .
+        </Button>
+      </div>
 
 
 
       <div className="user-posts">
         <div className="nine-pictures-and-freinds">
+          <p>Images</p>
           <div className="nine-pictures">
-            {pictures.slice(0, 9).map((picture, index) => (
-              <DisplayNinePictures picture={picture} />
+            {postsImages.slice(0, 9).map((picture, index) => (
+              <DisplayNinePictures picture={picture} link={"/"} />
             ))}
           </div>
-
+          <p>Friends</p>
           <div className="nine-pictures">
-            {nineFreindsPictures.map((picture, index) => (
-              <DisplayNinePictures picture={picture.ProfilePicture} />
+            {userData.freindsPictures.slice(0, 9).map((friend, index) => (
+              <DisplayNinePictures picture={friend.profileImg} link={friend._id} />
             ))}
           </div>
         </div>
@@ -134,11 +140,13 @@ function ListOfFreindsPictures({ freind }) {
   );
 }
 
-function DisplayNinePictures({ picture }) {
+function DisplayNinePictures({ picture, link }) {
   return (
     <button>
-      {" "}
-      <img src={picture} />
+      <Link href={link}>
+        {" "}
+        <img src={picture} />
+      </Link>
     </button>
   );
 }
@@ -163,8 +171,8 @@ function PostItem({ post, firstName, lastName, profileImg }) {
       </div>
       <div className="user-post-picture">
         {post.images.map((img) => (
-          <img className="user-post-picture" 
-          src={img}></img>
+          <img className="user-post-picture"
+            src={img}></img>
         ))}
       </div>
       <div className="user-post-content">
