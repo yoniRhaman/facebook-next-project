@@ -9,8 +9,8 @@ body {
   flex-direction: column;
   align-items: center;
   width: 70%;
-  padding: 30px;
-  row-gap: 30px;
+  padding: 2%;
+  row-gap: 4%;
   overflow: auto;
 }
 
@@ -38,16 +38,27 @@ p {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Shadow for depth */
 }
 
+.post-images{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; 
+}
+
 .post-img {
   object-fit: cover;
-  height: 100px;
+  height: auto;
+  width: 31%; 
+  max-width: 31%;
   border-radius: 8px; /* Rounded corners for images */
 }
 
 .profile-details {
   width: 35%;
-  justify-content: space-between;
   align-items: center;
+  gap: 3%;
+
+
 }
 
 .profile-details img {
@@ -57,6 +68,8 @@ p {
 .post-details {
   align-items: center;
   justify-content: space-between;
+  padding: 2%;
+  border-bottom: solid rgb(80, 80, 80);
 }
 
 .privacy-text,
@@ -66,4 +79,26 @@ p {
 
 .post-content {
   padding: 5% 0%;
+}
+
+@media only screen and (max-width: 600px) {
+  .posts-box {
+    width: 90%;
+  }
+
+  .privacy-text,
+  .date p {
+    font-size: xx-small;
+  }
+
+  .profile-details {
+    width: 100%;
+
+  }
+
+  .post-img {
+    width: 48%; 
+    max-width: 48%;
+  }
+  
 }
