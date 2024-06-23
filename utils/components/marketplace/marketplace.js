@@ -19,16 +19,9 @@ import { GrAdd } from "react-icons/gr";
 
 function Marketplace() {
   const [open, setOpen] = useState(false);
-  // const handleModalOpen = () => {
-  //   setShowModal(true);
-  // };
-  // const handleModalClose = () => {
-  //   setShowModal(false);
-  // };
 
   const renderCategories = () => {
     const { updateSharedCategory } = useContext(CategoryContext);
-    // const { sharedCategory } = useContext(CategoryContext);
 
     const handleClick = (name) => {
       updateSharedCategory(name);
@@ -53,10 +46,11 @@ function Marketplace() {
         className="btn-categories"
         onClick={() => handleClick(category.label)}
       >
-        <div className="iconCategories">
+        <div className="iconCategories row">
           <category.icon className="icon-categories" />
+          <h3>{category.label}</h3>
         </div>
-        <h3>{category.label}</h3>
+
       </button>
     ));
   };
@@ -67,13 +61,8 @@ function Marketplace() {
         <div className="p center">
           <h1>Marketplace</h1>
         </div>
-        {/* <div className="search-input1 row center">
-          <Searchicon />
-          <input type="text" name="search" placeholder="Search product..." />
-        </div> */}
       </div>
-      <hr />
-      <div className="Categories-container column center">
+      <div className="Categories-container column">
         <button className="add row center" onClick={() => setOpen(true)}>
           add product <GrAdd />
         </button>
