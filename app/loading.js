@@ -5,6 +5,5 @@ export default function Loading() {
     <div className="center" style={{ height: "100vh", width: "100%" }}>
       <CircularProgress />
     </div>
-
   );
 }

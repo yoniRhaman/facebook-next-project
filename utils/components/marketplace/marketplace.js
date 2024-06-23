@@ -50,7 +50,6 @@ function Marketplace() {
           <category.icon className="icon-categories" />
           <h3>{category.label}</h3>
         </div>
-
       </button>
     ));
   };

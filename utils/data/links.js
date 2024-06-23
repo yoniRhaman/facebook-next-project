@@ -1,3 +1,1 @@
-export const links =[
-    
-]
+export const links = [];

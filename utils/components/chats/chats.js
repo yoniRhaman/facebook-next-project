@@ -68,13 +68,13 @@ function ChatItem({ chat }) {
         if (chat.participants.length === 2) {
           const u = await getUserData(
             token,
-            chat.participants.filter((p) => p !== uid)
+            chat.participants.filter((p) => p !== uid),
           );
           setLocalUser(u);
         } else {
           const u = await getUserData(
             token,
-            chat.participants.filter((p) => p !== uid)[0]
+            chat.participants.filter((p) => p !== uid)[0],
           );
           setLocalUser(u);
         }

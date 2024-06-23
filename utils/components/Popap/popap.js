@@ -11,7 +11,6 @@ function Popap() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
   };
 
   return (

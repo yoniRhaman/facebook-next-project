@@ -17,9 +17,7 @@ export default function CreateChat({ onClose }) {
   const [friends, setFriends] = useState([]);
   const [profileImg, setProfileImg] = useState("");
   const { addChat } = useChatContext();
-    const { currentChat, setCurrentChat } = useChatContext();
-
-
+  const { currentChat, setCurrentChat } = useChatContext();
 
   useEffect(() => {
     const url = Cookies.get("profileImg");
@@ -56,13 +54,13 @@ export default function CreateChat({ onClose }) {
         addChat(chat.myChat);
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0]
+          chat.myChat.participants.filter((p) => p !== uid)[0],
         );
         setCurrentChat({ ...chat.myChat, user: u });
       } else if (chat.status === "existing") {
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0]
+          chat.myChat.participants.filter((p) => p !== uid)[0],
         );
         setCurrentChat({ ...chat.myChat, user: u });
       }

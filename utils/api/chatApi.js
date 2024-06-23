@@ -3,7 +3,7 @@ import axios from "axios";
 const SERVER_URL =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
     ? "http://localhost:3005"
-  : "https://facebook-express-project.onrender.com";
+    : "https://facebook-express-project.onrender.com";
 
 export async function createNewChat(body, token) {
   try {

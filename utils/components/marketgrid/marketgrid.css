@@ -1,11 +1,11 @@
 .my-body {
-  background-color:#18191a;
+  background-color: #18191a;
   width: 100%;
 }
 
 .toolsbar,
 .selectContainer {
-  background-color: #18191a
+  background-color: #18191a;
 }
 
 .toolsbar {
@@ -24,6 +24,9 @@
   border: none;
   padding: 8px 16px;
   color: #fff;
+}
+.select option {
+  font-size: 1vw;
 }
 
 .textfildContainer {
@@ -159,12 +162,11 @@
     width: 100%;
   }
 
-  .grid-container { 
+  .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .grid_item{
-  height: 17vh;
+  .grid_item {
+    height: 17vh;
   }
 }
-

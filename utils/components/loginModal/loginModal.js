@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function LoginModal() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  
+
   async function handleSumbit(e) {
     e.preventDefault();
     setLoading(true);

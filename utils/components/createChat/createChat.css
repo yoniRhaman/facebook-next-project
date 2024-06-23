@@ -1,5 +1,4 @@
 .modal-container {
-
   background: #ffffff;
   border-radius: 25px;
   left: 0;
@@ -25,7 +24,7 @@
 
 .title-container {
   width: 100%;
-  
+
   /* margin-left: 20px; */
 
   /* align-self: flex-end; */
@@ -41,11 +40,11 @@
 
 .title-container-button {
   background: none;
-    border: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 
 .picture {
@@ -56,7 +55,6 @@
 .picture img {
   border-radius: 50px;
 }
-
 
 /* Style for the group name input */
 .inp-group:nth-of-type(1) {
@@ -83,12 +81,14 @@
   display: inline-block;
   padding: 10px 20px;
   background-color: #1877f2; /* Dark mode button background */
-  color: #E4E6EB; /* Button text color */
+  color: #e4e6eb; /* Button text color */
   border: 1px solid#1877f2;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .inp-img-label:hover {
