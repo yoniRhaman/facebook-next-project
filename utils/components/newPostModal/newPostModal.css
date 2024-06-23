@@ -11,7 +11,7 @@
 }
 
 .modal-content {
-  background: #817878; /* White background */
+  background: #2a2828; /* White background */
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -26,7 +26,7 @@
 }
 .title-container h1 {
   font-size: 25px;
-  color: #1877f2; /* Facebook blue */
+  color: #f1f3f7; 
   margin: 0;
 }
 
@@ -37,11 +37,7 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
-  /* justify-content: flex-end; */
 }
-/* .title-container-button:hover {
-  opacity: 0.7;
-} */
 
 .input-post {
   background-color: #4c5156;
@@ -60,7 +56,7 @@
   padding: 10px 15px;
   border: 1px solid #ccd0d5;
   border-radius: 8px; /* Rounded corners */
-  background-color: #655959; /* White background */
+  background-color: #4c5156;
   color: #9ba3af; /* Dark text color */
   font-size: 16px;
   width: 200px;
