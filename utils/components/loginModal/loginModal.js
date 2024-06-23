@@ -75,15 +75,15 @@ export default function LoginModal() {
         <Button variant="contained" type="submit">
           {loading ? <CircularProgress sx={{ color: "white" }} /> : "Log in"}
         </Button>
-
-      </form>
-      <Link className="new" href={"/registration"}>
+        <Link className="new" href={"/registration"}>
         <button
           className="new-button"
         >
           create new account
         </button>
       </Link>
+      </form>
+
     </div>
   );
 }
