@@ -10,7 +10,7 @@
 }
 
 .signup-container {
-  background-color: #fff;
+  background-color: #242526; /* Dark background color */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -54,6 +54,7 @@ hr {
 }
 
 .middle1-Register-container input {
+  background-color: #3a3b3c; /* Textarea background color */
   width: 100%;
   padding: 8px;
   margin-bottom: 15px;

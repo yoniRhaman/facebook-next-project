@@ -42,7 +42,7 @@ function RegisterForm() {
 
   return (
     <div className="container-Register">
-      <div className="signup-container">
+      <div className="signup-container ">
         <div className="top-Register-container">
           <div className="container-sign-up">
             <h1>Sign Up</h1>
@@ -55,47 +55,19 @@ function RegisterForm() {
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="firstName">First Name:</label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                // value={formData.firstName}
-                // onChange={handleChange}
-                required
-              />
+              <input type="text" id="firstName" name="firstName" required />
             </div>
             <div>
               <label htmlFor="lastName">Last Name:</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                // value={formData.lastName}
-                // onChange={handleChange}
-                required
-              />
+              <input type="text" id="lastName" name="lastName" required />
             </div>
             <div>
               <label htmlFor="phoneNumber">Phone Number:</label>
-              <input
-                type="tel"
-                id="phoneNumber"
-                name="phoneNumber"
-                // value={formData.phoneNumber}
-                // onChange={handleChange}
-                required
-              />
+              <input type="tel" id="phoneNumber" name="phoneNumber" required />
             </div>
             <div>
               <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                // value={formData.email}
-                // onChange={handleChange}
-                required
-              />
+              <input type="email" id="email" name="email" required />
             </div>
             <div>
               <label htmlFor="password">Password:</label>
@@ -104,8 +76,6 @@ function RegisterForm() {
                 type="password"
                 id="password"
                 name="password"
-                // value={formData.password}
-                // onChange={handleChange}
                 required
               />
             </div>
@@ -116,8 +86,6 @@ function RegisterForm() {
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                // value={formData.confirmPassword}
-                // onChange={handleChange}
                 required
                 onChange={(e) => {
                   if (e.target.value !== passElement.current.value) {
@@ -131,14 +99,7 @@ function RegisterForm() {
             </div>
             <div>
               <label htmlFor="birthDate">Date of Birth:</label>
-              <input
-                type="date"
-                id="birthDate"
-                name="birthDate"
-                // value={formData.birthDate}
-                // onChange={handleChange}
-                required
-              />
+              <input type="date" id="birthDate" name="birthDate" required />
             </div>
             <div className="column">
               <div className="gender-container">
@@ -178,7 +139,7 @@ function RegisterForm() {
               )}
             </Button>
           </form>
-          <Link href={"/login"}>
+          <Link href={"/Login"}>
             <Button
               sx={{
                 background: "green",
