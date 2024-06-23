@@ -402,7 +402,7 @@ a {
   .profile-box {
     height: auto;
     overflow-y: visible;
-
+    position: relative;
   }
 
 
@@ -431,9 +431,9 @@ a {
   .invite-button,
 .message-button,
 .expnd-more-button {
-  height: 60%;
-  font-size: 4vw;
-  padding: 5;
+  height: 90%;
+  font-size: 3.5vw;
+  padding: 8%;
 
 }
 .out-buttons-box {
