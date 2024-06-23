@@ -20,6 +20,7 @@ import { useChatContext } from "@/utils/contexts/ChatContext";
 import { getCookie } from "cookies-next";
 import { createNewChat } from "@/utils/api/chatApi";
 import { getUserData } from "@/utils/api/loginApi";
+import { nanoid } from "nanoid";
 
 export default function UserProfile({ userData }) {
   const [isFreind, setIsFreind] = useState(userData.isFreind);
@@ -190,7 +191,7 @@ function DisplayNinePictures({ picture, link }) {
     <button>
       <Link href={link}>
         {" "}
-        <img src={picture} />
+        <img src={picture} key={nanoid()}/>
       </Link>
     </button>
   );
