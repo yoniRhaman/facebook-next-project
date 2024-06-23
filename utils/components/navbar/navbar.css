@@ -131,8 +131,8 @@
 @media (max-width: 600px) {
   .nav-container {
     flex-wrap: wrap;
-    height: auto;
-    padding: 10px 0;
+
+
 align-items: center;
   }
 

@@ -8,6 +8,7 @@
   background-color: var(--background-color);
   overflow-y: scroll;
   top: var(--nav-height);
+
 }
 
 .profile-box::-webkit-scrollbar {
@@ -352,16 +353,14 @@ a {
     max-width: 48%;
   }
 
-  .user-posts {
-    display: flex;
-    flex-direction: column;
-  }
 
   .nine-pictures-and-freinds {
     width: 100%;
   }
   .user-posts-box {
     width: 100%;
+    overflow-y: visible;
+    flex-grow: 1;
   }
 
   .nine-pictures {
@@ -387,24 +386,28 @@ a {
   .information-box {
     width: 95%;
   }
+
+  
   .user-posts {
+    display: flex;
+    flex-direction: column;
     width: 95%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible;
+    min-height: calc(100vh - 200px);
+    background-color: var(--background-color);
   }
 
   .profile-box {
     height: auto;
     overflow-y: visible;
+
   }
 
-  .user-posts {
-    display: flex;
-    flex-direction: column;
-    overflow-y: visible;
-  }
 
-  .user-posts-box {
-    overflow-y: visible;
-  }
+
+
 
   body {
     overflow-y: auto;
@@ -413,14 +416,9 @@ a {
   .personal-information p {
     margin-bottom: 1%;
   }
-  .user-posts {
-    min-height: calc(100vh - 200px); /* התאם את הערך הזה לפי הצורך */
-    background-color: var(--background-color);
-  }
 
-  .user-posts-box {
-    flex-grow: 1;
-  }
+
+ 
 
   .mutual-freind-picture {
     height: 7vw;
@@ -458,4 +456,6 @@ padding: 0;
 .user-brief-introduction{
   margin-bottom: 0;
 }
+
+
 }

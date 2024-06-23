@@ -9,7 +9,7 @@
 }
 @media (max-width: 600px) {
 * {
-  --nav-height: 20vh;
+  --nav-height: 14vh;
 }
 }
 
