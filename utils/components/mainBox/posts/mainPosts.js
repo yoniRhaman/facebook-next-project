@@ -16,6 +16,7 @@ import { getUserData } from "@/utils/api/loginApi";
 import { getCookie } from "cookies-next";
 import { CircularProgress } from "@mui/material";
 import Image from "next/image";
+import { format } from "date-fns";
 
 export default function MainPosts({ postsFromServer }) {
   const { sharedPosts, setSharedPosts } = usePostContext([]);
@@ -65,7 +66,7 @@ function PostItem({ post }) {
               </div>
               <div className="date culomn">
                 <p className="privacy-text">Privacy: {post.privacy}</p>
-                <p>{post.createdAt}</p>
+                <p> <b>created: </b> {format(new Date(post.createdAt), "dd-MM-yyyy")}</p>
               </div>
             </div>
             <p className="post-content">{post.content}</p>
