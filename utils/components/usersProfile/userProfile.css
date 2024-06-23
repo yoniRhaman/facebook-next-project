@@ -413,9 +413,7 @@ a {
     overflow-y: auto;
   }
 
-  .personal-information p {
-    margin-bottom: 1%;
-  }
+
 
 
  
@@ -457,5 +455,8 @@ padding: 0;
   margin-bottom: 0;
 }
 
+.name-and-freinds{
+  margin: 0;
+}
 
 }

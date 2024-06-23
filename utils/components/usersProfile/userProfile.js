@@ -79,7 +79,7 @@ export default function UserProfile({ userData }) {
       <img className="background-picture" src={userData.baverImg}></img>
       <div className="information-box row">
         <img className="profile-picture" src={userData.profileImg}></img>
-        <div className="personal-information column">
+        <div className="personal-information ">
           <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsDisplayed ? "(you)" : ""}`}</h1>
           {!isUserIsDisplayed && (
             <div>
@@ -181,7 +181,7 @@ export default function UserProfile({ userData }) {
 function ListOfFreindsPictures({ freind }) {
   return (
     <Link href={`/profile/${freind._id}`}>
-      <img className="mutual-freind-picture" src={freind.profileImg} />
+      <img className="mutual-freind-picture" src={freind.profileImg} key={nanoid()}/>
     </Link>
   );
 }
