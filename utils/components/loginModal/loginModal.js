@@ -33,27 +33,56 @@ export default function LoginModal() {
   }
   return (
     <div className="column center navbar-modal ">
-      {/* <button className="close-button" onClick={() => setOpen(false)}>
-        <Close />
-      </button> */}
       <form className="form-input column gap-20" onSubmit={handleSumbit}>
         <h1>Login form</h1>
-        <TextField name="email" label="email" type="email" />
-        <TextField name="password" label="password" type="password" />
+        <TextField
+          name="email"
+          label="email"
+          type="email"
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              color: "#fffdfd",
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#fffdfd",
+                borderWidth: "2px",
+              },
+            },
+            "& .MuiInputLabel-outlined": {
+              color: "#fffdfd",
+            },
+          }}
+        />
+        <TextField
+          name="password"
+          label="password"
+          type="password"
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              color: "#fffdfd",
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#fffdfd",
+                borderWidth: "2px",
+              },
+            },
+            "& .MuiInputLabel-outlined": {
+              color: "#fffdfd",
+            },
+          }}
+        />
+                <button className="text" name="text">
+          forgot password
+        </button>
         <Button variant="contained" type="submit">
           {loading ? <CircularProgress sx={{ color: "white" }} /> : "Log in"}
         </Button>
-        <Button variant="text">forgot password</Button>
+
       </form>
-      <Link href={"/registration"}>
-        <Button
-          sx={{
-            background: "green",
-          }}
-          variant="contained"
+      <Link className="new" href={"/registration"}>
+        <button
+          className="new-button"
         >
           create new account
-        </Button>
+        </button>
       </Link>
     </div>
   );
