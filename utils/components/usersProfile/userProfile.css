@@ -33,6 +33,7 @@
   gap: 5%;
   border-bottom: slategrey solid;
   padding-bottom: 3%;
+  align-items: center;
 }
 
 .profile-picture {
@@ -165,12 +166,19 @@
   right: 0;
   margin-top: 2%;
   margin-left: 1%;
-  
+  gap: 5%;
 }
 
-.nine-pictures-and-freinds p {
+.nine-pictures-and-freinds .pictures,
+.nine-pictures-and-freinds .friends {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
 
-  border: 1px solid #3a3b3c;
+.nine-pictures-and-freinds .pictures p,
+.nine-pictures-and-freinds .friends p {
+  font-size: 1.5vw;
   color: #e4e6eb;
 }
 
@@ -181,25 +189,21 @@
   grid-template-columns: auto auto auto;
   align-items: start;
   width: 100%;
-  aspect-ratio: 1/1;
-  border: 1px solid #3a3b3c; /* Dark mode border color */
-  margin-bottom: 10vh;
+  gap: 5%;
 }
 
-/* Styling for each picture button */
 .nine-pictures button {
   width: 100%;
-  border: 1px solid #3a3b3c; /* Dark mode border color */
+  border: none;
   cursor: pointer;
-  padding: 5%;
+  height: auto;
   z-index: 1;
-  background-color: #000; /* Black background */
-  transition: width 0.3s ease; /* Smooth hover effect transition */
+  background-color: transparent;
+  transition: all 0.3s ease;
 }
 
-/* Hover effect for picture buttons */
 .nine-pictures button:hover {
-  width: 120%; /* Enlarge the button on hover */
+  scale: 120%;
   z-index: 2;
 }
 
@@ -284,10 +288,19 @@
   margin-bottom: 10px; /* Add margin bottom for separation */
 }
 
-.user-post-picture {
-  width: 100%; /*Adjust width as needed*/
-  /* max-height: 300px; Set maximum height for the post picture */
-  object-fit: cover; /* Ensure the picture covers the container */
+.post-pictures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.picture {
+  object-fit: cover;
+  height: auto;
+  width: 31%;
+  max-width: 31%;
+  border-radius: 8px; /* Rounded corners for images */
 }
 
 .user-post-content {
@@ -298,14 +311,14 @@
   color: #ffffff; /* Set text color */
 }
 
-.user-comments {
+/* .user-comments {
   display: flex;
   flex-direction: row;
-  width: 100%; /* Adjust width as needed */
+  width: 100%; 
   justify-content: space-between;
-  border-bottom: 1px solid #3a3b3c; /* Dark mode border color */
-  padding: 10px 0; /* Adjust padding as needed */
-}
+  border-bottom: 1px solid #3a3b3c; 
+  padding: 10px 0;
+} */
 
 .user-comments-button {
   display: flex;
@@ -327,4 +340,122 @@
 
 a {
   text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .personal-information {
+    width: 100%;
+    font-size: 2.3vw;
+  }
+  .picture {
+    width: 48%;
+    max-width: 48%;
+  }
+
+  .user-posts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nine-pictures-and-freinds {
+    width: 100%;
+  }
+  .user-posts-box {
+    width: 100%;
+  }
+
+  .nine-pictures {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .rhight-nav {
+    display: none;
+  }
+  .nine-pictures-and-freinds .pictures,
+  .nine-pictures-and-freinds .friends {
+    gap: 0.5vw;
+  }
+
+  .nine-pictures-and-freinds .pictures p,
+  .nine-pictures-and-freinds .friends p {
+    font-size: 3.5vw;
+  }
+
+  .background-picture {
+    width: 95%;
+  }
+
+  .information-box {
+    width: 95%;
+  }
+  .user-posts {
+    width: 95%;
+  }
+
+  .profile-box {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .user-posts {
+    display: flex;
+    flex-direction: column;
+    overflow-y: visible;
+  }
+
+  .user-posts-box {
+    overflow-y: visible;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+
+  .personal-information p {
+    margin-bottom: 1%;
+  }
+  .user-posts {
+    min-height: calc(100vh - 200px); /* התאם את הערך הזה לפי הצורך */
+    background-color: var(--background-color);
+  }
+
+  .user-posts-box {
+    flex-grow: 1;
+  }
+
+  .mutual-freind-picture {
+    height: 7vw;
+    width: 7vw;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .invite-button,
+.message-button,
+.expnd-more-button {
+  height: 60%;
+  font-size: 4vw;
+  padding: 5;
+
+}
+.out-buttons-box {
+  width: 100%;
+}
+.date{
+  font-size: 3vw;
+}
+
+.out-user-top-post-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ padding-bottom: 3%;
+}
+
+.user-top-post-box{
+padding: 0;
+}
+.user-brief-introduction{
+  margin-bottom: 0;
+}
 }

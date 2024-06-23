@@ -79,16 +79,17 @@ export default function UserProfile({ userData }) {
       <div className="information-box row">
         <img className="profile-picture" src={userData.profileImg}></img>
         <div className="personal-information column">
-          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsDisplayed ? '(you)' : ''}`}</h1>
+          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsDisplayed ? "(you)" : ""}`}</h1>
           {!isUserIsDisplayed && (
             <div>
-            <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
-            <div className="mutual-freinds-pictures">
-              {userData.freindsPictures.map((freind) => (
-                <ListOfFreindsPictures freind={freind} />
-              ))}
+              <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
+              <div className="mutual-freinds-pictures">
+                {userData.freindsPictures.map((freind) => (
+                  <ListOfFreindsPictures freind={freind} />
+                ))}
+              </div>
             </div>
-          </div>)}
+          )}
         </div>
 
         {!isUserIsDisplayed && (
@@ -138,20 +139,29 @@ export default function UserProfile({ userData }) {
       </div>
 
       <div className="user-posts">
-        <div className="nine-pictures-and-freinds">
-          <p>Images</p>
-          <div className="nine-pictures">
-            {postsImages.slice(0, 9).map((picture, index) => (
-              <DisplayNinePictures picture={picture} link={"/"} />
-            ))}
+
+        <div className="nine-pictures-and-freinds column">
+          <div className="pictures ">
+            <p>Images</p>
+            <div className="nine-pictures">
+              {postsImages.slice(0, 9).map((picture, index) => (
+                <DisplayNinePictures picture={picture} link={"/"} />
+              ))}
+            </div>
           </div>
-          <p>Friends</p>
-          <div className="nine-pictures">
-            {userData.freindsPictures.slice(0, 9).map((friend, index) => (
-              <DisplayNinePictures picture={friend.profileImg} link={friend._id} />
-            ))}
+          <div className="friends ">
+            <p>Friends</p>
+            <div className="nine-pictures">
+              {userData.freindsPictures.slice(0, 9).map((friend, index) => (
+                <DisplayNinePictures
+                  picture={friend.profileImg}
+                  link={friend._id}
+                />
+              ))}
+            </div>
           </div>
         </div>
+
         <div className="user-posts-box">
           {userData.userPosts.map((post) => (
             <PostItem
@@ -191,7 +201,10 @@ function PostItem({ post, firstName, lastName, profileImg }) {
   const formattedDateTime = format(createdAt, "HH:mm MM/dd/yyyy");
   return (
     <div className="user-post-box">
+
+
       <div className="out-user-top-post-box">
+
         <div className="user-top-post-box">
           <Link href={`/profile/${post.owner}`}>
             <div className="user-brief-introduction">
@@ -202,26 +215,30 @@ function PostItem({ post, firstName, lastName, profileImg }) {
             </div>
           </Link>
         </div>
-        <p>{formattedDateTime}</p>
+
+        <p className="date">{formattedDateTime}</p>
+
       </div>
-      <div className="user-post-picture">
+
+
+      <div className="post-pictures">
         {post.images.map((img) => (
-          <img className="user-post-picture" src={img}></img>
+          <img className="picture" src={img}></img>
         ))}
       </div>
       <div className="user-post-content">
         <p>{post.content}</p>
       </div>
-      <div className="user-comments">
+
+      {/* <div className="user-comments">
         <button className="user-comments-button">
-          {/* <p> {`${post.comments.length} comments`}</p> */}
         </button>
         <div>
           <button className="user-comments-button">
-            {/* <p>{`${post.likes.length - 1} + ${post.likes[0].typeOfLike}`}</p> */}
           </button>
         </div>
       </div>
+
       <div className="user-comments">
         <button className="row center user-comments-button">
           <ThumbUpOffAlt />
@@ -235,7 +252,8 @@ function PostItem({ post, firstName, lastName, profileImg }) {
           <ShareOutlined />
           <p>Share</p>
         </button>
-      </div>
+      </div> */}
+
     </div>
   );
 }
