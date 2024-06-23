@@ -164,6 +164,14 @@
   width: 25%;
   right: 0;
   margin-top: 2%;
+  margin-left: 1%;
+  
+}
+
+.nine-pictures-and-freinds p {
+
+  border: 1px solid #3a3b3c;
+  color: #e4e6eb;
 }
 
 /* Container for the grid of nine pictures */
@@ -171,9 +179,11 @@
   position: relative;
   display: grid;
   grid-template-columns: auto auto auto;
+  align-items: start;
   width: 100%;
   aspect-ratio: 1/1;
-  border: 0.5% solid #3a3b3c; /* Dark mode border color */
+  border: 1px solid #3a3b3c; /* Dark mode border color */
+  margin-bottom: 10vh;
 }
 
 /* Styling for each picture button */
