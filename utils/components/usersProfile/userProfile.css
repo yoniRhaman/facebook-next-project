@@ -192,6 +192,9 @@
   gap: 5%;
 }
 
+.friends .nine-pictures button img{
+border-radius: 50%;
+}
 .nine-pictures button {
   width: 100%;
   border: none;
