@@ -73,7 +73,7 @@ function PostItem({ post }) {
         )}
 
         {post.images && post.images.length > 0 && (
-          <div className="post-images row gap-20 ">
+          <div className="post-images ">
             {post.images.map((image, idx) => (
               <img
                 className="post-img"
