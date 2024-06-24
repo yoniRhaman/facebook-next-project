@@ -3,13 +3,9 @@ import "./userProfile.css";
 import { format } from "date-fns";
 
 import {
-  ChatBubbleOutline,
   ExpandMore,
   Message,
   PersonAddAlt,
-  ShareOutlined,
-  SystemSecurityUpdateWarningSharp,
-  ThumbUpOffAlt,
 } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
 import Link from "next/link";
@@ -83,9 +79,9 @@ export default function UserProfile({ userData }) {
           <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsDisplayed ? "(you)" : ""}`}</h1>
           {!isUserIsDisplayed && (
             <div>
-              <p className="name-and-freinds">{`${userData.freinds.length} mutual freinds`}</p>
+              <p className="name-and-freinds">{`${userData.commoFreindsPictures.length} mutual freinds`}</p>
               <div className="mutual-freinds-pictures">
-                {userData.freindsPictures.map((freind) => (
+                {userData.commoFreindsPictures.map((freind) => (
                   <ListOfFreindsPictures freind={freind} />
                 ))}
               </div>
