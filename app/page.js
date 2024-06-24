@@ -11,3 +11,5 @@ export default function Home() {
 
   return <div>{token ? <MainBox /> : <LoginPage />}</div>;
 }
+
+
