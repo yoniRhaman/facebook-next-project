@@ -8,6 +8,13 @@
   overflow-y: scroll; /* Enable vertical scroll */
 }
 
+.chats-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chats-container::-webkit-scrollbar-track {
+  background: #2e2f30; /* Background color of the scrollbar track */
+}
 .top-container h1 {
   padding: 10px;
   font-family: sans-serif, Helvetica, Arial;
@@ -17,7 +24,7 @@
 .search-input1 {
   display: flex;
   justify-content: flex-start;
-  height: 30px;
+  height: 5%;
   border-radius: 20px;
   background-color: #303030; /* Darker background color for input */
   border: none;

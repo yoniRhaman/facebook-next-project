@@ -7,6 +7,12 @@
   position: relative;
   top: var(--nav-height);
 }
+.chatBox-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chatBox-container::-webkit-scrollbar-track {
+display: none;}
 
 .chatBox-top {
   padding: 10px;

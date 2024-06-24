@@ -150,7 +150,7 @@ function RegisterForm() {
             </div>
           </form>
           <div className="have-account center">
-            <Link href={"/Login"}>You have account ? Log in</Link>
+            <Link href={"/"}>You have account ? Log in</Link>
           </div>
         </div>
       </div>

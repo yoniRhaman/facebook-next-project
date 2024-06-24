@@ -37,6 +37,7 @@ export default function LoginModal() {
           name="email"
           label="email"
           type="email"
+          defaultValue="m0533115692@gmail.com"
           sx={{
             "& .MuiOutlinedInput-root": {
               color: "#fffdfd",
@@ -54,6 +55,7 @@ export default function LoginModal() {
           name="password"
           label="password"
           type="password"
+          defaultValue="1234"
           sx={{
             "& .MuiOutlinedInput-root": {
               color: "#fffdfd",
@@ -67,21 +69,16 @@ export default function LoginModal() {
             },
           }}
         />
-                <button className="text" name="text">
+        <button className="text" name="text">
           forgot password
         </button>
         <Button variant="contained" type="submit">
           {loading ? <CircularProgress sx={{ color: "white" }} /> : "Log in"}
         </Button>
         <Link className="new" href={"/registration"}>
-        <button
-          className="new-button"
-        >
-          create new account
-        </button>
-      </Link>
+          <button className="new-button">create new account</button>
+        </Link>
       </form>
-
     </div>
   );
 }
