@@ -1,9 +1,9 @@
 .navbar-modal {
-  height: 100vh;
+  height: calc(100vh - var(--nav-height));
   width: 100%;
   background-color: #18191a;
   position: fixed;
-  /* top: var(--nav-height); */
+  top: var(--nav-height);
   z-index: 999;
   color: #fffdfd;
 }

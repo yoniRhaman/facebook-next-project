@@ -23,8 +23,8 @@ export default function LoginModal() {
       setCookie("token", token);
       setCookie("uid", user_id);
       setCookie("profileImg", profileImg);
-      // window.location.reload();
-      router.push("/");
+      window.location.reload();
+      // router.push("/");
     } catch (error) {
       console.error(error);
     } finally {
