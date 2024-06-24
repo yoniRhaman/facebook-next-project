@@ -4,10 +4,11 @@ import { cookies } from "next/headers";
 
 import MainBox from "@/utils/components/mainBox/mainBox";
 import LoginPage from "./login/page";
+import { redirect } from "next/navigation";
 // import LoginPage from "@/app/login/page.js";
 
 export default function Home() {
   const token = getCookie("token", { cookies });
 
-  return <div>{token ? <MainBox /> : <LoginPage />}</div>;
+  return <div>{token ? <MainBox /> : redirect("/login")}</div>;
 }

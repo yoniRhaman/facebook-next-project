@@ -1,13 +1,15 @@
 "use client";
-// import { Close } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 import { Button, CircularProgress, TextField } from "@mui/material";
 import "./loginModal.css";
 import Link from "next/link";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { login } from "@/utils/api/loginApi";
+import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 export default function LoginModal() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   async function handleSumbit(e) {
     e.preventDefault();
@@ -21,7 +23,8 @@ export default function LoginModal() {
       setCookie("token", token);
       setCookie("uid", user_id);
       setCookie("profileImg", profileImg);
-      window.location.reload();
+      // window.location.reload();
+      router.push("/");
     } catch (error) {
       console.error(error);
     } finally {
