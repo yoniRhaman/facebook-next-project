@@ -35,6 +35,21 @@ export async function getUsersPictures(token, idis) {
   }
 }
 
+export async function getCommonFriendsPictures(token, idis) {
+  try {
+    const result = await axios.post(`${SERVER_URL}/users/commonFriendsPictures`, idis, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+console.log("result::::::::::", result.data);
+    return result.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+}
+
 export async function getAllusers(token) {
   try {
     const users = await axios.get(`${SERVER_URL}/users`, {

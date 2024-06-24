@@ -1,15 +1,13 @@
 "use client";
 import LoginModal from "@/utils/components/loginModal/loginModal";
+import { Height } from "@mui/icons-material";
 import { useState } from "react";
 
 export default function LoginPage() {
   const [open, setOpen] = useState(false);
   return (
-    <div>
-      {/* <button onClick={() => setOpen(true)} style={{position: "relative", top: "10vh"}}>Click me</button> */}
-      {/* {open && <LoginModal setOpen={setOpen} />}  */}
+    <div style={{ height: "100vh", width: "100%" }}>
       <LoginModal setOpen={setOpen} />
-         
     </div>
   );
 }
