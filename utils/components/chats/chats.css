@@ -15,6 +15,7 @@
 .chats-container::-webkit-scrollbar-track {
   background: #2e2f30; /* Background color of the scrollbar track */
 }
+
 .top-container h1 {
   padding: 10px;
   font-family: sans-serif, Helvetica, Arial;
@@ -30,6 +31,7 @@
   border: none;
   padding: 8px 16px;
   color: #fff;
+  margin: 0% 2%;
 }
 
 .search-input1 input {

@@ -11,8 +11,12 @@
   width: 5px;
 }
 
+
 .chatBox-container::-webkit-scrollbar-track {
-display: none;}
+  background: #2e2f30;
+}
+
+
 
 .chatBox-top {
   padding: 10px;

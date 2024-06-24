@@ -101,16 +101,18 @@
   overflow-y: auto;
   z-index: 1000;
   width: 12%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .user-list div {
   padding: 8px 12px;
   cursor: pointer;
-  color: rgb(255, 255, 255); /* להבטיח שהטקסט יהיה שחור */
+  color: rgb(255, 255, 255);
 }
 
 .user-list div:hover {
-  background-color: #000000; /* צבע רקע בעת מעבר עכבר */
+  background-color: #000000;
 }
 
 .list-profile-img {
@@ -132,8 +134,7 @@
   .nav-container {
     flex-wrap: wrap;
 
-
-align-items: center;
+    align-items: center;
   }
 
   .nav-left {
@@ -179,7 +180,7 @@ align-items: center;
     height: 10vw;
     width: 10vw;
   }
-  
+
   .user-item {
     font-size: 4.5vw;
   }

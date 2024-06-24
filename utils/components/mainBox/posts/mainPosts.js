@@ -35,7 +35,7 @@ export default function MainPosts({ postsFromServer }) {
 
 function PostItem({ post }) {
   const [user, setUser] = useState(null);
-  const postImgClassName = post.images.length > 1 ? "post-img" : "post-img-own"
+  const postImgClassName = post.images.length > 1 ? "post-img" : "post-img-own";
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -67,7 +67,7 @@ function PostItem({ post }) {
               </div>
               <div className="date culomn">
                 <p className="privacy-text">Privacy: {post.privacy}</p>
-                <p> <b>created: </b> {format(new Date(post.createdAt), "dd-MM-yyyy")}</p>
+                <p> {format(new Date(post.createdAt), "hh:mm  dd-MM-yyyy")}</p>
               </div>
             </div>
             <p className="post-content">{post.content}</p>
