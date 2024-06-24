@@ -3,7 +3,7 @@ import { Close } from "@mui/icons-material";
 import { Button, CircularProgress, TextField } from "@mui/material";
 import "./loginModal.css";
 import Link from "next/link";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { login } from "@/utils/api/loginApi";
 import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";

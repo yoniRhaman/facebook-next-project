@@ -122,7 +122,7 @@ export default function UserProfile({ userData }) {
         )}
       </div>
 
-      <div className="rhight-nav">
+      {/* <div className="rhight-nav">
         <Button>Posts</Button>
         <Button>About</Button>
         <Button>Freinds</Button>
@@ -133,7 +133,8 @@ export default function UserProfile({ userData }) {
         <Button className="expand-more-button-three-points" size="small">
           . . .
         </Button>
-      </div>
+      </div> */}
+      <br/>
 
       <div className="user-posts">
 
