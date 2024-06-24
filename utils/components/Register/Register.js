@@ -7,7 +7,6 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 import Link from "next/link";
 import { register } from "@/utils/api/loginApi";
-import { useRouter } from "next/router";
 function RegisterForm() {
   const [loading, setLoading] = useState(false);
   const [passwordError, setPasswordError] = useState("");
@@ -42,8 +41,8 @@ function RegisterForm() {
 
   return (
     <div className="container-Register">
-      <div className="signup-container ">
-        <div className="top-Register-container">
+      <div className="signup-container column ">
+        <div className="top-Register-container center space-between">
           <div className="container-sign-up">
             <h1>Sign Up</h1>
             <p>It's quick and easy</p>
@@ -101,8 +100,9 @@ function RegisterForm() {
               <label htmlFor="birthDate">Date of Birth:</label>
               <input type="date" id="birthDate" name="birthDate" required />
             </div>
-            <div className="column">
-              <div className="gender-container">
+            <div className="gender-container column  ">
+              <label htmlFor="gender">gender:</label>
+              <div>
                 <label>Male</label>
                 <input
                   type="radio"
@@ -128,27 +128,30 @@ function RegisterForm() {
                   required
                 />
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="profileImg">profileImg:</label>
               <input type="file" label="profileImg" name="profileImg" />
+            </div>
+            <div>
+              <label htmlFor="baverImg">baverImg:</label>
               <input type="file" label="baverImg" name="baverImg" />
             </div>
-            <Button type="submit" variant="contained">
-              {loading ? (
-                <CircularProgress sx={{ color: "white" }} />
-              ) : (
-                "Submit"
-              )}
-            </Button>
+
+            <div className="create-account">
+              <Button type="submit" variant="contained">
+                {loading ? (
+                  <CircularProgress sx={{ color: "white" }} />
+                ) : (
+                  "Create account"
+                )}
+              </Button>
+            </div>
           </form>
-          <Link href={"/Login"}>
-            <Button
-              sx={{
-                background: "green",
-              }}
-              variant="contained"
-            >
-              login
-            </Button>
-          </Link>
+          <div className="have-account center">
+            <Link href={"/Login"}>You have account ? Log in</Link>
+          </div>
         </div>
       </div>
     </div>

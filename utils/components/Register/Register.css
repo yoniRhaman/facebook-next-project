@@ -1,36 +1,39 @@
 .container-Register {
-  height: 100vh;
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f0f2f5;
   position: relative;
-  top: calc(var(--nav-height) * 2);
 }
 
 .signup-container {
   background-color: #242526; /* Dark background color */
-  padding: 20px;
+  padding: 2%;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  height: 80%;
+  width: 65%;
+  position: absolute;
+  max-width: 90%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  color: #a59c9c;
 }
 
-.top-Register-container {
+/* .top-Register-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.container-sign-up h1 {
-  font-size: 24px;
-  margin: 0;
-}
+} */
 
 .container-sign-up p {
-  font-size: 14px;
-  margin-top: 5px;
+  /* font-size: 14px; */
+  margin-top: 2%;
   color: #757575;
 }
 
@@ -39,35 +42,43 @@
   cursor: pointer;
 }
 hr {
-  margin-top: 20px;
+  margin-top: 3%;
   border: none;
   border-top: 1px solid #ccc;
 }
 
 .middle1-Register-container {
-  margin-top: 20px; /* Add spacing between sections */
+  margin-top: 3%;
+  margin-bottom: 1%;
 }
 
+.middle1-Register-container form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1%;
+}
 .middle1-Register-container label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 2%;
 }
 
 .middle1-Register-container input {
   background-color: #3a3b3c; /* Textarea background color */
   width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
+  padding: 1.5%;
+  margin-bottom: 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  color: aliceblue;
 }
 
 .middle1-Register-container button {
-  margin-bottom: 10px;
+  /* grid-column: span 2; */
+  margin-bottom: 1.5%;
   width: 100%;
   padding: 10px;
-  background-color: #4caf50;
+  background-color: #2d3498;
   color: white;
   border: none;
   border-radius: 4px;
@@ -78,21 +89,18 @@ hr {
   background-color: #45a049;
 }
 
-.middle1-Register-container div {
-  margin-bottom: 15px;
-}
-/* CSS for Gender section */
-.gender-container {
-  display: flex; /* Display the options in a row */
-}
-
 .gender-container label {
-  margin-right: 20px; /* Add some spacing between the options */
+  margin-right: 10%;
+  margin-left: 5%;
+}
+.gender-container input {
+  display: flex;
+  flex-direction: row;
+  width: 5%;
 }
 
 .bottom-Register-container {
-  margin-top: 20px; /* Add spacing between sections */
-  text-align: center;
+  margin-top: 20px;
 }
 
 .bottom-Register-container a {
@@ -102,4 +110,29 @@ hr {
 
 .bottom-Register-container a:hover {
   text-decoration: underline;
+}
+
+.create-account {
+  width: 100%;
+  grid-column: 1/-1;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.gender-container input[type="radio"] {
+  margin-right: 2%;
+}
+
+.gender-container > div {
+  display: flex;
+  align-items: center;
+}
+
+.have-account a {
+  color: white; /* Change text color to white */
+  text-decoration: none; /* Remove underline */
+height: 2%;}
+
+.have-account a:hover {
+  text-decoration: underline; /* Add underline on hover */
 }
