@@ -1,3 +1,4 @@
+
 import { getAllPosts } from "@/utils/api/postsApi";
 import "./mainBox.css";
 import MainPosts from "./posts/mainPosts";
