@@ -1,16 +1,11 @@
 .navbar-modal {
-  justify-content: space-evenly;
-  height: 500px;
-  width: 400px;
-  background-color: antiquewhite;
-  border-radius: 25px;
+  height: calc(100vh - var(--nav-height));
+  width: 100%;
+  background-color: #18191a;
   position: fixed;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  top: var(--nav-height);
   z-index: 999;
+  color: #fffdfd;
 }
 
 .close-button {
@@ -21,8 +16,35 @@
   cursor: pointer;
   font-size: 36px;
   background-color: transparent;
+  color: #fffdfd;
 }
 
 .form-input {
-  padding: 10px;
+  height: 80%;
+
+  color: white;
+  gap: 5%;
+}
+.navbar-modal{
+  width: 100%;
+}
+
+.text{
+  background-color: transparent;
+  color: #fffdfd;
+  border: none;
+}
+
+.new{
+  width: 100%;
+  height: 10%;
+}
+.new-button{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(1, 161, 1);
+  border: none;
+  border-radius: 5px;
+  color: #fffdfd;
+  font-size: larger;
 }

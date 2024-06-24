@@ -8,7 +8,6 @@
   background-color: var(--background-color);
   overflow-y: scroll;
   top: var(--nav-height);
-
 }
 
 .profile-box::-webkit-scrollbar {
@@ -193,6 +192,9 @@
   gap: 5%;
 }
 
+.friends .nine-pictures button img{
+border-radius: 50%;
+}
 .nine-pictures button {
   width: 100%;
   border: none;
@@ -303,7 +305,7 @@
   max-width: 31%;
   border-radius: 8px; /* Rounded corners for images */
 }
-.picture-own{
+.picture-own {
   object-fit: cover;
   height: auto;
   width: 100%;
@@ -359,7 +361,6 @@ a {
     max-width: 48%;
   }
 
-
   .nine-pictures-and-freinds {
     width: 100%;
   }
@@ -393,7 +394,6 @@ a {
     width: 95%;
   }
 
-  
   .user-posts {
     display: flex;
     flex-direction: column;
@@ -411,18 +411,9 @@ a {
     position: relative;
   }
 
-
-
-
-
   body {
     overflow-y: auto;
   }
-
-
-
-
- 
 
   .mutual-freind-picture {
     height: 7vw;
@@ -433,36 +424,34 @@ a {
   }
 
   .invite-button,
-.message-button,
-.expnd-more-button {
-  height: 90%;
-  font-size: 3.5vw;
-  padding: 8%;
+  .message-button,
+  .expnd-more-button {
+    height: 90%;
+    font-size: 3.5vw;
+    padding: 8%;
+  }
+  .out-buttons-box {
+    width: 100%;
+  }
+  .date {
+    font-size: 3vw;
+  }
 
-}
-.out-buttons-box {
-  width: 100%;
-}
-.date{
-  font-size: 3vw;
-}
+  .out-user-top-post-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 3%;
+  }
 
-.out-user-top-post-box{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
- padding-bottom: 3%;
-}
+  .user-top-post-box {
+    padding: 0;
+  }
+  .user-brief-introduction {
+    margin-bottom: 0;
+  }
 
-.user-top-post-box{
-padding: 0;
-}
-.user-brief-introduction{
-  margin-bottom: 0;
-}
-
-.name-and-freinds{
-  margin: 0;
-}
-
+  .name-and-freinds {
+    margin: 0;
+  }
 }
