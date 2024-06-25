@@ -45,7 +45,7 @@ export default function CreateGroup({ onClose }) {
       json["participants"] = formData.getAll("participants");
 
       json["images"] = await Promise.all(
-        formData.getAll("images").map(async (img) => await handleUpload(img)),
+        formData.getAll("images").map(async (img) => await handleUpload(img))
       );
 
       const group = await createNewGroups(json, getCookie("token"));
@@ -76,7 +76,7 @@ export default function CreateGroup({ onClose }) {
       </div>
       <form onSubmit={handlegroupSubmit}>
         <div className="column center gap-20">
-          <div className="picture">
+          <div className="picture center">
             <Image
               src={profileImg}
               fill
@@ -88,7 +88,7 @@ export default function CreateGroup({ onClose }) {
             type="text"
             name="name"
             placeholder="Group Name"
-            className="inp-group"
+            className="inp-group center"
           />
           <select
             placeholder="Choose Friends"
@@ -106,7 +106,7 @@ export default function CreateGroup({ onClose }) {
           </select>
           <div className="inp-img-container">
             <label htmlFor="images" className="inp-img-label">
-              Choose Files
+              Choose images
             </label>
             <input
               type="file"
