@@ -6,9 +6,9 @@ const SERVER_URL =
   process.env.NEXT_PUBLIC_ENVIRONMENT === "development"
     ? "http://localhost:3005"
     : "https://facebook-express-project.onrender.com";
-export async function getAllPosts(token) {
+export async function getAllPosts(_id, token) {
   try {
-    const posts = await axios.get(`${SERVER_URL}/posts`, {
+    const posts = await axios.get(`${SERVER_URL}/posts/${_id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return posts.data;

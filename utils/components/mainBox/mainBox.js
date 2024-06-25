@@ -1,4 +1,3 @@
-
 import { getAllPosts } from "@/utils/api/postsApi";
 import "./mainBox.css";
 import MainPosts from "./posts/mainPosts";
@@ -7,7 +6,12 @@ import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
 async function MainBox() {
-  const postsFromServer = await getAllPosts(getCookie("token", { cookies }));
+  const uid = getCookie("uid", { cookies });
+
+  const postsFromServer = await getAllPosts(
+    uid,
+    getCookie("token", { cookies })
+  );
 
   return (
     <div>
