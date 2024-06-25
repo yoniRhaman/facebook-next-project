@@ -26,7 +26,7 @@ export default function MainPosts({ postsFromServer }) {
   return (
     <div className="posts-box">
       <CreatePost />
-      {sharedPosts.map((post, index) => (
+      {sharedPosts.slice().reverse().map((post, index) => (
         <PostItem key={post._id} post={post} />
       ))}
     </div>
