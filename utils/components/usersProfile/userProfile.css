@@ -192,8 +192,8 @@
   gap: 5%;
 }
 
-.friends .nine-pictures button img{
-border-radius: 50%;
+.friends .nine-pictures button img {
+  border-radius: 50%;
 }
 .nine-pictures button {
   width: 100%;
@@ -230,6 +230,13 @@ border-radius: 50%;
   /* padding-right: 20px;Add padding to the right to preserve space for images */
 }
 
+.user-posts-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+.user-posts-box::-webkit-scrollbar-track {
+  background: #2e2f30; /* Background color of the scrollbar track */
+}
 .user-post-box {
   display: flex;
   flex-direction: column;

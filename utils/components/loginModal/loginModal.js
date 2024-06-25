@@ -37,7 +37,7 @@ export default function LoginModal() {
           name="email"
           label="email"
           type="email"
-          defaultValue="m0533115692@gmail.com"
+          defaultValue="guest@gmail.com"
           sx={{
             "& .MuiOutlinedInput-root": {
               color: "#fffdfd",
