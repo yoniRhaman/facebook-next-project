@@ -11,7 +11,6 @@ async function ProfilePage({ params: { id } }) {
   const uid = getCookie("uid", { cookies });
   const freindsProfilePictures = await getUsersPictures(token, { freinds: userData.freinds });
   const commonFreinds = await getCommonFriendsPictures(token, { uid: uid, freinds: userData.freinds });
-  console.log("common freinds: ", commonFreinds);
   const userPosts = await getUserPosts(id, token);
   userData["userPosts"] = userPosts;
   //it's checking if the displayed profile is a friend of dhe user and adding the result to the userData

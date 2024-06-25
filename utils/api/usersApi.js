@@ -42,7 +42,6 @@ export async function getCommonFriendsPictures(token, idis) {
         Authorization: `Bearer ${token}`,
       },
     });
-console.log("result::::::::::", result.data);
     return result.data;
   } catch (error) {
     console.error(error);

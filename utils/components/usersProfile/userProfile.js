@@ -2,11 +2,7 @@
 import "./userProfile.css";
 import { format } from "date-fns";
 
-import {
-  ExpandMore,
-  Message,
-  PersonAddAlt,
-} from "@mui/icons-material";
+import { ExpandMore, Message, PersonAddAlt } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
@@ -48,13 +44,13 @@ export default function UserProfile({ userData }) {
         addChat(chat.myChat);
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0],
+          chat.myChat.participants.filter((p) => p !== uid)[0]
         );
         setCurrentChat({ ...chat.myChat, user: u });
       } else if (chat.status === "existing") {
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0],
+          chat.myChat.participants.filter((p) => p !== uid)[0]
         );
         setCurrentChat({ ...chat.myChat, user: u });
       }
@@ -76,7 +72,9 @@ export default function UserProfile({ userData }) {
       <div className="information-box row">
         <img className="profile-picture" src={userData.profileImg}></img>
         <div className="personal-information ">
-          <h1 className="name-and-freinds">{`${userData.firstName}  ${userData.lastName} ${isUserIsDisplayed ? "(you)" : ""}`}</h1>
+          <h1 className="name-and-freinds">{`${userData.firstName}  ${
+            userData.lastName
+          } ${isUserIsDisplayed ? "(you)" : ""}`}</h1>
           {!isUserIsDisplayed && (
             <div>
               <p className="name-and-freinds">{`${userData.commoFreindsPictures.length} mutual freinds`}</p>
@@ -134,10 +132,9 @@ export default function UserProfile({ userData }) {
           . . .
         </Button>
       </div> */}
-      <br/>
+      <br />
 
       <div className="user-posts">
-
         <div className="nine-pictures-and-freinds column">
           <div className="pictures ">
             <p>Images</p>
@@ -178,7 +175,11 @@ export default function UserProfile({ userData }) {
 function ListOfFreindsPictures({ freind }) {
   return (
     <Link href={`/profile/${freind._id}`}>
-      <img className="mutual-freind-picture" src={freind.profileImg} key={nanoid()}/>
+      <img
+        className="mutual-freind-picture"
+        src={freind.profileImg}
+        key={nanoid()}
+      />
     </Link>
   );
 }
@@ -188,7 +189,7 @@ function DisplayNinePictures({ picture, link }) {
     <button>
       <Link href={link}>
         {" "}
-        <img src={picture} key={nanoid()}/>
+        <img src={picture} key={nanoid()} />
       </Link>
     </button>
   );
@@ -197,14 +198,11 @@ function DisplayNinePictures({ picture, link }) {
 function PostItem({ post, firstName, lastName, profileImg }) {
   const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
   const formattedDateTime = format(createdAt, "HH:mm MM/dd/yyyy");
-  const pictureClassName = post.images.length > 1 ? "picture" : "picture-own"
+  const pictureClassName = post.images.length > 1 ? "picture" : "picture-own";
 
   return (
     <div className="user-post-box">
-
-
       <div className="out-user-top-post-box">
-
         <div className="user-top-post-box">
           <Link href={`/profile/${post.owner}`}>
             <div className="user-brief-introduction">
@@ -217,9 +215,7 @@ function PostItem({ post, firstName, lastName, profileImg }) {
         </div>
 
         <p className="date">{formattedDateTime}</p>
-
       </div>
-
 
       <div className="post-pictures">
         {post.images.map((img) => (
@@ -253,7 +249,6 @@ function PostItem({ post, firstName, lastName, profileImg }) {
           <p>Share</p>
         </button>
       </div> */}
-
     </div>
   );
 }
