@@ -78,7 +78,7 @@ export default function CreateChat({ onClose }) {
         <button className="title-container-button  " onClick={onClose}>
           <Close />
         </button>
-        <div className="title-container ">
+        <div className="title-container center">
           <h1>Create Chat</h1>
         </div>
       </div>
@@ -94,7 +94,7 @@ export default function CreateChat({ onClose }) {
           </div>
           <select
             placeholder="Choose Friends"
-            className="inp-group"
+            className="inp-chat"
             multiple
             name="participants"
           >

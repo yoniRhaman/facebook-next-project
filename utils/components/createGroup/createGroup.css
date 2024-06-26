@@ -23,13 +23,11 @@
 
 .title-container {
   width: 100%;
+  
 }
 .title-container h1 {
   font-size: 35px;
   color: #1877f2; /* Facebook blue */
-}
-.title-container Image {
-  color: black;
 }
 
 .picture {
@@ -47,12 +45,22 @@
 }
 
 .inp-group {
-  margin:auto;
-  
+  margin: auto;
+  background-color: #312e2e;
+  color: #e4e6eb;
   padding: 3%;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 300px; /* Adjust width as needed */
+}
+
+.inp-group::-webkit-scrollbar {
+  width: 1vh;
+  position: absolute;
+  right: 0;
+}
+.inp-group::-webkit-scrollbar-thumb {
+  background-color: #363a38;
 }
 
 .inp-img-container {
