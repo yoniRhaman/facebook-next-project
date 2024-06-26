@@ -17,6 +17,7 @@ import { storage } from "@/utils/services/firebaseConfig";
 export default function ChatBox() {
   const sender = getCookie("uid");
   const token = getCookie("token");
+  const messagesEndRef = useRef(null);
   const socketRef = useRef(null);
   const { currentChat } = useChatContext();
   const [selectedFile, setSelectedFile] = useState(null);
@@ -45,6 +46,10 @@ export default function ChatBox() {
     };
   }, [setMessages, currentChat]);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -55,6 +60,9 @@ export default function ChatBox() {
     return await getDownloadURL(result.ref);
   };
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   // const sendMessage = async () => {
   //   if (message.trim()) {
   //     const msg = {
@@ -90,45 +98,53 @@ export default function ChatBox() {
       setSelectedFile(null);
 
       setLoading(false);
+
+      setTimeout(scrollToBottom, 100);
     }
   };
   return currentChat ? (
     <div className="chatBox-container">
-      <div className="chatBox-top row center">
-        <div className="chatBox-left center">
-          <button className="btn-chatBox-img center">
-            <img
-              src={
-                currentChat.user?.profileImg ??
-                "https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
-              }
-              alt="Profile"
-            />
-          </button>
-          <p>{`${currentChat.user?.firstName} ${currentChat.user?.lastName}`}</p>
-        </div>
-        <div className="chatBox-right">
-          <CloseIcon className="close-icon" />
-        </div>
-      </div>
-      <div className="chatBox-middle">
-        {messages?.map((msg) => (
-          <div
-            key={msg._id}
-            // className={`row message ${msg.sender === sender && "right"}`}
-            className={`message ${
-              msg.sender === sender ? "message-right" : "message-left"
-            }`}
-          >
-            {msg.type === "text" ? (
-              <p>{msg.content}</p>
-            ) : (
-              <img src={msg.content} alt="sent" className="chat-image" />
-            )}
+
+      <div className="tow-first">
+        <div className="chatBox-top row center">
+          <div className="chatBox-left center">
+            <button className="btn-chatBox-img center">
+              <img
+                src={
+                  currentChat.user?.profileImg ??
+                  "https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
+                }
+                alt="Profile"
+              />
+            </button>
+            <p>{`${currentChat.user?.firstName} ${currentChat.user?.lastName}`}</p>
           </div>
-        ))}
+          <div className="chatBox-right">
+            <CloseIcon className="close-icon" />
+          </div>
+        </div>
+
+        <div className="chatBox-middle">
+          {messages?.map((msg) => (
+            <div
+              key={msg._id}
+              // className={`row message ${msg.sender === sender && "right"}`}
+              className={`message ${
+                msg.sender === sender ? "message-right" : "message-left"
+              }`}
+            >
+              {msg.type === "text" ? (
+                <p>{msg.content}</p>
+              ) : (
+                <img src={msg.content} alt="sent" className="chat-image" />
+              )}
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
       </div>
-      <div className="chatBox-button row">
+
+      <div className="chatBox-button row center">
         <label htmlFor="file-input">
           <AddPhotoAlternateIcon className="addPhoto-icon" />
         </label>
@@ -145,7 +161,7 @@ export default function ChatBox() {
           <input
             type="text"
             name="search"
-            placeholder="what would you like to write"
+            placeholder="write..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyUp={(e) => {

@@ -1,3 +1,4 @@
+import "./massagesPage.css"
 import { getUserChat } from "@/utils/api/chatApi";
 import ChatBox from "@/utils/components/chatBox/chatBox";
 import Chats from "@/utils/components/chats/chats";
@@ -12,8 +13,12 @@ async function MessagesPage() {
   const chatsFromServer = await getUserChat(token, id);
   return (
     <div className="row">
-      <Chats chatsFromServer={chatsFromServer} />
-      <ChatBox />
+      <div className="left-box">
+        <Chats chatsFromServer={chatsFromServer} />
+      </div>
+      <div className="right-box">
+        <ChatBox />
+      </div>
     </div>
   );
 }

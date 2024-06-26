@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-evenly;
   height: 80%;
-  width: 400px;
+  width: 55%;
   background-color: #242526; /* Dark background color */
   color: #e4e6eb; /* Light text color */
   border-radius: 25px;
@@ -43,7 +43,6 @@
   background-color: #242526; /* Dark mode form background */
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
   width: 100%;
 }
 
@@ -135,3 +134,12 @@ textarea:focus {
   border-color: #e4e6eb; /* Border color on focus */
   outline: none;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .navbar-modal {
+    height: 75%;
+    width: 80%;
+  }
+}
+

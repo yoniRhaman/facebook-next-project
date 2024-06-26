@@ -131,11 +131,11 @@ function RegisterForm() {
             </div>
 
             <div>
-              <label htmlFor="profileImg">profileImg:</label>
+              <label htmlFor="profileImg">Profile Image:</label>
               <input type="file" label="profileImg" name="profileImg" />
             </div>
             <div>
-              <label htmlFor="baverImg">baverImg:</label>
+              <label htmlFor="baverImg">Baner Image:</label>
               <input type="file" label="baverImg" name="baverImg" />
             </div>
 

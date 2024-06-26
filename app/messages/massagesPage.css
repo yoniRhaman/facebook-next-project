@@ -1,0 +1,15 @@
+.right-box {
+  width: 70%;
+}
+.left-box {
+  width: 30%;
+}
+@media only screen and (max-width: 600px) {
+    .right-box {
+        width: 55%;
+      }
+      .left-box {
+        width: 45%;
+      }
+  
+  }

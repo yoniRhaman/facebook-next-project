@@ -54,13 +54,13 @@ export default function CreateChat({ onClose }) {
         addChat(chat.myChat);
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0],
+          chat.myChat.participants.filter((p) => p !== uid)[0]
         );
         setCurrentChat({ ...chat.myChat, user: u });
       } else if (chat.status === "existing") {
         const u = await getUserData(
           token,
-          chat.myChat.participants.filter((p) => p !== uid)[0],
+          chat.myChat.participants.filter((p) => p !== uid)[0]
         );
         setCurrentChat({ ...chat.myChat, user: u });
       }
@@ -74,17 +74,13 @@ export default function CreateChat({ onClose }) {
 
   return (
     <div className="modal-container center column">
-      <div className="">
-        <button className="title-container-button  " onClick={onClose}>
-          <Close />
-        </button>
-        <div className="title-container center">
-          <h1>Create Chat</h1>
-        </div>
+      <button className="title-container-button  " onClick={onClose}>
+        <Close />
+      </button>
+      <div className="title-container center">
+        <h1>Create Chat</h1>
       </div>
-      <form onSubmit={handleChatSubmit}>
-        <div className="column center gap-20">
-          <div className="picture">
+      <div className="picture">
             <Image
               src={profileImg}
               fill
@@ -92,6 +88,9 @@ export default function CreateChat({ onClose }) {
               style={{ objectFit: "cover" }}
             />
           </div>
+      <form className="form-container column center" onSubmit={handleChatSubmit}>
+        <div className="select-container column center gap-20">
+          
           <select
             placeholder="Choose Friends"
             className="inp-chat"
