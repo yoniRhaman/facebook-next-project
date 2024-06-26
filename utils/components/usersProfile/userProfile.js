@@ -140,7 +140,7 @@ export default function UserProfile({ userData }) {
             <p>Images</p>
             <div className="nine-pictures">
               {postsImages.slice(0, 9).map((picture, index) => (
-                <DisplayNinePictures picture={picture} link={"/"} />
+                <DisplayNinePictures picture={picture} link={""} />
               ))}
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function UserProfile({ userData }) {
         </div>
 
         <div className="user-posts-box">
-          {userData.userPosts.map((post) => (
+          {userData.userPosts.slice().reverse().map((post) => (
             <PostItem
               post={post}
               firstName={userData.firstName}
