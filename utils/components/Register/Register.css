@@ -22,8 +22,8 @@
   right: 0;
   top: 0;
   bottom: 0;
-  overflow: hidden;
   color: #a59c9c;
+  overflow: auto;
 }
 
 /* .top-Register-container {
@@ -89,14 +89,17 @@ hr {
   background-color: #45a049c0;
 }
 
-.gender-container label {
-  margin-right: 10%;
-  margin-left: 5%;
+.gender-select {
+  width: 100%;
+  justify-content: space-between;
 }
-.gender-container input {
-  display: flex;
-  flex-direction: row;
-  width: 5%;
+
+.select {
+  width: 33%;
+}
+
+.gender-container {
+  width: 100%;
 }
 
 .bottom-Register-container {
@@ -119,20 +122,31 @@ hr {
   margin-bottom: 2%;
 }
 
-.gender-container input[type="radio"] {
-  margin-right: 2%;
-}
-
-.gender-container > div {
-  display: flex;
-  align-items: center;
-}
-
 .have-account a {
   color: white; /* Change text color to white */
   text-decoration: none; /* Remove underline */
-height: 2%;}
+  height: 2%;
+}
 
 .have-account a:hover {
   text-decoration: underline; /* Add underline on hover */
+}
+
+@media screen and (max-width: 600px) {
+  .signup-container {
+    height: 95%;
+    width: 95%;
+  }
+  .middle1-Register-container form {
+    display: block;
+  }
+
+  .middle1-Register-container form input {
+    width: 100%;
+  }
+
+  .gender-container label {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }

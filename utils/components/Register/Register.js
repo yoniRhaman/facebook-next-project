@@ -102,31 +102,38 @@ function RegisterForm() {
             </div>
             <div className="gender-container column  ">
               <label htmlFor="gender">gender:</label>
-              <div>
-                <label>Male</label>
-                <input
-                  type="radio"
-                  id="male"
-                  name="gender"
-                  value="male"
-                  required
-                />
-                <label>Female</label>
-                <input
-                  type="radio"
-                  id="female"
-                  name="gender"
-                  value="female"
-                  required
-                />
-                <label>Other</label>
-                <input
-                  type="radio"
-                  id="other"
-                  name="gender"
-                  value="other"
-                  required
-                />
+              <div className="gender-select row">
+                <div className="row select">
+                  <label>Male</label>
+
+                  <input
+                    type="radio"
+                    id="male"
+                    name="gender"
+                    value="male"
+                    required
+                  />
+                </div>
+                <div className="row select">
+                  <label>Female</label>
+                  <input
+                    type="radio"
+                    id="female"
+                    name="gender"
+                    value="female"
+                    required
+                  />
+                </div>
+                <div className="row select">
+                  <label>Other</label>
+                  <input
+                    type="radio"
+                    id="other"
+                    name="gender"
+                    value="other"
+                    required
+                  />
+                </div>
               </div>
             </div>
 
