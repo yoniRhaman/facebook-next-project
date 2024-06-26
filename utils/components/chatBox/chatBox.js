@@ -174,7 +174,7 @@ export default function ChatBox() {
         {loading ? (
           <CircularProgress />
         ) : (
-          <button onClick={sendMessage}>
+          <button className="sendIcon-container" onClick={sendMessage}>
             <SendIcon className="sendIcon" />
           </button>
         )}
