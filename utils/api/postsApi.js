@@ -41,7 +41,7 @@ async function deletePosts(id) {
 
 export async function getUserPosts(id, token) {
   try {
-    const userPosts = await axios.get(`${SERVER_URL}/posts/${id}`, {
+    const userPosts = await axios.get(`${SERVER_URL}/posts/mypost/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return userPosts.data;
