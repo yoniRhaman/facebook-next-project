@@ -45,10 +45,10 @@ export default function GroupsList({ groupFromServer }) {
         <div className="Groups-p center">
           <p>Groups you manage</p>
         </div>
-        <div className="manage-bottom-container">
+        <div className="manage-bottom-container ">
           {listGroup.map((group) => (
             <button className="btn-Groups" key={group._id}>
-              <img
+              <img className="grup-img"
                 src={
                   group.images ??
                   "https://www.gag-lachayot.co.il/wp-content/uploads/2022/07/articles-14-2.jpg"
