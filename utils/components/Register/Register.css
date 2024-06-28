@@ -137,6 +137,15 @@ hr {
     height: 95%;
     width: 95%;
   }
+
+  .signup-container::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .signup-container::-webkit-scrollbar-track {
+    background: #2e2f30;
+  }
+  
   .middle1-Register-container form {
     display: block;
   }
