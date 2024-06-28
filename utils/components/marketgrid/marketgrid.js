@@ -72,11 +72,9 @@ export function GridItem({ product }) {
             style={{ objectFit: "cover", filter: "blur(5px)" }}
           />
           <div className="main-img">
-            <Image
+            <img className="curent-img"
               src={product.mainImage}
               alt="Sunset Beach"
-              fill
-              style={{ objectFit: "cover" }}
             />
           </div>
         </div>

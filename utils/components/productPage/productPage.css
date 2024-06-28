@@ -1,7 +1,7 @@
 .my-body {
   height: calc(99.4vh - var(--nav-height));
   position: relative;
-  background-color: black;
+  background-color: #18191a;
   top: var(--nav-height);
 }
 
@@ -17,7 +17,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 66%;
   height: 85%;
 }
@@ -28,9 +27,13 @@
   width: 85%;
   height: 85%;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.curent-img {
+  height: 99%;
+  width: auto;
+  max-width: 99%;
+  object-fit: contain;
 }
 
 .details {
@@ -39,20 +42,34 @@
   align-items: center;
   background-color: #18191a;
   justify-content: space-around;
+  border-left: solid #272829;
 }
 
 .all-imges {
   height: 30%;
   width: 90%;
-  /* background-color: darkblue; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3%;
+  padding-bottom: 23%;
+  border-bottom: solid #272829;
 }
 
-/* .img1 {
-  background-color: rgb(215, 0, 0);
-} */
+.img1 {
+  position: relative;
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.img1 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
 
 .my-text {
   width: 90%;
@@ -70,6 +87,7 @@
   margin: 0% 1cqi 0% auto;
   color: white;
 }
+
 .location {
   margin: 0% 0% 0% 10%;
   color: white;
@@ -89,6 +107,102 @@
   border-radius: 5px;
   border: none;
 }
+
 .chat:hover {
   background-color: #0655d5;
+}
+
+@media (max-width: 600px) {
+  .my-body {
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+    align-items: center;
+  }
+
+  .imges, .details {
+    width: 100%;
+  }
+
+  .all-imges {
+    order: -1;
+    height: auto;
+    width: 100%;
+
+    padding-bottom: 5%;
+    border-bottom: solid 1px #272829;
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+  }
+
+  .img1 {
+    flex: 0 0 auto;
+    width: calc(16.666% - 4px);
+    height: 100%;
+    aspect-ratio: 1/1;
+    padding-bottom: 0;
+  }
+
+  .img1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .main-img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+
+  .imges, .details {
+    width: 100%;
+  }
+
+  .curent-img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .details {
+    border-left: none;
+    padding: 15px;
+    background-color: #18191a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 50vh;
+  }
+
+  .my-text {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+
+  .price {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+
+  .location {
+    margin: 5px 0;
+  }
+
+  .description {
+    font-size: 0.9em;
+    margin: 10px 0;
+  }
+
+  .chat {
+    width: 100%;
+    height: 40px;
+    margin-top: auto;
+  }
 }

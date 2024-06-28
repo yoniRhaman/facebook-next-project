@@ -199,3 +199,21 @@
 .picture img {
   border-radius: 50px;
 }
+
+
+.grup-img{
+  border-radius: 50%;
+}
+
+.btn-Groups{
+  border: none;
+  margin:  5% 0;
+}
+
+.search-input1{
+  display: none;
+}
+
+.search-top-container{
+  margin-top: 10vh;
+}

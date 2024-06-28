@@ -59,14 +59,14 @@ function ProductPageComponent({ myProduct }) {
 
   const myImagges = myProduct.images.map((i) => (
     <div className="img1">
-      <Image src={i} alt="Image" width={120} height={120} objectFit="fill" />
+      <img src={i} alt="Image" />
     </div>
   ));
 
   return (
     <div className="my-body row">
       <div className="imges center">
-        <Image
+        {/* <Image
           className="back-img"
           src={myProduct.mainImage}
           alt="Sunset Beach"
@@ -74,9 +74,13 @@ function ProductPageComponent({ myProduct }) {
           height={520}
           objectFit="fill"
           style={{ filter: "blur(5px)" }}
-        />
-        <div className="main-img">
-          <Image
+        /> */}
+        <div className="main-img center">
+          <img className="curent-img"
+            src={myProduct.mainImage}
+            alt="Sunset Beach"
+          />
+          {/* <Image
             src={myProduct.mainImage}
             alt="Sunset Beach"
             width={1000}
@@ -86,7 +90,7 @@ function ProductPageComponent({ myProduct }) {
               maxWidth: "100%",
               height: "auto",
             }}
-          />
+          /> */}
         </div>
       </div>
       <div className="details column">

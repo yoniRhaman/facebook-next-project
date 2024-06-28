@@ -84,6 +84,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #18191a;
 }
 
 .back-img {
@@ -105,6 +106,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.curent-img{
+  object-fit: contain;
+  height: 99%;
+  width: auto;
+  max-width: 99%;
 }
 
 .mytext {
