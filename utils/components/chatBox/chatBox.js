@@ -63,19 +63,6 @@ export default function ChatBox() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-  // const sendMessage = async () => {
-  //   if (message.trim()) {
-  //     const msg = {
-  //       sender,
-  //       chat_id: currentChat._id,
-  //       content: message,
-  //       type: "text",
-  //       participants: currentChat.participants,
-  //     };
-  //     socketRef.current.emit("chat message", msg);
-  //     setMessage("");
-  //   }
-  // };
 
   const sendMessage = async () => {
     if (message.trim() || selectedFile) {
@@ -104,7 +91,6 @@ export default function ChatBox() {
   };
   return currentChat ? (
     <div className="chatBox-container">
-
       <div className="tow-first">
         <div className="chatBox-top row center">
           <div className="chatBox-left center">
