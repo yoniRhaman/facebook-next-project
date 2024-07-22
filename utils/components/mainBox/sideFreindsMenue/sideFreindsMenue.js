@@ -1,23 +1,24 @@
 "use client";
-// import { getUserData } from "@/utils/api/signinApi";
+
 import "./sideFreindsMenue.css";
-import { getTwentyFreinds, getUserFreinds } from "@/utils/api/freindsApi";
+import { getUserFreinds } from "@/utils/api/freindsApi";
 import { getCookie } from "cookies-next";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-// const freinds1 = async () => await getTwentyFreinds(getCookies("uid"), getCookies("token"));
-
-export default function SideFriendsMenu(token, id) {
+// Component to display a list of friends
+export default function SideFriendsMenu() {
   const [friends, setFriends] = useState([]);
 
+  // Fetch friends data when the component mounts
   useEffect(() => {
     const fetchFriends = async () => {
+      // Fetch friends data using token and user ID from cookies
       const friendsData = await getUserFreinds(
         getCookie("token"),
-        getCookie("uid"),
+        getCookie("uid")
       );
-      setFriends(friendsData);
+      setFriends(friendsData); // Update state with the fetched friends data
     };
 
     fetchFriends();
@@ -25,6 +26,7 @@ export default function SideFriendsMenu(token, id) {
 
   return (
     <div className="friends-box">
+      {/* Render a list of friends */}
       {friends.map((friend, n) => (
         <FriendItem friend={friend} key={n} />
       ))}
@@ -32,6 +34,7 @@ export default function SideFriendsMenu(token, id) {
   );
 }
 
+// Component to display individual friend details
 function FriendItem({ friend }) {
   return (
     <Link className="friend-item" href={`/profile/${friend._id}`}>

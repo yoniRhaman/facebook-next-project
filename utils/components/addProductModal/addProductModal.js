@@ -1,44 +1,47 @@
 "use client";
-import { Button, CircularProgress, TextField, colors } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import "./addProductModal.css";
-import { Close, Height } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 import { createProduct } from "@/utils/api/marketplaceApi";
 import { useProductContext } from "@/utils/contexts/productContext";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 import { useState } from "react";
 import { getCookie } from "cookies-next";
 
 export default function AddProductForm({ setOpen }) {
-  const { products, setProducts } = useProductContext();
-  const [loading, setLoading] = useState(false);
+  const { products, setProducts } = useProductContext(); // Get products and setProducts from context
+  const [loading, setLoading] = useState(false); // State for loading spinner
 
-  async function handleSumbit(e) {
-    e.preventDefault();
-    setLoading(true);
+  // Handle form submission
+  async function handleSubmit(e) {
+    e.preventDefault(); // Prevent default form submission behavior
+    setLoading(true); // Show loading spinner
+
+    // Extract form data
     const formData = new FormData(e.target);
-    const json = Object.fromEntries(formData);
+    const json = Object.fromEntries(formData); // Convert FormData to JSON
+
+    // Upload main image and additional images
     json["mainImage"] = await handleUpload(formData.get("mainImage"));
     json["images"] = await Promise.all(
-      formData.getAll("images").map(async (img) => await handleUpload(img)),
+      formData.getAll("images").map(async (img) => await handleUpload(img))
     );
-    json["owner"] = getCookie("uid");
+    json["owner"] = getCookie("uid"); // Set owner from cookie
 
+    // Create product and update the product context
     const product = await createProduct(json, getCookie("token"));
     setProducts((prev) => [...prev, product]);
-    setLoading(false);
-    setOpen(false);
+
+    setLoading(false); // Hide loading spinner
+    setOpen(false); // Close the modal
   }
 
+  // Handle file upload to Firebase Storage
   const handleUpload = async (image) => {
     const storageRef = ref(storage, `images/${image.name}`);
     const result = await uploadBytes(storageRef, image);
-    return await getDownloadURL(result.ref);
+    return await getDownloadURL(result.ref); // Get download URL for the uploaded image
   };
 
   return (
@@ -48,7 +51,8 @@ export default function AddProductForm({ setOpen }) {
       </button>
       <h1>Add new product</h1>
 
-      <form className="column center form gap-20" onSubmit={handleSumbit}>
+      <form className="column center form gap-20" onSubmit={handleSubmit}>
+        {/* Product category selection */}
         <select name="category">
           <option value="Vehicles">Vehicles</option>
           <option value="Apparel">Apparel</option>
@@ -61,37 +65,44 @@ export default function AddProductForm({ setOpen }) {
           <option value="Garden & Outdoor">Garden & Outdoor</option>
           <option value="Hobbies">Hobbies</option>
         </select>
+        {/* Product name input */}
         <input
-          label="name"
           name="name"
           className="inp-product"
           placeholder="name"
         />
+        {/* Product price input */}
         <input
-          label="price"
           name="price"
           className="inp-product"
           placeholder="price"
         />
-        <input type="file" label="img" name="mainImage" required />
+        {/* Main image input */}
         <input
           type="file"
-          label="more images"
+          name="mainImage"
+          required
+        />
+        {/* Additional images input */}
+        <input
+          type="file"
           name="images"
           multiple
           required
         />
-
+        {/* Location textarea */}
         <textarea
           placeholder="location..."
           maxLength="200"
           name="location"
         ></textarea>
+        {/* Description textarea */}
         <textarea
           placeholder="Description..."
           maxLength="200"
           name="description"
         ></textarea>
+        {/* Submit button with loading spinner */}
         <Button type="submit" variant="contained">
           {loading ? (
             <CircularProgress sx={{ color: "white" }} />

@@ -10,21 +10,24 @@ import { getCookie } from "cookies-next";
 import { CircularProgress } from "@mui/material";
 
 export default function Chats({ chatsFromServer }) {
-  const [isModalOpen, setIsModalOpen] = useState(false); // Initialize the state
-  const { chats, setChats } = useChatContext();
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+  const { chats, setChats } = useChatContext(); // Get chats and setChats from context
 
+  // Update chats context when chatsFromServer is provided
   useEffect(() => {
     if (Array.isArray(chatsFromServer)) {
       setChats(chatsFromServer);
     }
-  }, [setChats]);
+  }, [chatsFromServer, setChats]);
 
+  // Open the modal to create a new chat
   const handleCreateChatClick = () => {
-    setIsModalOpen(true); // Open the modal
+    setIsModalOpen(true);
   };
 
+  // Close the modal
   const closeModal = () => {
-    setIsModalOpen(false); // CClose the modal
+    setIsModalOpen(false);
   };
 
   return (
@@ -47,47 +50,40 @@ export default function Chats({ chatsFromServer }) {
           <FaPlus /> Create New chat
         </button>
       </div>
-      {/* <input type="text" name="search" placeholder="Search Messenger" /> */}
+      {/* Map through chats and render each ChatItem */}
       {chats?.map((chat) => (
-        <ChatItem chat={chat} />
+        <ChatItem chat={chat} key={chat._id} />
       ))}
+      {/* Render CreateChat modal if isModalOpen is true */}
       {isModalOpen && <CreateChat onClose={closeModal} />}
     </div>
   );
 }
 
+// Subcomponent to render individual chat item
 function ChatItem({ chat }) {
-  const uid = getCookie("uid");
-  const token = getCookie("token");
-  const [localUser, setLocalUser] = useState(null);
-  const { setCurrentChat } = useChatContext();
+  const uid = getCookie("uid"); // Get the current user's ID from cookies
+  const token = getCookie("token"); // Get the authentication token from cookies
+  const [localUser, setLocalUser] = useState(null); // State to store local user details
+  const { setCurrentChat } = useChatContext(); // Set the current chat in context
 
+  // Fetch user data when chat changes
   useEffect(() => {
     async function getUser() {
       try {
-        if (chat.participants.length === 2) {
-          const u = await getUserData(
-            token,
-            chat.participants.filter((p) => p !== uid),
-          );
-          setLocalUser(u);
-        } else {
-          const u = await getUserData(
-            token,
-            chat.participants.filter((p) => p !== uid)[0],
-          );
-          setLocalUser(u);
-        }
+        // Determine the other participant in the chat
+        const participantId = chat.participants.filter((p) => p !== uid)[0];
+        const user = await getUserData(token, participantId);
+        setLocalUser(user); // Set local user data
       } catch (error) {
         console.error(error);
       }
     }
     getUser();
-  }, []);
+  }, [chat, uid, token]);
 
   return localUser ? (
     <button
-      key={chat._id}
       className="btn-chats-Messenger row center gap-20"
       onClick={() => setCurrentChat({ ...chat, user: localUser })}
     >
@@ -103,6 +99,6 @@ function ChatItem({ chat }) {
       <p>{`${localUser.firstName} ${localUser.lastName}`}</p>
     </button>
   ) : (
-    <CircularProgress key={chat._id} />
+    <CircularProgress /> // Show loading spinner if localUser is not yet set
   );
 }

@@ -4,7 +4,7 @@ import { Button, CircularProgress } from "@mui/material";
 import "./createGroup.css";
 import Image from "next/image";
 import { createNewGroups } from "@/utils/api/groupsApi";
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { getUserFreinds } from "@/utils/api/freindsApi";
@@ -13,14 +13,17 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 
 export default function CreateGroup({ onClose }) {
+  // State to manage loading state and form data
   const [loading, setLoading] = useState(false);
   const [friends, setFriends] = useState([]);
   const [profileImg, setProfileImg] = useState("");
   const { setlistGroup } = useGroupContext();
 
+  // Fetch friends and profile image URL when component mounts
   useEffect(() => {
     const url = Cookies.get("profileImg");
     if (url) setProfileImg(url);
+
     const getFriends = async () => {
       try {
         const token = getCookie("token");
@@ -31,23 +34,27 @@ export default function CreateGroup({ onClose }) {
         console.error(error);
       }
     };
+
     getFriends();
-    // setProfileImg(getCookie("profileImg"));
   }, []);
 
+  // Handle form submission
   async function handlegroupSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+
     try {
-      e.preventDefault();
-      setLoading(true);
       const formData = new FormData(e.target);
       const json = Object.fromEntries(formData);
       json["owner"] = getCookie("uid");
       json["participants"] = formData.getAll("participants");
 
+      // Handle image uploads
       json["images"] = await Promise.all(
         formData.getAll("images").map(async (img) => await handleUpload(img))
       );
 
+      // Create new group and update context
       const group = await createNewGroups(json, getCookie("token"));
       setlistGroup((prev) => [...prev, group]);
     } catch (error) {
@@ -58,6 +65,7 @@ export default function CreateGroup({ onClose }) {
     }
   }
 
+  // Upload image to Firebase Storage
   const handleUpload = async (image) => {
     const storageRef = ref(storage, `images/${image.name}`);
     const result = await uploadBytes(storageRef, image);
@@ -66,44 +74,47 @@ export default function CreateGroup({ onClose }) {
 
   return (
     <div className="modal-container center column">
-      <div className="">
-        <button className="title-container-button  " onClick={onClose}>
+      <div>
+        {/* Close button */}
+        <button className="title-container-button" onClick={onClose}>
           <Close />
         </button>
-        <div className="title-container ">
+        <div className="title-container">
           <h1>Create Group</h1>
         </div>
       </div>
       <form onSubmit={handlegroupSubmit}>
         <div className="column center gap-20">
+          {/* Display profile image */}
           <div className="picture center">
             <Image
               src={profileImg}
               fill
-              alt="Picture of the author"
+              alt="Profile"
               style={{ objectFit: "cover" }}
             />
           </div>
+          {/* Input for group name */}
           <input
             type="text"
             name="name"
             placeholder="Group Name"
             className="inp-group center"
           />
+          {/* Dropdown to select friends */}
           <select
             placeholder="Choose Friends"
             className="inp-group"
             multiple
             name="participants"
           >
-            {friends.map((friend) => {
-              return (
-                <option key={friend._id} value={friend._id}>
-                  {friend.firstName} {friend.lastName}
-                </option>
-              );
-            })}
+            {friends.map((friend) => (
+              <option key={friend._id} value={friend._id}>
+                {friend.firstName} {friend.lastName}
+              </option>
+            ))}
           </select>
+          {/* Input for images */}
           <div className="inp-img-container">
             <label htmlFor="images" className="inp-img-label">
               Choose images
@@ -118,6 +129,7 @@ export default function CreateGroup({ onClose }) {
           </div>
         </div>
         <div>
+          {/* Submit button */}
           <Button
             type="submit"
             sx={{ width: "100%", marginTop: "20px" }}

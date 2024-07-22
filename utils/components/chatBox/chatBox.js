@@ -15,22 +15,28 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "@/utils/services/firebaseConfig";
 
 export default function ChatBox() {
-  const sender = getCookie("uid");
-  const token = getCookie("token");
-  const messagesEndRef = useRef(null);
-  const socketRef = useRef(null);
-  const { currentChat } = useChatContext();
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const sender = getCookie("uid"); // Get the current user's ID from cookies
+  const token = getCookie("token"); // Get the authentication token from cookies
+  const messagesEndRef = useRef(null); // Ref to scroll to the bottom of the messages
+  const socketRef = useRef(null); // Ref to store the socket connection
+  const { currentChat } = useChatContext(); // Get the current chat from context
+  const [selectedFile, setSelectedFile] = useState(null); // State for the selected file to upload
+  const [message, setMessage] = useState(""); // State for the message input
+  const [messages, setMessages] = useState([]); // State to store chat messages
+  const [loading, setLoading] = useState(false); // State to show loading indicator
+
+  // Effect to handle socket connection and message fetching
   useEffect(() => {
+    // Initialize socket connection
     const socket = io("http://localhost:3005", { query: { id: sender } });
     socketRef.current = socket;
+
+    // Handle incoming chat messages
     socket.on("chat message", (msg) => {
       setMessages((prev) => [...prev, msg]);
     });
 
+    // Function to fetch all messages for the current chat
     async function getAllChatMessages() {
       try {
         const mes = await getChatMessages(token, currentChat._id);
@@ -39,38 +45,48 @@ export default function ChatBox() {
         console.error(error);
       }
     }
-    currentChat && getAllChatMessages();
 
+    // Fetch messages if a currentChat is selected
+    if (currentChat) {
+      getAllChatMessages();
+    }
+
+    // Cleanup socket connection on component unmount
     return () => {
       socket.disconnect();
     };
-  }, [setMessages, currentChat]);
+  }, [currentChat, sender, token]);
 
+  // Effect to scroll to the bottom when messages change
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
+  // Handler for file input change
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
+  // Function to upload a file to Firebase Storage and return the download URL
   const handleUpload = async (image) => {
     const storageRef = ref(storage, `chatImages/${image.name}`);
     const result = await uploadBytes(storageRef, image);
     return await getDownloadURL(result.ref);
   };
 
+  // Function to scroll to the bottom of the chat messages
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Function to send a message
   const sendMessage = async () => {
     if (message.trim() || selectedFile) {
       setLoading(true);
       const msgContent = selectedFile
-        ? await handleUpload(selectedFile)
-        : message;
-      const msgType = selectedFile ? "image" : "text";
+        ? await handleUpload(selectedFile) // Upload file if selected
+        : message; // Use text message if no file
+      const msgType = selectedFile ? "image" : "text"; // Set message type
 
       const msg = {
         sender,
@@ -80,15 +96,17 @@ export default function ChatBox() {
         participants: currentChat.participants,
       };
 
+      // Emit the message through the socket
       socketRef.current.emit("chat message", msg);
-      setMessage("");
-      setSelectedFile(null);
+      setMessage(""); // Clear message input
+      setSelectedFile(null); // Clear selected file
 
       setLoading(false);
 
-      setTimeout(scrollToBottom, 100);
+      setTimeout(scrollToBottom, 100); // Scroll to bottom after a short delay
     }
   };
+
   return currentChat ? (
     <div className="chatBox-container">
       <div className="tow-first">
@@ -114,7 +132,6 @@ export default function ChatBox() {
           {messages?.map((msg) => (
             <div
               key={msg._id}
-              // className={`row message ${msg.sender === sender && "right"}`}
               className={`message ${
                 msg.sender === sender ? "message-right" : "message-left"
               }`}
@@ -139,7 +156,6 @@ export default function ChatBox() {
           id="file-input"
           type="file"
           accept="image/*"
-          multiple
           onChange={handleFileChange}
         />
         <div className="search-input2 row center">
